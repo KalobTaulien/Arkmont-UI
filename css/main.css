@@ -1,0 +1,619 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background: #0e0f11;
+  color: #ecf0f1;
+  font-family: 'Open Sans', sans-serif;
+  /* 100% vertical height of the viewport; required */
+  min-height: 100vh;
+}
+
+
+/* Helpful selectors for knowing what you're working with */
+
+.bred,
+[bred] {
+  border: 1px solid red !important;
+}
+
+
+/* ".row__master" will hold ALL the rows and tiles in a simpel container */
+
+.row__master {
+  width: 100%;
+  overflow: hidden;
+}
+
+
+/**
+ * The row container class; renamed from "container" to ".row__container" to work with Bootstrap
+ * The .row__container holds 2 children: .row__inner and .row__outer 
+*/
+
+.row__container {
+  width: 100%;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+
+/**
+ * Ensure proper padding at the top for scaling 
+ */
+
+.row__container:first-child {
+  margin-top: 70px;
+}
+
+
+/**
+ * This is the <h2> element we see in index.html
+ */
+
+.row__category {
+  font-size: 20px;
+  /* Padding should be the SAME as the initial .row__inner padding */
+  /* so the text lines up with the tiles */
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+
+/* The "inner row" (.row__inner) is where all the tiles live */
+
+.row__inner {
+  -webkit-transition: 450ms -webkit-transform;
+  transition: 450ms -webkit-transform;
+  transition: 450ms transform;
+  transition: 450ms transform, 450ms -webkit-transform;
+  transition: all 450ms linear;
+  font-size: 0;
+  white-space: nowrap;
+  z-index: 1;
+  padding-left: 40px;
+  padding-right: 40px;
+  position: relative;
+}
+
+
+/* When the last tile in a page is being hovered, the parent row__inner will get this class */
+
+.row__inner--tile-last-hovered {}
+
+
+/**
+ * If the row was moved left or right.
+ * This class will be applied and it'll remove the left padding
+ * It's empty for now, but MIGHT be useful later.
+ */
+
+.row__inner--slid {}
+
+
+/* Styling for the "outer row". There are no tiles here, only details for the tiles. */
+
+.row__outer {
+  height: 1px;
+  overflow: hidden;
+  transition: height 0.5s ease, opacity .25s ease;
+  opacity: 0;
+  padding: 20px 45px;
+  position: relative;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0e0f11+0,8c1515+100 */
+  background: rgb(14, 15, 17);
+  /* Old browsers */
+  background: -moz-linear-gradient(45deg, rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0f11', endColorstr='#8c1515', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+  color: #fff;
+}
+
+
+/**
+ * Styling for an "active" rows sibling; the "outer row".
+ * These styles only take effect with a row has become active 
+ */
+
+.row__inner--active~.row__outer {
+  height: inherit;
+  opacity: 1;
+}
+
+
+/* The entire tile styling block. Probably lots of old unused styling in here, but it doesn't hurt to have it at the moment */
+
+.tile {
+  position: relative;
+  display: inline-block;
+  width: 243.8px;
+  height: 137.1375px;
+  font-size: 20px;
+  cursor: pointer;
+  -webkit-transition: 450ms all;
+  transition: 450ms all;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+  transition-delay: 0.3s;
+  border: 3px solid transparent;
+  z-index: 2;
+  /* This keeps the 10px margin on the right and considers the 3px border (transparent at the moment) on the left and right */
+  margin: -3px 7px 0px -3px;
+  /* Set the tiles background color so the tile__media and tile__img are allowed to have translucency without the tile being translucent */
+  background-color: #0E0F11;
+  /* If you add overflow:hidden; it will hide the tile's down arrow. Just so you know. */
+}
+
+
+/* An "active" rows styling for all of it's tiles */
+
+.row__inner--active .tile {
+  transition-delay: 0s;
+}
+
+
+/* The tiles image styling. */
+
+.tile__img {
+  /* Width and height MUST match the parent .tile sizes */
+  width: 243.8px;
+  height: 137.1375px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  opacity: 1;
+}
+
+
+/**
+ * Overlay the .tile__media selector with an animated gradient 
+ */
+
+.row__inner--images-loading .tile__media::before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11111;
+  background: linear-gradient(47deg, #0e0f11, #1e2024, #0e0f11);
+  background-size: 600% 600%;
+  -webkit-animation: ImageLoader 14s linear 2;
+  -moz-animation: ImageLoader 14s linear 2;
+  -o-animation: ImageLoader 14s linear 2;
+  animation: ImageLoader 14s linear 2;
+  opacity: 1;
+  transition: opacity 450ms linear;
+}
+
+
+/* When images are loading, hide the actual image */
+
+.row__inner--images-loading .tile__img {
+  opacity: 1;
+  display: none;
+}
+
+
+/**
+ * When images are about to fadeout (as soon as this class is applied)
+ * Make the image visible. This takes place just before the fadeout 
+ * takes effect 
+ */
+
+.row__inner--images-loading-fadeout .tile__img {
+  opacity: 1;
+  display: block;
+}
+
+@-webkit-keyframes ImageLoader {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-moz-keyframes ImageLoader {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-o-keyframes ImageLoader {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes ImageLoader {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+.row__inner--images-loading-fadeout .tile__media::before {
+  opacity: 0;
+}
+
+
+/* Tile "details" is the container element for ALL the text inside a tile. This is that parent elemnts styling. */
+
+.tile__details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  font-size: 10px;
+  opacity: 0;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+1,000000+100&0+0,0.71+100 */
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.01) 1%, rgba(0, 0, 0, 0.71) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.01) 1%, rgba(0, 0, 0, 0.71) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.01) 1%, rgba(0, 0, 0, 0.71) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#b5000000', GradientType=0);
+  /* IE6-9 */
+  -webkit-transition: 450ms opacity;
+  transition: 450ms opacity;
+}
+
+
+/* Tile "details" is the container element for ALL the text inside a tile. */
+
+
+/* When a tile is being hovered, the tile details will become visible (fade in) */
+
+.tile:hover .tile__details {
+  opacity: 1;
+}
+
+
+/* When a row is hovered, and any tile is hovered, show the tile's details */
+
+
+/* This will be overwritten, but allows us to choose what's being seen */
+
+.row__inner--active:hover .tile:hover .tile__details {
+  opacity: 1;
+}
+
+
+/* An "active" row that's being hovered, change the individual tile "hover" state so the title text is larger */
+
+.row__inner--active:hover .tile:hover .tile__title {
+  font-size: 14px;
+}
+
+
+/* An "active" row that's being hovered, select all tiles that are NOT active, and hide the rating and description blocks */
+
+
+/* All other tiles will only show the tile__title, allowing the user to focus more on the tile instead of being swamped with tiny text and lots of data */
+
+.row__inner--active:hover .tile:not(.tile--active) .tile__rating,
+.row__inner--active:hover .tile:not(.tile--active) .tile__description {
+  opacity: 0;
+  display: none;
+}
+
+
+/* Tiles have "content" areas with text in it. This is that area */
+
+.tile__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 5px 5px 10px 5px;
+  /* Remove 10px from the right AND left of this absolute element; leaving us with calc(100% - (10px + 10px)); */
+  /* Edit: Halved the padding; adjusted below setting to 10px, from 20px */
+  width: calc(100% - 10px);
+}
+
+
+/* A tiles title */
+
+.tile__title {
+  font-weight: bold;
+  white-space: initial;
+  font-size: 12px;
+  width: 100%;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* Tile rating styling */
+
+.tile__rating {
+  font-size: 8px;
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+
+/* Changes all font-awesome text to Arkmont red */
+
+.tile__rating .fa {
+  color: #8c1515;
+}
+
+
+/* A tiles description */
+
+.tile__description {
+  font-weight: normal;
+  overflow: hidden;
+  white-space: initial;
+  font-size: 8px;
+  width: 100%;
+  text-align: left;
+  text-align: justify;
+}
+
+
+/* The chevron styling inside a tile. */
+
+.tile__chevron {
+  text-align: center;
+  margin-bottom: -10px;
+}
+
+
+/* The tile chevron selector; and the child svg path styling */
+
+.tile__chevron--down,
+.tile__chevron--down path {
+  height: 20px;
+  width: 20px;
+  transition: all 0.3s ease;
+  fill: #fff;
+}
+
+
+/* When a tile's chevron arrow is hovered, make the array fade to Arkmont red. */
+
+.tile__chevron:hover path {
+  fill: #8c1515;
+}
+
+
+/* Any row that's being hovered should have translucent tiles in that row to focus on one tile at a time */
+
+.row__inner:not(.row__inner--images-loading):hover .tile:not(.tile--has-next):not(.tile--has-prev) {
+  opacity: 0.2;
+}
+
+
+/* All non-active rows that are being hovered with a tile that's being hovered. Make the tile larger. */
+
+
+/* The :not() selector stops the scaling from happening when .tile has .tile--has-prev */
+
+.row__inner:not(.row__inner--active):not(.row__inner--images-loading):hover .tile:not(.tile--has-prev):not(.tile--has-next):hover {
+  -webkit-transform: scale(2);
+  transform: scale(2);
+  opacity: 1 !important;
+  z-index: 11;
+}
+
+
+/* Styling for the image block */
+
+.tile__img {
+  transition: all 0.3s ease;
+  transition-delay: 0.3s;
+  opacity: 1;
+}
+
+
+/* When a tile is hovered, make the tile__img 25% translucent so the white text shows up better */
+
+.tile:hover .tile__img {
+  opacity: 0.9;
+}
+
+
+/* All non-active rows with a tile that's being hovered over.. select the OTHER tiles and move them */
+
+
+/* The :not() selector stops the scaling from happening when .tile has .tile--has-prev */
+
+.row__inner:not(.row__inner--active):not(.row__inner--images-loading) .tile:not(.tile--has-prev):not(.tile--has-next):hover~.tile {
+  -webkit-transform: translate3d(250px, 0, 0);
+  transform: translate3d(250px, 0, 0);
+}
+
+
+/* Tiles per row customization */
+
+.row__inner[data-tiles='4']:not(.row__inner--active):not(.row__inner--images-loading) .tile:not(.tile--has-prev):not(.tile--has-next):hover~.tile {
+  -webkit-transform: translate3d(307.25px, 0, 0);
+  transform: translate3d(307.25px, 0, 0);
+}
+
+.row__inner[data-tiles='5']:not(.row__inner--active):not(.row__inner--images-loading) .tile:not(.tile--has-prev):not(.tile--has-next):hover~.tile {
+  -webkit-transform: translate3d(243.8px, 0, 0);
+  transform: translate3d(243.8px, 0, 0);
+}
+
+.row__inner[data-tiles='6']:not(.row__inner--active):not(.row__inner--images-loading) .tile:not(.tile--has-prev):not(.tile--has-next):hover~.tile {
+  -webkit-transform: translate3d(201.5px, 0, 0);
+  transform: translate3d(201.5px, 0, 0);
+}
+
+.row__inner[data-tiles='7']:not(.row__inner--active):not(.row__inner--images-loading) .tile:not(.tile--has-prev):not(.tile--has-next):hover~.tile {
+  -webkit-transform: translate3d(171.29px, 0, 0);
+  transform: translate3d(171.29px, 0, 0);
+}
+
+
+/* Change the way the last tile on a "page" scales by changing it's preceding childrens transformations */
+
+.row__inner[data-tiles='5']:not(.row__inner--active):not(.row__inner--images-loading) .tile--scale-left:hover~.tile {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+
+/* At 7 tiles per page, the text NEEDS to shrink. */
+
+.row__inner[data-tiles='7'] .tile__description {
+  font-size: 7px;
+}
+
+
+/* The entire row is "active". Make all tiles translucent */
+
+.row__inner.row__inner--active .tile {
+  opacity: 0.3;
+}
+
+
+/* The entire row is in an "active" state, select the active tile and the tile's "hover" state */
+
+.row__inner.row__inner--active .tile--active,
+.row__inner.row__inner--active .tile:hover {
+  opacity: 1 !important;
+}
+
+
+/* An active tile */
+
+.tile--active {
+  border: 3px solid #fff;
+}
+
+
+/* The .tile:after declarations MUST be very similar to the .tile--active:after declarations 
+   In order to fade in the white down arrow. */
+
+.tile:after {
+  transition: all 250ms;
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-top: solid 10px transparent;
+  border-left: solid 10px transparent;
+  border-right: solid 10px transparent;
+}
+
+
+/* This is the drop-down arrow (not the chevron) */
+
+.tile--active::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-top: solid 10px #fff;
+  border-left: solid 10px transparent;
+  border-right: solid 10px transparent;
+}
+
+
+/* The "next" and "prev" tiles don't need any opacity. */
+
+
+/* This will hide any overflow from the image when screens change size */
+
+.tile--has-next .tile__img,
+.tile--has-prev .tile__img {
+  opacity: 0;
+  display: none;
+}
+
+
+/* The styling for the "previous page" stuff */
+
+.tile--has-prev:before {
+  display: block;
+  color: #fff;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -2px;
+  /* Use `bottom` instead of height:100% */
+  bottom: 0;
+  width: 101%;
+  z-index: 10;
+  background-color: #0E0F11;
+  /* This is ALWAYS visible! */
+  opacity: 1 !important;
+  background-image: url('../img/svgs/left-chevron.svg');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 20px 20px;
+}
+
+
+/* The styling for the "previous page" stuff */
+
+.tile--has-next:before {
+  display: block;
+  color: #fff;
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: -2px;
+  /* Use `bottom` instead of height:100% */
+  bottom: 0;
+  width: 101%;
+  height: 100%;
+  z-index: 10;
+  background-color: #0E0F11;
+  /* This is ALWAYS visible! */
+  opacity: 1 !important;
+  background-image: url('../img/svgs/left-chevron.svg');
+  background-repeat: no-repeat;
+  /* We position the BG image "right" on the x-axis because the flip (below) reverses the positioning */
+  background-position: right center;
+  background-size: 20px 20px;
+  /* Flip this svg horizontally */
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}

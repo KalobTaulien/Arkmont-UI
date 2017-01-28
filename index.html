@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+
+<div class="row__master">
+	<div class="row__container">
+
+		<h2 class="row__category">Category Name</h2>
+
+		<div class="row__inner row__inner--images-loading">
+
+			<div class="tile">
+				<div class="tile__media">
+					<img alt="" class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-1.jpg">
+				</div>
+				<div class="tile__details">
+					<div style='position:relative; height:100%; width:100%;'>
+						<div class="tile__content">
+							<div class="tile__title">
+								Course Name Here
+							</div>
+							<div class="tile__rating" data-rating="4.5">
+								<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half'></i>
+							</div>
+							<div class="tile__description">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur, leo vel finibus luctus, urna diam condimentum velit, quis viverra enim tellus non lacus.
+							</div>
+							<div class="tile__chevron">
+								<svg class="tile__chevron--down" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+								<path d="M3,70.4545455 L7.68805325,75 L50,33.9750755 L92.3119468,75 L97,70.4545455 L50.1194675,25 L3,70.4545455 Z" transform=
+								"translate(50.000000, 50.000000) scale(-2, -1) translate(-50.000000, -50.000000)"></path></svg>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row__outer">
+			<div style='border:1px solid white;'>
+				<p>Your stuff here</p>
+			</div>
+
+
+		</div>
+	</div><!-- End .row__container -->
+</div><!-- End .row__master -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Temporary script to give us more tiles without making the html markup super long -->
+<script>
+
+	// Number of rows you want to test 
+	var rows = 5;
+	// Number of tiles per row. 
+	var tilesPerRow = 14;
+	// Tile images. 
+	var tiles = [	"https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-3.jpg",
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-2.jpg',
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-4.jpg',
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-5.jpg',
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-7.jpg',
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-9.jpg',
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-11.jpg',
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-12.jpg',
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-13.jpg',
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-14.jpg',
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-15.jpg',
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-16.jpg',
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-17.jpg',
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-18.jpg',
+					'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-19.jpg'
+				];
+	// When jQ is ready to rock, start cloning!
+	$(document).ready(function() {
+		// Make all the tiles in the first row
+		for(var i = 1; i < tilesPerRow; i++) {
+			var tile = $(".tile:first").clone();
+			tile.find('.tile__img').attr('src', tiles[i]);
+			$('.tile:last').after(tile);
+		}
+
+		// Clone the first row with all its tiles.
+		for(var i = 1; i <= rows; i++) {
+			var row = $(".row__container:first").clone();
+			$('.row__container:last').after(row);
+		}
+	})
+</script>
+
+
+
+<script src="js/main.js"></script>
+</body>
+</html>
