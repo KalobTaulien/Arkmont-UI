@@ -94,11 +94,11 @@ html {
 /* Styling for the "outer row". There are no tiles here, only details for the tiles. */
 
 .row__outer {
-  height: 1px;
+  max-height:0px;
   overflow: hidden;
-  transition: height 0.5s ease, opacity .25s ease;
+  transition: max-height 0.35s ease-out, opacity 0.25s ease-in, padding 0.35s ease-out;
   opacity: 0;
-  padding: 20px 45px;
+  padding: 0 45px;
   position: relative;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0e0f11+0,8c1515+100 */
   background: rgb(14, 15, 17);
@@ -121,8 +121,10 @@ html {
  */
 
 .row__inner--active~.row__outer {
-  height: inherit;
+  max-height:3000px;
   opacity: 1;
+  padding: 20px 45px;
+
 }
 
 
@@ -306,14 +308,6 @@ html {
 .row__inner--active:hover .tile:hover .tile__details {
   opacity: 1;
 }
-
-
-/* An "active" row that's being hovered, change the individual tile "hover" state so the title text is larger */
-
-.row__inner--active:hover .tile:hover .tile__title {
-  font-size: 14px;
-}
-
 
 /* An "active" row that's being hovered, select all tiles that are NOT active, and hide the rating and description blocks */
 
@@ -513,7 +507,9 @@ html {
 
 .tile--active {
   border: 3px solid #fff;
+  transition: all 450ms;
 }
+
 
 
 /* The .tile:after declarations MUST be very similar to the .tile--active:after declarations 
@@ -617,3 +613,242 @@ html {
   filter: FlipH;
   -ms-filter: "FlipH";
 }
+
+
+/**
+ *
+ * STYLING FOR THE ROW__OUTER BOX CONTENTS
+ * THIS IS NOT PART OF THE OPEN SOURCED UI; THIS IS WHERE WE'RE TAKING THIS
+ * FEEL FREE TO IGNORE THE BELOW CODE; OR USE IT. :) 
+ *
+ */ 
+.preview__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow:1;
+  flex-direction:row;
+  height: inherit;
+}
+.preview__section {
+  flex: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width:50%;
+  justify-content: center;
+  align-items: center;
+}
+.preview__section--left {
+  max-width:55%;
+  width:55%;
+  margin-right:5%;
+}
+.preview__section--right {
+  max-width:40%;
+  width: 40%;
+}
+/* When on smaller devices; make the .row__outer columns turn into rows (like a responsive grid in BS) */
+@media (max-width:768px) {
+  .preview__container,
+  .preview__section,
+  .preview__section--left,
+  .preview__section--right {
+    flex-direction: column;
+    flex-grow:2;
+    flex-basis: 1;
+        width:100%;
+    max-width:100%;
+    margin-right: 0;
+  }
+}
+.course__img {
+  width:100%;
+  height: auto;
+}
+.course__preview {
+}
+.preview__title {
+  font-size: 35px; 
+  font-weight:bold; 
+  margin-top:0; 
+  margin-bottom:0px;
+  cursor:pointer; 
+  display:inline-block; 
+  color:#fff; 
+  text-overflow:ellipsis; 
+  overflow:  hidden; 
+  white-space: nowrap;
+  text-shadow:1px 1px o rgba(0,0,0,0.5);
+  text-decoration: none;
+	position: relative;
+}
+.preview__title:after {
+	content: '';
+	display: block;
+    /* Remove the margin to make the border slide left to right, by default */
+	margin: auto;
+    /* Height is the height of your border. */
+	height: 2px;
+	width: 0px;
+	background: transparent;
+    /* Change the speed by changing the `.5` to, for example, `2.5` */
+	transition: width .25s ease-in, background-color .25s ease-out;
+}
+.preview__title:hover:after {
+	width: 100%;
+  background: rgba(255,255,255,1);
+}
+
+.preview__content {
+  color:#ddd;
+}
+.preview__rating {
+  font-size: 18px;
+  margin:5px 0 10px 0;
+  color:#8c1515;
+  text-shadow:1px 1px 0 rgba(0,0,0,0.9);
+}
+.preview__about, 
+.preview__teachers {
+  margin:7px 0;
+  color:#fff;
+  font-size:17px;
+}
+.preview__list {
+  list-style:none;
+  list-style-position: inside;
+  padding:0;
+  display: inline;
+}
+.preview__item {
+  width:auto;
+  display: inline;
+}
+/* If using an <a> inside the <li>, remove all white space, otherwise commas 
+  will have spacing before them */
+.preview__item:not(:last-child)::after {
+  content: ", ";
+}
+.preview__url {
+  color:#fff;
+  text-decoration:none;
+}
+.preview__url:hover {
+  text-decoration:underline;
+}
+.preview__description {
+  font-size:15px;
+}
+
+/* The preview__title is changing */
+.preview__container--changing .preview__title,
+.preview__container--changing .preview__teachers,
+.preview__container--changing .preview__list,
+.preview__container--changing .preview__url,
+.preview__container--changing .preview__about,
+.preview__container--changing .preview__rating {
+  display:inline;
+  color:transparent;
+  position:relative;
+  text-shadow:none;
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+  cursor:default;
+}
+/* Specifically change the .preview__description--changing class since it can have several children */
+.preview__container--changing .preview__description > * {
+  color:transparent;
+  position:relative;
+  text-shadow:none;
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+}
+/* Remove the preview title border animation */
+.preview__container--changing .preview__title:after {
+  height: 0;
+  
+}
+.preview__container--changing .preview__title:hover:after {
+  background: rgba(255,255,255,0);
+  opacity: 0;
+}
+
+.preview__container--changing .preview__title::before,
+.preview__container--changing .preview__teachers::before,
+.preview__container--changing .preview__list::before,
+.preview__container--changing .preview__about::before,
+.preview__container--changing .preview__description > *::before,
+.preview__container--changing .preview__rating::before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11111;
+  background: linear-gradient(47deg, #0e0f11, #1e2024, #0e0f11);
+  background-size: 600% 600%;
+  -webkit-animation: ImageLoader 14s linear 2;
+  -moz-animation: ImageLoader 14s linear 2;
+  -o-animation: ImageLoader 14s linear 2;
+  animation: ImageLoader 14s linear 2;
+  opacity: 0.2;
+  transition: opacity 450ms linear;
+}
+.preview__container--changing .preview__title::after,
+.preview__container--changing .preview__teachers::after,
+.preview__container--changing .preview__list::after,
+/* Ignore this one: .preview__url::after, */
+.preview__container--changing .preview__about::after,
+.preview__container--changing .preview__description > *::after,
+.preview__container--changing .preview__rating::after {
+  display:block;
+  height:1px;
+  clear:both;
+  content: '\A';
+}
+/* Specifically change the image */
+.preview__container--changing .preview__section {
+  position:relative;
+}
+/* Change the opacity of the image. It'll come back when ....--changing is removed*/
+.preview__container--changing .preview__section .course__img {
+  opacity: 0;
+}
+.preview__container--changing .preview__image::before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11111;
+  background: linear-gradient(47deg, #0e0f11, #1e2024, #0e0f11);
+  background-size: 600% 600%;
+  -webkit-animation: ImageLoader 14s linear 2;
+  -moz-animation: ImageLoader 14s linear 2;
+  -o-animation: ImageLoader 14s linear 2;
+  animation: ImageLoader 14s linear 2;
+  opacity: 0.5;
+  transition: opacity 450ms linear;
+}
+/* Totally hide some elements */
+.preview__container--changing .preview__list {
+  opacity: 0;
+}
+
+.inline {
+  display: inline;
+}
+
+

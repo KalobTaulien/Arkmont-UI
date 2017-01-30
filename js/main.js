@@ -1,3 +1,4 @@
+"use strict"
 /* eslint linebreak-style: ["error", "windows"] */
 $(document).ready(function () {
   // The setup object.
@@ -13,6 +14,18 @@ $(document).ready(function () {
       aTileIsActive: false,
       tileClickCallback: function () {}, // Function to run when a tile becomes "active"
       tileDeactivatedCallback: function () {}, // Function to run when an active tile is no longer active
+      // Allow (when possible) localStorage caching instead of object based caching 
+      useLocalStorage: true,
+      // Check if the user can use localStoragae or not.
+      checkForLocalStorage: function() {
+        // We the user has the ability to use localStorage, AND the developer has this setting enabled. 
+        if(typeof Storage !== "undefined" && setup.settings.useLocalStorage) {
+          setup.settings.useLocalStorage = true;
+        } else {
+          // No localStorage support. Disable this option.
+          setup.settings.useLocalStorage = false;
+        }
+      },
       // _row is the row selector (jquery object)
       // currentPage is the current page number.
       setScrollButtons: function (_row, currentPage) {
@@ -46,11 +59,21 @@ $(document).ready(function () {
     // Init the carousel
     init: function (args) {
 
-      if (args.tilesPerPage !== undefined) {
+      // Force tilesPerPage with smaller devices
+      if( $(window).outerWidth(true) <= 450 ) {
+        // 2 tiles per page on smaller devices. 
+        this.settings.tilesPerPage = 2;
+      } else if( $(window).outerWidth(true) <= 768 ) {
+        // If the screen is tiny, make the tiles bigger (use less; max 3) 
+        this.settings.tilesPerPage = 3;
+      } else if (args.tilesPerPage !== undefined) {
         // Set the tiles per page now.
         // alert('set the tiles per page');
         this.settings.tilesPerPage = args.tilesPerPage;
+      } else {
+        this.settings.tilesPerPage = this.settings.tilesPerPage; // default value
       }
+
       // If an argument is provided for the tileClickCallback, set it. 
       if (args.tileClickCallback !== undefined) {
         this.settings.tileClickCallback = args.tileClickCallback;
@@ -61,10 +84,19 @@ $(document).ready(function () {
         this.settings.tileDeactivatedCallback = args.tileDeactivatedCallback;
       }
 
+      // If the useLocalStorage setting was given (as a boolean)
+      if( typeof(args.useLocalStorage) === "boolean" ) {
+        this.settings.useLocalStorage = args.useLocalStorage;
+      }
+
       // Resize tiles when the viewport changes
       window.onresize = function (event) {
-        setup.init(setup.settings);
+          // Window resizing is a major problem. 
+          setup.init( setup.settings )
       }
+
+      // Set the localStorage setting. 
+      this.settings.checkForLocalStorage();
 
       // The reason we do this is to give us accurate padding on both the left and right of
       // each "page" so the prev and next buttons can exist
@@ -105,6 +137,8 @@ $(document).ready(function () {
           .attr('data-max-pages', Math.floor(tiles / setup.settings.tilesPerPage))
           .attr('data-current-page', 0);
 
+        $(elem).find(".row__inner").css("right", 0)
+
         // While we're looping through this, we might as well 
         // add the tile--has-next classes to the proper tiles. 
         // We do it in this loop so we dont need to run the same loop twice
@@ -132,23 +166,119 @@ $(document).ready(function () {
   // Add a window resize method that re-inits setup.init() after mobile tiles are put together.
   setup.init({
     tilesPerPage: 5,
-    tileClickCallback: function () {
+    useLocalStorage: true,
+    // $tile is the jQ selector for the currently active .tile. 
+    tileClickCallback:  function( $tile )  {
+      var tileId = $tile.attr('data-id');
       console.log('Tile activated');
+
     },
     tileDeactivatedCallback: function () {
       console.log('Tile deactivated');
     },
   });
 
+// A wrapper for the jquery ajax request. 
+const ajax = function(page, object, before_callback, done_callback, failed_callback, always_callback) {
+  $.ajax({
+    type:	"GET",
+    url:	'ajax/' + page + '.html', 
+    data:	object,
+    dataType: 'json',
+    async: true,
+    beforeSend: function( xhr, options ) {
+      // Before we send anything. 
+      if( before_callback !== undefined && before_callback != '' ) {
+        before_callback();
+      }
+
+      // How to abort this request. 
+      // xhr.abort();
+      // return false;
+    },
+    headers: {
+      api_key: '' // Your custom API key, if needed.
+    },
+    statusCode: {
+      '500': function() {
+          alert("500: This is a serious error.\rPlease report this.");
+          return false;
+        },
+      '404': function(e) {
+          alert("Missing ajax page");
+          console.log(e);
+          return false;
+        }
+    }
+  })
+  .done(function(data) {
+    
+    // What to do when a response is sent back.
+    if(done_callback !== undefined && done_callback != '') {
+      done_callback(data);
+    }
+
+    return true;
+  })
+  .fail(function(e) {
+    // What to do when the request fails.
+    if(failed_callback !== undefined && failed_callback != '') {
+      failed_callback();
+    }
+    // Do not display any 404 errors from the error section
+    if(e.status == '404') {
+      // The ajax request returned a 404 status. 
+    } else {
+      // Some other status was returned.
+    }
+    return false;
+  })
+  .always(function(data) {
+    // Regardless of the outcome, always run this code.
+    if(always_callback !== undefined && always_callback != '') {
+      always_callback();
+    }
+    return true;
+  });
+};
+
+const formStarsFromRating = function(rating) {
+  var rating = parseFloat( rating );
+  // Full stars 
+  var full = Math.floor(rating);
+  // If there is a half star or not (anything over a full int)
+  var half = (full < rating ? true : false);
+
+  var html = '';
+  for(var i = 1; i<=full; i++) {
+    html += "<i class='fa fa-star'></i> ";
+  }
+
+  // Add the half star, if needed.
+  if(half) {
+    html += "<i class='fa fa-star-half'></i>"
+  }
+
+  return html;
+    
+}
+
+
   $(document)
     // Make a tile "active";
     // But only if it isn't already active, and isn't being covered be a "next" or "prev" block
     .on("click", ".tile:not(.tile--active, .tile--has-prev, .tile--has-next)", function (e) {
 
-      // Check to see if this row is active or not. 
-      // If this row IS active, there's an active tilel (tile--active), which means we can make ane xisting active tile inactive. 
       var _t = $(this);
       var _row = _t.closest(".row__inner");
+      var _container = _t.closest(".row__container");
+      var _preview = _container.find('.preview__container');
+      // The default timeout amount. 
+      // We keep this at zero, unless the user is switching from one tile to a different tile in the same row.
+      // Then we add a short timeout to make the transition feel nicer. 
+      var timeoutAmount = 0;  
+
+      _preview.addClass('preview__container--changing');
 
       // If the row has a row__inner--tile-last-hovered class, remove it, and remove the left margin from the first tile. 
       _row.removeClass('row__inner--tile-last-hovered').find('.tile:first').css('margin-left', 0);
@@ -157,22 +287,78 @@ $(document).ready(function () {
       if (_row.hasClass("row__inner--active")) {
         console.log('Moved active tile');
         _row.find('.tile--active').removeClass('tile--active');
+        timeoutAmount = 450;
       }
+
       // Set global var "aTileIsActive" to true 
       setup.settings.aTileIsActive = true;
 
-      // Fake an Ajax request to collect the required data.
-      setTimeout(function () {
+      // Get the new tile information
+      ajax('get-tile-preview', {id: _t.attr('data-id')}, 
+      function(start) {
         // Make this tile active.
         _t.addClass("tile--active");
         // Make the .row__inner "active" as well 
         _row.addClass("row__inner--active");
+      }, 
+      function(data) {
+        console.log(data);
+        _preview.find(".preview__title").text( data.name ).attr('href', data.url );
+        _preview.find(".preview__rating").html( formStarsFromRating( data.rating ) ).attr('data-rating', data.rating);
+        _preview.find(".preview__description").html( data.description )
+        _preview.find(".course__img").attr( 'src', data.image )
 
-        // Callback function
-        setup.settings.tileClickCallback();
+        // Create new list HTML and overwrite the .preview__lists element 
+        var html = '';
+        for(var i in data.lists) {
+          // i would give us "teachers" from the sample json file
+          console.log(data.lists[i]);
+          if(i == 'teachers') {
+            // Build the teachers list. 
+            html += `<div class="preview__teachers"> \
+                <p class="inline">${data.lists[i]['displayName']}:</p> \
+                <ul class="preview__list">`
+            
+            for(var i2 in data.lists[i]['points']) {
+              html += `<li class="preview__item">` + 
+                        (data.lists[i]['points'][i2]['profile'] !== undefined 
+                          ? `<a href='${data.lists[i]['points'][i2]['profile']}' class="preview__url">${data.lists[i]['points'][i2]['name']}</a></li>` 
+                          : `${data.lists[i]['points'][i2]['name']}`) +
+                        `</li>`;
+            }
 
-      }, 500)
+            html += `</ul> \
+                </div>`;
+          } else if(i == 'about') {
+            // Build the teachers list. 
+            html += `<div class="preview__about"> \
+                <p class="inline">${data.lists[i]['displayName']}:</p> \
+                <ul class="preview__list">`
+            
+            for(var i2 in data.lists[i]['points']) {
+              html += `<li class="preview__item">${data.lists[i]['points'][i2]}</li>`;
+            }
+
+            html += `</ul> \
+                </div>`;
+          }
+
+        }
+         _preview.find(".preview__lists").html( html );
+         console.log(html);
+
+
+        setTimeout(function() {
+          _preview.removeClass('preview__container--changing');
+        }, timeoutAmount)
+      },
+      function(failed) {
+        // Ajax failed
+      });
+
+      return e.preventDefault(); 
     })
+
     // Make the currently "active" tile "inactive", and make the row hide details. 
     .on("click", ".tile.tile--active", function (e) {
       // Remove the active state

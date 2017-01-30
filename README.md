@@ -26,7 +26,7 @@ Nobody wants tiny tiles to look at, and products go to page 2 to die (thanks, Go
 ## Where we got started
 We *could* have started writing a tonne of JavaScript, but we figured: why not let the browser do more work. So started looking for a CSS3-animated UI. We didn't find anything useful for our purposes, __but__ we did find this [https://codepen.io/joshhunt/pen/LVQZRa](https://codepen.io/joshhunt/pen/LVQZRa) from [Josh Hunt](https://github.com/joshhunt). This is where we started our initial build. Of course this CSS3 version has it's limitations, so we patched some of the flaws and added more functionality. 
 
-# Contibution 
+# Contributions
 ### First, some notes
 This UI is *not* perfect. It has flaws and this is our first draft of this UI, so it's definitely *not* coded efficiently. We have long CSS selectors, inefficient JavaScript, and ugly HTML. That's the joy of seeing our work before we're finished. But __this is where you can help!__
 
@@ -34,3 +34,6 @@ Also, this repo is under my name until such time it makes sense for Arkmont to h
 
 ### Your contributions 
 At Arkmont we don't make very much code open source, but this is an exception where we believe other people can improve and use our work. If you want to make this better, branch off and make your improvements -- but don't forget to make pull requests -- you're work won't go unnoticed and it might end up on [Arkmont.com](https://arkmont.com), along with several other sites in the future. 
+
+# Changelog 
+The changelog can be found in the `CHANGELOG.md` file. 

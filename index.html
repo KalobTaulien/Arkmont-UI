@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="css/main.css" />
 </head>
@@ -14,7 +17,7 @@
 
 		<div class="row__inner row__inner--images-loading">
 
-			<div class="tile">
+			<div class="tile" data-id='1'>
 				<div class="tile__media">
 					<img alt="" class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-1.jpg">
 				</div>
@@ -41,8 +44,49 @@
 			</div>
 		</div>
 		<div class="row__outer">
-			<div style='border:1px solid white;'>
-				<p>Your stuff here</p>
+			<div class="preview__container">
+				<div class="preview__section preview__section--left">
+					<div class="course__preview">
+						<a href="#" class="preview__title">
+							<!-- The name of a really long course in here -->
+						</a>
+						<div class="preview__content">
+							<div class="preview__rating" data-rating="5">
+								<!-- 
+									<i class='fa fa-star'></i> 
+									<i class='fa fa-star'></i> 
+									<i class='fa fa-star'></i> 
+									<i class='fa fa-star'></i> 
+									<i class='fa fa-star'></i> 
+								-->
+							</div>
+							<div class="preview__lists">
+								<div class="preview__teachers">
+									<p class="inline"><!-- Teachers: --></p>
+									<ul class="preview__list">
+										<!-- preview__item's CANNOT have spaces, otherwise the styling won't add the comma's in the right places -->
+										<li class="preview__item"><!-- <a href='#' class="preview__url">Mr. Matt</a> --></li>
+										<li class="preview__item"><!-- <a href='#' class="preview__url">Mr. Smith</a> --></li>
+									</ul>
+								</div>
+								<div class="preview__about">
+									<p class="inline"><!-- About: --></p>
+									<ul class="preview__list">
+										<li class="preview__item"><!-- Less than an hour --></li>
+										<li class="preview__item"><!-- 22 lessons --></li>
+										<li class="preview__item"><!-- Certificate of Completion --></li>
+									</ul>
+								</div>
+							</div>
+							<div class="preview__description">
+								<!-- Preview description in here -->>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="preview__section preview__image preview__section--right">
+					<img src="https://s3.amazonaws.com/arkmont/courses/13/covers/get-up-and-running-with-git_lg.png" class="course__img" />
+				</div>
 			</div>
 
 
@@ -89,6 +133,11 @@
 			var row = $(".row__container:first").clone();
 			$('.row__container:last').after(row);
 		}
+
+		// For each tile, replace the [data-id]
+		$(".tile").each(function(i, elem) {
+			$(this).attr('data-id', (i+1))
+		})
 	})
 </script>
 

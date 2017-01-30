@@ -1,0 +1,8 @@
+# Specific files 
+*.todo
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
+*~
