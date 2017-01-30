@@ -1,6 +1,9 @@
 # Arkmont-UI
 A new video-based UI for Arkmont.com
 
+# Demo
+Want to see this in action? I personally host the latest changes on my own site [http://kalobtaulien.com/examples/arkmont-ui/index.html](http://kalobtaulien.com/examples/arkmont-ui/index.html). 
+
 ## Inspiration
 User interface directly affects the user experience. And while we *could* make an ugly UI with a great UX, we prefer to infuse art (design and simplicity) with technology. Ever notice the "mouseover" effect in an OSX toolbar? The icon grows. That's intuitive and helpful, and a data point that's hard to measure because we *feel* that experience. We can thank the late Steve Jobs for this inspiration. 
 
