@@ -11,9 +11,9 @@ This is to keep track of changes in a way that lets contributors *read* about wh
 - Changed the way the `next` and `prev` tiles show their chevron arrows. There's now a child element called `.tile__hasnext` and `.tile__hasprev` that sits inside `.tile` to lay on top of the media and content elements. This solved the problem of each row always adjusting 1px after the images load.
 - `.gitignore` ignores a couple ESLinting files. We'll add linting in the near future.
 
-__Problems__:
+#### Problems:
 - Using jQuery to animate the tiles with CSS is causing tiles that have scaled to have slightly blurry text. It's not terrible, but definitely annoying. 
-- 
+
 
 
 ### Jan. 29, 2017
