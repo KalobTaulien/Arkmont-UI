@@ -11,7 +11,6 @@ html {
 
 
 /* Helpful selectors for knowing what you're working with */
-
 .bred,
 [bred] {
   border: 1px solid red !important;
@@ -100,6 +99,7 @@ html {
   opacity: 0;
   padding: 0 45px;
   position: relative;
+  top: -3px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0e0f11+0,8c1515+100 */
   background: rgb(14, 15, 17);
   /* Old browsers */
@@ -133,30 +133,57 @@ html {
 .tile {
   position: relative;
   display: inline-block;
-  width: 243.8px;
-  height: 137.1375px;
+  width: 247.8px;
+  height: 139.3875px;
   font-size: 20px;
   cursor: pointer;
-  -webkit-transition: 450ms all;
-  transition: 450ms all;
+  -webkit-transition: all 450ms;
+  transition: all 450ms;
   -webkit-transform-origin: center left;
   transform-origin: center left;
   transition-delay: 0.3s;
   border: 3px solid transparent;
   z-index: 2;
-  /* This keeps the 10px margin on the right and considers the 3px border (transparent at the moment) on the left and right */
-  margin: -3px 7px 0px -3px;
+  /* This keeps the 5px margin on the right and considers the 3px border (transparent at the moment) on the left and right */
+  margin: -3px 2.5px 2.5px -3px;
   /* Set the tiles background color so the tile__media and tile__img are allowed to have translucency without the tile being translucent */
   background-color: #0E0F11;
   /* If you add overflow:hidden; it will hide the tile's down arrow. Just so you know. */
+
+  /* According to some people, this helps with the text that blurs after scale() takes place in Chrome */ 
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  filter: blur(0);
 }
 
+/* A middle tile that's scaling outwards on both sides */
+.tile.tile--scale-center.tile--hover {
+
+}
+/* The currently hovered tile */
+.tile--hovered {
+  opacity: 1 !important;
+
+  /* According to some people, this helps with the text that blurs after scale() takes place in Chrome */ 
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  filter: blur(0);
+}
+/* All tiles BEFORE the currently hovered tile */
+.tile.tile--hovered-prev, 
+/* All tiles AFTER the currently hovered tile */
+.tile.tile--hovered-next {
+  transition-duration: 450ms;
+  transition-timing-function: cubic-bezier(0.5, 0, 0.1, 1);
+  transition-delay: 0.3s;
+}
 
 /* An "active" rows styling for all of it's tiles */
 
 .row__inner--active .tile {
   transition-delay: 0s;
 }
+
 
 
 /* The tiles image styling. */
@@ -406,22 +433,11 @@ html {
 /* Any row that's being hovered should have translucent tiles in that row to focus on one tile at a time */
 
 .row__inner:not(.row__inner--images-loading):hover .tile:not(.tile--has-next):not(.tile--has-prev) {
-  opacity: 0.2;
+  opacity: 0.6;
 }
 
 
 /* All non-active rows that are being hovered with a tile that's being hovered. Make the tile larger. */
-
-
-/* The :not() selector stops the scaling from happening when .tile has .tile--has-prev */
-
-.row__inner:not(.row__inner--active):not(.row__inner--images-loading):hover .tile:not(.tile--has-prev):not(.tile--has-next):hover {
-  -webkit-transform: scale(2);
-  transform: scale(2);
-  opacity: 1 !important;
-  z-index: 11;
-}
-
 
 /* Styling for the image block */
 
@@ -435,63 +451,17 @@ html {
 /* When a tile is hovered, make the tile__img 25% translucent so the white text shows up better */
 
 .tile:hover .tile__img {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 
 /* All non-active rows with a tile that's being hovered over.. select the OTHER tiles and move them */
 
 
-/* The :not() selector stops the scaling from happening when .tile has .tile--has-prev */
-
-.row__inner:not(.row__inner--active):not(.row__inner--images-loading) .tile:not(.tile--has-prev):not(.tile--has-next):hover~.tile {
-  -webkit-transform: translate3d(250px, 0, 0);
-  transform: translate3d(250px, 0, 0);
-}
-
-
-/* Tiles per row customization */
-
-.row__inner[data-tiles='4']:not(.row__inner--active):not(.row__inner--images-loading) .tile:not(.tile--has-prev):not(.tile--has-next):hover~.tile {
-  -webkit-transform: translate3d(307.25px, 0, 0);
-  transform: translate3d(307.25px, 0, 0);
-}
-
-.row__inner[data-tiles='5']:not(.row__inner--active):not(.row__inner--images-loading) .tile:not(.tile--has-prev):not(.tile--has-next):hover~.tile {
-  -webkit-transform: translate3d(243.8px, 0, 0);
-  transform: translate3d(243.8px, 0, 0);
-}
-
-.row__inner[data-tiles='6']:not(.row__inner--active):not(.row__inner--images-loading) .tile:not(.tile--has-prev):not(.tile--has-next):hover~.tile {
-  -webkit-transform: translate3d(201.5px, 0, 0);
-  transform: translate3d(201.5px, 0, 0);
-}
-
-.row__inner[data-tiles='7']:not(.row__inner--active):not(.row__inner--images-loading) .tile:not(.tile--has-prev):not(.tile--has-next):hover~.tile {
-  -webkit-transform: translate3d(171.29px, 0, 0);
-  transform: translate3d(171.29px, 0, 0);
-}
-
-
-/* Change the way the last tile on a "page" scales by changing it's preceding childrens transformations */
-
-.row__inner[data-tiles='5']:not(.row__inner--active):not(.row__inner--images-loading) .tile--scale-left:hover~.tile {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-
-/* At 7 tiles per page, the text NEEDS to shrink. */
-
-.row__inner[data-tiles='7'] .tile__description {
-  font-size: 7px;
-}
-
-
 /* The entire row is "active". Make all tiles translucent */
 
 .row__inner.row__inner--active .tile {
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 
@@ -556,13 +526,12 @@ html {
 .tile--has-next .tile__img,
 .tile--has-prev .tile__img {
   opacity: 0;
-  display: none;
 }
 
 
 /* The styling for the "previous page" stuff */
 
-.tile--has-prev:before {
+.tile__hasprev {
   display: block;
   color: #fff;
   content: '';
@@ -585,7 +554,7 @@ html {
 
 /* The styling for the "previous page" stuff */
 
-.tile--has-next:before {
+.tile__hasnext {
   display: block;
   color: #fff;
   content: '';
