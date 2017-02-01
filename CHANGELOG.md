@@ -1,6 +1,17 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits. 
 
+
+### Jan. 31, 2017
+- Renamed `setup` to `carousel`. 
+- Compartmentalized the functionality to a single auto-invoking function
+- Moved `setScrollButtons()` out of `setup.settings{}` and into `carousel{}`
+- Support for 3-7 tiles was added in the last update, but was not tested. (Removed later the same day)
+- Window resizing works better. It still resets the row to the very left (shows first tile). It's still vey flawed.
+- Started adding ES Linting. AirBnB style.
+- Basic caching of ajax requests added for each tile. This reduces users "browsing" and accessing the api endpoint too often.
+- Removed option to `setTilesPerPage`. This is now auto completed.
+
 ### Jan. 30, 2017
 - Decided to revert back to using JavaScript. It was a fun experiment, but CSS simply cannot handle animations the way we need it to. We'll try again in a couple years. 
 - Removed the option to set number of tiles per page. This might come back, but if it doesn't then we'll add auto-adjusting for smaller screens.
@@ -13,8 +24,6 @@ This is to keep track of changes in a way that lets contributors *read* about wh
 
 #### Problems:
 - Using jQuery to animate the tiles with CSS is causing tiles that have scaled to have slightly blurry text. It's not terrible, but definitely annoying. 
-
-
 
 ### Jan. 29, 2017
 - Changed the way the outer row (drop down section) slides down. It uses CSS3 Transition with the `max-height` attribute instead of the `height` attribute. 

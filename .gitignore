@@ -1,7 +1,5 @@
 # Specific files 
 *.todo
-*.eslintignore
-*.eslintrc
 
 # Temporary files
 *.swp

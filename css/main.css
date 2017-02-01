@@ -153,7 +153,6 @@ html {
   /* According to some people, this helps with the text that blurs after scale() takes place in Chrome */ 
   backface-visibility: hidden;
   transform: translateZ(0);
-  filter: blur(0);
 }
 
 /* A middle tile that's scaling outwards on both sides */
@@ -162,12 +161,7 @@ html {
 }
 /* The currently hovered tile */
 .tile--hovered {
-  opacity: 1 !important;
-
-  /* According to some people, this helps with the text that blurs after scale() takes place in Chrome */ 
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  filter: blur(0);
+  opacity: 1 !important;  
 }
 /* All tiles BEFORE the currently hovered tile */
 .tile.tile--hovered-prev, 
@@ -314,6 +308,7 @@ html {
   /* IE6-9 */
   -webkit-transition: 450ms opacity;
   transition: 450ms opacity;
+  overflow:hidden;
 }
 
 
@@ -345,6 +340,8 @@ html {
 .row__inner--active:hover .tile:not(.tile--active) .tile__description {
   opacity: 0;
   display: none;
+  -webkit-filter: blur(0);
+  backface-visibility: hidden;   
 }
 
 
