@@ -18,6 +18,9 @@
         tileWidth: 253,
         // Global variable for active tiles.
         aTileIsActive: false,
+        // Is the tile hover state available or not. 
+        // For mobile devices you'll want to disable this. 
+        tileHoverState: true,
       },
       // _row is the row selector (jquery object)
       // currentPage is the current page number.
@@ -54,21 +57,29 @@
        
         // Loads the tiles. Wrapped in a function so we can use this for window resizing.
         var loader = () => {
+          // How much padding should be in each row on each side. 
+          // Assume there are 2 sides and you need to write rowPadding twice. 
+          var rowPadding = 42.5;
           // Set the tiles per page for the user based on the windowWidth
           var _windowWidth = $(window).outerWidth(true);
           if( _windowWidth >= 1366 ) {
             this.settings.tilesPerPage = 6;
+            this.settings.tileHoverState = true;
           } else if( _windowWidth >= 1024 ) {
             this.settings.tilesPerPage = 5;
+            this.settings.tileHoverState = true;
           } else if( _windowWidth >= 768 ) {
             this.settings.tilesPerPage = 4;
+            this.settings.tileHoverState = false;
           } else if( _windowWidth >= 425 ) {
             this.settings.tilesPerPage = 3;
+            this.settings.tileHoverState = false;
           } else {
             this.settings.tilesPerPage = 2;
+            this.settings.tileHoverState = false;
           }
           // Remove the 2 paddings on the left and right.
-          var width = $(window).outerWidth(true) - 40 - 40;
+          var width = $(window).outerWidth(true) - rowPadding - rowPadding;
           // 5px (2.5px on each side) per tile. 
           var totalTilePadding = this.settings.tilesPerPage * 5;
           // Remove the tile padding. Now we're dealing with JUST tile sizes; no padding
@@ -153,6 +164,9 @@
         window.onresize = () => {
           // Change the visible tiles. That's all. 
           loader();
+
+          // Deactivate all tiles. 
+          $(".tile--active").trigger('click');
         };
 
         // Load the carousel.
@@ -171,7 +185,7 @@
     // A wrapper for the jquery ajax request. 
     const ajax = function (page, object, before_callback, done_callback, failed_callback, always_callback) {
       $.ajax({
-          type: "POST",
+          type: "GET",
           url: 'ajax/' + page + '.html',
           data: object,
           dataType: 'json',
@@ -260,46 +274,51 @@
 
     $(document)
       // Scale a center tile.
-      .on("mouseover", ".row__inner:not(.row__inner--active, .row__inner--images-loading) .tile:not(.tile--active, .tile--has-next, .tile--has-prev)", function () {
+      // Event 
+      .on("mouseover", ".row__inner:not(.row__inner--active):not(.row__inner--images-loading) .tile:not(.tile--active):not(.tile--has-next):not(.tile--has-prev):not(.tile--sliding)", function (e) {
+        if( carousel.settings.tileHoverState ) {
+          var _t = $(this);
 
-        var _t = $(this);
+          var tileWidth = _t.outerWidth(true);
+          var scaledWidth = _t.outerWidth(true) * 2;
 
-        var tileWidth = _t.outerWidth(true);
-        var scaledWidth = _t.outerWidth(true) * 2;
+          if (_t.hasClass('tile--scale-center')) {
+            // Center tile. 
+            var left = -(scaledWidth / 2 / 2);
+            var moveTilesRight = (left / -1);
+            var moveTilesLeft = left
+            var scaleTileLeft = (left / 2)
+          } else if (_t.hasClass('tile--scale-right')) {
+            // Left tile 
+            var left = -(scaledWidth / 2 / 2);
+            var moveTilesRight = scaledWidth / 2;
+            var moveTilesLeft = 0;
+            var scaleTileLeft = 0;
+          } else if (_t.hasClass('tile--scale-left')) {
+            // Right tile.
+            var left = -(scaledWidth / 2 / 2);
+            var moveTilesRight = (scaledWidth / 2);
+            var moveTilesLeft = -(scaledWidth / 2);
+            var scaleTileLeft = left;
+          }
 
-        if (_t.hasClass('tile--scale-center')) {
-          // Center tile. 
-          var left = -(scaledWidth / 2 / 2);
-          var moveTilesRight = (left / -1);
-          var moveTilesLeft = left
-          var scaleTileLeft = (left / 2)
-        } else if (_t.hasClass('tile--scale-right')) {
-          // Left tile 
-          var left = -(scaledWidth / 2 / 2);
-          var moveTilesRight = scaledWidth / 2;
-          var moveTilesLeft = 0;
-          var scaleTileLeft = 0;
-        } else if (_t.hasClass('tile--scale-left')) {
-          // Right tile.
-          var left = -(scaledWidth / 2 / 2);
-          var moveTilesRight = (scaledWidth / 2);
-          var moveTilesLeft = -(scaledWidth / 2);
-          var scaleTileLeft = left;
-        }
+          $(this).addClass('tile--hovered').css({
+            transform: "translateZ(0) scale(2) translate3d(" + scaleTileLeft + "px, 0px, 0px) ",
+            // When scale()ing, add a tiny zoom to add clarity to text
+            zoom: "101%",
+          })
 
-        $(this).addClass('tile--hovered').css({
-          transform: "translateZ(0) scale(2) translate3d(" + scaleTileLeft + "px, 0px, 0px) ",
-          // When scale()ing, add a tiny zoom to add clarity to text
-          zoom: "101%",
-        })
+          _t.prevAll().addClass('tile--hovered-prev').css({
+            transform: "translate3d(" + moveTilesLeft + "px, 0, 0)"
+          });
+          _t.nextAll().addClass('tile--hovered-next').css({
+            transform: "translate3d(" + moveTilesRight + "px, 0, 0)"
+          });
+        } // End if carousel.settings.tileHoverState
 
-        _t.prevAll().addClass('tile--hovered-prev').css({
-          transform: "translate3d(" + moveTilesLeft + "px, 0, 0)"
-        });
-        _t.nextAll().addClass('tile--hovered-next').css({
-          transform: "translate3d(" + moveTilesRight + "px, 0, 0)"
-        });
+        return e.preventDefault();
       })
+      // Event 
       .on("mouseout", ".tile--hovered", function () {
         var _t = $(this);
 
@@ -315,7 +334,7 @@
       })
       // Make a tile "active";
       // But only if it isn't already active, and isn't being covered be a "next" or "prev" block
-      .on("click", ".tile:not(.tile--active, .tile--has-prev, .tile--has-next)", function (e) {
+      .on("click", ".tile:not(.tile--active):not(.tile--has-prev):not(.tile--has-next)", function (e) {
 
         var _t = $(this);
         _t.trigger("mouseout");
@@ -330,9 +349,6 @@
 
         _preview.addClass('preview__container--changing');
 
-        // If the row has a row__inner--tile-last-hovered class, remove it, and remove the left margin from the first tile. 
-        _row.removeClass('row__inner--tile-last-hovered').find('.tile:first').css('margin-left', 0);
-
         // If a different active tile was clicked while one is already active.
         if (_row.hasClass("row__inner--active")) {
           console.log('Moved active tile');
@@ -340,8 +356,14 @@
           timeoutAmount = 450;
         }
 
+        // Make this tile active.
+        _t.addClass("tile--active");
+
         // Set the row__outer contents 
         var setOuterRowContents = function(data_obj) {
+            
+            // Make the .row__inner "active" as well 
+            _row.addClass("row__inner--active");
             
             // Replace areas inside the _preview element. 
             _preview.find(".preview__title").text(data_obj.name).attr('href', data_obj.url);
@@ -358,7 +380,7 @@
 
                 // Build the teachers list. 
                 html += `<div class="preview__teachers">` +
-                          `<p class="inline">${data_obj.lists[i]['displayName']}:</p>` +
+                          `<p class="inline">${data_obj.lists[i]['displayName']}: </p>` + // Trailing space required
                           `<ul class="preview__list">`;
 
                 for (var i2 in data_obj.lists[i]['points']) {
@@ -373,7 +395,7 @@
               } else if (i == 'about') {
                 // Build the about list. 
                 html += `<div class="preview__about">` +
-                          `<p class="inline">${data_obj.lists[i]['displayName']}:</p>` +
+                          `<p class="inline">${data_obj.lists[i]['displayName']}: </p>` + // Trailing space required
                           `<ul class="preview__list">`;
 
                 for (var i2 in data_obj.lists[i]['points']) {
@@ -401,10 +423,7 @@
           // Get the new tile information
           ajax('get-tile-preview', {id: _id},
             function (start) {
-              // Make this tile active.
-              _t.addClass("tile--active");
-              // Make the .row__inner "active" as well 
-              _row.addClass("row__inner--active");
+              // Do something when starting 
             },
             function (data) {
               // Set the data. 
@@ -414,7 +433,9 @@
            },
             function (failed) {
               // Ajax failed
-            });
+              // Make this tile inactive.
+              _t.removeClass("tile--active");
+           });
         } else {
           // Tile ajax request was cached; re-use whatever was collected from earlier.
           setOuterRowContents( carousel.cache[ _id ] );
@@ -423,6 +444,7 @@
         return e.preventDefault();
       }) // End on click event 
       // Make the currently "active" tile "inactive", and make the row hide details. 
+      // Event 
       .on("click", ".tile.tile--active", function (e) {
         // Remove the active state
         $(this).removeClass('tile--active');
@@ -433,9 +455,12 @@
       })
 
       // Scroll the row left 
+      // Event 
       .on("click", ".tile--has-next, .tile--has-prev", function (e) {
 
         var _t = $(this);
+        e.preventDefault();
+        e.stopImmediatePropagation();
 
         // Row container selector 
         var _container = _t.closest('.row__container');
@@ -444,7 +469,7 @@
 
         _row.find(".tile").show();
         // How far to move the row. 
-        var move = (carousel.settings.tileWidth * carousel.settings.tilesPerPage) + (carousel.settings.tilesPerPage * 6.3);
+        var move = (carousel.settings.tileWidth * carousel.settings.tilesPerPage) + (carousel.settings.tilesPerPage * 6.5);
         // Which direction to move the row
         var direction = _t.hasClass('tile--has-next') ? "+=" : "-=";
         // Row data. 
@@ -458,10 +483,18 @@
         _row.find('.tile--has-prev, .tile--has-next').removeClass('tile--has-prev tile--has-next');
         // Update the [data-current-page] attribute 
         _container.attr('data-current-page', currentPage);
+        // All tiles need to be "sliding" 
+        _row.find(".tile").addClass('tile--sliding');
         // Animate the styling.
         _row.css({
           right: direction + move,
-        })
+        });
+
+        // Removing the tile--sliding class
+        setTimeout(function() {
+          // Remove tile--sliding 
+          $(".tile--sliding").removeClass("tile--sliding");
+        }, 500)
         // Set the new scroll arrows (called buttons)
         carousel.setScrollButtons(_row, currentPage);
       })
@@ -487,6 +520,12 @@
           }
         }
 
+      }) 
+      
+      // When an inactive tile is clicked, trigger a hover effect. 
+      .on("click", ".tile:not(.tile--active):not(.tile--hovered)", function(e) {
+        $(this).trigger("mouseover");
+        return e.preventDefault();
       }) // End jQ event listeners
 
 

@@ -1,6 +1,13 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits. 
 
+### Feb. 3, 2017
+- Caching was not showing the `row__outer`, it does now. 
+- Cleaned up some of the css. 
+- Tiles don't scale when the next or prev arrows are clicked 
+- `.row__outer` title doesn't flow off the screen in mobile screens. 
+- `.row__outer` has a smaller padding in mobile devices.
+- Several coursel fixes including styling, and planning for the next iteration already. 
 
 ### Jan. 31, 2017
 - Renamed `setup` to `carousel`. 

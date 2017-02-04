@@ -9,48 +9,39 @@ html {
   min-height: 100vh;
 }
 
-
-/* Helpful selectors for knowing what you're working with */
 .bred,
 [bred] {
+  /* Helpful selectors for knowing what you're working with */
   border: 1px solid red !important;
 }
 
-
-/* ".row__master" will hold ALL the rows and tiles in a simpel container */
-
 .row__master {
+  /* ".row__master" will hold ALL the rows and tiles in a simpel container */
   width: 100%;
   overflow: hidden;
 }
 
-
-/**
+.row__container {
+  /**
  * The row container class; renamed from "container" to ".row__container" to work with Bootstrap
  * The .row__container holds 2 children: .row__inner and .row__outer 
 */
-
-.row__container {
   width: 100%;
   margin-top: 35px;
   margin-bottom: 35px;
 }
 
-
-/**
+.row__container:first-child {
+  /**
  * Ensure proper padding at the top for scaling 
  */
-
-.row__container:first-child {
   margin-top: 70px;
 }
 
-
-/**
+.row__category {
+  /**
  * This is the <h2> element we see in index.html
  */
-
-.row__category {
   font-size: 20px;
   /* Padding should be the SAME as the initial .row__inner padding */
   /* so the text lines up with the tiles */
@@ -59,9 +50,8 @@ html {
 }
 
 
-/* The "inner row" (.row__inner) is where all the tiles live */
-
 .row__inner {
+  /* The "inner row" (.row__inner) is where all the tiles live */
   -webkit-transition: 450ms -webkit-transform;
   transition: 450ms -webkit-transform;
   transition: 450ms transform;
@@ -75,25 +65,28 @@ html {
   position: relative;
 }
 
-
-/* When the last tile in a page is being hovered, the parent row__inner will get this class */
-
-.row__inner--tile-last-hovered {}
-
-
-/**
- * If the row was moved left or right.
- * This class will be applied and it'll remove the left padding
- * It's empty for now, but MIGHT be useful later.
- */
-
-.row__inner--slid {}
+@media (max-width:1365px) {
+  /* one px less than the break point found in main.js
+    around this line: `if( _windowWidth >= 1366 ) {` */
 
 
-/* Styling for the "outer row". There are no tiles here, only details for the tiles. */
+  .row__category {
+    /* Reduce row category padding */
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .row__inner {
+    /* Reduce row__inner padding */
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
 
 .row__outer {
-  max-height:0px;
+  /* Styling for the "outer row". There are no tiles here, only details for the tiles. */
+  max-height: 0px;
   overflow: hidden;
   transition: max-height 0.35s ease-out, opacity 0.25s ease-in, padding 0.35s ease-out;
   opacity: 0;
@@ -114,23 +107,18 @@ html {
   color: #fff;
 }
 
-
-/**
+.row__inner--active~.row__outer {
+  /**
  * Styling for an "active" rows sibling; the "outer row".
  * These styles only take effect with a row has become active 
  */
-
-.row__inner--active~.row__outer {
-  max-height:3000px;
+  max-height: 3000px;
   opacity: 1;
   padding: 20px 45px;
-
 }
 
-
-/* The entire tile styling block. Probably lots of old unused styling in here, but it doesn't hurt to have it at the moment */
-
 .tile {
+  /* The entire tile styling block. Probably lots of old unused styling in here, but it doesn't hurt to have it at the moment */
   position: relative;
   display: inline-block;
   width: 247.8px;
@@ -149,40 +137,42 @@ html {
   /* Set the tiles background color so the tile__media and tile__img are allowed to have translucency without the tile being translucent */
   background-color: #0E0F11;
   /* If you add overflow:hidden; it will hide the tile's down arrow. Just so you know. */
-
-  /* According to some people, this helps with the text that blurs after scale() takes place in Chrome */ 
+  /* According to some people, this helps with the text that blurs after scale() takes place in Chrome */
   backface-visibility: hidden;
   transform: translateZ(0);
 }
 
-/* A middle tile that's scaling outwards on both sides */
 .tile.tile--scale-center.tile--hover {
+  /* A middle tile that's scaling outwards on both sides */
+}
 
+.tile.tile--scale-right.tile--hover {}
+
+.tile.tile--scale-left.tile--hover {
+  /* A tile on the right, scales out and to the left */
 }
-/* The currently hovered tile */
+
 .tile--hovered {
-  opacity: 1 !important;  
+  /* The currently hovered tile */
+  opacity: 1 !important;
 }
-/* All tiles BEFORE the currently hovered tile */
-.tile.tile--hovered-prev, 
-/* All tiles AFTER the currently hovered tile */
+
+.tile.tile--hovered-prev,
 .tile.tile--hovered-next {
+  /* All tiles BEFORE the currently hovered tile */
+  /* All tiles AFTER the currently hovered tile */
   transition-duration: 450ms;
   transition-timing-function: cubic-bezier(0.5, 0, 0.1, 1);
   transition-delay: 0.3s;
 }
 
-/* An "active" rows styling for all of it's tiles */
-
 .row__inner--active .tile {
+  /* An "active" rows styling for all of it's tiles */
   transition-delay: 0s;
 }
 
-
-
-/* The tiles image styling. */
-
 .tile__img {
+  /* The tiles image styling. */
   /* Width and height MUST match the parent .tile sizes */
   width: 243.8px;
   height: 137.1375px;
@@ -191,12 +181,10 @@ html {
   opacity: 1;
 }
 
-
-/**
+.row__inner--images-loading .tile__media::before {
+  /**
  * Overlay the .tile__media selector with an animated gradient 
  */
-
-.row__inner--images-loading .tile__media::before {
   content: ' ';
   position: absolute;
   top: 0;
@@ -214,22 +202,18 @@ html {
   transition: opacity 450ms linear;
 }
 
-
-/* When images are loading, hide the actual image */
-
 .row__inner--images-loading .tile__img {
+  /* When images are loading, hide the actual image */
   opacity: 1;
   display: none;
 }
 
-
-/**
+.row__inner--images-loading-fadeout .tile__img {
+  /**
  * When images are about to fadeout (as soon as this class is applied)
  * Make the image visible. This takes place just before the fadeout 
  * takes effect 
  */
-
-.row__inner--images-loading-fadeout .tile__img {
   opacity: 1;
   display: block;
 }
@@ -283,13 +267,12 @@ html {
 }
 
 .row__inner--images-loading-fadeout .tile__media::before {
+  /* The fade in effect after the images are done loading and the gradient bg animation fades away */
   opacity: 0;
 }
 
-
-/* Tile "details" is the container element for ALL the text inside a tile. This is that parent elemnts styling. */
-
 .tile__details {
+  /* Tile "details" is the container element for ALL the text inside a tile. This is that parent elemnts styling. */
   position: absolute;
   bottom: 0;
   left: 0;
@@ -308,46 +291,34 @@ html {
   /* IE6-9 */
   -webkit-transition: 450ms opacity;
   transition: 450ms opacity;
-  overflow:hidden;
+  overflow: hidden;
 }
-
-
-/* Tile "details" is the container element for ALL the text inside a tile. */
-
-
-/* When a tile is being hovered, the tile details will become visible (fade in) */
 
 .tile:hover .tile__details {
+  /* Tile "details" is the container element for ALL the text inside a tile. */
+  /* When a tile is being hovered, the tile details will become visible (fade in) */
   opacity: 1;
 }
 
-
-/* When a row is hovered, and any tile is hovered, show the tile's details */
-
-
-/* This will be overwritten, but allows us to choose what's being seen */
-
-.row__inner--active:hover .tile:hover .tile__details {
+.row__inner--active:hover .tile:not(.tile--sliding):hover .tile__details {
+  /* When a row is hovered, and any tile is hovered, show the tile's details */
+  /* This will be overwritten, but allows us to choose what's being seen */
   opacity: 1;
 }
 
-/* An "active" row that's being hovered, select all tiles that are NOT active, and hide the rating and description blocks */
-
-
-/* All other tiles will only show the tile__title, allowing the user to focus more on the tile instead of being swamped with tiny text and lots of data */
-
-.row__inner--active:hover .tile:not(.tile--active) .tile__rating,
-.row__inner--active:hover .tile:not(.tile--active) .tile__description {
+.row__inner--active:hover .tile:not(.tile--active):not(.tile--sliding) .tile__rating,
+.row__inner--active:hover .tile:not(.tile--active):not(.tile--sliding) .tile__description {
+  /* An "active" row that's being hovered, select all tiles that are NOT active, and hide the rating and description blocks */
+  /* All other tiles will only show the tile__title, allowing the user to focus more on the tile instead of being swamped with tiny text and lots of data */
+  /* Tile must not be "sliding" */
   opacity: 0;
   display: none;
   -webkit-filter: blur(0);
-  backface-visibility: hidden;   
+  backface-visibility: hidden;
 }
 
-
-/* Tiles have "content" areas with text in it. This is that area */
-
 .tile__content {
+  /* Tiles have "content" areas with text in it. This is that area */
   position: absolute;
   bottom: 0;
   left: 0;
@@ -357,10 +328,8 @@ html {
   width: calc(100% - 10px);
 }
 
-
-/* A tiles title */
-
 .tile__title {
+  /* A tiles title */
   font-weight: bold;
   white-space: initial;
   font-size: 12px;
@@ -371,26 +340,20 @@ html {
   text-overflow: ellipsis;
 }
 
-
-/* Tile rating styling */
-
 .tile__rating {
+  /* Tile rating styling */
   font-size: 8px;
   line-height: 20px;
   vertical-align: middle;
 }
 
-
-/* Changes all font-awesome text to Arkmont red */
-
 .tile__rating .fa {
+  /* Changes all font-awesome text to Arkmont red */
   color: #8c1515;
 }
 
-
-/* A tiles description */
-
 .tile__description {
+  /* A tiles description */
   font-weight: normal;
   overflow: hidden;
   white-space: initial;
@@ -400,89 +363,65 @@ html {
   text-align: justify;
 }
 
-
-/* The chevron styling inside a tile. */
-
 .tile__chevron {
+  /* The chevron styling inside a tile. */
   text-align: center;
   margin-bottom: -10px;
 }
 
-
-/* The tile chevron selector; and the child svg path styling */
-
 .tile__chevron--down,
 .tile__chevron--down path {
+  /* The tile chevron selector; and the child svg path styling */
   height: 20px;
   width: 20px;
   transition: all 0.3s ease;
   fill: #fff;
 }
 
-
-/* When a tile's chevron arrow is hovered, make the array fade to Arkmont red. */
-
 .tile__chevron:hover path {
+  /* When a tile's chevron arrow is hovered, make the array fade to Arkmont red. */
   fill: #8c1515;
 }
 
-
-/* Any row that's being hovered should have translucent tiles in that row to focus on one tile at a time */
-
 .row__inner:not(.row__inner--images-loading):hover .tile:not(.tile--has-next):not(.tile--has-prev) {
+  /* Any row that's being hovered should have translucent tiles in that row to focus on one tile at a time */
   opacity: 0.6;
 }
 
-
-/* All non-active rows that are being hovered with a tile that's being hovered. Make the tile larger. */
-
-/* Styling for the image block */
-
 .tile__img {
+  /* All non-active rows that are being hovered with a tile that's being hovered. Make the tile larger. */
+  /* Styling for the image block */
   transition: all 0.3s ease;
   transition-delay: 0.3s;
   opacity: 1;
 }
 
-
-/* When a tile is hovered, make the tile__img 25% translucent so the white text shows up better */
-
 .tile:hover .tile__img {
+  /* When a tile is hovered, make the tile__img 25% translucent so the white text shows up better */
   opacity: 1;
 }
 
-
-/* All non-active rows with a tile that's being hovered over.. select the OTHER tiles and move them */
-
-
-/* The entire row is "active". Make all tiles translucent */
-
 .row__inner.row__inner--active .tile {
+  /* All non-active rows with a tile that's being hovered over.. select the OTHER tiles and move them */
+  /* The entire row is "active". Make all tiles translucent */
   opacity: 0.4;
 }
 
-
-/* The entire row is in an "active" state, select the active tile and the tile's "hover" state */
-
 .row__inner.row__inner--active .tile--active,
 .row__inner.row__inner--active .tile:hover {
+  /* The entire row is in an "active" state, select the active tile and the tile's "hover" state */
   opacity: 1 !important;
 }
 
-
-/* An active tile */
-
 .tile--active {
+  /* An active tile */
   border: 3px solid #fff;
   transition: all 450ms;
 }
 
-
-
-/* The .tile:after declarations MUST be very similar to the .tile--active:after declarations 
-   In order to fade in the white down arrow. */
-
 .tile:after {
+  /* The .tile:after declarations MUST be very similar to the .tile--active:after declarations 
+   In order to fade in the white down arrow. */
   transition: all 250ms;
   content: '';
   position: absolute;
@@ -497,10 +436,8 @@ html {
   border-right: solid 10px transparent;
 }
 
-
-/* This is the drop-down arrow (not the chevron) */
-
 .tile--active::after {
+  /* This is the drop-down arrow (not the chevron) */
   content: '';
   position: absolute;
   top: 100%;
@@ -514,21 +451,15 @@ html {
   border-right: solid 10px transparent;
 }
 
-
-/* The "next" and "prev" tiles don't need any opacity. */
-
-
-/* This will hide any overflow from the image when screens change size */
-
 .tile--has-next .tile__img,
 .tile--has-prev .tile__img {
+  /* The "next" and "prev" tiles don't need any opacity. */
+  /* This will hide any overflow from the image when screens change size */
   opacity: 0;
 }
 
-
-/* The styling for the "previous page" stuff */
-
 .tile__hasprev {
+  /* The styling for the "previous page" stuff */
   display: block;
   color: #fff;
   content: '';
@@ -548,10 +479,8 @@ html {
   background-size: 20px 20px;
 }
 
-
-/* The styling for the "previous page" stuff */
-
 .tile__hasnext {
+  /* The styling for the "previous page" stuff */
   display: block;
   color: #fff;
   content: '';
@@ -587,165 +516,240 @@ html {
  * THIS IS NOT PART OF THE OPEN SOURCED UI; THIS IS WHERE WE'RE TAKING THIS
  * FEEL FREE TO IGNORE THE BELOW CODE; OR USE IT. :) 
  *
- */ 
+ */
+
 .preview__container {
+  /* Preview container */
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-grow:1;
-  flex-direction:row;
+  flex-grow: 1;
+  flex-direction: row;
   height: inherit;
 }
+
 .preview__section {
+  /* One of the 2 columns */
   flex: 1;
   flex-grow: 1;
   flex-basis: 0;
-  max-width:50%;
+  max-width: 50%;
   justify-content: center;
   align-items: center;
 }
+
 .preview__section--left {
-  max-width:55%;
-  width:55%;
-  margin-right:5%;
+  /* Left column */
+  max-width: 55%;
+  width: 55%;
+  margin-right: 5%;
 }
+
 .preview__section--right {
-  max-width:40%;
+  /* Right column */
+  max-width: 40%;
   width: 40%;
 }
-/* When on smaller devices; make the .row__outer columns turn into rows (like a responsive grid in BS) */
+
 @media (max-width:768px) {
+  /* When on smaller devices; make the .row__outer columns turn into rows (like a responsive grid in BS) */
   .preview__container,
   .preview__section,
   .preview__section--left,
   .preview__section--right {
     flex-direction: column;
-    flex-grow:2;
+    flex-grow: 2;
     flex-basis: 1;
-        width:100%;
-    max-width:100%;
+    width: 100%;
+    max-width: 100%;
     margin-right: 0;
   }
 }
+
 .course__img {
-  width:100%;
+  /* The course image (preview image) */
+  width: 100%;
   height: auto;
 }
+
 .course__preview {
+  /* The text content in the left column */
 }
+
 .preview__title {
-  font-size: 35px; 
-  font-weight:bold; 
-  margin-top:0; 
-  margin-bottom:0px;
-  cursor:pointer; 
-  display:inline-block; 
-  color:#fff; 
-  text-overflow:ellipsis; 
-  overflow:  hidden; 
+  /* The course title */
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0px;
+  cursor: pointer;
+  display: inline-block;
+  color: #fff;
+  text-overflow: ellipsis;
+  overflow: hidden;
   white-space: nowrap;
-  text-shadow:1px 1px o rgba(0,0,0,0.5);
+  text-shadow: 1px 1px o rgba(0, 0, 0, 0.5);
   text-decoration: none;
-	position: relative;
+  position: relative;
+  width:100%;
 }
-.preview__title:after {
-	content: '';
-	display: block;
-    /* Remove the margin to make the border slide left to right, by default */
-	margin: auto;
-    /* Height is the height of your border. */
-	height: 2px;
-	width: 0px;
-	background: transparent;
-    /* Change the speed by changing the `.5` to, for example, `2.5` */
-	transition: width .25s ease-in, background-color .25s ease-out;
+
+@media (max-width:768px) {
+  .preview__title {
+    font-size: 27px;
+    display: block;
+    text-overflow:clip;
+    overflow: visible;
+    white-space: normal;
+    width:100%;
+  }
+
+  .row__inner {
+    /* Reduce row__inner padding */
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  
+  .row__inner--active~.row__outer {
+  }
+
+  .row__category {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
 }
-.preview__title:hover:after {
-	width: 100%;
-  background: rgba(255,255,255,1);
+
+.preview__title::after {
+  /* Setup for animating the course title */
+  content: '';
+  display: block;
+  /* Remove the margin to make the border slide left to right, by default */
+  margin: auto;
+  /* Height is the height of your border. */
+  height: 2px;
+  width: 0px;
+  background: transparent;
+  /* Change the speed by changing the `.5` to, for example, `2.5` */
+  transition: width .25s ease-in, background-color .25s ease-out;
+}
+
+.preview__title:hover::after {
+  /* Course title hover animation */
+  width: 100%;
+  background: rgba(255, 255, 255, 1);
 }
 
 .preview__content {
-  color:#ddd;
-}
-.preview__rating {
-  font-size: 18px;
-  margin:5px 0 10px 0;
-  color:#8c1515;
-  text-shadow:1px 1px 0 rgba(0,0,0,0.9);
-}
-.preview__about, 
-.preview__teachers {
-  margin:7px 0;
-  color:#fff;
-  font-size:17px;
-}
-.preview__list {
-  list-style:none;
-  list-style-position: inside;
-  padding:0;
-  display: inline;
-}
-.preview__item {
-  width:auto;
-  display: inline;
-}
-/* If using an <a> inside the <li>, remove all white space, otherwise commas 
-  will have spacing before them */
-.preview__item:not(:last-child)::after {
-  content: ", ";
-}
-.preview__url {
-  color:#fff;
-  text-decoration:none;
-}
-.preview__url:hover {
-  text-decoration:underline;
-}
-.preview__description {
-  font-size:15px;
+  /* The preview__content is the entire content area, except the title and course image */
+  color: #ddd;
 }
 
+.preview__rating {
+  /* Where the stars go */
+  font-size: 18px;
+  margin: 5px 0 10px 0;
+  color: #8c1515;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.9);
+}
+
+.preview__about,
+.preview__teachers {
+  /* Lists */
+  margin: 7px 0;
+  color: #fff;
+  font-size: 17px;
+}
+
+.preview__list {
+  /* Lists */
+  list-style: none;
+  list-style-position: inside;
+  padding: 0;
+  display: inline;
+}
+
+.preview__item {
+  /* List item <li> */
+  width: auto;
+  display: inline;
+}
+
+.preview__item:not(:last-child)::after {
+  /* If using an <a> inside the <li>, remove all white space, otherwise commas 
+  will have spacing before them */
+  content: ", ";
+}
+
+.preview__url {
+  /* a URL in the list */
+  color: #fff;
+  text-decoration: none;
+}
+
+.preview__url:hover {
+  /* Hover state for the url in a preview section */
+  text-decoration: underline;
+}
+
+.preview__description {
+  /* The preview description */
+  font-size: 15px;
+}
+
+
 /* The preview__title is changing */
+
+
+/**
+ * Below is used for making text areas hide with a translucent gradient background
+ * This gives the user the "Oh text goes here but it's still loading" effect 
+ */
+
 .preview__container--changing .preview__title,
 .preview__container--changing .preview__teachers,
 .preview__container--changing .preview__list,
 .preview__container--changing .preview__url,
 .preview__container--changing .preview__about,
 .preview__container--changing .preview__rating {
-  display:inline;
-  color:transparent;
-  position:relative;
-  text-shadow:none;
-  -webkit-user-select: none; /* Chrome/Safari */        
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
-
+  /* Hide all the text */
+  display: inline;
+  color: transparent;
+  position: relative;
+  text-shadow: none;
+  -webkit-user-select: none;
+  /* Chrome/Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+ */
   /* Rules below not implemented in browsers yet */
   -o-user-select: none;
   user-select: none;
-  cursor:default;
+  cursor: default;
 }
-/* Specifically change the .preview__description--changing class since it can have several children */
-.preview__container--changing .preview__description > * {
-  color:transparent;
-  position:relative;
-  text-shadow:none;
-  -webkit-user-select: none; /* Chrome/Safari */        
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
 
+.preview__container--changing .preview__description>* {
+  /* Specifically change the .preview__description--changing class since it can have several children */
+  color: transparent;
+  position: relative;
+  text-shadow: none;
+  -webkit-user-select: none;
+  /* Chrome/Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+ */
   /* Rules below not implemented in browsers yet */
   -o-user-select: none;
   user-select: none;
 }
-/* Remove the preview title border animation */
+
 .preview__container--changing .preview__title:after {
   height: 0;
-  
 }
+
 .preview__container--changing .preview__title:hover:after {
-  background: rgba(255,255,255,0);
+  background: rgba(255, 255, 255, 0);
   opacity: 0;
 }
 
@@ -753,8 +757,9 @@ html {
 .preview__container--changing .preview__teachers::before,
 .preview__container--changing .preview__list::before,
 .preview__container--changing .preview__about::before,
-.preview__container--changing .preview__description > *::before,
+.preview__container--changing .preview__description>*::before,
 .preview__container--changing .preview__rating::before {
+  /* Add the animation to each element when a preview section is loading */
   content: ' ';
   position: absolute;
   top: 0;
@@ -771,27 +776,32 @@ html {
   opacity: 0.2;
   transition: opacity 450ms linear;
 }
+
 .preview__container--changing .preview__title::after,
 .preview__container--changing .preview__teachers::after,
 .preview__container--changing .preview__list::after,
-/* Ignore this one: .preview__url::after, */
 .preview__container--changing .preview__about::after,
-.preview__container--changing .preview__description > *::after,
+.preview__container--changing .preview__description>*::after,
 .preview__container--changing .preview__rating::after {
-  display:block;
-  height:1px;
-  clear:both;
+  /* Ignore this one: .preview__url::after, */
+  display: block;
+  height: 1px;
+  clear: both;
   content: '\A';
 }
-/* Specifically change the image */
+
 .preview__container--changing .preview__section {
-  position:relative;
+  /* Add a relative position to the preview section */
+  position: relative;
 }
-/* Change the opacity of the image. It'll come back when ....--changing is removed*/
+
 .preview__container--changing .preview__section .course__img {
+  /* Change the opacity of the image. It'll come back when ....--changing is removed*/
   opacity: 0;
 }
+
 .preview__container--changing .preview__image::before {
+  /* A the animation to the preview__img class */
   content: ' ';
   position: absolute;
   top: 0;
@@ -808,13 +818,17 @@ html {
   opacity: 0.5;
   transition: opacity 450ms linear;
 }
-/* Totally hide some elements */
+
 .preview__container--changing .preview__list {
+  /* Make the preview lists opaque; this way we don't get overlapping animated-gradient effects */
   opacity: 0;
 }
+
+
+/**
+ * Helper classes 
+ */
 
 .inline {
   display: inline;
 }
-
-
