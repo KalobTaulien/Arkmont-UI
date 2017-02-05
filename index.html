@@ -5,6 +5,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
+
+	<!-- VideoJS -->
+	<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
+
 	<link rel="stylesheet" href="css/main.css" />
 </head>
 
@@ -74,22 +78,40 @@
 										<li class="preview__item"><!-- Certificate of Completion --></li>
 									</ul>
 								</div>
+								<div class="preview__certificate">
+									<p class="inline">Certificate</p>
+									<ul class="preview__list">
+										<li class="preview__item">
+											<i class='fa fa-certificate'></i>	
+										</li>
+									</ul>
+								</div>
 							</div>
 							<div class="preview__description">
 								<!-- Preview description in here -->
 							</div>
+							<div class="preview__cta">
+								<a href='#' class="preview__take-course button__white">
+									Take this course
+								</a>
+							</div>
 						</div>
 					</div>
-				</div>
+				</div>	
 				<div class="preview__section preview__image preview__section--right">
-					<img src="https://s3.amazonaws.com/arkmont/courses/13/covers/get-up-and-running-with-git_lg.png" class="course__img" />
+					<div class="preview__video"></div>
+					<img src="" class="course__img preview__img" />
 				</div>
 			</div>
 		</div>
 	</div><!-- End .row__container -->
 </div><!-- End .row__master -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+<script src="https://vjs.zencdn.net/5.8/video.js"></script>
+<!-- If you'd like to support IE8 -->
+<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<script src="js/video-js-resolutions.js"></script>
+				
 <!-- Temporary script to give us more tiles without making the html markup super long -->
 <script>
 

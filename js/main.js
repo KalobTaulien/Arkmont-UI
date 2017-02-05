@@ -1,12 +1,13 @@
 /* eslint linebreak-style: ["error", "windows"] */
 (function () {
-  "use strict"
-
+  'use strict'
   // Required. This relies on jQuery and cannot exist without it. 
   $(document).ready(function () {
 
     // The carousel object.
     const carousel = {
+      // Holds the VideoJS player object 
+      player: false,
       // A cache object, used for whatever you want. 
       cache: {},
       // Holds all the settings from the carousel.
@@ -21,6 +22,16 @@
         // Is the tile hover state available or not. 
         // For mobile devices you'll want to disable this. 
         tileHoverState: true,
+        // During development, we'll add an event trigger that spits out a 
+        // console.log(..) message.  This will be removed later.
+        carouselLogEnabled: true,
+      },
+      // During development, we'll add an event trigger that spits out a 
+      // console.log(..) message. This will be removed later.
+      log: function(message) {
+        if(this.settings.carouselLogEnabled) {
+          console.log(message);
+        }
       },
       // _row is the row selector (jquery object)
       // currentPage is the current page number.
@@ -177,11 +188,6 @@
       }
     }
 
-    // Add a window resize method that re-inits carousel.init() after mobile tiles are put together.
-    carousel.init({
-      // tilesPerPage: 5
-    });
-
     // A wrapper for the jquery ajax request. 
     const ajax = function (page, object, before_callback, done_callback, failed_callback, always_callback) {
       $.ajax({
@@ -277,6 +283,7 @@
       // Event 
       .on("mouseover", ".row__inner:not(.row__inner--active):not(.row__inner--images-loading) .tile:not(.tile--active):not(.tile--has-next):not(.tile--has-prev):not(.tile--sliding)", function (e) {
         if( carousel.settings.tileHoverState ) {
+          carousel.log("Tile hovered");
           var _t = $(this);
 
           var tileWidth = _t.outerWidth(true);
@@ -320,6 +327,7 @@
       })
       // Event 
       .on("mouseout", ".tile--hovered", function () {
+        carousel.log("Stop tile hover");
         var _t = $(this);
 
         $(this).removeClass('tile--hovered').css({
@@ -334,7 +342,9 @@
       })
       // Make a tile "active";
       // But only if it isn't already active, and isn't being covered be a "next" or "prev" block
+      // Event
       .on("click", ".tile:not(.tile--active):not(.tile--has-prev):not(.tile--has-next)", function (e) {
+        carousel.log("Tile clicked");
 
         var _t = $(this);
         _t.trigger("mouseout");
@@ -347,13 +357,22 @@
         // Then we add a short timeout to make the transition feel nicer. 
         var timeoutAmount = 0;
 
+        // Preview is changing
         _preview.addClass('preview__container--changing');
 
         // If a different active tile was clicked while one is already active.
         if (_row.hasClass("row__inner--active")) {
-          console.log('Moved active tile');
           _row.find('.tile--active').removeClass('tile--active');
           timeoutAmount = 450;
+        } else if( $(".tile--active").length ) {
+          // Look for any other .tile--active and close it now. 
+          // We don't want 2 preview windows open at the same time.
+          // Remember, too much information on one page at any given time 
+          // significantly reduces the users experience. 
+          $(".tile--active").each(function(i, elem) {
+            $(this).removeClass('tile--active').closest('.row__inner--active').removeClass('row__inner--active');
+          });
+          timeoutAmount = 500;
         }
 
         // Make this tile active.
@@ -368,8 +387,9 @@
             // Replace areas inside the _preview element. 
             _preview.find(".preview__title").text(data_obj.name).attr('href', data_obj.url);
             _preview.find(".preview__rating").html(formStarsFromRating(data_obj.rating)).attr('data-rating', data_obj.rating);
-            _preview.find(".preview__description").html(data_obj.description)
-            _preview.find(".course__img").attr('src', data_obj.image)
+            _preview.find(".preview__description").html(data_obj.description);
+            _preview.find(".course__img").attr('src', data_obj.image);
+            _preview.find(".preview__take-course").attr('href', data_obj.url);
 
             // Create new list HTML and overwrite the .preview__lists element 
             var html = '';
@@ -402,16 +422,88 @@
                   html += `<li class="preview__item">${data_obj.lists[i]['points'][i2]}</li>`;
                 }
                 html += `</ul></div>`;
-
               }
+            }
 
+            // If this course offers a certificate or not. 
+            if(data_obj.certificate) {
+              html += '<div class="preview__certificate"><p class="inline">Certificate of Completion Offered <i class="fa fa-certificate" style="color:#8c8c15"></i></p></div>';
             }
             // Set the lists area. 
             _preview.find(".preview__lists").html(html);
 
+            // Whether or not there's a video for this tile, we still need to 
+            // dispose of the current video. 
+            if( carousel.player ) {
+              carousel.player.dispose();
+              carousel.player = false;
+            }
+
+            if( data_obj.videos.hasVideo ) {
+              _preview.find('.preview__video').show();
+              _preview.find('.preview__img').hide();
+
+              // We MUST create a new DOM section in order to load new videos 
+              $(".preview__video", _preview)
+                .html('<div class="embed-responsive embed-responsive-16by9">'+
+                        '<video class="embed-responsive-item video-player video-js vjs-default-skin" poster="'+data_obj.image+'">' +
+                          '<p class="vjs-no-js">' +
+                            'To view this video please enable JavaScript, and consider upgrading to a web browser that' +
+                            '<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>' +
+                          '</p>' +
+                        '</video>' + 
+                      '</div>');
+              var _video_area = $(".video-player", _preview);
+              // New video area id. Renew every time the  play button is pressed. 
+              var video_id = 'video_'+data_obj.id;
+              // Add the new id to the video area div 
+              _video_area.attr('id', video_id);
+              carousel.player = videojs( video_id, {
+                controls: true,
+                preload: "auto",
+                //poster: data_obj.preview.thumb_lg,
+                playbackRates: [0.5, 1, 1.25, 1.5, 2],
+                autoplay: false, 
+                plugins: {
+                  videoJsResolutionSwitcher: {
+                    default: 720,
+                    dynamicLabel: false
+                  }
+                }
+              }, function() {
+                // If need the videojs playerr id we can use this method: 
+                // var id = carousel.player.id();
+
+                // Update the video sources. 
+                carousel.player.updateSrc(data_obj.videos.sources)
+                
+                function resizeVideoJS(){
+                  var id = carousel.player.id();
+                  var width = document.getElementById(id).parentElement.offsetWidth;
+                  carousel.player.width(width).height( width * 0.5625 );
+                }
+
+                // Initialize resizeVideoJS()
+                resizeVideoJS();
+                // Then on resize call resizeVideoJS()
+                window.onresize = resizeVideoJS; 
+
+              });	
+
+            } // end hasVideo 
+            else {
+              // Does not have a video, just an image. 
+              _preview.find('.preview__video').hide();
+              _preview.find('.preview__img').attr('src', data_obj.image).show();
+            }
+
             // Wait (maybe) for the preview area to change. 
             setTimeout(function () {
               _preview.removeClass('preview__container--changing');
+              // Scrol to the content 
+              $('html, body').animate({
+                  scrollTop: _container.offset().top
+              }, 450);
             }, timeoutAmount)
         };
 
@@ -445,18 +537,24 @@
       }) // End on click event 
       // Make the currently "active" tile "inactive", and make the row hide details. 
       // Event 
-      .on("click", ".tile.tile--active", function (e) {
+      .on("click", ".tile--active", function (e) {
+        carousel.log("Active tile clicked");
+
         // Remove the active state
         $(this).removeClass('tile--active');
         // Remove the active state on the row 
         $(this).closest(".row__inner").removeClass("row__inner--active");
-
-        carousel.settings.tileDeactivatedCallback();
+        // Destroy the player
+        if( carousel.player ) {
+          carousel.player.dispose();
+          carousel.player = false;
+        }
       })
 
       // Scroll the row left 
       // Event 
       .on("click", ".tile--has-next, .tile--has-prev", function (e) {
+        carousel.log("Next|Prev clicked");
 
         var _t = $(this);
         e.preventDefault();
@@ -502,19 +600,20 @@
       // Close all tiles when there are any active tiles, and the `esc` key is pressed.
       .on("keyup", document, function (e) {
         if (e.keyCode == 27 && carousel.settings.aTileIsActive) {
+          carousel.log("Esc pressed; closing all tiles.");
           // Deactivate all tiles. 
           $(".tile--active").trigger('click');
         } else if (e.keyCode == 39 && carousel.settings.aTileIsActive) {
           // There's at least one active tile somewhere and the right arrow was pressed.
           // This will only work with ONE tile at a time. 
-          console.log('Right arrow pressed');
+          carousel.log('Right arrow pressed');
           if ($(".tile--active").length == 1) {
             $(".tile--active:first").next().trigger("click")
           }
         } else if (e.keyCode == 37 && carousel.settings.aTileIsActive) {
           // There's at least one active tile somewhere and the left arrow was pressed.
           // This will only work with ONE tile at a time. 
-          console.log('Left arrow pressed');
+          carousel.log('Left arrow pressed');
           if ($(".tile--active").length == 1) {
             $(".tile--active:first").prev().trigger("click")
           }
@@ -523,15 +622,19 @@
       }) 
       
       // When an inactive tile is clicked, trigger a hover effect. 
+      // This can be used when another tile is active and tile scaling isn't 
+      // available. 
       .on("click", ".tile:not(.tile--active):not(.tile--hovered)", function(e) {
-        $(this).trigger("mouseover");
+        carousel.log("Switching tiles");
         return e.preventDefault();
       }) // End jQ event listeners
 
+    // Start the carousel BEFORE the window is done loading all the images 
+    carousel.init();
 
     // When the page is done gathering all its assets, we can display the images. 
     $(window).on("load", function () {
-      console.log('All assets are loaded');
+      carousel.log('All assets are loaded');
       setTimeout(function () {
         // All .row__inner--images-loading 
         const _rowImagesLoading = $('.row__inner--images-loading');

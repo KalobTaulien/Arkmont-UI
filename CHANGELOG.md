@@ -1,13 +1,24 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits. 
 
+### Feb. 5, 2017
+- Video.js was implemented. Styling added.
+- When a tile is clicked, a video will show up before an image.
+- Added call to action section of the preview area (`.row__outer`)
+- Certificate of Completion line added to preview list area.
+- Carousel has it's own .log() method that be disabled. 
+- Video resolutions are easily added through the `get-tile-preview.html` json object.
+
+### Feb. 4, 2017
+- Adding video.js files for showing videos. 
+
 ### Feb. 3, 2017
 - Caching was not showing the `row__outer`, it does now. 
 - Cleaned up some of the css. 
 - Tiles don't scale when the next or prev arrows are clicked 
 - `.row__outer` title doesn't flow off the screen in mobile screens. 
 - `.row__outer` has a smaller padding in mobile devices.
-- Several coursel fixes including styling, and planning for the next iteration already. 
+- Several carousel fixes including styling, and planning for the next iteration already. 
 
 ### Jan. 31, 2017
 - Renamed `setup` to `carousel`. 
