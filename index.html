@@ -7,9 +7,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" />
 
 	<!-- VideoJS -->
-	<link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
+	<link href="https://vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/compiled.css" />
 </head>
 
 <body>
@@ -23,22 +23,19 @@
 					<img alt="" class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-1.jpg">
 				</div>
 				<div class="tile__details">
-					<div style='position:relative; height:100%; width:100%;'>
-						<div class="tile__content">
-							<div class="tile__title">
-								Course Name Here
-							</div>
-							<div class="tile__rating" data-rating="4.5">
-								<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half'></i>
-							</div>
-							<div class="tile__description">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur, leo vel finibus luctus, urna diam condimentum velit, quis viverra enim tellus non lacus.
-							</div>
-							<div class="tile__chevron">
-								<svg class="tile__chevron--down" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-								<path d="M3,70.4545455 L7.68805325,75 L50,33.9750755 L92.3119468,75 L97,70.4545455 L50.1194675,25 L3,70.4545455 Z" transform=
-								"translate(50.000000, 50.000000) scale(-2, -1) translate(-50.000000, -50.000000)"></path></svg>
-							</div>
+					<div class="tile__content">
+						<div class="tile__title">
+							A longer course name can go here
+						</div>
+						<div class="tile__rating" data-rating="4.5">
+							<i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half'></i>
+						</div>
+						<div class="tile__description">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur, leo vel finibus luctus, urna diam condimentum velit, quis viverra enim tellus non lacus.
+						</div>
+						<div class="tile__chevron">
+							<svg class="tile__chevron--down" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+							<path d="M3,70.4545455 L7.68805325,75 L50,33.9750755 L92.3119468,75 L97,70.4545455 L50.1194675,25 L3,70.4545455 Z" transform="translate(50.000000, 50.000000) scale(-2, -1) translate(-50.000000, -50.000000)"></path></svg>
 						</div>
 					</div>
 				</div>
@@ -110,6 +107,7 @@
 <script src="https://vjs.zencdn.net/5.8/video.js"></script>
 <!-- If you'd like to support IE8 -->
 <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<script src="js/video-js-plugins.js"></script>
 <script src="js/video-js-resolutions.js"></script>
 				
 <!-- Temporary script to give us more tiles without making the html markup super long -->
@@ -141,7 +139,7 @@
 		// Make all the tiles in the first row
 		for(var i = 1; i < tilesPerRow; i++) {
 			var tile = $(".tile:first").clone();
-			tile.find('.tile__img').attr('src', tiles[i]);
+			tile.find('.tile__img:not(.tile__img--background)').attr('src', tiles[i]);
 			$('.tile:last').after(tile);
 		}
 

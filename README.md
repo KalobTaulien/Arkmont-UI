@@ -1,8 +1,20 @@
 # Arkmont-UI
 A new video-based UI for Arkmont.com
 
+# Installation
+Run `npm install` to download the required node dependencies. This will install:
+- `http-server` so we can use POST requests in Ajax. 
+- `node-sass` for compiing sass into css. 
+- `nodemon` for watching our `main.scss` file for any changed, and autocompiling.
+- `concurrently` for running both `http-server` and `sass-watcher` tasks at the same time.
+
+# Get started
+Simply `cd` into the directory where this repo was cloned to, run `npm run dev` (Run a tiny server with no caching) and go to http://localhost:8080/.
+
+When you want to edit `main.scss`, run `npm run sass-watcher`. 
+
 # Demo
-Want to see this in action? I personally host the latest changes on my own site [http://kalobtaulien.com/examples/arkmont-ui/index.html](http://kalobtaulien.com/examples/arkmont-ui/index.html). 
+Not currently available. But you can clone this repo, cd into the new dir, and run `npm run dev` then open `localhost:8080` and you'll be good to go. 
 
 ## Inspiration
 User interface directly affects the user experience. And while we *could* make an ugly UI with a great UX, we prefer to infuse art (design and simplicity) with technology. Ever notice the "mouseover" effect in an OSX toolbar? The icon grows. That's intuitive and helpful, and a data point that's hard to measure because we *feel* that experience. We can thank the late Steve Jobs for this inspiration. 

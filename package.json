@@ -1,0 +1,28 @@
+{
+  "name": "arkmont-ui",
+  "version": "1.0.0",
+  "description": "Arkmont.com UI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile-css": "node-sass --include-path scss css/scss/main.scss css/compiled.css",
+    "sass-watcher": "nodemon -e scss -x \"npm run compile-css\"",
+    "dev": "concurrently --kill-others \"http-server -c-1\" \"npm run sass-watcher\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KalobMTaulien/Arkmont-UI.git"
+  },
+  "author": "Arkmont.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KalobMTaulien/Arkmont-UI/issues"
+  },
+  "homepage": "https://github.com/KalobMTaulien/Arkmont-UI#readme",
+  "devDependencies": {
+    "concurrently": "^3.2.0",
+    "http-server": "^0.9.0",
+    "node-sass": "^4.5.0",
+    "nodemon": "^1.11.0"
+  }
+}

@@ -1,8 +1,12 @@
 # Specific files 
 *.todo
+npm-debug.*
 
 # Temporary files
 *.swp
 *.swo
 *.tmp
 *~
+
+.vscode/
+node_modules/
