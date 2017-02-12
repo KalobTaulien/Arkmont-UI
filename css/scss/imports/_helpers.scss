@@ -1,6 +1,4 @@
-/**
- * Helper classes 
- */
+// Helper classes
 .inline {
   display: inline;
 }
@@ -8,6 +6,6 @@
 // Red border. Was initially used, probably best to go with a white border at this point.
 .bred,
 [bred] {
-  /* Helpful selectors for knowing what you're working with */
+  // Helpful selectors for knowing what you're working with
   border: 1px solid red !important;
 }

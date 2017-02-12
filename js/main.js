@@ -72,7 +72,7 @@
         const loader = () => {
           // How much padding should be in each row on each side.
           // Assume there are 2 sides and you need to write rowPadding twice.
-          const rowPadding = 42.5;
+          const rowPadding = 40;
           // Set the tiles per page for the user based on the windowWidth
           const windowWidth = $(window).outerWidth(true);
           if (windowWidth >= 1366) {
@@ -599,7 +599,7 @@
         $row.find('.tile').show();
         // How far to move the row.
         const move = (carousel.settings.tileWidth * carousel.settings.tilesPerPage)
-                   + (carousel.settings.tilesPerPage * 6.5);
+                   + (carousel.settings.tilesPerPage * 5.5);
         // Which direction to move the row
         const direction = $t.hasClass('tile--has-next') ? '+=' : '-=';
         // Row data.

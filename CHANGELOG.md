@@ -1,6 +1,13 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits. 
 
+### Feb. 12, 2017
+- Moved to BrowserSync with Gulp instead of us using nodemon and http-server. To run the site, `cd` to your directory and run `gulp` from your command line. (You may need to install gulp-cli `npm install gulp-cli`). New site url is `localhost:3000`. 
+- Any changes to .js, .css or .scss files will inject the new files into your page. Much faster than manually refreshing.
+- Closing the `javascript` branch since it's done it's job: added JavaScript to the primary Course Browsing UI.
+- Cleanup of the JS and SCSS files will come later.
+- The demo of this branch can be found here: [http://kalobtaulien.com/examples/arkmont-ui/v2/index.html](http://kalobtaulien.com/examples/arkmont-ui/v2/index.html)
+
 ### Feb. 10, 2017
 - Navigation bar added
 - Navigation bar dropdown menu support added

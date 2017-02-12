@@ -1,0 +1,14 @@
+body,
+html {
+  background: $background-color;
+  color: #ecf0f1;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  // 100% vertical height of the viewport; required
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+
+  // Add a margin-top to offset the navigation
+  margin-top: 25px;
+}

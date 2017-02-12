@@ -3,16 +3,20 @@ A new video-based UI for Arkmont.com
 
 # Installation
 Run `npm install` to download the required node dependencies. This will install:
-- `http-server` so we can use POST requests in Ajax. 
-- `node-sass` for compiing sass into css. 
-- `nodemon` for watching our `main.scss` file for any changed, and autocompiling.
-- `concurrently` for running both `http-server` and `sass-watcher` tasks at the same time.
+- `browser-sync` for faster development across all browsers. 
+- `gulp` for adding tasks such as sass compiling. 
+- `gulp-sass` for running sass through gulp.
+- `node-sass` for running sass through Node.
+
+You might need to install the `gulp-cli` with `npm install gulp-cli` to run gulp from your command line. 
+
+Once that's all installed, run `gulp` from your command line and BrowserSync will open `localhost:3000` for you and auto-sync your .js, .css, and .scss files.
 
 # Get started
-Simply `cd` into the directory where this repo was cloned to, run `npm run dev` (Run a tiny server with no caching) and go to http://localhost:8080/.
+Simply `cd` into the directory where this repo was cloned to, run `gulp` and go to `localhost:3000` 
 
 # Demo
-Not currently available. But you can clone this repo, cd into the new dir, and run `npm run dev` then open `localhost:8080` and you'll be good to go. 
+The latest demo can be found at [http://kalobtaulien.com/examples/arkmont-ui/v2/index.html](http://kalobtaulien.com/examples/arkmont-ui/v2/index.html)
 
 ## Inspiration
 User interface directly affects the user experience. And while we *could* make an ugly UI with a great UX, we prefer to infuse art (design and simplicity) with technology. Ever notice the "mouseover" effect in an OSX toolbar? The icon grows. That's intuitive and helpful, and a data point that's hard to measure because we *feel* that experience. We can thank the late Steve Jobs for this inspiration. 
@@ -49,4 +53,4 @@ Also, this repo is under my name until such time it makes sense for Arkmont to h
 At Arkmont we don't make very much code open source, but this is an exception where we believe other people can improve and use our work. If you want to make this better, branch off and make your improvements -- but don't forget to make pull requests -- you're work won't go unnoticed and it might end up on [Arkmont.com](https://arkmont.com), along with several other sites in the future. 
 
 # Changelog 
-The changelog can be found in the `CHANGELOG.md` file. 
+The changelog can be found in the `CHANGELOG.md` file. It will have more details on each commit.
