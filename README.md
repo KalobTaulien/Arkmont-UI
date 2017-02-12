@@ -11,8 +11,6 @@ Run `npm install` to download the required node dependencies. This will install:
 # Get started
 Simply `cd` into the directory where this repo was cloned to, run `npm run dev` (Run a tiny server with no caching) and go to http://localhost:8080/.
 
-When you want to edit `main.scss`, run `npm run sass-watcher`. 
-
 # Demo
 Not currently available. But you can clone this repo, cd into the new dir, and run `npm run dev` then open `localhost:8080` and you'll be good to go. 
 

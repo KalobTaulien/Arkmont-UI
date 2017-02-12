@@ -1,13 +1,25 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits. 
 
+### Feb. 10, 2017
+- Navigation bar added
+- Navigation bar dropdown menu support added
+- When a navigation dropdown menu is opened and certain events are triggered, all menus will instantly close.
+- Navigation dropdown menus support right floats.
+- Nav search added.
+- Nav notification dropdown added.
+- Mobile navigation menu added.
+- JavaScript support for menus added.
+- Mobile navigation menu can have dropdown menus and has a custom scrollbar.
+
 ### Feb. 9, 2017
 - `main.js` has eslinting applied to it. Don't take this as our standard, we'll go through rapid development, ignore eslint, and come back to clean it up. But we'll do our best to keep it clean. 
 - Window resizing works. Max 7 tiles per page; Min 2 tiles per page. 
 - Started moving css into .scss files for easier styling maintenance
-- Added node http-server.
+- Added node `http-server`.
 - Added `sass-watcher` to auto-compile our sass to CSS.
 - Added a sample plugin to VideoJS. We'll work with this more in the future.
+- Added new dev command `npm run dev` to watch your `scss` and run your `http-server -c-1` at the same time.
 
 ### Feb. 5, 2017
 - Video.js was implemented. Styling added.

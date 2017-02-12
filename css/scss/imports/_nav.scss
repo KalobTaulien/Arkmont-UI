@@ -1,0 +1,440 @@
+$nav-padding-top: 10px;
+$nav-padding-bottom: 10px;
+$nav-padding-sides: 40px;
+$nav-border-top-thickness: 3px;
+
+$dropdown-side-padding: 15px;
+$dropdown-top-bottom-padding: 15px;
+
+$nav-opacity: 0.8;
+
+$mobile-nav-width: 250px;
+
+// Create placeholders for each browser type.
+@mixin nav-placeholder {
+  color: rgba(255, 255, 255, 0.2);
+  font-weight: 100;
+}
+
+@mixin nav-placeholder-active {
+  opacity: $nav-opacity;
+  color: #fff;
+}
+
+// The navigation overlay on top of the page (but under the menus) to force menus to close on click.
+.nav__overlay {
+  position: fixed;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+}
+
+.nav {
+  background-color: rgba(0, 0, 0, $nav-opacity);
+  border-top: $nav-border-top-thickness solid $arkmont-red;
+  padding: $nav-padding-top $nav-padding-sides;
+  transition: padding 250ms;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  line-height: 48px;
+  vertical-align: middle;
+
+  // The mobile bars to open the side menu
+  .mobile__trigger {
+    color: #fff;
+    text-decoration: none;
+    font-size: 22px;
+    padding: 0 10px;
+    position: relative;
+    margin-left: ($nav-padding-sides / 4);
+    top: 3px;
+    display: none;
+  }
+
+  .nav__logo {
+    color: $arkmont-red;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    font-size: 38px;
+    text-decoration: none;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav__dropdown,
+  .nav__form {
+    display: inline-block;
+    color: $arkmont-red;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+    line-height: 48px;
+    position: relative;
+
+    &--right {
+      margin-right: 0;
+      margin-left: 20px;
+      float: right;
+
+      .dropdown__menu {
+        left: auto;
+        right: 0;
+      }
+    }
+
+  }
+
+  .dropdown__trigger {
+    display: block;
+    color: $arkmont-red;
+    font-weight: bold;
+    text-decoration: none;
+    padding-left: $dropdown-side-padding;
+    padding-right: $dropdown-side-padding;
+  }
+
+  .dropdown__trigger:not(.dropdown__trigger--no-caret)::after {
+    content: '\f0d7';
+    margin-left: 5px;
+    font-family: 'FontAwesome';
+  }
+
+
+  .dropdown__menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    margin: ($nav-padding-top + 1px) 0 0;
+    list-style: none;
+    line-height: normal;
+    width: auto;
+    max-width: auto;
+    color: #fff;
+    background-color: rgba(0, 0, 0, $nav-opacity);
+    font-weight: normal;
+    font-size: 14px;
+    white-space: nowrap;
+    padding: 0;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      padding: 7px 5px;
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .dropdown__item {
+    width: auto;
+    display: block;
+    overflow: hidden;
+    padding-left: $dropdown-side-padding;
+    padding-right: $dropdown-side-padding;
+    margin-bottom: 2px;
+
+    &:last-child {
+      padding-bottom: 6px;
+    }
+  }
+
+  .dropdown__separator {
+    height: 1px;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    width: 75%;
+    margin: 4px auto;
+  }
+
+  // The navigation notification dropdown menu 
+  .notification__dropdown {
+    color: #fff;
+
+    .notification__icon::after {
+      content: '\f0a2';
+      font-family: 'FontAwesome';
+      display: inline-block;
+      color: $arkmont-red;
+    }
+
+    // The notification dropdown is active
+    &.notification__dropdown--active {
+      .notification__icon::after {
+        content: '\f0f3';
+        color: #fff;;
+      }
+    }
+  }
+
+  // Navigation form styling 
+  .nav__input {
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: #fff;
+    padding: 7px 25px 7px 5px;
+    width: 50px;
+    transition: all 350ms;
+    outline: none;
+    transition-timing-function: cubic-bezier(0.5, 0, 0.1, 1);
+    text-align: left;
+    cursor: pointer;
+
+    // Placeholders must be specified on their own. 
+    // Grouping them together causes them to not work. Strange. 
+    &::-webkit-input-placeholder {
+      @include nav-placeholder;
+    }
+
+    &::-moz-placeholder {
+      @include nav-placeholder;
+    }
+
+    &::-ms-placeholder {
+      @include nav-placeholder;
+    }
+
+    &:-ms-input-placeholder {
+      @include nav-placeholder;
+    }
+
+    &:-moz-placeholder {
+      @include nav-placeholder;
+    }
+
+    &::placeholder {
+      @include nav-placeholder;
+    }
+
+    &:focus,
+    &--active {
+      width: 150px;
+      border: 1px solid $arkmont-red;
+      cursor: text;
+      color: #fff;
+
+      // Placeholders must be specified on their own. 
+      // Grouping them together causes them to not work. Strange. 
+      &::-webkit-input-placeholder {
+        @include nav-placeholder-active;
+      }
+
+      &::-moz-placeholder {
+        @include nav-placeholder-active;
+      }
+
+      &::-ms-placeholder {
+        @include nav-placeholder-active;
+      }
+
+      &:-ms-input-placeholder {
+        @include nav-placeholder-active;
+      }
+
+      &:-moz-placeholder {
+        @include nav-placeholder-active;
+      }
+
+      &::placeholder {
+        @include nav-placeholder-active;
+      }
+    }
+  }
+
+  .nav__submit {
+    background-color: transparent;
+    border: 0;
+    position: absolute;
+    right: 0;
+    top: 14px;
+    cursor: pointer;
+    outline: none;
+
+    &::after {
+      content: '\f002';
+      font-family: 'FontAwesome';
+      font-size: 18px;
+      font-weight: 100;
+      color: $arkmont-red;
+    }
+  }
+
+  // Mobile nav menu
+  .mobile__nav {
+    position: fixed;
+    top: 59px;
+    left: ($mobile-nav-width / -1);
+    width: $mobile-nav-width;
+    height: 100%;
+    background-color: rgba(0, 0, 0, $nav-opacity);
+    color: #fff;
+    z-index: 10;
+    padding: 10px 0;
+    font-size: 13px;
+    overflow-y: scroll;
+    line-height: initial;
+    transition: left 250ms;
+    padding-top: 0;
+
+    &--opened {
+      left: 0;
+    }
+
+    .mobile__menu {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #fff;
+      font-weight: normal;
+      font-size: 14px;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        width: 100%;
+      }
+    }
+
+    .mobile__item {
+      width: auto;
+      display: block;
+      overflow: hidden;
+      padding-left: ($dropdown-side-padding * 2.5);
+      padding-right: $dropdown-side-padding;
+      margin-bottom: 2px;
+
+      &--active {
+        border-left: 3px solid $arkmont-red;
+        padding-left: (($dropdown-side-padding * 2.5) - 3px);
+      }
+
+      &--dropdown {
+
+        > a::after {
+          content: '\f0d7';
+          margin-left: 5px;
+          font-family: 'FontAwesome';
+        }
+      }
+
+    }
+
+    .mobile__separator {
+      height: 1px;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      width: 100%;
+      margin: 4px 0;
+    }
+
+    .mobile__dropdown {
+      display: none;
+      margin: 0;
+      padding: 0 0 0 15px;
+      list-style: none;
+      color: #fff;
+      font-weight: normal;
+      font-size: 14px;
+
+      .mobile__dropitem {
+        display: block;
+        width: 100%;
+        margin-bottom: 2px;
+      }
+
+    }
+  }
+
+  @media (max-width: 1365px) {
+    // Reduce navigation padding to match the tiles on the homepage
+    padding: $nav-padding-top ($nav-padding-sides - 10px);
+  }
+
+  // When the screen is "medium" sized, reduce the padding and margins to fit
+  // more in the navigation area.
+  @media (max-width: 768px) {
+    padding: ($nav-padding-top / 2) ($nav-padding-sides / 2);
+    line-height: 43px;
+
+    .nav__logo {
+      font-size: 33px;
+    }
+
+    .dropdown__menu {
+      margin: ($nav-padding-top - 5px) 0 0;
+    }
+
+    .nav__dropdown,
+    .nav__form {
+      margin-left: 5px;
+      margin-right: 5px;
+      line-height: 43px;
+
+      &--right {
+        margin-left: 10px;
+      }
+
+    }
+
+    .dropdown__trigger {
+      font-size: 14px;
+    }
+
+    .dropdown__trigger {
+      padding-left: ($dropdown-side-padding / 2);
+      padding-right: ($dropdown-side-padding / 2);
+    }
+
+    .dropdown__trigger:not(.dropdown__trigger--no-caret)::after {
+      margin-left: 3px;
+    }
+
+    .dropdown__item {
+      padding-left: ($dropdown-side-padding / 2);
+      padding-right: ($dropdown-side-padding / 2);
+    }
+
+
+    .nav__submit {
+      top: 12px;
+
+      &::after {
+        font-size: 17px;
+      }
+    }
+  }
+
+  // At 670px, hide most of the nav menu
+  @media (max-width: 670px) {
+    // Hide the dropdown menus. 
+    .nav__dropdown:not(.notification__dropdown) {
+      display: none;
+    }
+
+    // Show the mobile menu trigger
+    .mobile__trigger {
+      display: inline-block;
+    }
+  }
+
+  @media (min-width: 671px) {
+    // Hide the mobile nav.
+    .mobile__nav {
+      left: ($mobile-nav-width / -1) !important;
+    }
+  }
+
+  @media (max-width: 470px) {
+    // The navbar is too narrow for the search bar now. Hide it.
+    .nav__form {
+      display: none;
+    }
+  }
+}

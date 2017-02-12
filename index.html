@@ -14,6 +14,156 @@
 
 <body>
 
+<nav class="nav">
+
+	<!-- Mobile nav -->
+	<div class="mobile__nav">
+		<ul class="mobile__menu">
+			<li class="mobile__item">
+				<a href='/PLACEHOLDER'>My Profile</a>
+			</li>
+			<li class="mobile__item">
+				<a href='/PLACEHOLDER'>My Account</a>
+			</li>
+			<li class="mobile__item">
+				<a href='/PLACEHOLDER'>My Courses</a>
+			</li>
+			<li class="mobile__item">
+				<a href='/PLACEHOLDER'>Teachers Area</a>
+			</li>
+			<li class="mobile__separator"></li>
+			<li class="mobile__item mobile__item--active">
+				<a href='/'>Home</a>
+			</li>
+			<li class="mobile__item">
+				<a href='/'>Search</a>
+			</li>
+			<li class="mobile__item mobile__item--dropdown">
+				<a href='/' class="js-open-mobile-submenu">Categories</a>
+				<ul class="mobile__dropdown">
+					<li class="mobile__dropitem">
+						<a href='/categories/PLACEHOLDER'>3D</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/categories/PLACEHOLDER'>Apps</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/categories/PLACEHOLDER'>Computer Science</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/categories/PLACEHOLDER'>Design</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/categories/PLACEHOLDER'>Development Tools</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/categories/PLACEHOLDER'>Programming</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/categories/PLACEHOLDER'>Science</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/categories/PLACEHOLDER'>Web Development</a>
+					</li>				
+				</ul>
+			</li>
+			<li class="mobile__item">
+				<a href='/'>Sign Out</a>
+			</li>
+		</ul>
+	</div>
+
+	<a href='/' class="mobile__trigger">
+		<i class='fa fa-bars'></i>
+	</a>
+
+	<a href="/" class="nav__logo">
+		Arkmont
+	</a>
+
+	<!-- Categories -->
+	<div class="nav__dropdown">
+		<a href='/' class="dropdown__trigger" data-menu-open='false'>
+			Categories
+		</a>
+		<ul class="dropdown__menu">
+			<li class="dropdown__item">
+				<a href='/categories/PLACEHOLDER'>3D</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/categories/PLACEHOLDER'>Apps</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/categories/PLACEHOLDER'>Computer Science</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/categories/PLACEHOLDER'>Design</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/categories/PLACEHOLDER'>Development Tools</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/categories/PLACEHOLDER'>Programming</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/categories/PLACEHOLDER'>Science</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/categories/PLACEHOLDER'>Web Development</a>
+			</li>
+		</ul>
+	</div>
+
+
+	<!-- Account settings menu -->
+	<div class="nav__dropdown nav__dropdown--right">
+		<a href='/' class="dropdown__trigger">
+			John Doe
+		</a>
+		<ul class="dropdown__menu">
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>My Profile</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>My Account</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>My Courses</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'> Teachers Area</a>
+			</li>
+			<li class="dropdown__separator"></li>
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>Sign Out</a>
+			</li>
+		</ul>
+	</div>
+
+	<!-- Notification menu -->
+	<!-- Add .notification_dropdown--active to the .notification__dropdown element to make it "active" and stick out -->
+	<div class="nav__dropdown nav__dropdown--right notification__dropdown">
+		<a href='/' class="dropdown__trigger dropdown__trigger--no-caret">
+			<span class="notification__icon"></span>
+		</a>
+		<ul class="dropdown__menu">
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>Some longer notification here</a>
+			</li>
+		</ul>
+	</div>
+
+
+	<!-- Search menu -->
+	<form action="/search" method="get" class="nav__form nav__form--right" role="search" id="search">
+		<input name="q" placeholder="Search" type="text" class="nav__input" value="" />
+		<button type='submit' class="nav__submit"></button>
+	</form>
+
+</nav>
+
+
+
 <div class="row__master">
 	<div class="row__container">
 		<h2 class="row__category">Category Name</h2>

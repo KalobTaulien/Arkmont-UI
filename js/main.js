@@ -1,5 +1,11 @@
 /* eslint linebreak-style: ["error", "unix"] */
 (function() {
+
+  // Set any "global" vars.
+  // Navigation jq object
+  const $nav = $('.nav:first');
+  const $mobileNav = $nav.find('.mobile__nav:first');
+
   // Required. This relies on jQuery and cannot exist without it.
   $(document).ready(() => {
     // The carousel object.
@@ -185,7 +191,7 @@
       failedCallback,
       alwaysCallback) {
       $.ajax({
-        type: 'POST',
+        type: 'GET',
         url: `ajax/${page}.html`,
         data: object,
         dataType: 'json',
@@ -242,6 +248,20 @@
         }
         return true;
       });
+    };
+
+    // Close any opened menus.
+    const closeOpenedMenus = () => {
+      if ($('.js-menu-opened').length) {
+        console.log('CLOSING MENU');
+        $('.js-menu-opened')
+          .attr('data-menu-open', 'false')
+          .next()
+          .slideUp(75)
+          .parent()
+          .find('.dropdown__trigger')
+          .removeClass('js-menu-opened');
+      }
     };
 
     /**
@@ -311,6 +331,9 @@
                 scaleTileLeft = left;
               }
 
+              // Close any opened menus
+              closeOpenedMenus();
+
               $(this).addClass('tile--hovered').css({
                 transform: `translateZ(0) scale(2) translate3d(${scaleTileLeft}px, 0px, 0px) `,
                 // When scale()ing, add a tiny zoom to add clarity to text
@@ -348,6 +371,10 @@
       // By 'unused' we mean it's not being used as a next or prev tile
       .on('click', '.tile:not(.tile--active):not(.tile--has-prev):not(.tile--has-next)', function acctivateTile(e) {
         carousel.log('Tile clicked');
+
+        // Close any opened menus
+        closeOpenedMenus();
+
         let $t = $(this); // eslint-disable-line prefer-const
         $t.trigger('mouseout');
         let id = $t.attr('data-id'); // eslint-disable-line prefer-const
@@ -504,7 +531,7 @@
             $preview.removeClass('preview__container--changing');
             // Scrol to the content
             $('html, body').animate({
-              scrollTop: $container.offset().top,
+              scrollTop: $container.offset().top - $nav.outerHeight(true),
             }, 450);
           }, timeoutAmount);
         };
@@ -538,6 +565,10 @@
       // Click event: When an active tile is clicked, take this action.
       .on('click', '.tile--active', function deactivateTile(e) {
         carousel.log('Active tile clicked');
+
+        // Close any opened menus
+        closeOpenedMenus();
+
         // Remove the active state
         // Remove the active state on the row
         $(this).removeClass('tile--active').closest('.row__inner').removeClass('row__inner--active');
@@ -554,6 +585,10 @@
       .on('click', '.tile--has-next, .tile--has-prev', function scrollTiles(e) {
         e.preventDefault();
         e.stopImmediatePropagation();
+
+        // Close any opened menus
+        closeOpenedMenus();
+
         carousel.log('Next|Prev clicked');
         // The tile that's being clicked
         const $t = $(this);
@@ -621,9 +656,97 @@
       // Click event: When a non-active and non-hovered tile is clicked, switch active tiles.
       // Currently this goes unused, but may be used in the future.
       .on('click', '.tile:not(.tile--active):not(.tile--hovered)', function switchActiveTile(e) {
+        // Close any opened menus
+        closeOpenedMenus();
+
         carousel.log('Switching tiles');
         return e.preventDefault();
-      }); // End jQ event listeners
+      })
+
+      // Click event: When a navigation dropdown menu is clicked; open or close it.
+      .on('click', '.dropdown__trigger', function toggleNavDropdowns(e) {
+        const $t = $(this);
+        let isMenuOpen = $t.attr('data-menu-open') === 'true' ? true : false;
+
+        if (!isMenuOpen) {
+          // This menu is not open. Open it.
+          $t.next().slideDown(75, () => {
+            $t.addClass('js-menu-opened')
+              .attr('data-menu-open', 'true');
+            isMenuOpen = true;
+          });
+        } else {
+          // This menu is open. Close it.
+          $t.next().slideUp(75, () => {
+            $t.removeClass('js-menu-opened')
+              .attr('data-menu-open', 'false');
+            isMenuOpen = false;
+          });
+        }
+        return e.preventDefault();
+      })
+
+      // Submit event: When the search form is submitted, check if there is anything to serach for.
+      // If there isn't any text in the search field, prevent default.
+      .on('submit', '#search', function checkForEmptyField(e) {
+        const inputField = $(this).find('input:first');
+        const val = $.trim(inputField.val());
+
+        if (!val.length) {
+          inputField.focus();
+          return e.preventDefault();
+        }
+
+        return true;
+      })
+
+      // Blur event: When the search form input is blurred, check if it has a value.
+      // Toggle .nav__input--active as needed.
+      .on('blur', '#search .nav__input', function checkForEmptyVal() {
+        const $t = $(this);
+        const val = $.trim($t.val());
+
+        if (val.length) {
+          // Make active
+          $t.addClass('nav__input--active');
+        } else {
+          // Remove active class
+          $t.removeClass('nav__input--active');
+        }
+      })
+
+      // Click event: When the the mobile menu trigger is clicked, toggle the menu.
+      .on('click', '.mobile__trigger', function toggleMobileMenu(e) {
+        $mobileNav.toggleClass('mobile__nav--opened');
+
+        if ($mobileNav.hasClass('mobile__nav--opened')) {
+          // The nav is being opened
+          // Cover the page with a clickable but clear div that autocloses the menu.
+          $nav.after('<div class="nav__overlay js-close-mobile-menu"></div>');
+        } else {
+          // The nav is being closed.
+          $('.nav__overlay').remove();
+        }
+
+        return e.preventDefault();
+      })
+
+      // Click event: When a mobile nav dropdown menu is being clicked.
+      // Toggle the dropdown menu under it.
+      .on('click', '.js-open-mobile-submenu', function toggleMobileSubMenu(e) {
+        $(this).next().slideToggle(175);
+
+        return e.preventDefault();
+      })
+
+      // Click event: When the .js-close-mobile-menu class is clicked, close the
+      // mobile menu (force close)
+      .on('click', '.js-close-mobile-menu', (e) => {
+        $('.nav__overlay').remove();
+        $mobileNav.removeClass('mobile__nav--opened');
+        return e.preventDefault();
+      });
+      // End jQ event listeners
 
     // Start the carousel before the images are done loading.
     carousel.init();
@@ -643,3 +766,4 @@
     });
   }); // End document.ready
 })();
+

@@ -2,6 +2,7 @@ $background-color: #0e0f11;
 $arkmont-red: #8c1515;
 
 @import 'imports/animations';
+@import 'imports/scrollbar';
 
 body,
 html {
@@ -12,7 +13,15 @@ html {
   padding: 0;
   // 100% vertical height of the viewport; required
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+
+  // Add a margin-top to offset the navigation
+  margin-top: 25px;
 }
+
+
+@import 'imports/nav';
+
 
 // ".row__master" will hold ALL the rows and tiles in a simpel container 
 .row__master {
@@ -625,8 +634,8 @@ html {
 
   .row__inner {
     // Reduce row__inner padding
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 
   .row__inner--active~.row__outer {
@@ -634,8 +643,8 @@ html {
   }
 
   .row__category {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
 
@@ -867,6 +876,15 @@ html {
   }
 }
 
+
+@media (max-width: 768px) {
+  .tile--active {
+    .tile__details {
+      opacity: 0 !important;
+      display: none;
+    }
+  }
+}
 
 // Video JS styling 
 @import 'imports/videojs';
