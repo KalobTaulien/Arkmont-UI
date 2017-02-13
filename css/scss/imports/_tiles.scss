@@ -77,11 +77,13 @@
 
 // Styling for an "active" rows sibling; the "outer row".
 // These styles only take effect with a row has become active 
-.row__inner--active~.row__outer {
+.row__inner--active~.row__outer,
+.row__outer--visible {
   max-height: 3000px;
   opacity: 1;
   padding: 20px 45px;
 }
+
 
 // The entire tile styling block. Probably lots of old unused styling in here, but it doesn't hurt to have it at the moment
 .tile {
@@ -856,8 +858,6 @@
     opacity: 0;
   }
 }
-
-
 @media (max-width: 768px) {
   .tile--active {
     .tile__details {
@@ -866,3 +866,10 @@
     }
   }
 }
+
+
+
+
+
+
+

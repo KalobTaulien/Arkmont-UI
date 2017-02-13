@@ -1,6 +1,13 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits. 
 
+### Feb. 12, 2017 (course-landing-page branch)
+- Course landing page has been started. Has video support.
+- Mobile ready design. 
+- Moved `ajax()` and `formStarsFromRating` out of the containing function in `main.js` so we can use those in other files.
+- Mobile nav fixes.
+- Still has lots of work to be done, but this is a solid start for a single days work.
+
 ### Feb. 12, 2017
 - Moved to BrowserSync with Gulp instead of us using nodemon and http-server. To run the site, `cd` to your directory and run `gulp` from your command line. (You may need to install gulp-cli `npm install gulp-cli`). New site url is `localhost:3000`. 
 - Any changes to .js, .css or .scss files will inject the new files into your page. Much faster than manually refreshing.

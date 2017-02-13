@@ -1,5 +1,8 @@
 $background-color: #0e0f11;
 $arkmont-red: #8c1515;
+$arkmont-gold: #8c8c15;
+$primary-background-color: #0E0F11;
+$secondary-background-color: #3A100E;
 
 // Animations.
 @import 'imports/animations';
@@ -13,5 +16,8 @@ $arkmont-red: #8c1515;
 @import 'imports/tiles';
 // Video JS styling 
 @import 'imports/videojs';
+// Course landing page
+@import 'imports/course_landing_page';
 // Any additional helpers; usually one-offs for styling.
 @import 'imports/helpers';
+

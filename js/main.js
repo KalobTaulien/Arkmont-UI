@@ -1,4 +1,101 @@
 /* eslint linebreak-style: ["error", "unix"] */
+// ajax() was moved out of the self invoking function below because we need to use this
+// in other areas of the site
+const ajax = function performAjax(
+  page,
+  object,
+  beforeCallback,
+  doneCallback,
+  failedCallback,
+  alwaysCallback) {
+  $.ajax({
+    type: 'GET',
+    url: `ajax/${page}.html`,
+    data: object,
+    dataType: 'json',
+    async: true,
+    beforeSend(xhr, options) { // eslint-disable-line no-unused-vars
+      // Before we send anything.
+      if (beforeCallback !== undefined && beforeCallback !== '') {
+        beforeCallback(xhr);
+      }
+      // How to abort this request.
+      // xhr.abort();
+      // return false;
+    },
+    headers: {
+      api_key: '', // Your custom API key, if needed.
+    },
+    statusCode: {
+      500() {
+        alert('500: This is a serious error.\rPlease report this.'); // eslint-disable-line no-alert
+        return false;
+      },
+      404(e) {
+        alert('Missing ajax page'); // eslint-disable-line no-alert
+        console.log(e); // eslint-disable-line no-console
+        return false;
+      },
+    },
+  })
+  .done((data) => {
+    // What to do when a response is sent back.
+    if (doneCallback !== undefined && doneCallback !== '') {
+      doneCallback(data);
+    }
+    return true;
+  })
+  .fail((e) => {
+    // What to do when the request fails.
+    if (failedCallback !== undefined && failedCallback !== '') {
+      failedCallback();
+    }
+    // Do not display any 404 errors from the error section
+    if (e.status === 404) {
+      // The ajax request returned a 404 status.
+      alert(404); // eslint-disable-line no-alert
+    } else {
+      // Some other status was returned.
+    }
+    return false;
+  })
+  .always((data) => {
+    // Regardless of the outcome, always run this code.
+    if (alwaysCallback !== undefined && alwaysCallback !== '') {
+      alwaysCallback(data);
+    }
+    return true;
+  });
+};
+
+/**
+ * Format the star rating. Turns a float into stars.
+ * Only gives full and half stars.
+ * Returns html for Font Awesome's stars.
+ */
+const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
+  // Yes, these vars are lets, not consts, they can change each time the function runs.
+  let rating = parseFloat(ratingArg); // eslint-disable-line prefer-const
+  // Full stars
+  let full = Math.floor(rating); // eslint-disable-line prefer-const
+  // If there is a half star or not (anything over a full int)
+  let half = (full < rating) ? true : false; // eslint-disable-line
+  let html = '';
+  for (let i = 1; i <= full; i += 1) {
+    html += '<i class="fa fa-star"></i> ';
+  }
+  // Add the half star, if needed.
+  if (half) {
+    html += '<i class="fa fa-star-half"></i>';
+  }
+
+  // If a course has a 4.5 rating or higher, give them golden stars!
+  if (rating >= 4.5) {
+    return `<div style='color:#8c8c15;'>${html}</div>`;
+  }
+  return html;
+};
+
 (function() {
 
   // Set any "global" vars.
@@ -182,74 +279,6 @@
       },
     };
 
-    // A wrapper for the jquery ajax request.
-    const ajax = function performAjax(
-      page,
-      object,
-      beforeCallback,
-      doneCallback,
-      failedCallback,
-      alwaysCallback) {
-      $.ajax({
-        type: 'GET',
-        url: `ajax/${page}.html`,
-        data: object,
-        dataType: 'json',
-        async: true,
-        beforeSend(xhr, options) { // eslint-disable-line no-unused-vars
-          // Before we send anything.
-          if (beforeCallback !== undefined && beforeCallback !== '') {
-            beforeCallback(xhr);
-          }
-          // How to abort this request.
-          // xhr.abort();
-          // return false;
-        },
-        headers: {
-          api_key: '', // Your custom API key, if needed.
-        },
-        statusCode: {
-          500() {
-            alert('500: This is a serious error.\rPlease report this.'); // eslint-disable-line no-alert
-            return false;
-          },
-          404(e) {
-            alert('Missing ajax page'); // eslint-disable-line no-alert
-            console.log(e); // eslint-disable-line no-console
-            return false;
-          },
-        },
-      })
-      .done((data) => {
-        // What to do when a response is sent back.
-        if (doneCallback !== undefined && doneCallback !== '') {
-          doneCallback(data);
-        }
-        return true;
-      })
-      .fail((e) => {
-        // What to do when the request fails.
-        if (failedCallback !== undefined && failedCallback !== '') {
-          failedCallback();
-        }
-        // Do not display any 404 errors from the error section
-        if (e.status === 404) {
-          // The ajax request returned a 404 status.
-          alert(404); // eslint-disable-line no-alert
-        } else {
-          // Some other status was returned.
-        }
-        return false;
-      })
-      .always((data) => {
-        // Regardless of the outcome, always run this code.
-        if (alwaysCallback !== undefined && alwaysCallback !== '') {
-          alwaysCallback(data);
-        }
-        return true;
-      });
-    };
-
     // Close any opened menus.
     const closeOpenedMenus = () => {
       if ($('.js-menu-opened').length) {
@@ -262,34 +291,6 @@
           .find('.dropdown__trigger')
           .removeClass('js-menu-opened');
       }
-    };
-
-    /**
-     * Format the star rating. Turns a float into stars.
-     * Only gives full and half stars.
-     * Returns html for Font Awesome's stars.
-     */
-    const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
-      // Yes, these vars are lets, not consts, they can change each time the function runs.
-      let rating = parseFloat(ratingArg); // eslint-disable-line prefer-const
-      // Full stars
-      let full = Math.floor(rating); // eslint-disable-line prefer-const
-      // If there is a half star or not (anything over a full int)
-      let half = (full < rating) ? true : false; // eslint-disable-line
-      let html = '';
-      for (let i = 1; i <= full; i += 1) {
-        html += '<i class="fa fa-star"></i> ';
-      }
-      // Add the half star, if needed.
-      if (half) {
-        html += '<i class="fa fa-star-half"></i>';
-      }
-
-      // If a course has a 4.5 rating or higher, give them golden stars!
-      if (rating >= 4.5) {
-        return `<div style='color:#8c8c15;'>${html}</div>`;
-      }
-      return html;
     };
 
     $(document)
@@ -399,7 +400,7 @@
           $('.tile--active').each(function loopActiveTiles() {
             $(this).removeClass('tile--active').closest('.row__inner--active').removeClass('row__inner--active');
           });
-          timeoutAmount = 1500;
+          timeoutAmount = 500;
         }
         // Make this tile active.
         $t.addClass('tile--active');
