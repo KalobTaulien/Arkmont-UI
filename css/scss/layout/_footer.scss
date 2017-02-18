@@ -1,0 +1,79 @@
+.footer {
+  width: 60%;
+  margin: 60px auto 30px;
+  color: #808080;
+}
+
+.footer__links {
+  // Setting the font-size to 0 removes the spacing between the inline-blocks (a elements)
+  // But it requires us to re-set the font-size in the .footer__url class
+  font-size: 0;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.footer__url {
+  color: #9A9A9A;
+  display: inline-block;
+  width: 24%;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px 5px 10px 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.footer__sm {
+  font-size: 24px;
+  margin-top: 10px;
+  float: right;
+  color: $arkmont-red;
+
+  a {
+    padding: 3px 5px;
+    text-decoration: none;
+    color: $arkmont-red;
+  }
+}
+
+.footer__logo {
+  color: $arkmont-red;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  font-size: 38px;
+  text-decoration: none;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: $bp-lg) {
+  .footer {
+    width: 70%;
+  }
+
+  .footer__url {
+    width: 30%;
+  }
+}
+
+@media (max-width:$bp-md) {
+  .footer {
+    width: auto;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  .footer__url {
+    width: 48%;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .footer__url {
+    display: block;
+    width: 100%;
+  }
+}

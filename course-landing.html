@@ -9,7 +9,8 @@
 	<!-- VideoJS -->
 	<link href="https://vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" type="text/css" href="css/main.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/ie.css" />
 </head>
 
 <body class="course-landing">
@@ -42,28 +43,28 @@
 				<a href='/' class="js-open-mobile-submenu">Categories</a>
 				<ul class="mobile__dropdown">
 					<li class="mobile__dropitem">
-						<a href='/categories/PLACEHOLDER'>3D</a>
+						<a href='/category-page.html'>3D</a>
 					</li>
 					<li class="mobile__dropitem">
-						<a href='/categories/PLACEHOLDER'>Apps</a>
+						<a href='/category-page.html'>Apps</a>
 					</li>
 					<li class="mobile__dropitem">
-						<a href='/categories/PLACEHOLDER'>Computer Science</a>
+						<a href='/category-page.html'>Computer Science</a>
 					</li>
 					<li class="mobile__dropitem">
-						<a href='/categories/PLACEHOLDER'>Design</a>
+						<a href='/category-page.html'>Design</a>
 					</li>
 					<li class="mobile__dropitem">
-						<a href='/categories/PLACEHOLDER'>Development Tools</a>
+						<a href='/category-page.html'>Development Tools</a>
 					</li>
 					<li class="mobile__dropitem">
-						<a href='/categories/PLACEHOLDER'>Programming</a>
+						<a href='/category-page.html'>Programming</a>
 					</li>
 					<li class="mobile__dropitem">
-						<a href='/categories/PLACEHOLDER'>Science</a>
+						<a href='/category-page.html'>Science</a>
 					</li>
 					<li class="mobile__dropitem">
-						<a href='/categories/PLACEHOLDER'>Web Development</a>
+						<a href='/category-page.html'>Web Development</a>
 					</li>				
 				</ul>
 			</li>
@@ -88,28 +89,28 @@
 		</a>
 		<ul class="dropdown__menu">
 			<li class="dropdown__item">
-				<a href='/categories/PLACEHOLDER'>3D</a>
+				<a href='/category-page.html'>3D</a>
 			</li>
 			<li class="dropdown__item">
-				<a href='/categories/PLACEHOLDER'>Apps</a>
+				<a href='/category-page.html'>Apps</a>
 			</li>
 			<li class="dropdown__item">
-				<a href='/categories/PLACEHOLDER'>Computer Science</a>
+				<a href='/category-page.html'>Computer Science</a>
 			</li>
 			<li class="dropdown__item">
-				<a href='/categories/PLACEHOLDER'>Design</a>
+				<a href='/category-page.html'>Design</a>
 			</li>
 			<li class="dropdown__item">
-				<a href='/categories/PLACEHOLDER'>Development Tools</a>
+				<a href='/category-page.html'>Development Tools</a>
 			</li>
 			<li class="dropdown__item">
-				<a href='/categories/PLACEHOLDER'>Programming</a>
+				<a href='/category-page.html'>Programming</a>
 			</li>
 			<li class="dropdown__item">
-				<a href='/categories/PLACEHOLDER'>Science</a>
+				<a href='/category-page.html'>Science</a>
 			</li>
 			<li class="dropdown__item">
-				<a href='/categories/PLACEHOLDER'>Web Development</a>
+				<a href='/category-page.html'>Web Development</a>
 			</li>
 		</ul>
 	</div>
@@ -212,9 +213,10 @@
 						<p><strong>What's GitHub?</strong><br />GitHub is how people build software. More than 10 million people use GitHub to discover, fork, and contribute to over 25 million projects.
 					</div>
 					<div class="preview__cta">
-						<a href='#' class="preview__take-course button__white">
+						<a href='#' class="preview__take-course btn btn--lg js-enroll">
 							Take this course
 						</a>
+						<em class="text--small">30 Money Back Guarantee</em>
 					</div>
 				</div>
 			</div>
@@ -239,7 +241,7 @@
 <div class="teachers">
 	<div class="teacher__row">
 		<div class="teacher__row--left">
-			<img src="https://avatars0.githubusercontent.com/u/4743971?v=3&s=460" class="teacher__img" />
+			<img src="/img/placeholders/matt-smith.png" class="teacher__img" />
 		</div>
 		<div class="teacher__row--right">
 			<div class="teacher__name">
@@ -248,20 +250,22 @@
 			</div>
 			<div class="teacher__description">
 				He is played by Matt Smith, in three series as well as seven specials, over an almost four-year-long period.
+				Not affiliated with Arkmont, sadly.
 			</div>
 		</div>
 	</div>
 	<div class="teacher__row">
 		<div class="teacher__row--left">
-			<img src="https://avatars0.githubusercontent.com/u/4743971?v=3&s=460" class="teacher__img" />
+			<img src="/img/placeholders/matt-smith.png" class="teacher__img" />
 		</div>
 		<div class="teacher__row--right">
 			<div class="teacher__name">
 				<strong>Taught by:</strong>
-				Mr. Matt Smith, The Eleventh Doctor!
+				<a href='/PLACEHOLDER' class="teacher__url">Mr. Matt Smith,</a> The Eleventh Doctor!
 			</div>
 			<div class="teacher__description">
 				He is played by Matt Smith, in three series as well as seven specials, over an almost four-year-long period.
+				Not affiliated with Arkmont, sadly.
 			</div>
 		</div>
 	</div>
@@ -288,7 +292,12 @@
 		<li>A GitHub account</li>
 		<li>A computer is probably a good idea</li>
 	</ul>
+
+	<div class="course__cta">
+		<a href='/' class="btn btn--cta">Enroll Now</a>
+	</div>
 </div>
+
 
 <div class="course__section">
 	<div class="course__content">
@@ -306,7 +315,8 @@
 				</p>
 			</div>
 		</div>
-		<div class="content__box content__box--right">
+		<!-- Hide by default; show if there are reviews -->
+		<div class="content__box content__box--right js-review-box" style='display:none;'>
 			<h3 class="section__title">Latest Reviews</h3>
 			<div class="course__reviews" data-mimic-height=".course__description">
 				<div class="review">
@@ -315,7 +325,7 @@
 					</div>
 					<div class='review__col review__col--right'>
 						<div class="review__name">
-							<a href='/student/PLACEHOLDER'>
+							<a href='/student/PLACEHOLDER' class="review__profile">
 								John Doe
 							</a>
 						</div>
@@ -329,43 +339,71 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="course__cta">
+		<a href='/' class="btn btn--cta">Take This Course</a>
+	</div>
 </div>
 
 <div class="course__section">
 	<h3 class="section__title">Syllabus</h3>
-	<div class="section__subtitle"><em>All</em> the lessons in this course</div>
+	<div class="section__subtitle">All the lessons in this course</div>
 	<div class="syllabus__container">
 		<ul class="syllabus">
+		<!-- Module #1 -->
+			<!-- Module title -->
 			<li class="syllabus__module">Module Name</li>
 			<li class="syllabus__module syllabus__module--description">A short module description</li>
-			<li class="syllabus__lesson syllabus__lesson--video">
-				Learn about this one particular subject with a dedicated video
-				<span class="lesson__info">6:21</span>
+			<!-- End module title -->
+			<li class="syllabus__lesson syllabus__lesson--preview">
+				<div class="js-preview-lesson" data-lesson-id='0'>
+					<i class='fa fa-play'></i>
+					<span class="lesson__name">Learn about this one particular subject with a dedicated video</span>
+					<span class="lesson__info">6:21</span>
+				</div>
 			</li>
-			<li class="syllabus__lesson syllabus__lesson--quiz">
-				Test your knowledge with this quiz!
-				<span class="lesson__info">21 questions</span>
+			<li class="syllabus__lesson syllabus__lesson--preview">
+				<div class="js-preview-lesson" data-lesson-id='1'>
+					<i class='fa fa-play'></i>
+					<span class="lesson__name">A second video lesson with preview</span>
+					<span class="lesson__info">3:45</span>
+				</div>
 			</li>
-			<li class="syllabus__lesson syllabus__lesson--document">
-				Reading this article will really help you
-				<span class="lesson__info">3 pages</span>
+			<li class="syllabus__lesson">
+				<div class="js-preview-lesson" data-lesson-id='2'>
+					<i class='fa fa-headphones'></i>
+					<span class="lesson__name">Test your knowledge with this quiz!</span>
+					<span class="lesson__info">21 questions</span>
+				</div>
 			</li>
+			<li class="syllabus__lesson syllabus__lesson--document" data-lesson-id='3'>
+				<div class="js-preview-lesson" data-lesson-id='2'>
+					<i class='fa fa-file-text-o'></i>
+					<span class="lesson__name">Reading this article will really help you</span>
+					<span class="lesson__info">3 pages</span>
+				</div>
+			</li>
+		<!-- End module #1 -->
 
 			<li class="syllabus__module">Module Name</li>
 			<li class="syllabus__module syllabus__module--description">A short module description</li>
-			<li class="syllabus__lesson syllabus__lesson--video">
-				Lesson Name
+			<li class="syllabus__lesson syllabus__lesson--video" data-lesson-id='4'>
+				<span class="lesson__name">Lesson Name</span>
 				<span class="lesson__info">6:21</span>
 			</li>
-			<li class="syllabus__lesson syllabus__lesson--quiz">
-				Lesson Name
+			<li class="syllabus__lesson syllabus__lesson--quiz" data-lesson-id='5'>
+				<span class="lesson__name">Lesson Name</span>
 				<span class="lesson__info">21 questions</span>
 			</li>
-			<li class="syllabus__lesson syllabus__lesson--document">
-				Lesson Name
+			<li class="syllabus__lesson syllabus__lesson--document" data-lesson-id='6'>
+				<span class="lesson__name">Lesson Name</span>
 				<span class="lesson__info">3 pages</span>
 			</li>
 		</ul>
+	</div>
+
+	<div class="course__cta">
+		<a href='/' class="btn btn--cta">Get Your Certificate <i class='fa fa-certificate'></i></a>
 	</div>
 </div>
 

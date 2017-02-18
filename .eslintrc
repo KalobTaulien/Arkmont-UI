@@ -2,6 +2,19 @@
   "extends": "airbnb",
   "globals": {
     "jQuery": false,
-    "$": true
+    "$": true,
+    "document": true,
+    "window": true
+  },
+  "parserOptions": {
+  	"ecmaVersion": "5"
+  },
+  "rules": {
+  	"prefer-template": "off",
+  	"object-shorthand": "off",
+  	"prefer-arrow-callback": "off",
+  	"wrap-iife": "off",
+  	"func-names": "off",
+    "max-len": ["error", 120]
   }
 }

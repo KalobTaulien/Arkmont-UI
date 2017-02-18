@@ -1,0 +1,82 @@
+// NOTIFICATIONS - Helpful styles
+// ==========================================================================
+
+.notification__url {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.notification__url--unread {
+  border-left: 2px solid $arkmont-red;
+
+  .notification {
+    padding-left: 8px;
+  }
+}
+
+.notification {
+  display: flex;
+  width: $notification-default-width;
+  justify-content: flex-end;
+  padding: 5px 10px;
+}
+
+.notification__img {
+  flex: 0 0 ($notification-default-width * 0.25);
+
+  img {
+    max-width: ($notification-default-width * 0.25);
+    height: auto;
+  }
+}
+
+.notification__content {
+  flex: 1 0 ($notification-default-width * 0.75);
+  white-space: normal;
+  padding: 0 0 0 5px;
+
+  // Bold looks bad in notifications. Space out the letters to make it more legible.
+  b {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .notification {
+    display: flex;
+    width: $notification-sm-width;
+    justify-content: flex-end;
+    padding: 3px 7px;
+  }
+
+  .notification__img {
+    // display: none;
+    flex: 0 0 ($notification-sm-width * 0.2);
+
+    img {
+      max-width: ($notification-sm-width * 0.2);
+      height: auto;
+    }
+  }
+
+  .notification__content {
+    flex: 1 0 ($notification-sm-width * 0.8);
+    white-space: normal;
+    padding: 0 0 0 5px;
+    font-size: 13px;
+
+    // Bold looks bad in notifications. Space out the letters to make it more legible.
+    b {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+@media (max-width: $bp-xs) {
+  .notification__img {
+    display: none;
+  }
+}

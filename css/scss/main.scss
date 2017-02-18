@@ -1,23 +1,41 @@
-$background-color: #0e0f11;
-$arkmont-red: #8c1515;
-$arkmont-gold: #8c8c15;
-$primary-background-color: #0E0F11;
-$secondary-background-color: #3A100E;
+ // VENDOR - Default fall-backs and external files.
+// ==========================================================================
 
-// Animations.
-@import 'imports/animations';
-// Scrollbar stylings.
-@import 'imports/scrollbar';
-// Base styling
-@import 'imports/base';
-// Page navigation
-@import 'imports/nav';
-// Add the tiles
-@import 'imports/tiles';
-// Video JS styling 
-@import 'imports/videojs';
-// Course landing page
-@import 'imports/course_landing_page';
-// Any additional helpers; usually one-offs for styling.
-@import 'imports/helpers';
+@import 'vendor/normalize';
 
+
+// BASE - Base Variable file along with starting point Mixins and Placeholders.
+// ==========================================================================
+
+@import 'base/variables';
+@import 'base/mixins';
+@import 'base/placeholders';
+@import 'base/animations';
+@import 'base/scrollbars';
+@import 'base/setup';
+
+// FRAMEWORK - Structure and layout files.
+// ==========================================================================
+
+@import 'layout/nav';
+@import 'layout/tiles';
+@import 'layout/footer';
+// @import 'framework/sample';
+
+// MODULES - Re-usable site elements.
+// ==========================================================================
+
+@import 'modules/buttons';
+@import 'modules/modal';
+@import 'modules/notifications';
+
+// PAGES - Full pages that need to be broken down later.
+// ==========================================================================
+
+@import 'pages/course_landing_page';
+
+// EXTRAS - Helpful styles
+// ==========================================================================
+
+@import 'extras/videojs';
+@import 'extras/helpers';

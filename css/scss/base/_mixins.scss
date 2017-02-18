@@ -1,0 +1,14 @@
+// NAVIGATION - Mixins used in _nav.scss
+// ==========================================================================
+
+// Create placeholders for each browser type.
+@mixin nav-placeholder {
+  color: rgba(255, 255, 255, 0.2);
+  font-weight: 100;
+}
+
+@mixin nav-placeholder-active {
+  opacity: $nav-opacity;
+  color: #fff;
+}
+

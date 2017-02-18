@@ -279,16 +279,16 @@
 }
 
 .video-js .vjs-control-bar2 {
-    background-color: #8c1515
+    background-color: $arkmont-red
 }
 
 .video-js .vjs-control-bar {
-    background-color: rgba(0,0,0,0.3) !important;
+    background-color: rgba(0,0,0,0.45) !important;
     color: #ffffff;
     font-size: 14px
 }
 
 .video-js .vjs-play-progress,.video-js  .vjs-volume-level {
-    background-color: #8c1515
+    background-color: $arkmont-red;
 }
 

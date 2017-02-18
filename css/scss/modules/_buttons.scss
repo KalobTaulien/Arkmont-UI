@@ -1,0 +1,48 @@
+// Buttons
+.btn {
+  display: inline-block;
+  color: #fff;
+  border: 1px solid #fff;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 7px 12px;
+  transition: all 250ms;
+  background-color: transparent;
+  margin-right: 2px;
+  margin-left: 0;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background-color: $arkmont-red;
+    border-color: $arkmont-red;
+  }
+
+  &--lg {
+    padding: 12px 18px;
+    font-size: 17px;
+  }
+
+  &--link {
+    border-color: transparent !important;
+    background-color: transparent !important;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &--cta {
+    border: 2px solid #fff;
+    font-size: 19px;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 150ms, border 150ms;
+
+    &:hover {
+      background-color: $arkmont-red;
+      border: 2px solid $arkmont-red;
+    }
+  }
+
+}

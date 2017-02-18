@@ -10,17 +10,17 @@ function samplePlugin(options) { // eslint-disable
     // Analytics logging available.
   };
 
-  player.on('ratechange', () => {
+  player.on('ratechange', function() {
     // New playback rate.
     const playbackRate = player.playbackRate();
     console.log(playbackRate);
   })
-  .on('resolutionchange', () => {
+  .on('resolutionchange', function() {
     // New resolution size
     const resolution = player.currentResolution();
     console.log(resolution);
   })
-  .on('volumechange', () => {
+  .on('volumechange', function() {
     // New volume set
     const volume = player.volume();
     console.log(volume);

@@ -1,0 +1,87 @@
+// Modal
+.modal {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+
+}
+.modal__container {
+  transition: margin-top 450ms;
+  flex: 0 0 45%;
+  margin: 0 auto;
+  background-color: #8c1515;
+  border: 1px solid #111;
+  position: relative;
+  margin-top: -12%;
+
+  &[data-show-times='false'] {
+    .modal__close {
+      display: none;
+    }
+  }
+
+  &--small {
+    flex: 0 0 30%;
+  }
+}
+
+// If the browser isn't very tall, don't move the modal up a smidge.
+@media (max-height:400px) {
+  .modal__container {
+    margin-top: 0;
+  }
+}
+
+.modal__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: '\f00d';
+  font-family: 'FontAwesome';
+  padding: 10px;
+  cursor: pointer;
+}
+
+.modal__head,
+.modal__body,
+.modal__footer {
+  padding: 10px;
+  color: #fff;
+  padding: 15px 10px;
+}
+
+.modal__head {
+  border-bottom: 1px solid #111;
+  background-color: $secondary-background-color;
+}
+
+.modal__body {
+  font-size: 14px;
+}
+
+.modal__footer {
+  border-top: 1px solid #111;
+  background-color: $secondary-background-color;
+
+  .btn ~ .btn {
+    margin-left: 5px;
+  }
+}
+
+@media (max-width: $bp-md) {
+  .modal__container {
+    flex: 0 0 70% !important;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .modal__container {
+    flex: 0 0 90% !important;
+  }
+}

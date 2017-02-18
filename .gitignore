@@ -1,6 +1,8 @@
 # Specific files 
 *.todo
 npm-debug.*
+*.sublime-project
+*.sublime-workspace
 
 # Temporary files
 *.swp

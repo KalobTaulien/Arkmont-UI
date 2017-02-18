@@ -10,11 +10,11 @@ const ajax = function performAjax(
   alwaysCallback) {
   $.ajax({
     type: 'GET',
-    url: `ajax/${page}.html`,
+    url: 'ajax/' + page + '.html',
     data: object,
     dataType: 'json',
     async: true,
-    beforeSend(xhr, options) { // eslint-disable-line no-unused-vars
+    beforeSend: function beforeAjaxReq(xhr, options) { // eslint-disable-line no-unused-vars
       // Before we send anything.
       if (beforeCallback !== undefined && beforeCallback !== '') {
         beforeCallback(xhr);
@@ -27,25 +27,25 @@ const ajax = function performAjax(
       api_key: '', // Your custom API key, if needed.
     },
     statusCode: {
-      500() {
+      500: function internalError() {
         alert('500: This is a serious error.\rPlease report this.'); // eslint-disable-line no-alert
         return false;
       },
-      404(e) {
+      404: function missingAjaxPage(e) {
         alert('Missing ajax page'); // eslint-disable-line no-alert
         console.log(e); // eslint-disable-line no-console
         return false;
       },
     },
   })
-  .done((data) => {
+  .done(function ajaxDone(data) {
     // What to do when a response is sent back.
     if (doneCallback !== undefined && doneCallback !== '') {
       doneCallback(data);
     }
     return true;
   })
-  .fail((e) => {
+  .fail(function ajaxFailed(e) {
     // What to do when the request fails.
     if (failedCallback !== undefined && failedCallback !== '') {
       failedCallback();
@@ -59,7 +59,7 @@ const ajax = function performAjax(
     }
     return false;
   })
-  .always((data) => {
+  .always(function ajaxAlwaysDoThis(data) {
     // Regardless of the outcome, always run this code.
     if (alwaysCallback !== undefined && alwaysCallback !== '') {
       alwaysCallback(data);
@@ -91,20 +91,19 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
 
   // If a course has a 4.5 rating or higher, give them golden stars!
   if (rating >= 4.5) {
-    return `<div style='color:#8c8c15;'>${html}</div>`;
+    return '<div style="color:#8c8c15;">' + html + '</div>';
   }
   return html;
 };
 
-(function() {
-
+(function () {
   // Set any "global" vars.
   // Navigation jq object
   const $nav = $('.nav:first');
   const $mobileNav = $nav.find('.mobile__nav:first');
 
   // Required. This relies on jQuery and cannot exist without it.
-  $(document).ready(() => {
+  $(document).ready(function () {
     // The carousel object.
     const carousel = {
       // Holds the VideoJS player object
@@ -129,30 +128,30 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
       },
       // During development, we'll add an event trigger that spits out a
       // console.log(..) message. This will be removed later.
-      log(message) {
-        if (this.settings.carouselLogEnabled) {
+      log: function logCarouselEvent(message) {
+        if (carousel.settings.carouselLogEnabled) {
           console.log(message); // eslint-disable-line no-console
         }
       },
       // _row is the row selector (jquery object)
       // currentPage is the current page number.
-      setScrollButtons(_row, currentPage) {
+      setScrollButtons: function setScrollArrows(_row, currentPage) {
         // This timer (set to 450ms) matches the css transition scroll time.
         // This allows the scroll to happen without a blank space between the tiles.
-        setTimeout(() => {
+        setTimeout(function scrollButtonsTimeout() {
           // Figure out which tile to trigger a click on.
           const nextTile = currentPage * carousel.settings.tilesPerPage;
           const prevOverlayTile = nextTile - 1;
           const nextOverlayTile = ((currentPage + 1) * carousel.settings.tilesPerPage);
           // If there is a previous 'page' we need to apply the .tile--has-prev
           // class to the last tile of that page.
-          _row.find(`.tile:eq(${prevOverlayTile})`).addClass('tile--has-prev').prepend('<div class="tile__hasprev"></div>');
-          _row.find(`.tile:eq(${nextOverlayTile})`).addClass('tile--has-next').prepend('<div class="tile__hasnext"></div>');
+          _row.find('.tile:eq(' + prevOverlayTile + ')').addClass('tile--has-prev').prepend('<div class="tile__hasprev"></div>');
+          _row.find('.tile:eq(' + nextOverlayTile + ')').addClass('tile--has-next').prepend('<div class="tile__hasnext"></div>');
           // If this row is 'active' we need to make sure the page that the user
           // is sliding to will also have an active tile.
           if (_row.hasClass('row__inner--active')) {
             // Find the next tile and activate it.
-            _row.find(`.tile:eq(${nextTile})`).trigger('click');
+            _row.find('.tile:eq(' + nextTile + ')').trigger('click');
           }
         }, 450);
       },
@@ -164,29 +163,29 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
         inner: $('.row__inner'),
       },
       // Init the carousel
-      init() {
+      init: function initCarousel() {
         // Loads the tiles. Wrapped in a function so we can use this for window resizing.
-        const loader = () => {
+        const loader = function loadCarousel() {
           // How much padding should be in each row on each side.
           // Assume there are 2 sides and you need to write rowPadding twice.
           const rowPadding = 40;
           // Set the tiles per page for the user based on the windowWidth
           const windowWidth = $(window).outerWidth(true);
           if (windowWidth >= 1366) {
-            this.settings.tilesPerPage = 6;
-            this.settings.tileHoverState = true;
+            carousel.settings.tilesPerPage = 6;
+            carousel.settings.tileHoverState = true;
           } else if (windowWidth >= 1024) {
-            this.settings.tilesPerPage = 5;
-            this.settings.tileHoverState = true;
+            carousel.settings.tilesPerPage = 5;
+            carousel.settings.tileHoverState = true;
           } else if (windowWidth >= 768) {
-            this.settings.tilesPerPage = 4;
-            this.settings.tileHoverState = false;
+            carousel.settings.tilesPerPage = 4;
+            carousel.settings.tileHoverState = false;
           } else if (windowWidth >= 425) {
-            this.settings.tilesPerPage = 3;
-            this.settings.tileHoverState = false;
+            carousel.settings.tilesPerPage = 3;
+            carousel.settings.tileHoverState = false;
           } else {
-            this.settings.tilesPerPage = 2;
-            this.settings.tileHoverState = false;
+            carousel.settings.tilesPerPage = 2;
+            carousel.settings.tileHoverState = false;
           }
 
           // Remove ALL scaling classes.
@@ -196,11 +195,11 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
           // Remove the 2 paddings on the left and right.
           let width = $(window).outerWidth(true) - rowPadding - rowPadding;
           // 5px (2.5px on each side) per tile.
-          let totalTilePadding = this.settings.tilesPerPage * 5; // eslint-disable-line prefer-const
+          let totalTilePadding = carousel.settings.tilesPerPage * 5; // eslint-disable-line prefer-const
           // Remove the tile padding. Now we're dealing with JUST tile sizes; no padding
           width -= totalTilePadding;
           // Screen width, divided by number of tiles, gives us tile width (without padding)
-          let tileWidth = (width / this.settings.tilesPerPage); // eslint-disable-line prefer-const
+          let tileWidth = (width / carousel.settings.tilesPerPage); // eslint-disable-line prefer-const
           // 16:9 the images
           let tileHeight = tileWidth * 0.5625; // eslint-disable-line prefer-const
           // Change the tile and tile__img sizes.
@@ -215,7 +214,7 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
           });
           // Re-apply the transition times and delay.
           // 450ms is the 'magic' waiting time with this project.
-          setTimeout(() => {
+          setTimeout(function () {
             $('.tile, .tile__img').css({
               '-webkit-transition': '',
               transition: '',
@@ -223,8 +222,8 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
             });
           }, 450);
           // Set the tile width
-          this.settings.tileWidth = tileWidth;
-          this.rows.inner.attr('data-tiles', this.settings.tilesPerPage);
+          carousel.settings.tileWidth = tileWidth;
+          carousel.rows.inner.attr('data-tiles', carousel.settings.tilesPerPage);
           // Remove all arrow styling.
           // These classes may never be removed at this point, but this is to ensure
           // the consistency of the tiles.
@@ -234,7 +233,7 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
             .remove();
           // Loop through each container and add [data-tiles], [data-max-pages] and
           // add [data-current-page]
-          this.rows.containers.each(function addDataTilesAttr(i, elem) {
+          carousel.rows.containers.each(function addDataTilesAttr(i, elem) {
             let $tiles = $(this).find('.tile'); // eslint-disable-line prefer-const
             let tiles = +$tiles.length; // eslint-disable-line prefer-const
             // Add a unique data attributes to the DOM
@@ -262,10 +261,10 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
               }
               counter += 1;
             }); // End $tiles.each()
-          }); // End this.rows.containers.each()
+          }); // End carousel.rows.containers.each()
         }; // End loader()
         // Resize tiles when the viewport changes
-        window.onresize = () => {
+        window.onresize = function () {
           // Change the visible tiles. That's all.
             loader();
           // Deactivate all tiles.
@@ -280,9 +279,8 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
     };
 
     // Close any opened menus.
-    const closeOpenedMenus = () => {
+    const closeOpenedMenus = function closeOpenedMenus() {
       if ($('.js-menu-opened').length) {
-        console.log('CLOSING MENU');
         $('.js-menu-opened')
           .attr('data-menu-open', 'false')
           .next()
@@ -336,16 +334,16 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
               closeOpenedMenus();
 
               $(this).addClass('tile--hovered').css({
-                transform: `translateZ(0) scale(2) translate3d(${scaleTileLeft}px, 0px, 0px) `,
+                transform: 'translateZ(0) scale(2) translate3d(' + scaleTileLeft + 'px, 0px, 0px) ',
                 // When scale()ing, add a tiny zoom to add clarity to text
               });
 
               $t.prevAll().addClass('tile--hovered-prev').css({
-                transform: `translate3d(${moveTilesLeft}px, 0, 0)`,
+                transform: 'translate3d(' + moveTilesLeft + 'px, 0, 0)',
               });
 
               $t.nextAll().addClass('tile--hovered-next').css({
-                transform: `translate3d(${moveTilesRight}px, 0, 0)`,
+                transform: 'translate3d(' + moveTilesRight + 'px, 0, 0)',
               });
             } // End if carousel.settings.tileHoverState
             return e.preventDefault();
@@ -423,17 +421,17 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
           if (dataObj.lists.teachers !== undefined) {
             // Build the teachers list.
             html += '<div class="preview__teachers">' +
-                      `<p class='inline'>${dataObj.lists.teachers.displayName}: </p>` + // Trailing space required
+                      '<p class="inline">' + dataObj.lists.teachers.displayName + ': </p>' + // Trailing space required
                       '<ul class="preview__list">';
 
-            // Use `for` loops because Object.keys() is IE9+
+            // Use 'for' loops because Object.keys() is IE9+
             for (let i in dataObj.lists.teachers.points) { // eslint-disable-line no-restricted-syntax, max-len, prefer-const
               if (dataObj.lists.teachers.points[i].profile !== undefined) {
                 // There IS a profile url
-                html += `<li class="preview__item"><a href='${dataObj.lists.teachers.points[i].profile}' class='preview__url'>${dataObj.lists.teachers.points[i].name}</a></li></li>`;
+                html += '<li class="preview__item"><a href="' + dataObj.lists.teachers.points[i].profile +'" class="preview__url">'+dataObj.lists.teachers.points[i].name+'</a></li></li>';
               } else {
                 // There is not a profile url
-                html += `<li class="preview__item">${dataObj.lists.teachers.points[i].name}</li>`;
+                html += '<li class="preview__item">' + dataObj.lists.teachers.points[i].name + '</li>';
               }
             }
 
@@ -443,12 +441,12 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
           // Add the about list.
           if (dataObj.lists.about !== undefined) {
             // Build the about list.
-            html += `<div class="preview__about"><p class='inline'>${dataObj.lists.about.displayName}: </p><ul class="preview__list">`;
+            html += '<div class="preview__about"><p class="inline">' + dataObj.lists.about.displayName + ': </p><ul class="preview__list">';
 
-            // Use `for` loops because Object.keys() is IE9+
+            // Use 'for' loops because Object.keys() is IE9+
             for (let i in dataObj.lists.about.points) { // eslint-disable-line
               // Build the about list.
-              html += `<li class='preview__item'>${dataObj.lists.about.points[i]}</li>`;
+              html += '<li class="preview__item">' + dataObj.lists.about.points[i] + '</li>';
             }
 
             html += '</ul></div>';
@@ -474,7 +472,7 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
             // We MUST create a new DOM section in order to load new videos
             $('.preview__video', $preview)
               .html('<div class="embed-responsive embed-responsive-16by9">' +
-                      `<video class="embed-responsive-item video-player video-js vjs-default-skin" poster="${dataObj.image}">` +
+                      '<video class="embed-responsive-item video-player video-js vjs-default-skin" poster="' + dataObj.image + '">' +
                         '<p class="vjs-no-js">' +
                           'To view this video please enable JavaScript, and consider upgrading to a web browser that' +
                           '<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>' +
@@ -484,7 +482,7 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
             // The preview section of the .row__outer
             const videoArea = $('.video-player', $preview);
             // New video area id. Renew every time the  play button is pressed.
-            const videoId = `video_${dataObj.id}`;
+            const videoId = 'video_' + dataObj.id;
             // Add the new id to the video area div
             videoArea.attr('id', videoId);
             carousel.player = videojs(videoId, { // eslint-disable-line no-undef
@@ -503,7 +501,7 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
                   option2: 'value2',
                 },
               },
-            }, function() { // eslint-disable-line
+            }, function () { // eslint-disable-line
               // If need the videojs playerr id we can use this method:
               // var id = carousel.player.id();
               // Update the video sources.
@@ -528,7 +526,7 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
             $preview.find('.preview__img').attr('src', dataObj.image).show();
           }
           // Wait (maybe) for the preview area to change.
-          setTimeout(() => {
+          setTimeout(function () {
             $preview.removeClass('preview__container--changing');
             // Scrol to the content
             $('html, body').animate({
@@ -619,7 +617,7 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
           right: direction + move,
         });
         // Removing the tile--sliding class
-        setTimeout(() => {
+        setTimeout(function () {
           // Remove tile--sliding
           $('.tile--sliding').removeClass('tile--sliding');
         }, 500);
@@ -671,14 +669,14 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
 
         if (!isMenuOpen) {
           // This menu is not open. Open it.
-          $t.next().slideDown(75, () => {
+          $t.next().slideDown(75, function () {
             $t.addClass('js-menu-opened')
               .attr('data-menu-open', 'true');
             isMenuOpen = true;
           });
         } else {
           // This menu is open. Close it.
-          $t.next().slideUp(75, () => {
+          $t.next().slideUp(75, function () {
             $t.removeClass('js-menu-opened')
               .attr('data-menu-open', 'false');
             isMenuOpen = false;
@@ -723,7 +721,7 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
         if ($mobileNav.hasClass('mobile__nav--opened')) {
           // The nav is being opened
           // Cover the page with a clickable but clear div that autocloses the menu.
-          $nav.after('<div class="nav__overlay js-close-mobile-menu"></div>');
+          $('body').append('<div class="nav__overlay js-close-mobile-menu"></div>');
         } else {
           // The nav is being closed.
           $('.nav__overlay').remove();
@@ -742,7 +740,7 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
 
       // Click event: When the .js-close-mobile-menu class is clicked, close the
       // mobile menu (force close)
-      .on('click', '.js-close-mobile-menu', (e) => {
+      .on('click', '.js-close-mobile-menu', function (e) {
         $('.nav__overlay').remove();
         $mobileNav.removeClass('mobile__nav--opened');
         return e.preventDefault();
@@ -753,7 +751,7 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
     carousel.init();
 
     // When the page is done gathering all its assets, we can display the images.
-    $(window).on('load', () => {
+    $(window).on('load', function () {
       carousel.log('All assets are loaded');
       // All .row__inner--images-loading
       const $rowImagesLoading = $('.row__inner--images-loading');
@@ -761,10 +759,124 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
       $rowImagesLoading.addClass('row__inner--images-loading-fadeout');
       // Wait for 450ms (the time of the CSS transition to fade out, plus 50ms buffer)
       // before removing these classes.
-      setTimeout(() => {
+      setTimeout(function () {
         $rowImagesLoading.removeClass('row__inner--images-loading row__inner--images-loading-fadeout');
       }, 450);
     });
   }); // End document.ready
 })();
 
+// A custom modal method
+function Modal(settings) {
+  // So we can use this inside functions that overwrite `this`
+  const modal = this;
+  // Set the modal id.
+  this.id = $.now();
+  // A method to close and remove the modal.
+  // Set the close button option.
+  settings.showClose = settings.showClose === false ? 'false' : 'true';
+  this.close = function closeThisModal() {
+    const modal = $('#modal--' + this.id);
+    modal.removeClass('fadeIn').addClass('fadeOut');
+    modal.find('.modal__container').removeClass('fadeInUpBig').addClass('fadeOutDownBig');
+    // Let the page scroll again.
+    $('body').removeClass('no-scroll');
+    // Remove the modal after the animation is complete.
+    setTimeout(function () {
+      modal.remove();
+    }, 1050);
+    return false;
+  };
+  // html buttons.
+  let buttons = '';
+  // If there are buttons, loop through them.
+  if (settings.buttons) {
+    // Loop through the buttons.
+    for (let i in settings.buttons) {
+      let id = 'modal__' + this.id + '--' + i.toLowerCase();
+      buttons += '<button class="btn ' + settings.buttons[i].className + '" id="' + id + '">' + settings.buttons[i].label + '</button>';
+    }
+  }
+  // HTML string.
+  const html = '<div class="modal fadeIn" id="modal--' + this.id + '">' +
+                '<div class="modal__container fadeInUpBig" data-show-times="' + settings.showClose + '">' +
+                  '<span class="modal__close" id="modal__' + this.id + '--close"><i class="fa fa-times"></i></span>' +
+                  '<div class="modal__head">' +
+                    settings.title +
+                  '</div>' +
+                  '<div class="modal__body">' +
+                    settings.message +
+                  '</div>' +
+                  '<div class="modal__footer">' +
+                    buttons +
+                  '</div>' +
+                '</div>' +
+              '</div>';
+
+  // Remove the page scrollbar. Append the new modal.
+  $('body').addClass('no-scroll').append(html);
+
+  // Bind callbacks to their buttons.
+  if (settings.buttons) {
+    for (let i in settings.buttons) {
+      let id = 'modal__' + this.id + '--' + i.toLowerCase();
+      if (settings.buttons[i].callback !== undefined) {
+        $('#' + id).click(function () {
+          settings.buttons[i].callback();
+        });
+      } else {
+        // Bind this button as the "modal close" button.
+        $('#' + id).click(function () {
+          modal.close();
+        });
+      }
+    }
+  }
+
+  if (settings.showClose) {
+    $('#modal__' + this.id + '--close').click(function () {
+      modal.close();
+    });
+    $(document).keyup(function (e) {
+      // If escape is pressed, close the modal.
+      if (e.keyCode === 27) {
+        modal.close();
+      }
+
+      e.preventDefault();
+      return e.stopImmediatePropagation();
+    });
+  }
+}
+
+/**
+ * An example of how a Modal can be invoked
+ */
+/*
+const modal = new Modal({
+  title: 'Sample Modal Tital',
+  message: 'Your message can be HTML',
+  showClose: true,
+  buttons: {
+    // Closes the modal by default
+    cancel: {
+      // Add an extra class.
+      className: '',
+      // Give the button a label
+      label: 'Cancel',
+    },
+    // A second button
+    somethingElse: {
+      // Has no extra class name
+      className: '',
+      // A sampel label
+      label: 'Sample Label',
+      //  An optional callback method.
+      callback: function () {
+        // Code to execute in the callback.
+        alert('something else');
+      },
+    },
+  },
+});
+*/

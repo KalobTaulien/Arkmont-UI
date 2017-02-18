@@ -15,6 +15,10 @@
   &:first-child {
     margin-top: 70px;
   }
+
+  &:last-child {
+    margin-bottom: 70px;
+  }
 }
 
 // This is the <h2> element we see in index.html
@@ -41,7 +45,7 @@
 
 // This gives the tiles about 20px more room on smaller browsers
 // one px less than the break point found in main.js
-@media (max-width: 1365px) {
+@media (max-width: $bp-xl) {
 
   // Reduce row category and row inner padding
   .row__category,
@@ -115,24 +119,6 @@
     .tile__details {
       opacity: 1;
     }
-  }
-}
-
-.tile--scale-center {
-  .tile--hover {
-    // A middle tile that scales outwards in both directions.
-  }
-}
-
-.tile--scale-right {
-  .tile--hover {
-    // A tile on the left, scales out to the right.
-  }
-}
-
-.tile--scale-left {
-  .tile--hover {
-    // A tile on the right, scaled out to the left.
   }
 }
 
@@ -530,21 +516,6 @@
   width: 40%;
 }
 
-// When on smaller devices; make the .row__outer columns turn into rows (like a responsive grid in BS)
-@media (max-width: 768px) {
-  .preview__container,
-  .preview__section,
-  .preview__section--left,
-  .preview__section--right {
-    flex-direction: column;
-    flex-grow: 2;
-    flex-basis: 1;
-    width: 100%;
-    max-width: 100%;
-    margin-right: 0;
-  }
-}
-
 // The course image (preview image)
 .course__img {
   width: 100%;
@@ -594,7 +565,19 @@
   background: rgba(255, 255, 255, 1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: $bp-md) {
+  .preview__container,
+  .preview__section,
+  .preview__section--left,
+  .preview__section--right {
+    flex-direction: column;
+    flex-grow: 2;
+    flex-basis: 1;
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+  }
+
   .preview__title {
     font-size: 27px;
     display: block;
@@ -648,9 +631,9 @@
 .preview__about,
 .preview__certificate,
 .preview__teachers {
-  margin: 7px 0;
+  margin: 10px 0;
   color: #fff;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 // Lists
@@ -857,8 +840,7 @@
   .preview__list {
     opacity: 0;
   }
-}
-@media (max-width: 768px) {
+
   .tile--active {
     .tile__details {
       opacity: 0 !important;
@@ -866,10 +848,3 @@
     }
   }
 }
-
-
-
-
-
-
-

@@ -1,0 +1,32 @@
+// Internet explorer 11
+@media all and (-ms-high-contrast: none) {
+  // Internet explorer 11
+	.nav__submit {
+		top: 0 !important;
+	}
+
+  .ie__warning {
+    background-color: #8c1515;
+    text-align: center;
+    color: #fff;
+    position: fixed;
+    padding: 15px 50px;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 101;
+    font-size: 14px;
+    line-height: 22px;
+    display: block;
+
+    a {
+      color: #fff;
+    }
+  }
+
+  .ie__warning {
+    + .nav {
+      top: 50px;
+    }
+  }
+}

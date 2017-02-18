@@ -1,6 +1,26 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits. 
 
+### Feb. 18, 2017
+- Added footer
+- UI has support for Edge, Chrome, Opera, and Safari.
+- Painfully took a step back to support IE11. Although IE doesn't support the CSS animations we're employing. We'll probably *not* support any other version of IE. Even this amount of support for IE11 was going too far because the IE experience is still terrible due to lack of CSS3 animation support. ¯\_(ツ)_/¯
+- Removed some ESLint rules -- ignoring things that are either annoying and technically useless, or unsupported by IE11.
+- Unnested some SASS. Nesting was starting to get bad.
+- Reorganized the sass file and folder structure.
+- Added more "official" breakpoints.
+- Added style normalization for other browsers.
+- `Modal()` fix from the IE11 support change. (Moving from arrow callbacks to anonymous functions disallowed `this` keywords inside events).
+- Added a footer.
+- Added notifications to `index.html` as sample notifications.
+- Added `gulp-cssmin` to minify the css we use in the page.
+
+### Feb. 13, 2017
+- Course landing page has CTA buttons. 
+- Reviews box is hidden by default and shown if there are any `.review` children inside `.js-review-box`. The flexbox beside it auto expands or contracts.
+- Added customizable `Modal()` (it's a modal, if that wasn't clear). Inspired by the awesome work over at [http://bootboxjs.com/](http://bootboxjs.com/).
+- Modal needs more styling (ie. form inputs)
+
 ### Feb. 12, 2017 (course-landing-page branch)
 - Course landing page has been started. Has video support.
 - Mobile ready design. 

@@ -4,10 +4,7 @@
   "description": "Arkmont.com UI",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile-css": "node-sass --include-path scss css/scss/main.scss css/compiled.css",
-    "sass-watcher": "nodemon -e scss -x \"npm run compile-css\"",
-    "dev": "concurrently --kill-others \"http-server -c-1\" \"npm run sass-watcher\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -22,6 +19,8 @@
   "devDependencies": {
     "browser-sync": "^2.18.7",
     "gulp": "^3.9.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "node-sass": "^4.5.0"
   },

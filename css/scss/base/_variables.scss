@@ -1,0 +1,46 @@
+$background-color: #0e0f11;
+
+// BRANDING - Branding colors
+// ==========================================================================
+
+$arkmont-red: #8c1515;
+$arkmont-gold: #8c8c15;
+
+$primary-background-color: $background-color;
+$secondary-background-color: #3a100e;
+
+// DEFAULTS - Default values.
+// ==========================================================================
+
+$default-font: 'Open Sans', sans-serif;
+$default-font-color: #ecf0f1;
+
+// BREAKPOINTS - Sizes for breakpoints
+// ==========================================================================
+
+$bp-xl: 1365px;
+$bp-lg: 1024px;
+$bp-md: 810px;
+$bp-sm: 425px;
+$bp-xs: 320px;
+
+// NAVIGATION - Vars made in _nav.scss
+// ==========================================================================
+
+$nav-padding-top: 10px;
+$nav-padding-bottom: 10px;
+$nav-padding-sides: 40px;
+$nav-border-top-thickness: 3px;
+
+$dropdown-side-padding: 15px;
+$dropdown-top-bottom-padding: 15px;
+
+$nav-opacity: 0.8;
+
+$mobile-nav-width: 250px;
+
+// NOTIFICATIONS - Notifications are a subsection of _nav
+// ==========================================================================
+
+$notification-default-width: 350px;
+$notification-sm-width: 250px;
