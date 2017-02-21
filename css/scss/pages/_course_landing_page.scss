@@ -160,6 +160,11 @@
   margin: 20px auto;
 }
 
+.syllabus__container--large {
+  @extends .syllabus__container;
+  width: 80%;
+}
+
 .syllabus {
   list-style: none;
   margin: 0;
@@ -192,6 +197,15 @@
   }
 }
 
+// The "inside of the course" lesson type
+.syllabus__lesson--inner {
+  padding: 0;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
 .syllabus__lesson--preview {
     cursor: pointer;
 
@@ -204,6 +218,38 @@
 
 .syllabus__lesson--active {
   background-color: $secondary-background-color;
+}
+
+.lesson__status {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.lesson__status--complete::after {
+  content: '✓';
+}
+
+.lesson__status--new::after {
+  content: '○';
+}
+
+.lesson__status--started::after {
+  content: '½';
+}
+
+.lesson__url {
+  display: block;
+  width: auto;
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 0;
+  padding: 10px;
+
+  &:hover {
+    background-color: $secondary-background-color;
+  }
 }
 
 .course__cta {

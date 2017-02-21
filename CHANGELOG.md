@@ -1,6 +1,22 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits. 
 
+### Feb. 21, 2017
+- Modal's have basic sizes and are allowed to scroll when they take over too much of the browser.
+- Modal fixes. Check commit diff in `js/main.js` to see. TL;DR: Fixed closing issues.
+- Profile pages created. Nice and simple.
+- Teacher profile pages created. Shows off courses they course. Also nice and simple.
+- Upgrade to Font Awesome 4.7
+- Course Syllabus Page, Course Discussions Page, Course Announcements Page, Course Reviews Page (student views) created.
+- Added `.button()` jQuery plugin. Shows neat little animation. Docs on how to use that plugin are in `main.js`.
+- Added form functionality for leaving a review. Remember, at Arkmont a student must be done at least 30% of a course before they can submit a review.
+- Reviews require a star rating *and* a written review with at least 5 words. Empty reviews are not allowed at all.
+- Added [VideoJS overlay plugin](https://github.com/brightcove/videojs-overlay) by brightcove.
+- Video lesson page has a nice gradient overlay.
+- Video lesson page is going to have a custom control bar -- this is to give the viewer a better video experience by giving them more viewing space, a cleaner and consistant control bar, and larger menu options.
+- Added volume slider to custom video player on course-video-page.html
+- We're in the middle of this update so we'll clean up the SCSS and JS on the next push.
+
 ### Feb. 18, 2017
 - Added footer
 - UI has support for Edge, Chrome, Opera, and Safari.

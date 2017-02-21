@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+	<!-- VideoJS -->
+	<link href="https://vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="css/main.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/ie.css" />
+</head>
+
+<body class="course-landing">
+
+<nav class="nav">
+
+	<!-- Mobile nav -->
+	<div class="mobile__nav">
+		<ul class="mobile__menu">
+			<li class="mobile__item">
+				<a href='/PLACEHOLDER'>My Profile</a>
+			</li>
+			<li class="mobile__item">
+				<a href='/PLACEHOLDER'>My Account</a>
+			</li>
+			<li class="mobile__item">
+				<a href='/PLACEHOLDER'>My Courses</a>
+			</li>
+			<li class="mobile__item">
+				<a href='/PLACEHOLDER'>Teachers Area</a>
+			</li>
+			<li class="mobile__separator"></li>
+			<li class="mobile__item mobile__item--active">
+				<a href='/'>Home</a>
+			</li>
+			<li class="mobile__item">
+				<a href='/'>Search</a>
+			</li>
+			<li class="mobile__item mobile__item--dropdown">
+				<a href='/' class="js-open-mobile-submenu">Categories</a>
+				<ul class="mobile__dropdown">
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>3D</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Apps</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Computer Science</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Design</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Development Tools</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Programming</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Science</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Web Development</a>
+					</li>				
+				</ul>
+			</li>
+			<li class="mobile__item">
+				<a href='/'>Sign Out</a>
+			</li>
+		</ul>
+	</div>
+
+	<a href='/' class="mobile__trigger">
+		<i class='fa fa-bars'></i>
+	</a>
+
+	<a href="/" class="nav__logo">
+		Arkmont
+	</a>
+
+	<!-- Categories -->
+	<div class="nav__dropdown">
+		<a href='/' class="dropdown__trigger" data-menu-open='false'>
+			Categories
+		</a>
+		<ul class="dropdown__menu">
+			<li class="dropdown__item">
+				<a href='/category-page.html'>3D</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Apps</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Computer Science</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Design</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Development Tools</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Programming</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Science</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Web Development</a>
+			</li>
+		</ul>
+	</div>
+
+
+	<!-- Account settings menu -->
+	<div class="nav__dropdown nav__dropdown--right">
+		<a href='/' class="dropdown__trigger">
+			John Doe
+		</a>
+		<ul class="dropdown__menu">
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>My Profile</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>My Account</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>My Courses</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'> Teachers Area</a>
+			</li>
+			<li class="dropdown__separator"></li>
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>Sign Out</a>
+			</li>
+		</ul>
+	</div>
+
+	<!-- Notification menu -->
+	<!-- Add .notification_dropdown-active to the .notification__dropdown element to make it "active" and stick out -->
+	<div class="nav__dropdown nav__dropdown--right notification__dropdown">
+		<a href='/' class="dropdown__trigger dropdown__trigger--no-caret">
+			<span class="notification__icon"></span>
+		</a>
+		<ul class="dropdown__menu">
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>Some longer notification here</a>
+			</li>
+		</ul>
+	</div>
+
+
+	<!-- Search menu -->
+	<form action="/search" method="get" class="nav__form nav__form--right" role="search" id="search">
+		<input name="q" placeholder="Search" type="text" class="nav__input" value="" />
+		<button type='submit' class="nav__submit"></button>
+	</form>
+
+</nav>
+<div class="lesson__video">
+  <video id='video_0' class="video-js video" poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-3.jpg">
+    <p class="vjs-no-js">
+      'To view this video please enable JavaScript, and consider upgrading to a web browser that
+      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+  </video>
+</div>
+<div class="video__slider">
+	<span class="video__currenttime">0:00</span>
+	<div class="video__progress"></div>
+</div>
+
+<div class="video__infobar">
+	<ul class="video__actions">
+		<li class="video__action video__play">
+			<a href='/'>
+				<i class='fa fa-play'></i>
+				Play
+			</a>
+		</li>
+		<li class="video__action">
+			<a href='/' class='js-open-volume'>
+				<i class='fa fa-volume-up'></i>
+					Volume
+				</a>
+			<ul class="videomenu__up videomenu__up--closed">
+				<li>
+					<div class="volume__bar"></div>
+				</li>
+			</ul>
+		</li>
+		<li class="video__action video__action--right">
+			<a href='/'>
+				<i class='fa fa-arrows-alt'></i>
+				Fullscreen
+			</a>
+		</li>
+		<li class="video__action video__action--right">
+			<a href='/'>
+				<i class='fa fa-cog'></i>
+				Quality
+			</a>
+		</li>
+		<li class="video__action video__action--right">
+			<a href='/'>
+				<i class='fa fa-hourglass-end'></i>
+				Speed
+			</a>
+		</li>
+		<li class="video__action video__action--right">
+			<a href='/'>
+				<i class='fa fa-clipboard'></i>
+				Add Note
+			</a>
+		</li>
+
+	</ul>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://vjs.zencdn.net/5.8/video.js"></script>
+<!-- If you'd like to support IE8 -->
+<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<script src="js/video-js-overlay.js"></script>
+<script src="js/video-js-plugins.js"></script>
+<script src="js/video-js-resolutions.js"></script>
+
+<script src="js/main.js"></script>
+<script src="js/course-controller.js"></script>
+
+</body>
+</html>

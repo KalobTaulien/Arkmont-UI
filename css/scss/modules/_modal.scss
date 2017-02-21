@@ -9,16 +9,15 @@
   z-index: 101;
   display: flex;
   align-items: center;
-
+  overflow-y: auto;
 }
+
 .modal__container {
-  transition: margin-top 450ms;
   flex: 0 0 45%;
   margin: 0 auto;
   background-color: #8c1515;
   border: 1px solid #111;
   position: relative;
-  margin-top: -12%;
 
   &[data-show-times='false'] {
     .modal__close {
@@ -28,6 +27,11 @@
 
   &--small {
     flex: 0 0 30%;
+  }
+
+  &--large {
+    margin-top: 0%;
+    flex: 0 0 70%;
   }
 }
 

@@ -96,6 +96,50 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
   return html;
 };
 
+// A jQuery button plugin.
+// Use: 
+//      const btn = $(selector).button();   // Starts the loading animation
+//            btn.button('reset');          // Gives the original button content back and re-enables the button
+//            btn.button('saved');          // Fades out animation, fades in saved text, then called .button('saved');
+//            btn.button('saved', 'Custom Wording');  // Same as btn.button('saved') but returns text you defined as the
+//                                                    // "saved" display ttext.
+$.fn.button = function(action, saveWording) {
+  const t = this;
+  if( action === undefined ) {
+    // Make this button disabled with a loading animation.
+    // Set the default html before we changed it.
+    t.defaultHtml = $(t).html();
+    t.attr('disabled', true);
+    t.html('<div class="loader">' +
+                '<div class="inner one"></div>' +
+                '<div class="inner two"></div>' +
+                '<div class="inner three"></div>' +
+              '</div>');
+  } else if (action === 'reset') {
+    // Reset the buttong
+    t.html( t.defaultHtml );
+    t.attr('disabled', false);
+  } else if (action === 'saved') {
+    const keyword = saveWording !== undefined ? saveWording : 'Saved <i class="fa fa-check"></i>';
+    // Make the loading animation stay still.
+    $('.loader', t).addClass('loader--still');
+
+    // 250ms timeout to match the CSS oapcity fade time.
+    setTimeout(function () {
+
+      t.html( '<span class="fadeIn">' + keyword + '</span>' );
+      // Set a 2s timeout to revert the original button html/text
+      setTimeout(function () {
+        t.button('reset');
+      }, 2000);
+
+    }, 250);
+  }
+
+  return t;
+};
+
+
 (function () {
   // Set any "global" vars.
   // Navigation jq object
@@ -770,37 +814,61 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
 function Modal(settings) {
   // So we can use this inside functions that overwrite `this`
   const modal = this;
+  const modal2 = this;
+
   // Set the modal id.
   this.id = $.now();
+  id = this.id;
+
   // A method to close and remove the modal.
   // Set the close button option.
-  settings.showClose = settings.showClose === false ? 'false' : 'true';
-  this.close = function closeThisModal() {
-    const modal = $('#modal--' + this.id);
-    modal.removeClass('fadeIn').addClass('fadeOut');
-    modal.find('.modal__container').removeClass('fadeInUpBig').addClass('fadeOutDownBig');
+  const showClose = settings.showClose === false ? false : true;
+
+  // Modal size.
+  const size = settings.size === undefined ? 'normal' : settings.size;
+
+  this.closeModal = function closeThisModal() {
+    // This modal. `modal` is already used.
+    const thisModal = $('#modal--' + id);
+
+    // Remove toggle animation classes.
+    thisModal.removeClass('fadeIn').addClass('fadeOut');
+
+    // Remove the fadein and fadeout animation classes.
+    thisModal.find('.modal__container').removeClass('fadeInUpBig').addClass('fadeOutDownBig');
+
     // Let the page scroll again.
     $('body').removeClass('no-scroll');
+
     // Remove the modal after the animation is complete.
     setTimeout(function () {
-      modal.remove();
-    }, 1050);
+      console.log('removed');
+      thisModal.remove();
+    }, 650);
+
     return false;
   };
+
   // html buttons.
   let buttons = '';
+
   // If there are buttons, loop through them.
   if (settings.buttons) {
     // Loop through the buttons.
     for (let i in settings.buttons) {
+      // The id.
       let id = 'modal__' + this.id + '--' + i.toLowerCase();
-      buttons += '<button class="btn ' + settings.buttons[i].className + '" id="' + id + '">' + settings.buttons[i].label + '</button>';
+
+      // The button className
+      let className = settings.buttons[i].className !== undefined ? settings.buttons[i].className : '';
+      buttons += '<button class="btn ' + className + '" id="' + id + '">' + settings.buttons[i].label + '</button>';
     }
   }
+
   // HTML string.
   const html = '<div class="modal fadeIn" id="modal--' + this.id + '">' +
-                '<div class="modal__container fadeInUpBig" data-show-times="' + settings.showClose + '">' +
-                  '<span class="modal__close" id="modal__' + this.id + '--close"><i class="fa fa-times"></i></span>' +
+                '<div class="modal__container modal__container--' + size + ' fadeInUpBig" data-show-times="' + showClose + '">' +
+                  '<span class="modal__close" id="modal__' + this.id + '--closeModal"><i class="fa fa-times"></i></span>' +
                   '<div class="modal__head">' +
                     settings.title +
                   '</div>' +
@@ -818,35 +886,36 @@ function Modal(settings) {
 
   // Bind callbacks to their buttons.
   if (settings.buttons) {
+
     for (let i in settings.buttons) {
-      let id = 'modal__' + this.id + '--' + i.toLowerCase();
+      let targetId = '#modal__' + this.id + '--' + i.toLowerCase();
       if (settings.buttons[i].callback !== undefined) {
-        $('#' + id).click(function () {
+        $(targetId).click(function () {
           settings.buttons[i].callback();
         });
       } else {
         // Bind this button as the "modal close" button.
-        $('#' + id).click(function () {
-          modal.close();
+        $(targetId).click(function () {
+          modal.closeModal();
         });
       }
     }
   }
 
-  if (settings.showClose) {
-    $('#modal__' + this.id + '--close').click(function () {
-      modal.close();
-    });
-    $(document).keyup(function (e) {
-      // If escape is pressed, close the modal.
-      if (e.keyCode === 27) {
-        modal.close();
-      }
 
-      e.preventDefault();
-      return e.stopImmediatePropagation();
-    });
-  }
+  $('#modal__' + this.id + '--closeModal').click(function () {
+    modal.closeModal();
+  });
+
+  $(document).keyup(function (e) {
+    // If escape is pressed, close the modal.
+    if (e.keyCode === 27) {
+      modal2.closeModal();
+    }
+
+    e.preventDefault();
+    return e.stopImmediatePropagation();
+  });
 }
 
 /**

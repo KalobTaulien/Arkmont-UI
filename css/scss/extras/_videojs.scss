@@ -251,7 +251,8 @@
 }
 
 .video-js .vjs-menu-button-popup .vjs-menu .vjs-menu-item.vjs-selected {
-    background-color: rgba(255,255,255,0.4);
+    background-color: rgba(255,255,255,0);
+    color: #fff;
 }
 
 .video-js .vjs-big-play-button {

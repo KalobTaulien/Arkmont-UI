@@ -1,0 +1,226 @@
+.discussion {
+  background-color: $secondary-background-color;
+  padding: 10px;
+  margin-bottom: 30px;
+  clear: both;
+}
+
+.discussion__title {
+  display: block;
+  font-size: 17px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  padding-bottom:5px;
+  margin-bottom: 5px;
+  transition: color 250ms;
+
+  &:hover:not(.discussion__title--no-hover) {
+    color: $arkmont-gold;
+  }
+}
+
+.discussion__title--large {
+  font-size: 21px;
+}
+
+.discussion__details {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.discussion__author {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 250ms;
+    font-weight: bold;
+
+    &:hover {
+      color: $arkmont-gold;
+    }
+  }
+}
+
+.discussion__announcement,
+.discussion__preview {
+  font-size: 15px;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+
+  a {
+    @extend .discussion__preview;
+  }
+}
+
+// If the author block comes before the preview block, give extra spacing.
+.discussion__author + .discussion__preview {
+  margin-top: 10px;
+}
+
+.discussion__stars {
+  color: $arkmont-red;
+}
+
+.discussion__stars--gold {
+  color: $arkmont-gold;
+}
+
+// This could be a rich text area and we need to make sure everything is supported normally.
+// This requires a lot of nesting.
+.discussion__announcement {
+  p {
+    color: #fff;
+  }
+
+  b,
+  strong {
+    font-weight: bold;
+  }
+
+  i,
+  em {
+    font-style: italic;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+    transition: color 250ms;
+
+    &:hover {
+      color: $arkmont-gold;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
+  hr {
+    height: 1px;
+    background-color: transparent;
+    border: 0;
+    border-top: 1px solid #fff;
+  }
+}
+
+.discussion__pagination {
+  text-align: center;
+}
+
+.discussion__page {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 5px;
+  line-height: 18px;
+  vertical-align: middle;
+}
+
+.discussion__page--active {
+  color: $arkmont-gold;
+  font-weight: bold;
+}
+
+.discussion__page--prev,
+.discussion__page--next {
+  font-weight: 100;
+  font-size: 9px;
+}
+
+
+.review__boxes {
+  display: flex;
+  width: 100%;
+}
+
+.review__box {
+  flex: 0 1 50%;
+}
+
+.review__box--left {
+  flex-basis: 15%;
+  text-align: center;
+  padding-right: 10px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.review__box--right {
+  flex: 1 1 auto;
+}
+
+.review__selectstars {
+  font-size: 20px;
+  margin-bottom: 10px;
+  word-spacing: 0;
+
+  .star::after {
+    content: '\f005';
+    font-family: 'FontAwesome';
+    color: $arkmont-gold;
+  }
+
+  .star {
+    &:hover ~ .star::after {
+      content: '\f006';
+    }
+  }
+
+  .star--selected {
+    ~ .star::after {
+      content: '\f006';
+    }
+  }
+}
+
+.review__input {
+  background-color: $primary-background-color;
+  resize: none;
+  height: 50px;
+  padding: 5px;
+  font-size: 15px;
+}
+
+.review__error {
+  font-size: 14px;
+  float: left;
+  padding: 0;
+  color: #fff;
+  opacity: 0;
+  max-height: 1px;
+  transition: opacity 150ms, max-height 150ms, padding 150ms;
+}
+
+.review__error--visible {
+  opacity: 1;
+  max-height: 3000px;
+  padding: 10px 0;
+}
+
+.review__submit {
+  text-align: right;
+}
+
+@media (max-width: 720px) {
+  .review__box--left {
+    display: none;
+  }
+  .review__error {
+    float: none;
+  }
+  .review__submit {
+    text-align: left;
+  }
+}

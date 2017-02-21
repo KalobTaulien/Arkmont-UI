@@ -1,0 +1,38 @@
+// Required wrapper around the image being preloaded.
+.img__preloader {
+  position: relative;
+}
+
+// The preload container. Attach this to <body> or any element you want to container the preloader in.
+.preload__images {
+
+  // Overlay the tile__media block with a moving gradient
+  .img__preloader::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(47deg, #0e0f11, #1e2024, #0e0f11);
+    background-size: 600% 600%;
+    -webkit-animation: ImageLoader 14s linear 2;
+    -moz-animation: ImageLoader 14s linear 2;
+    -o-animation: ImageLoader 14s linear 2;
+    animation: ImageLoader 14s linear 2;
+    opacity: 1;
+    transition: opacity 450ms linear;
+  }
+
+}
+
+// When all images are done loading we append a fadeout class. 
+.preload__images--fadeout {
+
+  // The fade in effect after the images are done loading and the gradient bg animation fades away
+  .img__preloader::after {
+    opacity: 0;
+  }
+ 
+}

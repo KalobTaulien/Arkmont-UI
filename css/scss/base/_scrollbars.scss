@@ -1,7 +1,5 @@
 // Mobile menu navigation
-.course__reviews,
-.mobile__nav,
-.dropdown__menu {
+*:not(body):not(html) {
   &::-webkit-scrollbar {
     width: 6px;
     height: 9px;

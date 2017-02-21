@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+	<link rel="stylesheet" type="text/css" href="css/main.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/ie.css" />
+</head>
+
+<body class="course-landing preload__images">
+
+<nav class="nav">
+
+	<!-- Mobile nav -->
+	<div class="mobile__nav">
+		<ul class="mobile__menu">
+			<li class="mobile__item">
+				<a href='/PLACEHOLDER'>My Profile</a>
+			</li>
+			<li class="mobile__item">
+				<a href='/PLACEHOLDER'>My Account</a>
+			</li>
+			<li class="mobile__item">
+				<a href='/PLACEHOLDER'>My Courses</a>
+			</li>
+			<li class="mobile__item">
+				<a href='/PLACEHOLDER'>Teachers Area</a>
+			</li>
+			<li class="mobile__separator"></li>
+			<li class="mobile__item mobile__item--active">
+				<a href='/'>Home</a>
+			</li>
+			<li class="mobile__item">
+				<a href='/'>Search</a>
+			</li>
+			<li class="mobile__item mobile__item--dropdown">
+				<a href='/' class="js-open-mobile-submenu">Categories</a>
+				<ul class="mobile__dropdown">
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>3D</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Apps</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Computer Science</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Design</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Development Tools</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Programming</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Science</a>
+					</li>
+					<li class="mobile__dropitem">
+						<a href='/category-page.html'>Web Development</a>
+					</li>				
+				</ul>
+			</li>
+			<li class="mobile__item">
+				<a href='/'>Sign Out</a>
+			</li>
+		</ul>
+	</div>
+
+	<a href='/' class="mobile__trigger">
+		<i class='fa fa-bars'></i>
+	</a>
+
+	<a href="/" class="nav__logo">
+		Arkmont
+	</a>
+
+	<!-- Categories -->
+	<div class="nav__dropdown">
+		<a href='/' class="dropdown__trigger" data-menu-open='false'>
+			Categories
+		</a>
+		<ul class="dropdown__menu">
+			<li class="dropdown__item">
+				<a href='/category-page.html'>3D</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Apps</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Computer Science</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Design</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Development Tools</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Programming</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Science</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/category-page.html'>Web Development</a>
+			</li>
+		</ul>
+	</div>
+
+
+	<!-- Account settings menu -->
+	<div class="nav__dropdown nav__dropdown--right">
+		<a href='/' class="dropdown__trigger">
+			John Doe
+		</a>
+		<ul class="dropdown__menu">
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>My Profile</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>My Account</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>My Courses</a>
+			</li>
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'> Teachers Area</a>
+			</li>
+			<li class="dropdown__separator"></li>
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>Sign Out</a>
+			</li>
+		</ul>
+	</div>
+
+	<!-- Notification menu -->
+	<!-- Add .notification_dropdown-active to the .notification__dropdown element to make it "active" and stick out -->
+	<div class="nav__dropdown nav__dropdown--right notification__dropdown">
+		<a href='/' class="dropdown__trigger dropdown__trigger--no-caret">
+			<span class="notification__icon"></span>
+		</a>
+		<ul class="dropdown__menu">
+			<li class="dropdown__item">
+				<a href='/PLACEHOLDER'>Some longer notification here</a>
+			</li>
+		</ul>
+	</div>
+
+
+	<!-- Search menu -->
+	<form action="/search" method="get" class="nav__form nav__form--right" role="search" id="search">
+		<input name="q" placeholder="Search" type="text" class="nav__input" value="" />
+		<button type='submit' class="nav__submit"></button>
+	</form>
+
+</nav>
+
+
+<div class="row__outer row__outer--visible">
+	<div class="preview__container preview__container--profile">
+		<div class="preview__section preview__section--profile-left">
+			<div class="img__preloader">
+				<img src="/img/placeholders/matt-smith.png" class="profile__img" />
+			</div>
+			<div class="profile__sm">
+				<a href="#">
+					<i class='fa fa-github'></i>
+				</a>
+				<a href="#">
+					<i class='fa fa-facebook'></i>
+				</a>
+				<a href="#">
+					<i class='fa fa-twitter'></i>
+				</a>
+				<a href="#">
+					<i class='fa fa-linkedin'></i>
+				</a>
+			</div>
+		</div>
+		<div class="preview__section preview__section--profile-right">
+			<div class="preview__title preview__title--verified">
+				Mr. Matt Smith
+			</div>
+			<div class="profile__subtitle">
+				The Eleventh Doctor!
+			</div>
+			<div class="preview__content">
+				<p>Matthew Robert "Matt" Smith (born 28 October 1982)[1] is an English actor. He is best known for his role as the Eleventh Doctor in the BBC science fiction series Doctor Who, for which he received a BAFTA Award nomination in 2011.[2]</p>
+
+				<p>Smith initially aspired to be a professional footballer, but spondylolysis forced him out of the sport.[3] After joining the National Youth Theatre and studying Drama and Creative Writing at the University of East Anglia, he became an actor in 2003, performing in plays like Murder in the Cathedral, Fresh Kills, The History Boys, and On the Shore of the Wide World in London theatres. Extending his repertoire into West End theatre, he has since performed in the stage adaptation of Swimming with Sharks with Christian Slater,[4] followed a year later by a critically acclaimed performance as Henry in That Face.[5]</p>
+
+				<p>Smith's first television role came in 2006 as Jim Taylor in the BBC adaptations of Philip Pullman's The Ruby in the Smoke and The Shadow in the North, while his first major role in television came as Danny in the 2007 BBC series Party Animals. Smith, who was announced as the eleventh incarnation of the Doctor in January 2009, is the youngest person to play the character in the British television series.[6] He left the series at the end of the 2013 Christmas Day special, "The Time of the Doctor".[7] He portrayed both the physical embodiment and a holographic version of Skynet in Terminator Genisys (2015).[8][9] Since 2016, he portrays Prince Philip, Duke of Edinburgh in Peter Morgan's Netflix biographical drama series The Crown, opposite Claire Foy as Elizabeth II.[10]</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="course__section">
+	<h3 class="section__title">Certificates Earned</h3>
+
+	<div class="profile__certificates">
+		<a href='/PLACEHOLDER' class="certificate__url" data-certificate-id="ABCDEF123456">
+			<div class="img__preloader">
+				<img src="https://arkmont.com/img/placeholders/certificate.png" class="certificate__img" alt="COURSE NAME HERE" />
+			</div>
+		</a>
+		<a href='/PLACEHOLDER' class="certificate__url" data-certificate-id="ABCDEF123456">
+			<div class="img__preloader">
+				<img src="https://arkmont.com/img/placeholders/certificate.png" class="certificate__img" alt="COURSE NAME HERE" />
+			</div>
+		</a>
+		<a href='/PLACEHOLDER' class="certificate__url" data-certificate-id="ABCDEF123456">
+			<div class="img__preloader">
+				<img src="https://arkmont.com/img/placeholders/certificate.png" class="certificate__img" alt="COURSE NAME HERE" />
+			</div>
+		</a>
+		<a href='/PLACEHOLDER' class="certificate__url" data-certificate-id="ABCDEF123456">
+			<div class="img__preloader">
+				<img src="https://arkmont.com/img/placeholders/certificate.png" class="certificate__img" alt="COURSE NAME HERE" />
+			</div>
+		</a>
+	</div>
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/profile-page.js"></script>
+
+</body>
+</html>

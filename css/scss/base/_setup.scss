@@ -7,6 +7,7 @@ html {
   padding: 0;
   // 100% vertical height of the viewport; required
   min-height: 100vh;
+  height: 100%;
   -webkit-font-smoothing: antialiased;
 
   // Add a margin-top to offset the navigation
@@ -18,8 +19,20 @@ html {
   }
 }
 
+textarea {
+  width: calc(100% - 2px);
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  border: 1px solid #fff;
+  font-size: 14px;
+  outline: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
 // All certificate icons are gold.
-.fa-certificate {
+.fa-certificate,
+.fa-trophy {
   color: $arkmont-gold;
 }
 
@@ -27,4 +40,11 @@ html {
 // ie.css will display it again.
 .ie__warning {
   display: none;
+}
+
+
+@media( max-width: $bp-md) {
+  .hidden__md {
+    display: none;
+  }
 }

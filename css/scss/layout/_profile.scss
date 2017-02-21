@@ -1,0 +1,92 @@
+// Main profile image
+.profile__img {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+// Subtitle goes under the .preview__title (yes, .preview__*)
+.profile__subtitle {
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+
+.profile__verifiedteacher {
+  font-size: 17px;
+
+  .fa {
+    color: $arkmont-gold;
+  }
+}
+
+.profile__sm {
+  text-align: center;
+  padding: 10px;
+
+  a {
+    font-size: 22px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 5px;
+    transition: color 150ms;
+
+    &:hover {
+      color: $arkmont-gold;
+    }
+  }
+}
+
+.profile__certificates {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.certificate__url {
+  display: inline-block;
+  padding: 0;
+  margin: 5px;
+  height: 100%;
+  transition: opacity 350ms;
+}
+
+.certificate__img {
+  width: 249px;
+  height: auto;
+  max-width: 249px;
+  max-height: auto;
+}
+
+.profile__certificates:hover {
+  .certificate__url {
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+
+
+@media (max-width: $bp-md) {
+  .certificate__img {
+    width: 180px;
+    max-width: 180px;
+  }
+}
+
+@media( max-width: $bp-sm) {
+  .certificate__img {
+    width: 249px;
+    max-width: 249px;
+  }
+}
+
+@media( max-width: $bp-xs) {
+  .certificate__img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
