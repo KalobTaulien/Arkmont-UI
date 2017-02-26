@@ -1,4 +1,32 @@
-/* eslint linebreak-style: ["error", "unix"] */
+// Set a cookie
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  exdays = (exdays === undefined || exdays == null ? 7 : exdays);
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  const expires = 'expires=' + d.toUTCString();
+  document.cookie = cname + '=' + cvalue + '; ' + expires;
+}
+// Get a cookie
+function getCookie(cname) {
+  const name = cname + '=';
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') c = c.substring(1);
+    if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
+  }
+  return '';
+}
+setCookie('test', 'resolution label cookie test');
+// Count the number of items in an object.
+Object.size = function (obj) {
+    let size = 0;
+    let key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
 // ajax() was moved out of the self invoking function below because we need to use this
 // in other areas of the site
 const ajax = function performAjax(
@@ -818,7 +846,7 @@ function Modal(settings) {
 
   // Set the modal id.
   this.id = $.now();
-  id = this.id;
+  let id = this.id;
 
   // A method to close and remove the modal.
   // Set the close button option.
@@ -842,7 +870,6 @@ function Modal(settings) {
 
     // Remove the modal after the animation is complete.
     setTimeout(function () {
-      console.log('removed');
       thisModal.remove();
     }, 650);
 
@@ -907,15 +934,17 @@ function Modal(settings) {
     modal.closeModal();
   });
 
-  $(document).keyup(function (e) {
-    // If escape is pressed, close the modal.
-    if (e.keyCode === 27) {
-      modal2.closeModal();
-    }
+  if (settings.canEsc || settings.canEsc === undefined) {
+    $(document).keyup(function (e) {
+      // If escape is pressed, close the modal.
+      if (e.keyCode === 27) {
+        modal2.closeModal();
+      }
 
-    e.preventDefault();
-    return e.stopImmediatePropagation();
-  });
+      e.preventDefault();
+      return e.stopImmediatePropagation();
+    });
+  }
 }
 
 /**

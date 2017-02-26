@@ -5,18 +5,35 @@
   clear: both;
 }
 
+.discussion--clear {
+  background-color: transparent;
+}
+
+.discussion--inner {
+  padding-left: 0;
+  padding-right: 0;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 5px;
+  padding-bottom: 15px;
+}
+
 .discussion__title {
   display: block;
   font-size: 17px;
   font-weight: bold;
   color: #fff;
   text-decoration: none;
-  padding-bottom:5px;
+  padding-bottom: 5px;
   margin-bottom: 5px;
   transition: color 250ms;
 
   &:hover:not(.discussion__title--no-hover) {
     color: $arkmont-gold;
+  }
+
+  .fa {
+    float: right;
   }
 }
 
@@ -27,6 +44,18 @@
 .discussion__details {
   font-size: 14px;
   margin-bottom: 10px;
+}
+
+.discussion__comments {
+  font-size: 15px;
+  padding: 20px;
+  display: none;
+}
+
+@media (max-width: $bp-ms) {
+  .discussion__comments {
+    padding: 10px;
+  }
 }
 
 .discussion__author {
@@ -51,10 +80,6 @@
   color: #fff;
   text-decoration: none;
   display: block;
-
-  a {
-    @extend .discussion__preview;
-  }
 }
 
 // If the author block comes before the preview block, give extra spacing.
@@ -72,6 +97,7 @@
 
 // This could be a rich text area and we need to make sure everything is supported normally.
 // This requires a lot of nesting.
+.comment__container,
 .discussion__announcement {
   p {
     color: #fff;
@@ -157,6 +183,69 @@
   }
 }
 
+.comment {
+  border-left: 3px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+}
+
+.comment__headline {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.comment__author {
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  transition: color 150ms;
+
+  &:hover {
+    color: $arkmont-gold;
+  }
+}
+
+.comment__textarea {
+  border: 1px solid $arkmont-red;
+  background-color: transparent;
+  color: #fff;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 15px;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  outline: 0;
+  font-weight: bold;
+
+  &--small {
+    font-size: 13px;
+    height: 40px;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .comment__textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+.discussion__new {
+  display: none;
+  margin-top: -20px;
+}
+
+.discussion--none {
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.noteslist {
+  li {
+    margin-bottom: 10px;
+  }
+}
+
 .review__box--right {
   flex: 1 1 auto;
 }
@@ -183,6 +272,20 @@
       content: '\f006';
     }
   }
+}
+
+// .noteslist {}
+
+.note__link {
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+}
+
+.note__time {
+  float: right;
+  font-size: 13px;
+  margin-top: 3px;
 }
 
 .review__input {
@@ -217,10 +320,14 @@
   .review__box--left {
     display: none;
   }
+
   .review__error {
     float: none;
   }
+
   .review__submit {
     text-align: left;
   }
 }
+
+

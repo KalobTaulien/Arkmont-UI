@@ -1,0 +1,401 @@
+// Video page styling.
+// This page doesn't include everything on the course-video.html page.
+.lesson__video {
+  height: calc(100% - 160px);
+  text-align: center;
+  background-color: #000;
+}
+
+@media (max-width: $bp-ms) {
+  .lesson__video {
+    height: auto;
+  }
+}
+
+.lesson__img,
+.video {
+  max-height: 100%;
+  width: auto;
+  margin: 0 auto;
+  background-color: #000;
+  z-index: 1;
+  position: relative;
+  margin-top: -3px;
+
+  // The play button NEEDS a higher z-index to lay on top of all overlays.
+  .vjs-big-play-button {
+    z-index: 2000 !important;
+  }
+
+}
+
+.video__infobar {
+  vertical-align: middle;
+  padding: 0 45px;
+  position: relative;
+  color: #fff;
+  margin-bottom: 10px;
+  // Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0e0f11+0,8c1515+100
+  background: rgb(14, 15, 17);
+  background: -moz-linear-gradient(45deg,  rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(14, 15, 17, 1)), color-stop(100%, rgba(140, 21, 21, 1)));
+  background: -webkit-linear-gradient(45deg,  rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
+  background: -o-linear-gradient(45deg,  rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
+  background: -ms-linear-gradient(45deg,  rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
+  background: linear-gradient(45deg,  rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0f11', endColorstr='#8c1515',GradientType=1 );
+}
+
+.video__actions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.video__action {
+  display: inline-block;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-size: 10px;
+  list-style: none;
+  position: relative;
+
+  a {
+    padding: 8px 20px;
+    display: block;
+    transition: color 250ms;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+
+    &:hover {
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+
+  .fa {
+    font-size: 25px;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+}
+
+.video__action--right {
+  float: right;
+}
+
+.video__action--hidden {
+  display: none;
+}
+
+.videomenu__up {
+  list-style: none;
+  margin: 0;
+  position: absolute;
+  top: -190px;
+  height: 150px;
+  left: calc(50% - 15px);
+  z-index: 99 !important;
+  background-color: $arkmont-red;
+  padding: 10px;
+  cursor: default;
+  // Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#8c1515+0,0e0f11+100
+  background: rgb(140, 21, 21);
+  background: -moz-linear-gradient(top,  rgba(140, 21, 21, 1) 0%, rgba(14, 15, 17, 1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(140, 21, 21, 1)), color-stop(100%, rgba(14, 15, 17, 1)));
+  background: -webkit-linear-gradient(top,  rgba(140, 21, 21, 1) 0%, rgba(14, 15, 17, 1) 100%);
+  background: -o-linear-gradient(top,  rgba(140, 21, 21, 1) 0%, rgba(14, 15, 17, 1) 100%);
+  background: -ms-linear-gradient(top,  rgba(140, 21, 21, 1) 0%, rgba(14, 15, 17, 1) 100%);
+  background: linear-gradient(to bottom,  rgba(140, 21, 21, 1) 0%, rgba(14, 15, 17, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8c1515', endColorstr='#0e0f11',GradientType=0 );
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border-top: solid 10px $primary-background-color;
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
+  }
+
+  li {
+    height: 100%;
+    background-color: $primary-background-color;
+    width: 10px;
+    cursor: pointer;
+    position: relative;
+
+    .volume__bar {
+      background-color: #fff;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+.videoselect__up {
+  margin: 0;
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  width: 120px;
+  margin-left: -50%;
+  white-space: nowrap;
+  height: auto;
+  z-index: 2;
+  background-color: $arkmont-red;
+  padding: 10px;
+  cursor: initial;
+  text-align: left;
+  // Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#8c1515+0,0e0f11+100
+  background: rgb(140, 21, 21);
+  background: -moz-linear-gradient(top,  rgba(140, 21, 21, 1) 0%, rgba(14, 15, 17, 1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(140, 21, 21, 1)), color-stop(100%, rgba(14, 15, 17, 1)));
+  background: -webkit-linear-gradient(top,  rgba(140, 21, 21, 1) 0%, rgba(14, 15, 17, 1) 100%);
+  background: -o-linear-gradient(top,  rgba(140, 21, 21, 1) 0%, rgba(14, 15, 17, 1) 100%);
+  background: -ms-linear-gradient(top,  rgba(140, 21, 21, 1) 0%, rgba(14, 15, 17, 1) 100%);
+  background: linear-gradient(to bottom,  rgba(140, 21, 21, 1) 0%, rgba(14, 15, 17, 1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8c1515', endColorstr='#0e0f11',GradientType=0 );
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border-top: solid 10px $primary-background-color;
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
+  }
+
+  label {
+    display: block;
+    font-size: 15px;
+    padding: 2px 0;
+
+    input {
+      margin-right: 5px;
+    }
+  }
+
+}
+
+.videoselect__up--closed,
+.videomenu__up--closed {
+  display: none;
+}
+
+.overlay__title {
+  padding: 10px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  text-decoration: none;
+  width: 50%;
+}
+
+.overlay__lesson {
+  padding: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  width: 50%;
+}
+
+.overlay__buttons {
+  padding: 10px;
+
+  a {
+    border: 1px solid rgba(255, 255, 255, ($nav-opacity / 2));
+    color: rgba(255, 255, 255, ($nav-opacity / 2));
+    border-radius: 50%;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 15px;
+    margin: 10px 10px 10px 0;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    vertical-align: middle;
+    transition: color 250ms, border 250ms;
+
+    &:hover {
+      border: 1px solid rgba(255, 255, 255, 1);
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  .overlay__lesson {
+    width: 80%;
+  }
+
+  .overlay__buttons {
+    padding: 10px;
+
+    a {
+      border: 1px solid #fff;
+      color: #fff;
+      border-radius: 50%;
+      display: inline-block;
+      font-size: 15px;
+      margin: 0 5px 0 0;
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+
+    }
+  }
+}
+@media (max-width: $bp-sm) {
+  .overlay__lesson {
+    width: 95%;
+  }
+
+  .overlay__buttons {
+    margin-top: 90px !important;
+    text-align: center;
+  }
+
+  .overlay__title {
+    display: none;
+  }
+
+  .add__discussion {
+    padding-left: 0 !important;
+    padding-bottom: 0 !important;
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: $bp-xs) {
+  .overlay__buttons {
+    display: none;
+  }
+}
+
+.next__lesson {
+  font-size: 19px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.video__interactions {
+  width: 90%;
+  display: table;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  margin: 10px auto 50px;
+}
+
+.interactions__title {
+  font-size: 24px;
+  border-bottom: 1px solid $arkmont-red;
+  padding-bottom: 10px;
+}
+
+.add__discussion {
+  color: #fff;
+  float: right;
+  font-size: 14px;
+  padding: 10px 0 10px 15px;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 250ms;
+  text-shadow: none;
+  font-weight: normal;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.resourcelist {
+  margin: 0;
+  list-style-position: inside;
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 0;
+    margin: 0;
+    display: block;
+  }
+}
+
+.resource__link {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  transition: color 150ms;
+  padding: 5px;
+
+  &:hover {
+    color: $arkmont-gold;
+  }
+
+  &--link::before {
+    content: '\f0c1';
+    font-family: 'FontAwesome';
+    margin-right: 10px;
+  }
+
+  &--file::before {
+    content: '\f019';
+    font-family: 'FontAwesome';
+    margin-right: 10px;
+  }
+}
+
+.label__block {
+  display: block;
+  padding: 5px;
+}
+
+.video__question {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@media (max-width: $bp-md) {
+  .video__infobar {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: $bp-ms) {
+  .video__actions {
+    text-align: center;
+  }
+
+  .video__action {
+    a {
+      padding: 12px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .fa {
+      font-size: 20px;
+    }
+
+  }
+
+  .video__action--right {
+    float: none;
+  }
+}

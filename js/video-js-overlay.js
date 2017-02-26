@@ -268,9 +268,6 @@ class Overlay extends Component {
       // MUST be an integer and the the current time indicates that the
       // overlay should NOT be visible.
       if (isNumber(end) && !this.shouldShow_(time)) {
-        this.debug(tsmlj`
-          hiding; ${end} is an integer and overlay should not show at this time
-        `);
         this.hasShownSinceSeek_ = false;
         this.hide();
 
@@ -279,10 +276,6 @@ class Overlay extends Component {
       // only queue it up for showing if the seek took us to a point before
       // the start time.
       } else if (hasNoWhitespace(end) && time < start) {
-        this.debug(tsmlj`
-          hiding; show point (${start}) is before now (${time}) and end
-          point (${end}) is an event
-        `);
         this.hasShownSinceSeek_ = false;
         this.hide();
       }

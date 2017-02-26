@@ -11,9 +11,13 @@
 
 	<link rel="stylesheet" type="text/css" href="css/main.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/ie.css" />
+	<style>
+	* {
+	}
+	</style>
 </head>
 
-<body class="course-landing">
+<body class="course-landing" data-lesson-id='sample-url-for-lesson-id' data-course-id='sample-url-for-course-id'>
 
 <nav class="nav">
 
@@ -34,13 +38,13 @@
 			</li>
 			<li class="mobile__separator"></li>
 			<li class="mobile__item mobile__item--active">
-				<a href='/'>Home</a>
+				<a href='javascript: void(0);'>Home</a>
 			</li>
 			<li class="mobile__item">
-				<a href='/'>Search</a>
+				<a href='javascript: void(0);'>Search</a>
 			</li>
 			<li class="mobile__item mobile__item--dropdown">
-				<a href='/' class="js-open-mobile-submenu">Categories</a>
+				<a href='javascript: void(0);' class="js-open-mobile-submenu">Categories</a>
 				<ul class="mobile__dropdown">
 					<li class="mobile__dropitem">
 						<a href='/category-page.html'>3D</a>
@@ -69,12 +73,12 @@
 				</ul>
 			</li>
 			<li class="mobile__item">
-				<a href='/'>Sign Out</a>
+				<a href='javascript: void(0);'>Sign Out</a>
 			</li>
 		</ul>
 	</div>
 
-	<a href='/' class="mobile__trigger">
+	<a href='javascript: void(0);' class="mobile__trigger">
 		<i class='fa fa-bars'></i>
 	</a>
 
@@ -84,7 +88,7 @@
 
 	<!-- Categories -->
 	<div class="nav__dropdown">
-		<a href='/' class="dropdown__trigger" data-menu-open='false'>
+		<a href='javascript: void(0);' class="dropdown__trigger" data-menu-open='false'>
 			Categories
 		</a>
 		<ul class="dropdown__menu">
@@ -118,7 +122,7 @@
 
 	<!-- Account settings menu -->
 	<div class="nav__dropdown nav__dropdown--right">
-		<a href='/' class="dropdown__trigger">
+		<a href='javascript: void(0);' class="dropdown__trigger">
 			John Doe
 		</a>
 		<ul class="dropdown__menu">
@@ -144,7 +148,7 @@
 	<!-- Notification menu -->
 	<!-- Add .notification_dropdown-active to the .notification__dropdown element to make it "active" and stick out -->
 	<div class="nav__dropdown nav__dropdown--right notification__dropdown">
-		<a href='/' class="dropdown__trigger dropdown__trigger--no-caret">
+		<a href='javascript: void(0);' class="dropdown__trigger dropdown__trigger--no-caret">
 			<span class="notification__icon"></span>
 		</a>
 		<ul class="dropdown__menu">
@@ -165,7 +169,7 @@
 <div class="lesson__video">
   <video id='video_0' class="video-js video" poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-3.jpg">
     <p class="vjs-no-js">
-      'To view this video please enable JavaScript, and consider upgrading to a web browser that
+      To view this video please enable JavaScript, and consider upgrading to a web browser that
       <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
     </p>
   </video>
@@ -177,49 +181,172 @@
 
 <div class="video__infobar">
 	<ul class="video__actions">
-		<li class="video__action video__play">
-			<a href='/'>
+		<li class="video__action js-play-video">
+			<a href='javascript: void(0);'>
 				<i class='fa fa-play'></i>
 				Play
 			</a>
 		</li>
 		<li class="video__action">
-			<a href='/' class='js-open-volume'>
+			<a href='javascript: void(0);' class='js-open-volume'>
 				<i class='fa fa-volume-up'></i>
-					Volume
-				</a>
+				Volume
+			</a>
 			<ul class="videomenu__up videomenu__up--closed">
 				<li>
 					<div class="volume__bar"></div>
 				</li>
 			</ul>
 		</li>
-		<li class="video__action video__action--right">
-			<a href='/'>
+		<li class="video__action video__fullscreen video__action--right">
+			<a href='javascript: void(0);'>
 				<i class='fa fa-arrows-alt'></i>
 				Fullscreen
 			</a>
 		</li>
 		<li class="video__action video__action--right">
-			<a href='/'>
+			<a href='javascript: void(0);' class='js-open-video-menu'>
 				<i class='fa fa-cog'></i>
 				Quality
 			</a>
+			<div class="videoselect__up videoselect__up--closed qualityselect">
+			</div>
 		</li>
 		<li class="video__action video__action--right">
-			<a href='/'>
+			<a href='javascript: void(0);' class='js-open-video-menu'>
 				<i class='fa fa-hourglass-end'></i>
 				Speed
 			</a>
+			<div class="videoselect__up videoselect__up--closed">
+				<label>
+					<input type='radio' class="js-change-playbackrate" name='playbackrate' value='0.75' /> Slow
+				</label>
+				<label>
+					<input type='radio' class="js-change-playbackrate" name='playbackrate' value='1' /> Normal
+				</label>
+				<label>
+					<input type='radio' class="js-change-playbackrate" name='playbackrate' value='1.25' /> Fast
+				</label>
+				<label>
+					<input type='radio' class="js-change-playbackrate" name='playbackrate' value='1.5' /> Faster
+				</label>
+				<label>
+					<input type='radio' class="js-change-playbackrate" name='playbackrate' value='2' /> Fastest
+				</label>
+			</div>
 		</li>
-		<li class="video__action video__action--right">
-			<a href='/'>
+		<li class="video__action js-add-note video__action--right">
+			<a href='javascript: void(0);'>
 				<i class='fa fa-clipboard'></i>
 				Add Note
 			</a>
 		</li>
 
 	</ul>
+</div> <!-- End info bar -->
+<div class="video__interactions">
+	<div class='boxes boxes--padded boxes--md-reverse'>
+		<div class="box box--70">
+			<h2 class="interactions__title">
+				<a href='javascript: void(0);' class="add__discussion js-add-discussion">
+					<i class='fa fa-plus'></i> Start Discussion
+				</a>
+				Discussions
+			</h2>
+			<div class="discussion discussion--inner discussion__new">
+				<div class="boxes">
+					<div class="box box--10 hidden--sm">
+						<a href='/profile-student.html'>
+							<img src="/img/placeholders/matt-smith.png" class="img__responsive" />
+						</a>
+					</div>
+					<div class="box">
+						<form class="js-start-discussion">
+							<input type='text' class="comment__textarea" required='required' placeholder="Ask question or add comment." />
+							<button type='submit' class='btn'>Start Discussion</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="discussion discussion--inner discussion--none">
+				<p>There are no open discussions or questions.</p>
+				<p>
+					<a href='javascript: void(0);' class="btn js-add-discussion">
+						<i class='fa fa-plus'></i> Start the first discussion
+					</a>
+				</p>
+			</div>
+			<div class="discussion discussion--inner" data-discussion-id='1'>
+				<a href='javascript: void(0);' class="discussion__title js-open-comments">
+					<i class='fa fa-caret-down js-remove-on-open'></i>
+					The question that was asked will go in here. Ends with a question mark?
+				</a>
+				<div class="discussion__author">
+					Started by <a href='/PLACEHOLDER'>John Doe</a> on Feb 19th, 2017
+
+					<i class='fa fa-eye'></i> 10 views
+					<i class='fa fa-comment-o'></i> 2 comments
+				</div>
+				<div class="discussion__comments">
+					<!-- Sample comment below -->
+					<!--
+					<div class="comment">
+						<div class="boxes">
+							<div class="box box--10 hidden--sm">
+								<a href='/profile-student.html'>
+									<img src="/img/placeholders/matt-smith.png" class="img__responsive" />
+								</a>
+							</div>
+							<div class="box">
+								<div class="comment__headline">
+									<a href='/profile-student.html' class="comment__author">Jane Doe</a> replied on 
+									<span class="comment__date">Feb. 19, 2017</span> with...
+								</div>
+								<div class="comment__container">
+									<p>Comment goes in here. <a href='javascript: void(0);'>Link styling test.</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					-->
+				</div>
+			</div>
+		</div>
+		<div class="box box--30">
+			<div>
+				<h2 class="interactions__title">
+					<i class='fa fa-cloud-download float--right'></i>
+					Resources
+				</h2>
+				<ol class="resourcelist">
+					<li>
+						<a href="javascript: void(0);" data-resource-id='sample-video-file' target='_blank' class="resource__link resource__link--file js-download-file">Sample Video.mp4</a>
+					</li>
+					<li>
+						<a href="https://arkmont.com/?ref=external-link" target="_blank" class="resource__link resource__link--link">http://arkmont.com/</a>
+					</li>
+				</ol>
+			</div>
+			<div>
+				<h2 class="interactions__title">
+					<a href='javascript: void(0);' class="add__discussion js-add-note">
+						<i class='fa fa-plus'></i> Add Note
+					</a>
+					Notes
+				</h2>
+				<ol class="noteslist">
+					<li>
+						<span class='note__time'>
+							<i class='fa fa-clock-o'></i> 0:05
+						</span>
+						<a href="javascript: void(0);" class="note__link" data-note-id='1'>
+							Max 30 chars. 
+						</a>
+					</li>
+				</ol>
+			</div>
+		</div>
+	</div>
 </div>
 
 

@@ -1,6 +1,25 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits. 
 
+### Feb. 25, 2017
+- Video speeds can be changed.
+- Video quality can be changed.
+- Fullscreen accepted.
+- Discussions can be added.
+- Discussion comments can be added.
+- When a discussion is being viewed, the video will automatically pause so the student doesn't miss anything.
+- PlaybackRate, Volume and Video Quality settings are saved as cookies and used when a lesson video is loaded.
+- Saved notes during a video will display over (beside, if possible) the video for a better student video learning customization experience. Similar to how a student would take notes in a book but applied to a video.
+- Notes and in-video questions are loaded with the video-lesson object via Ajax.
+- Notes automatically log the time in the video.
+- Resources can be downloadable files or external links. If they are downloadable files, a request to the server will be sent to get the download url. This helps prevent scrapers (if applicable) and allows Arkmont to use signed urls without needing to estimate the expiry time.
+- In-video questions are added as modals, but we'd like to move those to a VideoJS Overlay instead -- for video experience consistency.
+- Video page is mobile friendly.
+- It is assumed that all ajax requests will return a useful JSON data, even if the returned data is the same as the submitted data.
+- **Note:** There are probably a couple fairly minor bugs on this page. We did some minor testing, but not enough as we'd like before moving on. If you find any bugs, please let us know and we'll fix it.
+- **Note:** This section took a lot longer than expected due to the complexity of video streaming and the features Arkmont currently supports.
+- This branch has lived longer than it was intended to. We're ending development on this one and opening a new one.
+
 ### Feb. 21, 2017
 - Modal's have basic sizes and are allowed to scroll when they take over too much of the browser.
 - Modal fixes. Check commit diff in `js/main.js` to see. TL;DR: Fixed closing issues.

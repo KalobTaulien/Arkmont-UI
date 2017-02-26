@@ -19,6 +19,16 @@ html {
   }
 }
 
+a {
+  cursor: pointer;
+}
+
+a.disabled,
+a[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 textarea {
   width: calc(100% - 2px);
     -webkit-box-sizing: border-box;

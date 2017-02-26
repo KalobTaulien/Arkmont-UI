@@ -13,3 +13,23 @@
 .text--small {
   font-size: 13px;
 }
+
+.text--gold {
+  color: $arkmont-gold;
+}
+
+.float--right {
+  float: right;
+}
+
+.img__responsive {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: $bp-sm) {
+  .hidden--sm {
+    display: none;
+  }
+}
+

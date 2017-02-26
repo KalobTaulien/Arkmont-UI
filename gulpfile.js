@@ -14,10 +14,10 @@ var sass        = require('gulp-sass');
 var cssmin      = require('gulp-cssmin');
 var rename      = require('gulp-rename');
 var sassOptions = {
-  src: "css/scss/*.scss",
+  src: "css/scss/**/*.scss",
   dest: "css/",
   settings: {
-    errLogToConsole: true,
+    errLogToConsole: false,
     includePaths: [
         './node_modules/'
     ],
@@ -60,15 +60,11 @@ gulp.task('cssmin', ['sass'], function () {
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', function() {
     console.log('-- gulp-sass --');
-    // return gulp.src('css/scss/*.scss')
-    //     .pipe(sass(sassOptions))
-    //     .pipe(gulp.dest('css/'))
-    //     .pipe(browserSync.stream());
 
-  return gulp.src(sassOptions.src)
-    .pipe(sass(sassOptions.settings))
-    .pipe(gulp.dest(sassOptions.dest))
-    .pipe(browserSync.reload({ stream: true }));
+    return gulp.src(sassOptions.src)
+        .pipe(sass(sassOptions.settings))
+        .pipe(gulp.dest(sassOptions.dest))
+        .pipe(browserSync.reload({ stream: true }));
 
 });
 
