@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="css/ie.css" />
 </head>
 
-<body class="course-landing" data-lesson-type='video' data-lesson-id='sample-url-for-lesson-id' data-course-id='sample-url-for-course-id'>
+<body class="course-landing" data-lesson-type='document' data-lesson-id='sample-url-for-lesson-id' data-course-id='sample-url-for-course-id'>
 
 <nav class="nav">
 
@@ -162,84 +162,95 @@
 	</form>
 
 </nav>
-<div class="lesson__video">
-  <video id='video_0' class="video-js video" poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-3.jpg">
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-    </p>
-  </video>
-</div>
-<div class="video__slider">
-	<span class="video__currenttime">0:00</span>
-	<div class="video__progress"></div>
+
+
+<div class="lesson__document">
+	<div class="document__column">
+		<div class="document__container">
+			<h2 class="interactions__title">Document title in here</h2>
+			<div class="document__content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget egestas libero, eget posuere elit. Ut lacus velit, porta sed fringilla in, ornare a est. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis in quam ante. Donec hendrerit imperdiet dignissim. Curabitur placerat erat et ex ullamcorper pulvinar. Phasellus molestie sapien et volutpat faucibus. Aliquam sollicitudin nunc sem, at iaculis leo tempor eu. Nullam finibus eu nisi luctus viverra. Sed pharetra quam nec nisi tempus faucibus. Quisque eu viverra eros. Nullam imperdiet ac o</p>
+
+				<p><a href='/PLACEHOLDER'>Here is a link</a> in a paragraph</p>
+
+				<ul>
+					<li>List item 1</li>
+					<li>List item 2</li>
+					<li>List item 3</li>
+					<li>List item 4</li>
+				</ul>
+
+				<ol>
+					<li>List item 1</li>
+					<li>List item 2</li>
+					<li>List item 3</li>
+					<li>List item 4 <a href='/PLACEHOLDER'>with a link</a></li>
+				</ol>
+
+				<p>Nam feugiat, justo eget tincidunt porttitor, odio tortor porttitor est, gravida malesuada justo dui fringilla orci. Phasellus sit amet interdum lacus. Curabitur lacinia ex massa, in aliquet augue tristique quis. Morbi eu felis porta massa finibus pulvinar sed eget dui. Aliquam erat volutpat. Aenean vel tincidunt metus. Proin luctus ullamcorper placerat. Nam tincidunt tempor velit, a cursus odio scelerisque in. Etiam sem tortor, euismod sed congue et, tristique eu tortor. Nullam quis massa non nunc finibus vestibulum. Nulla facilisis, orci quis congue pulvinar, nunc arcu aliquam arcu, sit amet lacinia purus ipsum ut eros. Aenean metus metus, vestibulum ac risus ut, scelerisque dapibus mauris. Nulla tempus ipsum libero, vitae fermentum dui aliquet quis. Maecenas venenatis, nisi gravida condimentum facilisis, diam ligula mollis diam, ac lobortis ante est at erat.</p>
+
+				<p>Maecenas volutpat auctor nunc ut vehicula. Cras tempus fringilla ultrices. Curabitur vehicula tempor est, sit amet placerat sem viverra quis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis dictum nibh et ligula vulputate molestie. Vestibulum lobortis, quam in viverra scelerisque, mauris enim aliquam lorem, ut aliquam eros ex eget lacus. Praesent et lectus ante. In sed justo ut ex ullamcorper laoreet. Phasellus hendrerit luctus leo quis viverra.</p>
+
+				<p>Pellentesque vitae tellus urna. Sed sed nisi quis eros placerat congue ut finibus nisi. Duis sagittis bibendum massa. Maecenas placerat dignissim arcu, sit amet condimentum nibh interdum nec. Vivamus vestibulum, magna vitae molestie pellentesque, erat ex finibus lacus, non scelerisque justo velit laoreet mauris. Quisque ante orci, pharetra sit amet urna hendrerit, porttitor vulputate nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer scelerisque metus eget orci vulputate, a porttitor ante posuere. Phasellus eget fringilla mi, a aliquet dui. Proin eget blandit diam. Fusce a odio semper, commodo purus eu, gravida mi. Sed congue fringilla gravida.</p>
+
+				<p>Nullam gravida enim at arcu convallis, et convallis ipsum suscipit. Donec facilisis fermentum interdum. Cras massa mi, ornare eget rutrum sit amet, fringilla eu quam. Pellentesque iaculis, nunc nec ornare consequat, nunc metus feugiat nibh, maximus consequat lacus sem sit amet leo. Pellentesque ligula ipsum, tristique eget rhoncus porttitor, fringilla maximus orci. Nam et turpis turpis. Duis vitae metus laoreet, bibendum lectus nec, lobortis quam. Phasellus in mauris vel sapien bibendum semper eget sit amet risus. In imperdiet nisl nec eros aliquet rhoncus. Fusce volutpat sit amet risus eget ornare. Integer nec nibh sed ante accumsan maximus non at erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur nec molestie mauris.</p>
+			</div>
+		</div>
+	</div>
+	<div class='document__notes'>
+		<div class="notes__section">
+			<h2 class="interactions__title">Notes</h2>
+
+			<div class="review">
+				<div class='review__col review__col--right'>
+	         		<form class="js-add-note-form--document">
+						<textarea placeholder="Add your note" class="comment__textarea comment__textarea--small"></textarea>
+						<button type="submit" class="btn">Save</button>
+	                </form>
+                </div>
+            </div>
+
+            <div class="note__container scrollbar--dark">
+				<div class="review">
+					<div class='review__col review__col--right'>
+						<div class="review__message">
+							Remember: that one thing that does that thing
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="video__infobar video__infobar--transparent">
+		<ul class="video__actions">
+			<li class="video__action js-add-note--document">
+				<a href='/course-syllabus.html'>
+					<i class='fa fa-bars'></i>
+					Course Syllabus
+				</a>
+			</li>
+			<li class="video__action js-add-note--document">
+				<a href='javascript: void(0);'>
+					<i class='fa fa-clipboard'></i>
+					Add Note
+				</a>
+			</li>
+			<li class="video__action js-rate-lesson">
+				<a href='javascript: void(0);'>
+					<i class='fa fa-star-half-o'></i>
+					Rate Lesson
+				</a>
+			</li>
+			<li class="video__action video__action--right">
+				<a href='/course-video-page.html'>
+					<i class='fa fa-chevron-right'></i>
+					Next Lesson
+				</a>
+			</li>
+		</ul>
+	</div> <!-- End info bar -->
 </div>
 
-<div class="video__infobar">
-	<ul class="video__actions">
-		<li class="video__action js-play-video">
-			<a href='javascript: void(0);'>
-				<i class='fa fa-play'></i>
-				Play
-			</a>
-		</li>
-		<li class="video__action">
-			<a href='javascript: void(0);' class='js-open-volume'>
-				<i class='fa fa-volume-up'></i>
-				Volume
-			</a>
-			<ul class="videomenu__up videomenu__up--closed">
-				<li>
-					<div class="volume__bar"></div>
-				</li>
-			</ul>
-		</li>
-		<li class="video__action video__fullscreen video__action--right">
-			<a href='javascript: void(0);'>
-				<i class='fa fa-arrows-alt'></i>
-				Fullscreen
-			</a>
-		</li>
-		<li class="video__action video__action--right">
-			<a href='javascript: void(0);' class='js-open-video-menu'>
-				<i class='fa fa-cog'></i>
-				Quality
-			</a>
-			<div class="videoselect__up videoselect__up--closed qualityselect">
-			</div>
-		</li>
-		<li class="video__action video__action--right">
-			<a href='javascript: void(0);' class='js-open-video-menu'>
-				<i class='fa fa-hourglass-end'></i>
-				Speed
-			</a>
-			<div class="videoselect__up videoselect__up--closed">
-				<label>
-					<input type='radio' class="js-change-playbackrate" name='playbackrate' value='0.75' /> Slow
-				</label>
-				<label>
-					<input type='radio' class="js-change-playbackrate" name='playbackrate' value='1' /> Normal
-				</label>
-				<label>
-					<input type='radio' class="js-change-playbackrate" name='playbackrate' value='1.25' /> Fast
-				</label>
-				<label>
-					<input type='radio' class="js-change-playbackrate" name='playbackrate' value='1.5' /> Faster
-				</label>
-				<label>
-					<input type='radio' class="js-change-playbackrate" name='playbackrate' value='2' /> Fastest
-				</label>
-			</div>
-		</li>
-		<li class="video__action js-add-note video__action--right">
-			<a href='javascript: void(0);'>
-				<i class='fa fa-clipboard'></i>
-				Add Note
-			</a>
-		</li>
-
-	</ul>
-</div> <!-- End info bar -->
 <div class="video__interactions">
 	<div class='boxes boxes--padded boxes--md-reverse'>
 		<div class="box box--70">
@@ -325,16 +336,13 @@
 			</div>
 			<div>
 				<h2 class="interactions__title">
-					<a href='javascript: void(0);' class="add__discussion js-add-note">
+					<a href='javascript: void(0);' class="add__discussion js-add-note--document">
 						<i class='fa fa-plus'></i> Add Note
 					</a>
 					Notes
 				</h2>
 				<ol class="noteslist">
 					<li>
-						<span class='note__time'>
-							<i class='fa fa-clock-o'></i> 0:05
-						</span>
 						<a href="javascript: void(0);" class="note__link" data-note-id='1'>
 							Max 30 chars. 
 						</a>

@@ -407,46 +407,89 @@ template {
   animation-name: fadeOut;
 }
 
-*:not(body):not(html)::-webkit-scrollbar {
+*:not(body):not(html):not(.note__container)::-webkit-scrollbar {
   width: 6px;
   height: 9px;
 }
 
-*:not(body):not(html)::-webkit-scrollbar-button {
+*:not(body):not(html):not(.note__container)::-webkit-scrollbar-button {
   width: 0;
   height: 0;
 }
 
-*:not(body):not(html)::-webkit-scrollbar-thumb {
+*:not(body):not(html):not(.note__container)::-webkit-scrollbar-thumb {
   background: #8c1515;
   border: 0 none #fff;
   border-radius: 30px;
 }
 
-*:not(body):not(html)::-webkit-scrollbar-thumb:hover {
+*:not(body):not(html):not(.note__container)::-webkit-scrollbar-thumb:hover {
   background: #8c1515;
 }
 
-*:not(body):not(html)::-webkit-scrollbar-thumb:active {
+*:not(body):not(html):not(.note__container)::-webkit-scrollbar-thumb:active {
   background: #8c1515;
 }
 
-*:not(body):not(html)::-webkit-scrollbar-track {
+*:not(body):not(html):not(.note__container)::-webkit-scrollbar-track {
   background: transparent;
   border: 0 none #fff;
   border-radius: 54px;
   opacity: 0;
 }
 
-*:not(body):not(html)::-webkit-scrollbar-track:hover {
+*:not(body):not(html):not(.note__container)::-webkit-scrollbar-track:hover {
   background: transparent;
 }
 
-*:not(body):not(html)::-webkit-scrollbar-track:active {
+*:not(body):not(html):not(.note__container)::-webkit-scrollbar-track:active {
   background: transparent;
 }
 
-*:not(body):not(html)::-webkit-scrollbar-corner {
+*:not(body):not(html):not(.note__container)::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.scrollbar--dark::-webkit-scrollbar {
+  width: 6px;
+  height: 9px;
+}
+
+.scrollbar--dark::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
+.scrollbar--dark::-webkit-scrollbar-thumb {
+  background: #0e0f11;
+  border: 0 none #fff;
+  border-radius: 30px;
+}
+
+.scrollbar--dark::-webkit-scrollbar-thumb:hover {
+  background: #0e0f11;
+}
+
+.scrollbar--dark::-webkit-scrollbar-thumb:active {
+  background: #0e0f11;
+}
+
+.scrollbar--dark::-webkit-scrollbar-track {
+  background: transparent;
+  border: 0 none #fff;
+  border-radius: 54px;
+  opacity: 0;
+}
+
+.scrollbar--dark::-webkit-scrollbar-track:hover {
+  background: transparent;
+}
+
+.scrollbar--dark::-webkit-scrollbar-track:active {
+  background: transparent;
+}
+
+.scrollbar--dark::-webkit-scrollbar-corner {
   background: transparent;
 }
 
@@ -2550,15 +2593,26 @@ textarea {
   color: #8c8c15;
 }
 
+.document__content,
 .discussion__announcement,
-.discussion__preview {
+.discussion__preview,
+.document__content a,
+.discussion__announcement a,
+.discussion__preview a {
   font-size: 15px;
   color: #fff;
   text-decoration: none;
   display: block;
 }
 
-.discussion__author + .discussion__preview {
+.document__content a {
+  text-decoration: underline;
+  display: inline;
+}
+
+.discussion__author + .discussion__preview, .document__content .discussion__author + a,
+.discussion__announcement .discussion__author + a,
+.discussion__preview .discussion__author + a {
   margin-top: 10px;
 }
 
@@ -2798,10 +2852,78 @@ textarea {
   }
 }
 
+.document__notes {
+  float: right;
+  width: 28%;
+  margin-right: 2%;
+  display: inline-block;
+}
+
+.document__column {
+  width: 70%;
+  display: inline-block;
+}
+
+.document__container {
+  padding: 0 45px;
+}
+
+.notes__section {
+  padding: 0 20px;
+}
+
+.note__container {
+  overflow-y: scroll;
+  min-height: 200px;
+  max-height: 200px;
+  padding-right: 5px;
+}
+
+@media (max-width: 1024px) {
+  .document__column {
+    width: 100%;
+    display: block;
+    padding-top: 10px;
+  }
+  .document__notes {
+    float: none;
+    display: block;
+    width: 100%;
+    max-height: auto !important;
+    min-height: auto;
+    height: auto;
+    margin-right: 0;
+  }
+  .note__container {
+    min-height: auto;
+    height: auto;
+    max-height: initial !important;
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+  .notes__section {
+    padding: 0 45px;
+  }
+}
+
+.lesson__document,
 .lesson__video {
   height: calc(100% - 160px);
   text-align: center;
   background-color: #000;
+}
+
+.lesson__document {
+  background: #0e0f11;
+  background: -moz-linear-gradient(45deg, #0e0f11 0%, #8c1515 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #0e0f11), color-stop(100%, #8c1515));
+  background: -webkit-linear-gradient(45deg, #0e0f11 0%, #8c1515 100%);
+  background: -o-linear-gradient(45deg, #0e0f11 0%, #8c1515 100%);
+  background: -ms-linear-gradient(45deg, #0e0f11 0%, #8c1515 100%);
+  background: linear-gradient(45deg, #0e0f11 0%, #8c1515 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0f11', endColorstr='#8c1515',GradientType=1 );
+  height: auto;
+  text-align: left;
 }
 
 @media (max-width: 617px) {
@@ -2840,6 +2962,10 @@ textarea {
   background: -ms-linear-gradient(45deg, #0e0f11 0%, #8c1515 100%);
   background: linear-gradient(45deg, #0e0f11 0%, #8c1515 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0f11', endColorstr='#8c1515',GradientType=1 );
+}
+
+.video__infobar--transparent {
+  background: transparent;
 }
 
 .video__actions {

@@ -1,6 +1,12 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits. 
 
+### Feb. 26, 2017
+- Document lesson page added.
+- Same notes are supported for the document lesson page, but the display is very different.
+- Moved a lot of jQuery event listeners. There are now listeners for `video` pages and `document` pages, plus "global" events which are, as of right now, events that can happen on any page, including the "inner" pages (syllabus, announements, reviews, etc.).
+- The `.video__infobar` and `.video__interactions` blocks in the Document lesson page are used, those are just names and should be renamed in the future to something a bit more ambiguous to better suite it's dual purposes.
+
 ### Feb. 25, 2017
 - Video speeds can be changed.
 - Video quality can be changed.

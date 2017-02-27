@@ -74,12 +74,24 @@
   }
 }
 
+.document__content,
 .discussion__announcement,
 .discussion__preview {
   font-size: 15px;
   color: #fff;
   text-decoration: none;
   display: block;
+
+  a {
+    @extend .discussion__preview;
+  }
+}
+
+.document__content {
+  a {
+    text-decoration: underline;
+    display: inline;
+  }
 }
 
 // If the author block comes before the preview block, give extra spacing.
@@ -330,4 +342,59 @@
   }
 }
 
+.document__notes {
+  float: right;
+  width: 28%;
+  margin-right: 2%;
+  display: inline-block;
+}
 
+.document__column {
+  width: 70%;
+  display: inline-block;
+}
+
+.document__container {
+  padding: 0 45px;
+}
+
+.notes__section {
+  padding: 0 20px;
+}
+
+.note__container {
+  overflow-y: scroll;
+  min-height: 200px;
+  max-height: 200px;
+  padding-right: 5px;
+}
+
+@media (max-width: $bp-lg) {
+  .document__column {
+    width: 100%;
+    display: block;
+    padding-top: 10px;
+  }
+
+  .document__notes {
+    float: none;
+    display: block;
+    width: 100%;
+    max-height: auto !important;
+    min-height: auto;
+    height: auto;
+    margin-right: 0;
+  }
+
+  .note__container {
+    min-height: auto;
+    height: auto;
+    max-height: initial !important;
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+
+  .notes__section {
+    padding: 0 45px;
+  }
+}

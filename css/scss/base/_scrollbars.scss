@@ -1,5 +1,5 @@
 // Mobile menu navigation
-*:not(body):not(html) {
+*:not(body):not(html):not(.note__container) {
   &::-webkit-scrollbar {
     width: 6px;
     height: 9px;
@@ -22,6 +22,51 @@
 
   &::-webkit-scrollbar-thumb:active {
     background: #8c1515;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+    border: 0 none #fff;
+    border-radius: 54px;
+    opacity: 0;
+  }
+
+  &::-webkit-scrollbar-track:hover {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  &::-webkit-scrollbar-track:active {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+.scrollbar--dark {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 9px;
+  }
+
+  &::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $primary-background-color;
+    border: 0 none #fff;
+    border-radius: 30px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $primary-background-color;
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    background: $primary-background-color;
   }
 
   &::-webkit-scrollbar-track {
