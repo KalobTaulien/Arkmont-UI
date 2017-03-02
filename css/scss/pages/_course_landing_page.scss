@@ -1,10 +1,16 @@
 // Extra body classes
+.quiz,
 .course-landing {
   margin-top: 50px;
 }
 
+.quiz {
+  margin: 0;
+  padding: 0;
+}
+
 // Course landing page.
-// This is being written in _tiles so we can assign sass vars later. 
+// This is being written in _tiles so we can assign sass vars later.
 @mixin setup-course-section {
   padding: 20px 45px;
 }

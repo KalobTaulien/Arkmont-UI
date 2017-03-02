@@ -6,9 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-	<!-- VideoJS -->
-	<link href="https://vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
-
 	<link rel="stylesheet" type="text/css" href="css/main.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/ie.css" />
 </head>
@@ -242,13 +239,18 @@
 				</a>
 			</li>
 			<li class="video__action video__action--right">
-				<a href='/course-video-page.html'>
+				<a href='/course-video-page.html' class="js-next-lesson-btn" disabled='disabled'>
 					<i class='fa fa-chevron-right'></i>
 					Next Lesson
 				</a>
 			</li>
 		</ul>
 	</div> <!-- End info bar -->
+</div>
+
+<div class="video__slider video__slider--document" data-duration=''>
+	<span class="video__currenttime">0:00</span>
+	<div class="video__progress"></div>
 </div>
 
 <div class="video__interactions">
@@ -356,12 +358,6 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://vjs.zencdn.net/5.8/video.js"></script>
-<!-- If you'd like to support IE8 -->
-<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-<script src="js/video-js-overlay.js"></script>
-<script src="js/video-js-plugins.js"></script>
-<script src="js/video-js-resolutions.js"></script>
 
 <script src="js/main.js"></script>
 <script src="js/course-controller.js"></script>

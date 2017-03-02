@@ -1,5 +1,6 @@
 // Video page styling.
 // This page doesn't include everything on the course-video.html page.
+.lesson__quiz,
 .lesson__document,
 .lesson__video {
   height: calc(100% - 160px);
@@ -7,6 +8,13 @@
   background-color: #000;
 }
 
+@media (max-width: $bp-ms) {
+  .lesson__video {
+    height: auto;
+  }
+}
+
+.lesson__quiz,
 .lesson__document {
   background: rgb(14, 15, 17);
   background: -moz-linear-gradient(45deg,  rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
@@ -18,13 +26,16 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0f11', endColorstr='#8c1515',GradientType=1 );
   height: auto;
   text-align: left;
+  margin-bottom: 0;
+  border: 0;
+  border-bottom: 1px solid $primary-background-color;
 }
 
-@media (max-width: $bp-ms) {
-  .lesson__video {
-    height: auto;
-  }
+.lesson__quiz {
+  height: calc(100% - 1px);
+  margin: 0;
 }
+
 
 .lesson__img,
 .video {
@@ -58,6 +69,7 @@
   background: -ms-linear-gradient(45deg,  rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
   background: linear-gradient(45deg,  rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0f11', endColorstr='#8c1515',GradientType=1 );
+  clear: both;
 
   &--transparent {
     background: transparent;

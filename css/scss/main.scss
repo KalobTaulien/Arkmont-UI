@@ -43,8 +43,17 @@
 // ==========================================================================
 
 @import 'pages/course_landing_page';
+@import 'pages/course_quiz_page';
 
 // EXTRAS - Helpful styles
 // ==========================================================================
 
 @import 'extras/helpers';
+
+.rate__label {
+	display: inline-block;
+	width: 30%;
+	border:1px solid red;
+	padding: 5px;
+	font-size: 16px;
+}

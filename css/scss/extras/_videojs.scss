@@ -474,7 +474,7 @@
   cursor: pointer;
   color: transparent;
   max-height: 6px;
-  transition: max-height 250ms;
+  transition: max-height 250ms, font-size 250ms, padding 250ms, line-height 250ms;
   overflow: hidden;
 
   &::after {
@@ -499,6 +499,21 @@
   padding: 3px 10px;
   max-height: 20px;
   color: #fff;
+
+  &::after {
+    color: #fff;
+  }
+}
+
+.video__slider--document {
+  height: 15px;
+  font-size: 11px;
+  line-height: 19px;
+  padding: 3px 10px;
+  max-height: 15px;
+  cursor: default;
+  color: #fff;
+  margin-top: 0;
 
   &::after {
     color: #fff;

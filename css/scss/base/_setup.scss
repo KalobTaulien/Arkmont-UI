@@ -10,13 +10,16 @@ html {
   height: 100%;
   -webkit-font-smoothing: antialiased;
 
-  // Add a margin-top to offset the navigation
-  margin-top: 25px;
 
   // Hide all scrolling. Used with modals.
   &.no-scroll {
     overflow: hidden !important;
   }
+}
+
+body {
+  // Add a padding-top to offset the navigation
+  padding-top: 25px;
 }
 
 a {

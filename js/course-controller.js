@@ -92,7 +92,7 @@ $(document).ready(function () {
                               '<div class="overlay__buttons">' +
                                 '<a href="/course-syllabus.html"><i class="fa fa-bars"></i></a>' +
                                 '<a href="javascript: void(0);"><i class="fa fa-clipboard js-add-note"></i></a>' +
-                                '<a href="javascript: void(0);"><i class="fa fa-star-half-o js-rate-lesson"></i></a>' +
+                                '<a href="#"><i class="fa fa-star-half-o js-rate-lesson"></i></a>' +
                                 // '<a href="/PLACEHOLDER"><i class="fa fa-cloud-download"></i></a>' +
                                 ((data.next.hastNextLesson)
                                   ? '<a href="' + data.next.lesson.url + '"><i class="fa fa-chevron-right"></i></a>'
@@ -353,7 +353,7 @@ $(document).ready(function () {
                       // Loop through all the answers and add them to the message var.
                       for (let a in answers) {
                         message += '<label class="label__block"><input type="checkbox" value="' + answers[a].id + '" /> '+
-                                     answers[a].answer + 
+                                     answers[a].answer +
                                     '</label>';
                       }
                       message += '</form>';
@@ -506,8 +506,8 @@ $(document).ready(function () {
               // Apply the new resolution.
               player.currentResolution(newSrc);
               // Re-apply the current playbackRate, volume and the currentTime
-              player.playbackRate( playerSettings.speed );        
-              player.volume( playerSettings.volume );        
+              player.playbackRate( playerSettings.speed );
+              player.volume( playerSettings.volume );
               player.currentTime(currentTime);
 
               // Set the users cookie so these videos alway play at the same rate.
@@ -523,7 +523,7 @@ $(document).ready(function () {
         }) // End player.on('loadedmetadata'....
         .on('ended', function (e) {
           // The video has ended. Send data back to the servers so we can mark this lesson as completed.
-          ajax('ajax/video-lesson-complete.html', sender,
+          ajax('set-lesson-complete', sender,
             function videoFinishedStarted() {
               console.log('Prepping video completion ajax request');
             },
@@ -618,6 +618,87 @@ $(document).ready(function () {
   else if (lessonType === 'document') {
   // If this lesson type is a document, apply document JS
 
+
+    // Every document should have a timer based on the number of words the student needs to read.
+    const content = $('.document__content');
+    const totalWords = $.trim( content.text() ).split(' ').length;
+    // The total time in minutes.
+    const totalWordsPerMinute = totalWords / 450;
+    // Words per minute, rounded down. ie. 1.16 minutes returns 1.
+    const totalSeconds = totalWordsPerMinute * 60;
+    // Total milliseconds.
+    const totalMs = totalSeconds * 1000;
+
+    $slider.attr('data-duration', displaySecondsAsTime(totalSeconds));
+
+    let currentTime = 0;
+    const sliderInterval = 100;
+    const timer = setInterval(function () {
+      currentTime += sliderInterval;
+      const percent = (currentTime / totalMs) * 100;
+      $progress.css('width', (percent <= 100 ? percent : 100) + '%');
+      $currentTime.text(displaySecondsAsTime(currentTime / 1000));
+      if (percent >= 100) {
+        ajax('set-lesson-complete', sender,
+          function videoFinishedStarted() {
+            console.log('Prepping document completion ajax request');
+          },
+          function videoFinishedSuccess(data) {
+            console.log('Completed document completion ajax request');
+            $('.js-next-lesson-btn').prop('disabled', false).removeAttr('disabled');
+          },
+          function videoFinishedFailed(error) {
+            console.log('Failed document completion ajax request');
+          },
+          function videoFinishedAlways() {
+            console.log('Cleaning up document completion ajax request');
+          });
+        clearInterval(timer);
+      }
+    }, sliderInterval);
+  } // End  else if (lessonType === 'document') {
+  else if (lessonType === 'document-pdf') {
+    // Pdf document only.
+  } // End else if (lessonType === 'document-pdf') {
+  else if (lessonType === 'quiz') {
+    // Quiz lesson
+    const quizPrev = $('.js-prev-question');
+    const quizNext = $('.js-next-question');
+    const quizMain = $('.js-main-quiz-box');
+    const quizStart = $('.js-start-quiz');
+    let currentQuestionIndex = 0;
+
+    $(document)
+    .on('click', '.js-start-quiz', function (e) {
+      ajax('get-quiz-questions', sender,
+        function beforeGetQuizQuestion() {
+          quizStart.button();
+        },
+        function getQuizQuestionSuccess(quiz) {
+          quizMain.addClass('fadeOutUp');
+          setTimeout(function() {
+            // Reset the button
+            quizStart.button('reset');
+            // Set the first question, and slide back down.
+          }, 1000);
+        },
+        function getQuizQuestionsFailed() {
+          console.log('failed');
+          quizStart.button('reset');
+        },
+        function getQuizQuestionsAlways() {
+        });
+      return e.preventDefault();
+    })
+  }
+
+
+
+
+
+
+  // If this lesson is a document or document-pdf, apply this block.
+  if (lessonType.substr(0, 8) === 'document') {
     // Document page listeners
     $(document)
     // Click event: When the "Add note" button is clicked, auto focus on the textarea.
@@ -664,25 +745,19 @@ $(document).ready(function () {
           });
       }
       return false;
-    })
+    });
 
     const resizeDocumentNotesColumn = function () {
       // Resize the notes section.
       console.log('resizing');
-      $('.note__container').css('max-height', $('.document__container').height() - ($('.document__notes').height() - $('.note__container').height() ));
+      $('.note__container').css('max-height', $('.document__container').height() - ($('.document__notes').height() - $('.note__container').height()));
     };
 
+    // When the window resizes; so should the notes column.
     window.onresize = resizeDocumentNotesColumn;
-
+    // Init notes-column resizing
     resizeDocumentNotesColumn();
   }
-
-
-
-
-
-
-
 
 
   //
@@ -957,7 +1032,7 @@ $(document).ready(function () {
 
     // Add the comment to the sender const.
     sender.comment = $.trim(input.val());
-    console.log(sender);
+
     // Load all the comments
     ajax('set-discussion-comment', sender,
       function beforeGetComments() {
@@ -994,7 +1069,6 @@ $(document).ready(function () {
                         '</div>' +
                       '</div>';
         $('.new__comments').append(html);
-
       },
       function getCommentsFailed() {
         btn.button('reset');
@@ -1005,10 +1079,75 @@ $(document).ready(function () {
   })
   // Click event: rate the current lesson
   .on('click', '.js-rate-lesson', function (e) {
-    console.log(sender);
-    alert('rate lesson');
+    if (player) {
+      player.pause();
+      togglePlayButton('play');
+    }
+
+    const values = ['Boring', 'Confusing', 'Fun', 'Helpful', 'Informative', 'Inspiring', 'Low quality',
+                    'Not helpful', 'OK', 'Too long', 'Too short'];
+    let html = '';
+
+    for (let i in values) {
+      html += '<div class="rate__label">' +
+                '<label><input class="js-check-limit-3 js-lesson-descriptor" name="lesson-descriptor" type="checkbox" value="' + values[i] + '"> ' + values[i] + '</label>' +
+              '</div>';
+    }
+
+    const modal = new Modal({
+      title: 'What do you think about this lesson?',
+      size: 'large',
+      message: html,
+      buttons: {
+        submit: {
+          label: 'Submit',
+          className: 'js-submit-lesson-feedback',
+          callback: function () {
+            const btn = $('.js-submit-lesson-feedback');
+
+            sender.answers = [];
+            $('.js-lesson-descriptor:checked').each(function(i, elem) {
+              sender.answers.push( this.value );
+            })
+
+            if (sender.answers.length > 0) {
+              ajax('set-lesson-review', sender,
+                function beforeLessonReview() {
+                  btn.button();
+                },
+                function lessonReviewComplete() {
+                  btn.button('saved', 'Thank you');
+                  setTimeout(function() {
+                    modal.closeModal();
+                  }, 1700);
+                },
+                function lessonReviewFailed() {
+                  btn.button('reset');
+                },
+                function lessonReviewAlways() {
+                  // Something to always perform.
+                }) ;
+            }
+            return false;
+          },
+        },
+        cancel: {
+          label: 'Cancel',
+          className: "btn--link",
+        },
+      },
+    });
     return e.preventDefault();
   })
+  // Click event: Lessons can only have 3 descriptors.
+  .on('click', '.js-check-limit-3', function (e) {
+    const name = this.name;
+    if ($(':input[name="' + name + '"]:checked').length >= 3) {
+      $(':input[name="' + name + '"]:not(:checked)').prop('disabled', true);
+    } else {
+      $(':input[name="' + name + '"]').prop('disabled', false);
+    }
+  });
 
 
 });
