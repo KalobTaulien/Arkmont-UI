@@ -2,6 +2,11 @@
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits.
 
 ### Mar. 3, 2017
+- Quizzes! We have functioning quizzes now.
+- Quizzes come with keyboard support. Keys 1-9 answer (check) answers, left arrow moves back a question, right arrow moves forward a question.
+- Upon quiz completion, a grade will be provided and if there's a lesson afterwards a timer will be presented that will move the student to the next lesson in about 10 seconds.
+- The quiz page has basic CSS animations. And unlike the prior skin, this one maintains the nav bar.
+- Quizzes currently do not show which answers were wrong. That's definitely something we want to address soon.
 
 ### Mar. 2, 2017
 - Individual lesson rating feature added.

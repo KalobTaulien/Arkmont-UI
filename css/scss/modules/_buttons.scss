@@ -52,6 +52,11 @@
   }
 }
 
+.btn+.btn {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .btn--no-underline,
 .btn--no-underline:hover {
   text-decoration: none;
@@ -118,12 +123,17 @@
   perspective: 800px;
   transition: opacity 250ms;
 
+  &--lg {
+    height: 50px;
+    width: 50px;
+  }
+
   .inner {
     position: absolute;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    border-radius: 50%;  
+    border-radius: 50%;
   }
 
   .inner.one {

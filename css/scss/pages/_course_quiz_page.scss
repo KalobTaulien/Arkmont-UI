@@ -24,20 +24,37 @@
 
 }
 
+.quiz__form {
+  padding-top: 60px;
+}
+
+.quiz__question {
+  display: none;
+}
+
 .quiz__box {
   flex: 1 1 33%;
 
   &--right,
   &--left {
-    flex: 0 0 10%;
+    flex: 0 0 20%;
   }
+}
+
+.quiz__box--main {
+  text-align: left;
+}
+
+.quiz__question--centered {
+  text-align: center;
+  display: block;
 }
 
 .quiz__button {
   color: #fff;
   font-size: 40px;
   opacity: 0.3;
-  transition: opacity 150ms;
+  transition: opacity 250ms;
 }
 
 .quiz__button:hover {
@@ -46,4 +63,65 @@
 
 .quiz__button--hidden {
   display: none;
+}
+
+.quiz__mobileactions {
+  display: none;
+}
+
+.quiz__mobileactions--not-started {
+  display: none !important;
+}
+
+.mobile__action--left,
+.mobile__action--right {
+  display: inline-block;
+  width: 49%;
+  text-align: left;
+
+  a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    display: inline-block;
+  }
+}
+
+.mobile__action--right {
+  text-align: right;
+}
+
+.mobile__chevron {
+  font-size: 27px;
+  line-height: 27px;
+  vertical-align: middle;
+  margin: 0 3px;
+}
+
+.quiz__error {
+  text-align: center;
+  background-color: $primary-background-color;
+  overflow: hidden;
+  max-height: 0;
+  transition: padding 250ms, max-height 250ms;
+}
+
+.quiz__error--active {
+  padding: 20px;
+  max-height: 1000px;
+}
+
+@media (max-width: $bp-md) {
+  .quiz__box--right,
+  .quiz__box--left {
+    display: none;
+  }
+
+  .quiz__box--main {
+    padding: 0 30px;
+  }
+
+  .quiz__mobileactions {
+    display: block;
+  }
 }

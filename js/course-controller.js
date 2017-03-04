@@ -662,11 +662,84 @@ $(document).ready(function () {
   } // End else if (lessonType === 'document-pdf') {
   else if (lessonType === 'quiz') {
     // Quiz lesson
-    const quizPrev = $('.js-prev-question');
-    const quizNext = $('.js-next-question');
+    const quizPrev = $('.js-prev-question:first');
+    const quizNext = $('.js-next-question:first');
     const quizMain = $('.js-main-quiz-box');
     const quizStart = $('.js-start-quiz');
-    let currentQuestionIndex = 0;
+    const quizContainer = $('.js-quiz-container');
+    const quizForm = $('.js-quiz-form');
+    const quizError = $('.js-question-error');
+    let quizStarted = false;
+    let quizSubmitted = false;
+    let quizData = {};
+    let currentQuestionIndex = -1;
+
+
+    const nextQuestion = function () {
+      if (!quizSubmitted) {
+        // Increase the question counter.
+        currentQuestionIndex++;
+
+        // Remove the hidden class of the next button
+        $('.quiz__question:not(.js-question-' + currentQuestionIndex + ')').hide();
+        $('.js-question-' + currentQuestionIndex).show();
+
+        // Hide the quiz error section.
+        quizError.removeClass('quiz__error--active');
+
+        // Should the next button be shown?
+        if (quizData.questions[currentQuestionIndex] === undefined) {
+          // No more questions
+          quizNext.hide();
+          quizPrev.hide();
+          // Undo the questionIndex increase
+          currentQuestionIndex--;
+          // Submit this form.
+          quizForm.trigger('submit');
+          return true;
+        } else {
+          quizNext.show();
+        }
+
+        // Should the prev button be shown?
+        if (quizData.questions[ (currentQuestionIndex - 1) ] === undefined) {
+          // No previous questions
+          quizPrev.hide();
+        } else {
+          quizPrev.show();
+        }
+      }
+    };
+
+    const prevQuestion = function () {
+      // Increase the question counter.
+      if (currentQuestionIndex > 0 && !quizSubmitted) {
+        currentQuestionIndex--;
+
+        // Remove the hidden class of the next button
+        $('.quiz__question:not(.js-question-' + currentQuestionIndex + ')').hide();
+        $('.js-question-' + currentQuestionIndex).show();
+
+        // Hide the quiz error section.
+        quizError.removeClass('quiz__error--active');
+
+        // Should the next button be shown?
+        if (quizData.questions[ (currentQuestionIndex + 1) ] === undefined) {
+          // No more questions
+          quizNext.hide();
+        } else {
+          quizNext.show();
+        }
+
+        // Should the prev button be shown?
+        if (quizData.questions[ (currentQuestionIndex - 1) ] === undefined) {
+          // No previous questions
+          quizPrev.hide();
+        } else {
+          quizPrev.show();
+        }
+      }
+    };
 
     $(document)
     .on('click', '.js-start-quiz', function (e) {
@@ -675,29 +748,191 @@ $(document).ready(function () {
           quizStart.button();
         },
         function getQuizQuestionSuccess(quiz) {
-          quizMain.addClass('fadeOutUp');
-          setTimeout(function() {
+          quizData = quiz;
+          quizContainer.addClass('fadeOutUp');
+          setTimeout(function () {
             // Reset the button
             quizStart.button('reset');
-            // Set the first question, and slide back down.
+
+            // Enable mobile buttons.
+            $('.quiz__mobileactions').removeClass('quiz__mobileactions--not-started');
+
+            // Make the HTML from the JSON object.
+            let html = '';
+
+            for (let i in quiz.questions) {
+              let type = quiz.questions[i].type === 'multiple-choice' ? 'checkbox' : 'radio';
+              html += '<div class="quiz__question js-question-' + i + '" data-question-id="' + i + '">';
+              html += '<h2>' + quiz.questions[i].question + '</h2>';
+
+                for (let a in quiz.questions[i].answers) {
+                  html += '<p>' +
+                            '<label>' +
+                              '<input type="' + type + '" value="' + quiz.questions[i].answers[a].id + '" name="answer_' + i + '"> ' +
+                              quiz.questions[i].answers[a].answer +
+                            '</label>' +
+                          '</p>';
+                }
+
+              html += '</div>';
+            }
+
+            // Insert the HTML.
+            $('.js-question-intro').after(html);
+
+            // Load the first question
+            nextQuestion();
+
+            // The quiz has started
+            quizStarted = true;
+
+            quizContainer.addClass('fadeInDown');
           }, 1000);
         },
         function getQuizQuestionsFailed() {
-          console.log('failed');
           quizStart.button('reset');
         },
         function getQuizQuestionsAlways() {
         });
       return e.preventDefault();
     })
+    // Click event: Next question is being requested
+    .on('click', '.js-next-question', function (e) {
+      // If the question was not answered, do not continue. Or vice versa.
+      if ($('.js-question-' + currentQuestionIndex + ' :input:checked').length) {
+        // At least one answer was provided
+        nextQuestion();
+      } else {
+        // There is no answer selected.
+        quizError.html('An answer must be selected before continuing.').addClass('quiz__error--active');
+      }
+      return e.preventDefault();
+    })
+    // Click event: Prev question is being requested
+    .on('click', '.js-prev-question', function (e) {
+      // Questions can always be rewound.
+      prevQuestion();
+      return e.preventDefault();
+    })
+    // Submit event: The quiz form is being submitted. Collect all and validate all data.
+    .on('submit', '.quiz__form', function (e) {
+      e.preventDefault();
+
+      let quizLoading = {};
+      const answers = [];
+
+
+      quizForm.find('.quiz__question[data-question-id]').each(function (i) {
+        answers[i] = {};
+        answers[i].questionId = $(this).attr('data-question-id');
+        answers[i].answers = [];
+
+        // Loop through given answers.
+        $(':input:checked', this).each(function () {
+          answers[i].answers.push(this.value);
+        });
+      });
+
+      sender.quizId = quizData.id;
+      sender.answers = answers;
+
+      ajax('set-quiz-answers', sender,
+        function beforeQuizSubmission() {
+          quizError.removeClass('quiz__error--active');
+          const html = '<div class="quiz__question quiz__question--centered js-question-loading">' +
+                        '<h1>Submitting Answers</h1>' +
+                        '<div class="loader loader--lg" style="margin:0 auto;">' +
+                          '<div class="inner one"></div>' +
+                          '<div class="inner two"></div>' +
+                          '<div class="inner three"></div>' +
+                        '</div>' +
+                      '</div>';
+          $('.quiz__question:last').after(html);
+          // The quiz is loading var
+          quizLoading = $('.js-question-loading');
+          // This quiz is submitted.
+          quizSubmitted = true;
+          // Hide mobile quiz buttons
+          $('.quiz__mobileactions').addClass('quiz__mobileactions--not-started');
+        },
+        function quizSubmissionComplete(data) {
+          let seconds = 10;
+          quizLoading.fadeOut(function () {
+            quizLoading
+              .html('<h3>You were graded</h3>' +
+                    '<h1 style="font-size: 60px">' + data.quizGrade + '%</h1>' +
+                    (data.next.hastNextLesson ?
+                      '<p>Moving on to next lesson <span class="js-grade-countdown"> ' + seconds + ' seconds</span></p>' +
+                        '<p><a href="' + data.next.lesson.url + '" class="btn btn--lg">Continue</a></p>' :
+                      '<p><a href="/' + sender.courseId + '/lesson/' + sender.lessonId + '" class="btn">Retake Quiz</a>' +
+                        '<a class="btn" href="/' + sender.courseId + '">Course Home</a></p>'))
+              .fadeIn(function () {
+                if (data.next.hastNextLesson) {
+                  const timer = $('.js-grade-countdown');
+                  const interval = setInterval(function () {
+                    seconds--;
+                    timer.text('in ' + seconds + ' second' + (seconds !== 1 ? 's' : ''));
+
+                    if (seconds === 0) {
+                      timer.text('now...');
+                      window.location = data.next.lesson.url;
+                      clearInterval(interval);
+                    }
+                  }, 1000);
+                }
+              });
+          });
+        },
+        function quizSubmissionFailed() {
+          // Revert back to pre-submit state
+          quizNext.show();
+          quizPrev.show();
+          quizLoading.fadeOut(function () {
+            // Remove the quizLoading dom element.
+            $(this).remove();
+            // Reset the quizLoading object.
+            quizLoading = {};
+            // Show the last question
+            $('.quiz__question:last').fadeIn();
+            // Display an error message
+            quizError.html('There was an issue submitting your quiz. Please try again.')
+              .addClass('quiz__error--active');
+            // Quiz is no longer in the "submitting" state
+            quizSubmitted = false;
+            // Show mobile quiz buttons
+            $('.quiz__mobileactions').removeClass('quiz__mobileactions--not-started');
+          });
+        },
+        function quizSubmissionAlways() {
+
+        });
+
+      // console.log(answers);
+      return false;
+    })
+    // Keyup event: When left, right, or 1-9 is pressed, trigger actions
+    .on('keyup', document, function quizKeyboardController(e) {
+      if (quizStarted) {
+        // Number 1-9 at the top of a keyboard were pressed.
+        if ((e.keyCode >= 49 && e.keyCode <= 59) ||
+            (e.keyCode >= 97 && e.keyCode <= 105)) {
+          const eq = (e.keyCode - 97 < 0 ? e.keyCode - 49 : e.keyCode - 97);
+          $('.js-question-' + currentQuestionIndex).find(':input:eq(' + eq + ')').trigger('click').blur();
+        } else if (e.keyCode === 37) {
+          // Left arrow
+          quizPrev.trigger('click');
+        } else if (e.keyCode === 39) {
+          // Right arrow
+          quizNext.trigger('click');
+        }
+      }
+      return e.preventDefault();
+    });
   }
 
-
-
-
-
-
+  //
   // If this lesson is a document or document-pdf, apply this block.
+  //
   if (lessonType.substr(0, 8) === 'document') {
     // Document page listeners
     $(document)
@@ -749,7 +984,6 @@ $(document).ready(function () {
 
     const resizeDocumentNotesColumn = function () {
       // Resize the notes section.
-      console.log('resizing');
       $('.note__container').css('max-height', $('.document__container').height() - ($('.document__notes').height() - $('.note__container').height()));
     };
 

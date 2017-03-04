@@ -163,28 +163,47 @@
 <div class="lesson__quiz">
   <div class="quiz__cover">
     <div class="quiz__inner">
-      <div class='quiz__container'>
-        <div class='quiz__box quiz__box--left'>
-          <a href='#prev' class='quiz__button quiz__button--prev quiz__button--hidden js-prev-question'>
-            <i class='fa fa-chevron-left'></i>
-          </a>
-        </div>
-        <div class='quiz__box quiz__box--main js-main-quiz-box'>
-          <h1>Name of this quiz</h1>
-          <p>Every correct question is worth one point. Questions with multiple answers need all the correct answers to get a full point.</p>
-          <p>For this quiz, you are <em>not</em> being timed.</p>
-          <p>
-            <a href='#start' class='btn btn--lg js-start-quiz'>
-              Start Quiz
+      <form method='POST' class='quiz__form js-quiz-form'>
+        <div class='quiz__container js-quiz-container'>
+          <div class='quiz__box quiz__box--left'>
+            <a href='#prev' class='quiz__button quiz__button--prev quiz__button--hidden js-prev-question'>
+              <i class='fa fa-chevron-left'></i>
             </a>
-          </p>
+          </div>
+          <div class='quiz__box quiz__box--main js-main-quiz-box'>
+            <div class="quiz__question quiz__question--centered js-question-intro">
+              <h1>Name of this quiz</h1>
+              <p>You are <em>not</em> being timed.</p>
+              <p>Do your best, even if it takes you longer.</p>
+              <p>
+                <a href='#start' class='btn btn--lg js-start-quiz'>
+                  Start Quiz
+                </a>
+              </p>
+            </div>
+          </div>
+          <div class='quiz__box quiz__box--right'>
+            <a href='#next' class='quiz__button quiz__button--next quiz__button--hidden js-next-question'>
+              <i class='fa fa-chevron-right'></i>
+            </a>
+          </div>
         </div>
-        <div class='quiz__box quiz__box--right'>
-          <a href='#next' class='quiz__button quiz__button--next quiz__button--hidden js-next-question'>
-            <i class='fa fa-chevron-right'></i>
-          </a>
+        <div class="quiz__error js-question-error">
+          <!-- Error text in here -->
         </div>
-      </div>
+        <div class="quiz__mobileactions quiz__mobileactions--not-started">
+          <div class="mobile__action--left">
+            <a href='#prev' class="js-prev-question">
+              <i class='fa fa-chevron-left mobile__chevron'></i> Prev
+            </a>
+          </div>
+          <div class="mobile__action--right">
+            <a href='#next' class="js-next-question">
+              Next <i class='fa fa-chevron-right mobile__chevron'></i>
+            </a>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
