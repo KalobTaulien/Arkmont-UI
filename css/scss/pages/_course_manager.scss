@@ -1,0 +1,47 @@
+.manager {
+  width: 90%;
+  margin: 10px auto 50px;
+}
+
+.manager__sections {
+  border-right: 1px solid #24272D;
+}
+
+.manager__category {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+  vertical-align: middle;
+  margin: 15px 5px 5px 0;
+}
+
+.manager__category--lg {
+  font-size: 20px;
+}
+
+.manager__icon {
+}
+
+
+.manager__list {
+  list-style: none;
+  padding: 5px 5px 5px 20px;
+  margin: 5px 5px 28px 5px;
+  font-size: 14px;
+
+  li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  a:not(.btn) {
+    text-decoration: none;
+    transition: color 250ms;
+    display: block;
+    padding: 2px 5px 2px 0;
+
+    &:hover {
+      color: $arkmont-gold;
+    }
+  }
+}

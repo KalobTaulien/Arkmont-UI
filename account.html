@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/css/ie.css" />
 </head>
 
-<body class="quiz" data-lesson-type='quiz' data-lesson-id='sample-url-for-lesson-id' data-course-id='sample-url-for-course-id'>
+<body class="course-landing">
 
 <nav class="nav">
 
@@ -31,13 +31,13 @@
             </li>
             <li class="mobile__separator"></li>
             <li class="mobile__item mobile__item--active">
-                <a href='javascript: void(0);'>Home</a>
+                <a href='/'>Home</a>
             </li>
             <li class="mobile__item">
-                <a href='javascript: void(0);'>Search</a>
+                <a href='/'>Search</a>
             </li>
             <li class="mobile__item mobile__item--dropdown">
-                <a href='javascript: void(0);' class="js-open-mobile-submenu">Categories</a>
+                <a href='/' class="js-open-mobile-submenu">Categories</a>
                 <ul class="mobile__dropdown">
                     <li class="mobile__dropitem">
                         <a href='/category-page.html'>3D</a>
@@ -66,12 +66,12 @@
                 </ul>
             </li>
             <li class="mobile__item">
-                <a href='javascript: void(0);'>Sign Out</a>
+                <a href="/logout.html">Sign Out</a>
             </li>
         </ul>
     </div>
 
-    <a href='javascript: void(0);' class="mobile__trigger">
+    <a href='/' class="mobile__trigger">
         <i class='fa fa-bars'></i>
     </a>
 
@@ -81,7 +81,7 @@
 
     <!-- Categories -->
     <div class="nav__dropdown">
-        <a href='javascript: void(0);' class="dropdown__trigger" data-menu-open='false'>
+        <a href='/' class="dropdown__trigger" data-menu-open='false'>
             Categories
         </a>
         <ul class="dropdown__menu">
@@ -115,7 +115,7 @@
 
     <!-- Account settings menu -->
     <div class="nav__dropdown nav__dropdown--right">
-        <a href='javascript: void(0);' class="dropdown__trigger">
+        <a href='/' class="dropdown__trigger">
             John Doe
         </a>
         <ul class="dropdown__menu">
@@ -139,9 +139,9 @@
     </div>
 
     <!-- Notification menu -->
-    <!-- Add .notification_dropdown-active to the .notification__dropdown element to make it "active" and stick out -->
+    <!-- Add .notification_dropdown--active to the .notification__dropdown element to make it "active" and stick out -->
     <div class="nav__dropdown nav__dropdown--right notification__dropdown">
-        <a href='javascript: void(0);' class="dropdown__trigger dropdown__trigger--no-caret">
+        <a href='/' class="dropdown__trigger dropdown__trigger--no-caret">
             <span class="notification__icon"></span>
         </a>
         <ul class="dropdown__menu">
@@ -160,59 +160,45 @@
 
 </nav>
 
-<div class="lesson__quiz">
-  <div class="quiz__cover">
-    <div class="quiz__inner">
-      <form method='POST' class='quiz__form js-quiz-form'>
-        <div class='quiz__container js-quiz-container'>
-          <div class='quiz__box quiz__box--left'>
-            <a href='#prev' class='quiz__button quiz__button--prev quiz__button--hidden js-prev-question'>
-              <i class='fa fa-chevron-left'></i>
-            </a>
-          </div>
-          <div class='quiz__box quiz__box--main js-main-quiz-box'>
-            <div class="quiz__question quiz__question--centered js-question-intro">
-              <h1>Name of this quiz</h1>
-              <p>You are <em>not</em> being timed.</p>
-              <p>Do your best, even if it takes you longer.</p>
-              <p>
-                <a href='#start' class='btn btn--lg js-start-quiz'>
-                  Start Quiz
-                </a>
-              </p>
-            </div>
-          </div>
-          <div class='quiz__box quiz__box--right'>
-            <a href='#next' class='quiz__button quiz__button--next quiz__button--hidden js-next-question'>
-              <i class='fa fa-chevron-right'></i>
-            </a>
-          </div>
-        </div>
-        <div class="quiz__error js-question-error">
-          <!-- Error text in here -->
-        </div>
-        <div class="quiz__mobileactions quiz__mobileactions--not-started">
-          <div class="mobile__action--left">
-            <a href='#prev' class="js-prev-question">
-              <i class='fa fa-chevron-left mobile__chevron'></i> Prev
-            </a>
-          </div>
-          <div class="mobile__action--right">
-            <a href='#next' class="js-next-question">
-              Next <i class='fa fa-chevron-right mobile__chevron'></i>
-            </a>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+<div class="account">
+  <h1>Account Settings</h1>
+
+  <h2 class="account__title">Change Email</h2>
+  <form class="account__form js-change-email">
+    <label class="account__label">Current Email Address</label>
+    <input type='email' class="account__input" required="required" name='current_email' placeholder="Your current email address" />
+    <label class="account__label">New Email Address</label>
+    <input type='email' class="account__input" required="required" name='new_email' placeholder="Your new email address" />
+    <label class="account__label">Retype New Email Address</label>
+    <input type='email' class="account__input" required="required" name='retyped_email' placeholder="Retype your new email address" />
+    <div class='account__error js-error'></div>
+    <button type='submit' class='btn'>Save</button>
+  </form>
+
+  <h2 class="account__title">Change Password</h2>
+  <form class="account__form js-change-password">
+    <label class="account__label">Current Password</label>
+    <input type='password' class="account__input" required="required" name='current_password' placeholder="Your current password" />
+    <label class="account__label">New Password</label>
+    <input type='password' class="account__input" required="required" name='new_password' placeholder="Your new password" />
+    <label class="account__label">Retype New Password</label>
+    <input type='password' class="account__input" required="required" name='retyped_password' placeholder="Retype your new password" />
+    <div class='account__error js-error'></div>
+    <button type='submit' class='btn'>Save</button>
+  </form>
+
+<h2 class="account__title">PayPal</h2>
+  <form class="account__form js-change-paypal">
+    <label class="account__label">PayPal Email Address</label>
+    <input type='email' class="account__input" required="required" name='current_paypal' placeholder="Your PayPal email address" />
+    <div class='account__error js-error'></div>
+    <button type='submit' class='btn'>Save</button>
+  </form>
 </div>
-
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="/js/main.js"></script>
-<script src="/js/course-controller.js"></script>
+<script src="/js/account-controller.js"></script>
 
 </body>
 </html>

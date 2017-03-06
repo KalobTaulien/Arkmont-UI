@@ -69,12 +69,13 @@
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: $secondary-background-color;
-
-  // Alternating styles when there are sibling .course__section elements
-  &:nth-child(odd) {
-    background-color: $primary-background-color;
-  }
 }
+
+// Alternating styles when there are sibling .course__section elements
+.course__section:nth-child(odd) {
+  background-color: $primary-background-color;
+}
+
 
 .interestbox__icon {
   display: block;

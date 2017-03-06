@@ -1,0 +1,90 @@
+
+.account {
+  display: block;
+  width: 50%;
+  margin: 0 auto 50px;
+}
+
+.account__form {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.account__title {
+  border-bottom: 1px solid $arkmont-red;
+  padding: 10px 0;
+}
+
+.account__label {
+  font-weight: bold;
+  display: block;
+  margin: 15px 0 5px;
+  font-size: 14px;
+}
+
+.account__input {
+  display: block;
+  width: 100%;
+  margin: 5px 0 15px;
+  box-sizing: border-box;
+  border: 1px solid $arkmont-red;
+  padding: 5px;
+  background-color: $primary-background-color;
+  outline: 0;
+  color: #fff;
+}
+
+.account__helptext {
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+// If the helptext comes right after an input area, move it up a smidge.
+.account__input + .account__helptext {
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
+.account__error {
+  background-color: $arkmont-red;
+  color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0;
+  overflow: hidden;
+  height: 0;
+  max-height: 0;
+  transition: padding 250ms, margin 250ms, height 250ms, max-height 250ms;
+}
+
+.account__error--visible {
+  padding: 10px;
+  margin: 5px 0 15px;
+  height: auto;
+  max-height: 300px;
+}
+
+.account__modallink {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+
+@media (max-width: $bp-lg) {
+  .account {
+    width: 70%;
+  }
+}
+@media (max-width: $bp-md) {
+  .account {
+    width: 85%;
+  }
+}
+@media (max-width: $bp-ms) {
+  .account {
+    width: 90%;
+  }
+}

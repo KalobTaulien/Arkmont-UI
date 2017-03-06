@@ -1,6 +1,16 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits.
 
+### Mar. 4, 2017
+- Added Profile, "Teachers Area", Sign Out, My Account, My Courses to all pages (in the navs)
+- Added account page where emails, paypal and passwords can be changed.
+- Added "My Courses" page as `account-courses.html`. It's essentially the home page, but only one row.
+- Added `data-enrolled` attribute to carousel tiles. If set to `true` the button CTA text will change to "Open Course" (from "Take This Course"). This sends a different message.
+- Profile can be edited on `profile-edit.html`. We removed the "gender" option because it's really not necessary.
+- Student and teacher profile pages both have a slide-down alert at the top of the page that brings the user to their `profile-edit.html` page. This should be removed and only applied when the user is on their own profile page.
+- Added "Teachers Area" page. This page is a list of courses a teacher is currently teaching on Arkmont. It's a wall of tiles that you cannot interact with. If there is only one course, the site will auto-redirect the teacher to manage their course, and they will not even see this page.
+- Started working on the course management areas.
+
 ### Mar. 3, 2017
 - Quizzes! We have functioning quizzes now.
 - Quizzes come with keyboard support. Keys 1-9 answer (check) answers, left arrow moves back a question, right arrow moves forward a question.

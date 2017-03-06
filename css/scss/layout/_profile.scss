@@ -68,6 +68,21 @@
   }
 }
 
+.profile__edit {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  height: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: padding 450ms, margin 450ms, height 450ms, max-height 450ms;
+}
+
+.profile__edit--visible {
+  padding: 0 15px 15px;
+  height: auto;
+  max-height: 100px;
+}
 
 
 @media (max-width: $bp-md) {

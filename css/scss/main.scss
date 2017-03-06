@@ -14,6 +14,9 @@
 @import 'base/scrollbars';
 @import 'base/setup';
 
+a {
+  color: inherit;
+}
 // Required before additional styling.
 @import 'extras/videojs';
 
@@ -38,12 +41,15 @@
 @import 'modules/notifications';
 @import 'modules/image_preloader';
 @import 'modules/flexboxes';
+@import 'modules/account';
 
 // PAGES - Full pages that need to be broken down later.
 // ==========================================================================
 
 @import 'pages/course_landing_page';
 @import 'pages/course_quiz_page';
+@import 'pages/teachers_area';
+@import 'pages/course_manager';
 
 // EXTRAS - Helpful styles
 // ==========================================================================
@@ -53,7 +59,9 @@
 .rate__label {
 	display: inline-block;
 	width: 30%;
-	border:1px solid red;
 	padding: 5px;
 	font-size: 16px;
 }
+
+
+

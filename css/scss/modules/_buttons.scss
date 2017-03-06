@@ -8,10 +8,9 @@
   padding: 7px 12px;
   transition: all 250ms;
   background-color: transparent;
-  margin-right: 2px;
-  margin-left: 0;
   cursor: pointer;
   outline: none;
+  margin: 5px 5px 5px 0;
 
   &:hover:not(:disabled) {
     background-color: $arkmont-red;
@@ -21,6 +20,11 @@
   &--lg {
     padding: 12px 18px;
     font-size: 17px;
+  }
+
+  &--sm {
+    padding: 5px 9px;
+    font-size: 13px;
   }
 
   &--link {
@@ -50,11 +54,6 @@
       border: 2px solid $arkmont-red;
     }
   }
-}
-
-.btn+.btn {
-  margin-left: 5px;
-  margin-right: 5px;
 }
 
 .btn--no-underline,

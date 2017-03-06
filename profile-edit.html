@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/css/ie.css" />
 </head>
 
-<body class="quiz" data-lesson-type='quiz' data-lesson-id='sample-url-for-lesson-id' data-course-id='sample-url-for-course-id'>
+<body class="course-landing">
 
 <nav class="nav">
 
@@ -31,13 +31,13 @@
             </li>
             <li class="mobile__separator"></li>
             <li class="mobile__item mobile__item--active">
-                <a href='javascript: void(0);'>Home</a>
+                <a href='/'>Home</a>
             </li>
             <li class="mobile__item">
-                <a href='javascript: void(0);'>Search</a>
+                <a href='/'>Search</a>
             </li>
             <li class="mobile__item mobile__item--dropdown">
-                <a href='javascript: void(0);' class="js-open-mobile-submenu">Categories</a>
+                <a href='/' class="js-open-mobile-submenu">Categories</a>
                 <ul class="mobile__dropdown">
                     <li class="mobile__dropitem">
                         <a href='/category-page.html'>3D</a>
@@ -66,12 +66,12 @@
                 </ul>
             </li>
             <li class="mobile__item">
-                <a href='javascript: void(0);'>Sign Out</a>
+                <a href="/logout.html">Sign Out</a>
             </li>
         </ul>
     </div>
 
-    <a href='javascript: void(0);' class="mobile__trigger">
+    <a href='/' class="mobile__trigger">
         <i class='fa fa-bars'></i>
     </a>
 
@@ -81,7 +81,7 @@
 
     <!-- Categories -->
     <div class="nav__dropdown">
-        <a href='javascript: void(0);' class="dropdown__trigger" data-menu-open='false'>
+        <a href='/' class="dropdown__trigger" data-menu-open='false'>
             Categories
         </a>
         <ul class="dropdown__menu">
@@ -115,7 +115,7 @@
 
     <!-- Account settings menu -->
     <div class="nav__dropdown nav__dropdown--right">
-        <a href='javascript: void(0);' class="dropdown__trigger">
+        <a href='/' class="dropdown__trigger">
             John Doe
         </a>
         <ul class="dropdown__menu">
@@ -139,9 +139,9 @@
     </div>
 
     <!-- Notification menu -->
-    <!-- Add .notification_dropdown-active to the .notification__dropdown element to make it "active" and stick out -->
+    <!-- Add .notification_dropdown--active to the .notification__dropdown element to make it "active" and stick out -->
     <div class="nav__dropdown nav__dropdown--right notification__dropdown">
-        <a href='javascript: void(0);' class="dropdown__trigger dropdown__trigger--no-caret">
+        <a href='/' class="dropdown__trigger dropdown__trigger--no-caret">
             <span class="notification__icon"></span>
         </a>
         <ul class="dropdown__menu">
@@ -160,59 +160,74 @@
 
 </nav>
 
-<div class="lesson__quiz">
-  <div class="quiz__cover">
-    <div class="quiz__inner">
-      <form method='POST' class='quiz__form js-quiz-form'>
-        <div class='quiz__container js-quiz-container'>
-          <div class='quiz__box quiz__box--left'>
-            <a href='#prev' class='quiz__button quiz__button--prev quiz__button--hidden js-prev-question'>
-              <i class='fa fa-chevron-left'></i>
-            </a>
-          </div>
-          <div class='quiz__box quiz__box--main js-main-quiz-box'>
-            <div class="quiz__question quiz__question--centered js-question-intro">
-              <h1>Name of this quiz</h1>
-              <p>You are <em>not</em> being timed.</p>
-              <p>Do your best, even if it takes you longer.</p>
-              <p>
-                <a href='#start' class='btn btn--lg js-start-quiz'>
-                  Start Quiz
-                </a>
-              </p>
-            </div>
-          </div>
-          <div class='quiz__box quiz__box--right'>
-            <a href='#next' class='quiz__button quiz__button--next quiz__button--hidden js-next-question'>
-              <i class='fa fa-chevron-right'></i>
-            </a>
-          </div>
-        </div>
-        <div class="quiz__error js-question-error">
-          <!-- Error text in here -->
-        </div>
-        <div class="quiz__mobileactions quiz__mobileactions--not-started">
-          <div class="mobile__action--left">
-            <a href='#prev' class="js-prev-question">
-              <i class='fa fa-chevron-left mobile__chevron'></i> Prev
-            </a>
-          </div>
-          <div class="mobile__action--right">
-            <a href='#next' class="js-next-question">
-              Next <i class='fa fa-chevron-right mobile__chevron'></i>
-            </a>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+<div class="account">
+  <h1>Edit Profile</h1>
+
+  <h2 class="account__title">Teacher</h2>
+  <form class="account__form js-change-teacher-status">
+    <label class="account__label">Teacher Status</label>
+    <input type='text' class="account__input" maxlength="250" name='teacher_status' placeholder="One sentence to describe you as a teacher." />
+    <p class="account__helptext">
+      One sentence to describe you as a teacher. 250 letter limit.
+    </p>
+    <label class="account__label">Teacher Description</label>
+    <input type='text' class="account__input" maxlength="500" name='teacher_description' placeholder="A short description about you as a teacher. 500 letter limit." />
+    <p class="account__helptext">
+      A short description about you as a teacher. 500 letter limit.
+    </p>
+    <div class='account__error js-error'></div>
+    <button type='submit' class='btn'>Save</button>
+  </form>
+
+  <h2 class="account__title">You Address</h2>
+  <form class="account__form js-change-address">
+    <label class="account__label">City</label>
+    <input type='text' class="account__input" name='address_city' placeholder="Your city" />
+    <label class="account__label">State/Province</label>
+    <input type='text' class="account__input" name='address_state' placeholder="Your region" />
+    <label class="account__label">Country</label>
+    <select class="account__input" name="address_country">
+      <option value='' selected='selected' disabled='disabled'>-- Select Country --</option>
+      <option value='US'>United States</option>
+      <option value='CA'>Canada</option>
+      <option value='MX'>Mexico</option>
+      <option value=''>Etc...</option>
+    </select>
+    <div class='account__error js-error'></div>
+    <button type='submit' class='btn'>Save</button>
+  </form>
+
+  <h2 class="account__title">Links</h2>
+  <form class="account__form js-change-links">
+    <label class="account__label">Website</label>
+    <input type='url' class="account__input" name='links_website' placeholder="Your website" />
+    <p class="account__helptext">ie. https://yourname.com/</p>
+    <label class="account__label">Facebook Username</label>
+    <input type='text' class="account__input" name='links_facebook' placeholder="Your Facebook username" />
+    <p class="account__helptext">ie. my.username</p>
+    <label class="account__label">Twitter</label>
+    <input type='text' class="account__input" name='links_twitter' placeholder="Your Twitter handle" />
+    <p class="account__helptext">ie. @Username</p>
+    <label class="account__label">LinkedIn</label>
+    <input type='url' class="account__input" name='links_linkedin' placeholder="Your LinkedIn URL" />
+    <p class="account__helptext">ie. https://linkedin.com/in/username</p>
+    <div class='account__error js-error'></div>
+    <button type='submit' class='btn'>Save</button>
+  </form>
+
+  <h2 class="account__title">About</h2>
+  <form class="account__form js-change-about">
+    <label class="account__label">Tell everyone about yourself</label>
+    <textarea class="account__input" name='about' rows='6' placeholder="Tell everyone about yourself"></textarea>
+    <p class="account__helptext">Basic HTML enabled. <a href='#' class='account__modallink js-open-supported-html'>See which elements are supported.</a></p>
+    <div class='account__error js-error'></div>
+    <button type='submit' class='btn'>Save</button>
+  </form>
+
 </div>
-
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="/js/main.js"></script>
-<script src="/js/course-controller.js"></script>
-
+<script src="/js/account-controller.js"></script>
 </body>
 </html>

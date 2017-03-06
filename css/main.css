@@ -616,6 +616,10 @@ textarea {
   }
 }
 
+a {
+  color: inherit;
+}
+
 .video-js .vjs-menu-button-inline.vjs-slider-active,
 .video-js .vjs-menu-button-inline:focus,
 .video-js .vjs-menu-button-inline:hover,
@@ -2580,6 +2584,22 @@ textarea {
   opacity: 1;
 }
 
+.profile__edit {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  height: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: padding 450ms, margin 450ms, height 450ms, max-height 450ms;
+}
+
+.profile__edit--visible {
+  padding: 0 15px 15px;
+  height: auto;
+  max-height: 100px;
+}
+
 @media (max-width: 810px) {
   .certificate__img {
     width: 180px;
@@ -3411,10 +3431,9 @@ textarea {
   padding: 7px 12px;
   transition: all 250ms;
   background-color: transparent;
-  margin-right: 2px;
-  margin-left: 0;
   cursor: pointer;
   outline: none;
+  margin: 5px 5px 5px 0;
 }
 
 .btn:hover:not(:disabled) {
@@ -3425,6 +3444,11 @@ textarea {
 .btn--lg {
   padding: 12px 18px;
   font-size: 17px;
+}
+
+.btn--sm {
+  padding: 5px 9px;
+  font-size: 13px;
 }
 
 .btn--link {
@@ -3453,11 +3477,6 @@ textarea {
 .btn--cta:hover {
   background-color: #8c1515;
   border: 2px solid #8c1515;
-}
-
-.btn + .btn {
-  margin-left: 5px;
-  margin-right: 5px;
 }
 
 .btn--no-underline,
@@ -3803,6 +3822,95 @@ textarea {
 @media (max-width: 810px) {
   .boxes--md-reverse {
     flex-direction: column-reverse;
+  }
+}
+
+.account {
+  display: block;
+  width: 50%;
+  margin: 0 auto 50px;
+}
+
+.account__form {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.account__title {
+  border-bottom: 1px solid #8c1515;
+  padding: 10px 0;
+}
+
+.account__label {
+  font-weight: bold;
+  display: block;
+  margin: 15px 0 5px;
+  font-size: 14px;
+}
+
+.account__input {
+  display: block;
+  width: 100%;
+  margin: 5px 0 15px;
+  box-sizing: border-box;
+  border: 1px solid #8c1515;
+  padding: 5px;
+  background-color: #0e0f11;
+  outline: 0;
+  color: #fff;
+}
+
+.account__helptext {
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.account__input + .account__helptext {
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
+.account__error {
+  background-color: #8c1515;
+  color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 0;
+  overflow: hidden;
+  height: 0;
+  max-height: 0;
+  transition: padding 250ms, margin 250ms, height 250ms, max-height 250ms;
+}
+
+.account__error--visible {
+  padding: 10px;
+  margin: 5px 0 15px;
+  height: auto;
+  max-height: 300px;
+}
+
+.account__modallink {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 1024px) {
+  .account {
+    width: 70%;
+  }
+}
+
+@media (max-width: 810px) {
+  .account {
+    width: 85%;
+  }
+}
+
+@media (max-width: 617px) {
+  .account {
+    width: 90%;
   }
 }
 
@@ -4304,6 +4412,63 @@ textarea {
   }
 }
 
+.teachersarea {
+  margin: 80px auto;
+}
+
+.teachersarea__container {
+  padding: 0 35px;
+  text-align: center;
+}
+
+.teachersarea__container .tile {
+  text-align: left;
+}
+
+.manager {
+  width: 90%;
+  margin: 10px auto 50px;
+}
+
+.manager__sections {
+  border-right: 1px solid #24272D;
+}
+
+.manager__category {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+  vertical-align: middle;
+  margin: 15px 5px 5px 0;
+}
+
+.manager__category--lg {
+  font-size: 20px;
+}
+
+.manager__list {
+  list-style: none;
+  padding: 5px 5px 5px 20px;
+  margin: 5px 5px 28px 5px;
+  font-size: 14px;
+}
+
+.manager__list li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.manager__list a:not(.btn) {
+  text-decoration: none;
+  transition: color 250ms;
+  display: block;
+  padding: 2px 5px 2px 0;
+}
+
+.manager__list a:not(.btn):hover {
+  color: #8c8c15;
+}
+
 .inline {
   display: inline;
 }
@@ -4311,6 +4476,10 @@ textarea {
 .bred,
 [bred] {
   border: 1px solid red !important;
+}
+
+.p-20 {
+  padding: 20px;
 }
 
 .text--small {
@@ -4339,7 +4508,6 @@ textarea {
 .rate__label {
   display: inline-block;
   width: 30%;
-  border: 1px solid red;
   padding: 5px;
   font-size: 16px;
 }

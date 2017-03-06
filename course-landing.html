@@ -1,410 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-	<!-- VideoJS -->
-	<link href="https://vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
+    <!-- VideoJS -->
+    <link href="https://vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" href="css/main.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/ie.css" />
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/ie.css" />
 </head>
 
 <body class="course-landing">
 
 <nav class="nav">
 
-	<!-- Mobile nav -->
-	<div class="mobile__nav">
-		<ul class="mobile__menu">
-			<li class="mobile__item">
-				<a href='/PLACEHOLDER'>My Profile</a>
-			</li>
-			<li class="mobile__item">
-				<a href='/PLACEHOLDER'>My Account</a>
-			</li>
-			<li class="mobile__item">
-				<a href='/PLACEHOLDER'>My Courses</a>
-			</li>
-			<li class="mobile__item">
-				<a href='/PLACEHOLDER'>Teachers Area</a>
-			</li>
-			<li class="mobile__separator"></li>
-			<li class="mobile__item mobile__item--active">
-				<a href='/'>Home</a>
-			</li>
-			<li class="mobile__item">
-				<a href='/'>Search</a>
-			</li>
-			<li class="mobile__item mobile__item--dropdown">
-				<a href='/' class="js-open-mobile-submenu">Categories</a>
-				<ul class="mobile__dropdown">
-					<li class="mobile__dropitem">
-						<a href='/category-page.html'>3D</a>
-					</li>
-					<li class="mobile__dropitem">
-						<a href='/category-page.html'>Apps</a>
-					</li>
-					<li class="mobile__dropitem">
-						<a href='/category-page.html'>Computer Science</a>
-					</li>
-					<li class="mobile__dropitem">
-						<a href='/category-page.html'>Design</a>
-					</li>
-					<li class="mobile__dropitem">
-						<a href='/category-page.html'>Development Tools</a>
-					</li>
-					<li class="mobile__dropitem">
-						<a href='/category-page.html'>Programming</a>
-					</li>
-					<li class="mobile__dropitem">
-						<a href='/category-page.html'>Science</a>
-					</li>
-					<li class="mobile__dropitem">
-						<a href='/category-page.html'>Web Development</a>
-					</li>				
-				</ul>
-			</li>
-			<li class="mobile__item">
-				<a href='/'>Sign Out</a>
-			</li>
-		</ul>
-	</div>
+    <!-- Mobile nav -->
+    <div class="mobile__nav">
+        <ul class="mobile__menu">
+            <li class="mobile__item">
+                <a href="/profile-student.html">My Profile</a>
+            </li>
+            <li class="mobile__item">
+                <a href='/account.html'>My Account</a>
+            </li>
+            <li class="mobile__item">
+                <a href='/account-courses.html'>My Courses</a>
+            </li>
+            <li class="mobile__item">
+                <a href='/teachers-area.html'>Teachers Area</a>
+            </li>
+            <li class="mobile__separator"></li>
+            <li class="mobile__item mobile__item--active">
+                <a href='/'>Home</a>
+            </li>
+            <li class="mobile__item">
+                <a href='/'>Search</a>
+            </li>
+            <li class="mobile__item mobile__item--dropdown">
+                <a href='/' class="js-open-mobile-submenu">Categories</a>
+                <ul class="mobile__dropdown">
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>3D</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Apps</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Computer Science</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Design</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Development Tools</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Programming</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Science</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Web Development</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="mobile__item">
+                <a href="/logout.html">Sign Out</a>
+            </li>
+        </ul>
+    </div>
 
-	<a href='/' class="mobile__trigger">
-		<i class='fa fa-bars'></i>
-	</a>
+    <a href='/' class="mobile__trigger">
+        <i class='fa fa-bars'></i>
+    </a>
 
-	<a href="/" class="nav__logo">
-		Arkmont
-	</a>
+    <a href="/" class="nav__logo">
+        Arkmont
+    </a>
 
-	<!-- Categories -->
-	<div class="nav__dropdown">
-		<a href='/' class="dropdown__trigger" data-menu-open='false'>
-			Categories
-		</a>
-		<ul class="dropdown__menu">
-			<li class="dropdown__item">
-				<a href='/category-page.html'>3D</a>
-			</li>
-			<li class="dropdown__item">
-				<a href='/category-page.html'>Apps</a>
-			</li>
-			<li class="dropdown__item">
-				<a href='/category-page.html'>Computer Science</a>
-			</li>
-			<li class="dropdown__item">
-				<a href='/category-page.html'>Design</a>
-			</li>
-			<li class="dropdown__item">
-				<a href='/category-page.html'>Development Tools</a>
-			</li>
-			<li class="dropdown__item">
-				<a href='/category-page.html'>Programming</a>
-			</li>
-			<li class="dropdown__item">
-				<a href='/category-page.html'>Science</a>
-			</li>
-			<li class="dropdown__item">
-				<a href='/category-page.html'>Web Development</a>
-			</li>
-		</ul>
-	</div>
-
-
-	<!-- Account settings menu -->
-	<div class="nav__dropdown nav__dropdown--right">
-		<a href='/' class="dropdown__trigger">
-			John Doe
-		</a>
-		<ul class="dropdown__menu">
-			<li class="dropdown__item">
-				<a href='/PLACEHOLDER'>My Profile</a>
-			</li>
-			<li class="dropdown__item">
-				<a href='/PLACEHOLDER'>My Account</a>
-			</li>
-			<li class="dropdown__item">
-				<a href='/PLACEHOLDER'>My Courses</a>
-			</li>
-			<li class="dropdown__item">
-				<a href='/PLACEHOLDER'> Teachers Area</a>
-			</li>
-			<li class="dropdown__separator"></li>
-			<li class="dropdown__item">
-				<a href='/PLACEHOLDER'>Sign Out</a>
-			</li>
-		</ul>
-	</div>
-
-	<!-- Notification menu -->
-	<!-- Add .notification_dropdown--active to the .notification__dropdown element to make it "active" and stick out -->
-	<div class="nav__dropdown nav__dropdown--right notification__dropdown">
-		<a href='/' class="dropdown__trigger dropdown__trigger--no-caret">
-			<span class="notification__icon"></span>
-		</a>
-		<ul class="dropdown__menu">
-			<li class="dropdown__item">
-				<a href='/PLACEHOLDER'>Some longer notification here</a>
-			</li>
-		</ul>
-	</div>
+    <!-- Categories -->
+    <div class="nav__dropdown">
+        <a href='/' class="dropdown__trigger" data-menu-open='false'>
+            Categories
+        </a>
+        <ul class="dropdown__menu">
+            <li class="dropdown__item">
+                <a href='/category-page.html'>3D</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Apps</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Computer Science</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Design</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Development Tools</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Programming</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Science</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Web Development</a>
+            </li>
+        </ul>
+    </div>
 
 
-	<!-- Search menu -->
-	<form action="/search" method="get" class="nav__form nav__form--right" role="search" id="search">
-		<input name="q" placeholder="Search" type="text" class="nav__input" value="" />
-		<button type='submit' class="nav__submit"></button>
-	</form>
+    <!-- Account settings menu -->
+    <div class="nav__dropdown nav__dropdown--right">
+        <a href='/' class="dropdown__trigger">
+            John Doe
+        </a>
+        <ul class="dropdown__menu">
+            <li class="dropdown__item">
+                <a href="/profile-student.html">My Profile</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/account.html'>My Account</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/account-courses.html'>My Courses</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/teachers-area.html'>Teachers Area</a>
+            </li>
+            <li class="dropdown__separator"></li>
+            <li class="dropdown__item">
+                <a href="/logout.html">Sign Out</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Notification menu -->
+    <!-- Add .notification_dropdown--active to the .notification__dropdown element to make it "active" and stick out -->
+    <div class="nav__dropdown nav__dropdown--right notification__dropdown">
+        <a href='/' class="dropdown__trigger dropdown__trigger--no-caret">
+            <span class="notification__icon"></span>
+        </a>
+        <ul class="dropdown__menu">
+            <li class="dropdown__item">
+                <a href='/PLACEHOLDER'>Some longer notification here</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- Search menu -->
+    <form action="/search" method="get" class="nav__form nav__form--right" role="search" id="search">
+        <input name="q" placeholder="Search" type="text" class="nav__input" value="" />
+        <button type='submit' class="nav__submit"></button>
+    </form>
 
 </nav>
 
 
 <div class="row__outer row__outer--visible">
-	<div class="preview__container">
-		<div class="preview__section preview__section--left">
-			<div class="course__preview">
-				<a href="#" class="preview__title">
-					<!-- The name of a really long course in here -->
-					The name of a really long course in here
-				</a>
-				<div class="preview__content">
-					<div class="preview__rating" data-rating="4.5">
-						<i class='fa fa-star'></i> 
-						<i class='fa fa-star'></i> 
-						<i class='fa fa-star'></i> 
-						<i class='fa fa-star'></i> 
-						<i class='fa fa-star-half'></i> 
-					</div>
-					<div class="preview__lists">
-						<div class="preview__teachers">
-							<p class="inline">Teachers: </p>
-							<ul class="preview__list">
-								<!-- preview__item's CANNOT have spaces, otherwise the styling won't add the comma's in the right places -->
-								<li class="preview__item"><a href='#' class="preview__url">Mr. Matt</a></li>
-								<li class="preview__item"><a href='#' class="preview__url">Mr. Smith</a></li>
-							</ul>
-						</div>
-						<div class="preview__about">
-							<p class="inline">About: </p>
-							<ul class="preview__list">
-								<li class="preview__item">2.5 hours</li>
-								<li class="preview__item">22 lessons</li>
-								<li class="preview__item">5 quizzes</li>
-								<li class="preview__item">Certificate of Completion</li>
-							</ul>
-						</div>
-						<div class="preview__certificate">
-							<p class="inline">Certificate of Completion Offered</p>
-							<ul class="preview__list">
-								<li class="preview__item">
-									<i class='fa fa-certificate'></i>	
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="preview__description">
-						<p>We're excited to be refreshing the Foundations series. This is an intro to GitHub &amp; Git, including basic command line functionality, GUIs, the .git folder, and social coding. Join the GitHub Training team as they share feature demos, tips and techniques for effective daily Git and GitHub use. These videos teach workflow efficiencies that allow people to more effectively collaborate and build amazing software products together.</p>
+    <div class="preview__container">
+        <div class="preview__section preview__section--left">
+            <div class="course__preview">
+                <a href="#" class="preview__title">
+                    <!-- The name of a really long course in here -->
+                    The name of a really long course in here
+                </a>
+                <div class="preview__content">
+                    <div class="preview__rating" data-rating="4.5">
+                        <i class='fa fa-star'></i>
+                        <i class='fa fa-star'></i>
+                        <i class='fa fa-star'></i>
+                        <i class='fa fa-star'></i>
+                        <i class='fa fa-star-half'></i>
+                    </div>
+                    <div class="preview__lists">
+                        <div class="preview__teachers">
+                            <p class="inline">Teachers: </p>
+                            <ul class="preview__list">
+                                <!-- preview__item's CANNOT have spaces, otherwise the styling won't add the comma's in the right places -->
+                                <li class="preview__item"><a href='#' class="preview__url">Mr. Matt</a></li>
+                                <li class="preview__item"><a href='#' class="preview__url">Mr. Smith</a></li>
+                            </ul>
+                        </div>
+                        <div class="preview__about">
+                            <p class="inline">About: </p>
+                            <ul class="preview__list">
+                                <li class="preview__item">2.5 hours</li>
+                                <li class="preview__item">22 lessons</li>
+                                <li class="preview__item">5 quizzes</li>
+                                <li class="preview__item">Certificate of Completion</li>
+                            </ul>
+                        </div>
+                        <div class="preview__certificate">
+                            <p class="inline">Certificate of Completion Offered</p>
+                            <ul class="preview__list">
+                                <li class="preview__item">
+                                    <i class='fa fa-certificate'></i>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="preview__description">
+                        <p>We're excited to be refreshing the Foundations series. This is an intro to GitHub &amp; Git, including basic command line functionality, GUIs, the .git folder, and social coding. Join the GitHub Training team as they share feature demos, tips and techniques for effective daily Git and GitHub use. These videos teach workflow efficiencies that allow people to more effectively collaborate and build amazing software products together.</p>
 
-						<p><strong>What's GitHub?</strong><br />GitHub is how people build software. More than 10 million people use GitHub to discover, fork, and contribute to over 25 million projects.
-					</div>
-					<div class="preview__cta">
-						<a href='#' class="preview__take-course btn btn--lg js-enroll">
-							Take this course
-						</a>
-						<em class="text--small">30 Money Back Guarantee</em>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="preview__section preview__image preview__section--right">
-			<div class="preview__video" style='display:none;'>
-				<div class="embed-responsive embed-responsive-16by9">
-                  	<video id="video_0" class="embed-responsive-item video-player video-js vjs-default-skin" poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-3.jpg">
-                        <p class="vjs-no-js">
-                          	To view this video please enable JavaScript, and consider upgrading to a web browser that
-                          	<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                        </p>
-                  	</video>
+                        <p><strong>What's GitHub?</strong><br />GitHub is how people build software. More than 10 million people use GitHub to discover, fork, and contribute to over 25 million projects.
+                    </div>
+                    <div class="preview__cta">
+                        <a href='#' class="preview__take-course btn btn--lg js-enroll">
+                            Take this course
+                        </a>
+                        <em class="text--small">30 Money Back Guarantee</em>
+                    </div>
                 </div>
-			</div>
-			<!-- Always include the image. If there is a video, the image will be removed -->
-			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-3.jpg" class="course__img preview__img" />
-		</div>
-	</div>
+            </div>
+        </div>
+        <div class="preview__section preview__image preview__section--right">
+            <div class="preview__video" style='display:none;'>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <video id="video_0" class="embed-responsive-item video-player video-js vjs-default-skin" poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-3.jpg">
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a web browser that
+                            <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                        </p>
+                    </video>
+                </div>
+            </div>
+            <!-- Always include the image. If there is a video, the image will be removed -->
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-3.jpg" class="course__img preview__img" />
+        </div>
+    </div>
 </div>
 
 <div class="teachers">
-	<div class="teacher__row">
-		<div class="teacher__row--left">
-			<img src="/img/placeholders/matt-smith.png" class="teacher__img" />
-		</div>
-		<div class="teacher__row--right">
-			<div class="teacher__name">
-				<strong>Taught by:</strong>
-				Mr. Matt Smith, The Eleventh Doctor!
-			</div>
-			<div class="teacher__description">
-				He is played by Matt Smith, in three series as well as seven specials, over an almost four-year-long period.
-				Not affiliated with Arkmont, sadly.
-			</div>
-		</div>
-	</div>
-	<div class="teacher__row">
-		<div class="teacher__row--left">
-			<img src="/img/placeholders/matt-smith.png" class="teacher__img" />
-		</div>
-		<div class="teacher__row--right">
-			<div class="teacher__name">
-				<strong>Taught by:</strong>
-				<a href='/PLACEHOLDER' class="teacher__url">Mr. Matt Smith,</a> The Eleventh Doctor!
-			</div>
-			<div class="teacher__description">
-				He is played by Matt Smith, in three series as well as seven specials, over an almost four-year-long period.
-				Not affiliated with Arkmont, sadly.
-			</div>
-		</div>
-	</div>
+    <div class="teacher__row">
+        <div class="teacher__row--left">
+            <img src="/img/placeholders/matt-smith.png" class="teacher__img" />
+        </div>
+        <div class="teacher__row--right">
+            <div class="teacher__name">
+                <strong>Taught by:</strong>
+                Mr. Matt Smith, The Eleventh Doctor!
+            </div>
+            <div class="teacher__description">
+                He is played by Matt Smith, in three series as well as seven specials, over an almost four-year-long period.
+                Not affiliated with Arkmont, sadly.
+            </div>
+        </div>
+    </div>
+    <div class="teacher__row">
+        <div class="teacher__row--left">
+            <img src="/img/placeholders/matt-smith.png" class="teacher__img" />
+        </div>
+        <div class="teacher__row--right">
+            <div class="teacher__name">
+                <strong>Taught by:</strong>
+                <a href='/PLACEHOLDER' class="teacher__url">Mr. Matt Smith,</a> The Eleventh Doctor!
+            </div>
+            <div class="teacher__description">
+                He is played by Matt Smith, in three series as well as seven specials, over an almost four-year-long period.
+                Not affiliated with Arkmont, sadly.
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="course__section">
-	<h3 class="section__title">What You'll Learn</h3>
-	<div class="section__subtitle">By the end of this course you'll know:</div>
-	<div class="interestboxes__container">
-		<div class="interestbox">
-			<i class='fa fa-code interestbox__icon'></i>
-			<span class="interestbox__title">
-				HTML
-			</span>
-		</div>
-	</div>
+    <h3 class="section__title">What You'll Learn</h3>
+    <div class="section__subtitle">By the end of this course you'll know:</div>
+    <div class="interestboxes__container">
+        <div class="interestbox">
+            <i class='fa fa-code interestbox__icon'></i>
+            <span class="interestbox__title">
+                HTML
+            </span>
+        </div>
+    </div>
 </div>
 
 <div class="course__section">
-	<h3 class="section__title">What You Need</h3>
-	<div class="section__subtitle">This is what need you get started with this course:</div>
-	<ul class="section__list">
-		<li>A steady internet connection</li>
-		<li>A GitHub account</li>
-		<li>A computer is probably a good idea</li>
-	</ul>
+    <h3 class="section__title">What You Need</h3>
+    <div class="section__subtitle">This is what need you get started with this course:</div>
+    <ul class="section__list">
+        <li>A steady internet connection</li>
+        <li>A GitHub account</li>
+        <li>A computer is probably a good idea</li>
+    </ul>
 
-	<div class="course__cta">
-		<a href='/' class="btn btn--cta">Enroll Now</a>
-	</div>
+    <div class="course__cta">
+        <a href='/' class="btn btn--cta">Enroll Now</a>
+    </div>
 </div>
 
 
 <div class="course__section">
-	<div class="course__content">
-		<div class="content__box content__box--left">
-			<h3 class="section__title">Description</h3>
-			<div class="course__description">
-				<p>
-					<b>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b><br />
-					Curabitur felis erat, rutrum vel scelerisque eu, volutpat at massa. Phasellus a nisl nunc. Donec purus purus, gravida a elit vitae, fringilla posuere metus. Nulla lacinia ornare mauris, sed vulputate velit euismod vel. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum sit amet sem ut justo auctor malesuada. Pellentesque convallis, dui sodales finibus volutpat, felis justo condimentum diam, sed fermentum arcu leo vitae massa. Proin dapibus tortor nunc, sed efficitur neque volutpat sed. Proin gravida metus et tincidunt ultricies. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur tortor odio, interdum non suscipit a, ullamcorper vitae risus. Pellentesque cursus, ligula eu mollis accumsan, dolor orci ullamcorper orci, eu fringilla justo mauris vel odio.
-				</p>
+    <div class="course__content">
+        <div class="content__box content__box--left">
+            <h3 class="section__title">Description</h3>
+            <div class="course__description">
+                <p>
+                    <b>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b><br />
+                    Curabitur felis erat, rutrum vel scelerisque eu, volutpat at massa. Phasellus a nisl nunc. Donec purus purus, gravida a elit vitae, fringilla posuere metus. Nulla lacinia ornare mauris, sed vulputate velit euismod vel. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum sit amet sem ut justo auctor malesuada. Pellentesque convallis, dui sodales finibus volutpat, felis justo condimentum diam, sed fermentum arcu leo vitae massa. Proin dapibus tortor nunc, sed efficitur neque volutpat sed. Proin gravida metus et tincidunt ultricies. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur tortor odio, interdum non suscipit a, ullamcorper vitae risus. Pellentesque cursus, ligula eu mollis accumsan, dolor orci ullamcorper orci, eu fringilla justo mauris vel odio.
+                </p>
 
-				<p>
-					<b>Mauris cursus, turpis quis vulputate consectetur.</b><br />
-					Magna velit vulputate tellus, in scelerisque felis magna egestas libero. Vivamus accumsan maximus eros, a placerat dui bibendum id. Fusce sit amet pellentesque lacus, ut fringilla arcu. Sed placerat lorem eget augue sagittis, ut convallis dolor varius. Vestibulum vestibulum vehicula augue. Donec semper eros sit amet nunc malesuada fringilla. Aenean dapibus ut ligula sed tristique. Phasellus ullamcorper aliquet quam ac bibendum. Mauris at mattis mi. Praesent ut nisi eu ex consectetur scelerisque nec nec ipsum.
-				</p>
-			</div>
-		</div>
-		<!-- Hide by default; show if there are reviews -->
-		<div class="content__box content__box--right js-review-box" style='display:none;'>
-			<h3 class="section__title">Latest Reviews</h3>
-			<div class="course__reviews" data-mimic-height=".course__description">
-				<div class="review">
-					<div class='review__col review__col--left'>
-						<img src="https://avatars0.githubusercontent.com/u/4743971?v=3&s=460" class="review__img" />
-					</div>
-					<div class='review__col review__col--right'>
-						<div class="review__name">
-							<a href='/student/PLACEHOLDER' class="review__profile">
-								John Doe
-							</a>
-						</div>
-						<div class="review__rating" data-review-rating='4.5'></div>
-						<div class="review__message">
-							I thought this course was really well done. But if I could add anything it would
-							be a final project. Other than that it's really well done.
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                <p>
+                    <b>Mauris cursus, turpis quis vulputate consectetur.</b><br />
+                    Magna velit vulputate tellus, in scelerisque felis magna egestas libero. Vivamus accumsan maximus eros, a placerat dui bibendum id. Fusce sit amet pellentesque lacus, ut fringilla arcu. Sed placerat lorem eget augue sagittis, ut convallis dolor varius. Vestibulum vestibulum vehicula augue. Donec semper eros sit amet nunc malesuada fringilla. Aenean dapibus ut ligula sed tristique. Phasellus ullamcorper aliquet quam ac bibendum. Mauris at mattis mi. Praesent ut nisi eu ex consectetur scelerisque nec nec ipsum.
+                </p>
+            </div>
+        </div>
+        <!-- Hide by default; show if there are reviews -->
+        <div class="content__box content__box--right js-review-box" style='display:none;'>
+            <h3 class="section__title">Latest Reviews</h3>
+            <div class="course__reviews" data-mimic-height=".course__description">
+                <div class="review">
+                    <div class='review__col review__col--left'>
+                        <img src="https://avatars0.githubusercontent.com/u/4743971?v=3&s=460" class="review__img" />
+                    </div>
+                    <div class='review__col review__col--right'>
+                        <div class="review__name">
+                            <a href='/student/PLACEHOLDER' class="review__profile">
+                                John Doe
+                            </a>
+                        </div>
+                        <div class="review__rating" data-review-rating='4.5'></div>
+                        <div class="review__message">
+                            I thought this course was really well done. But if I could add anything it would
+                            be a final project. Other than that it's really well done.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="course__cta">
-		<a href='/' class="btn btn--cta">Take This Course</a>
-	</div>
+    <div class="course__cta">
+        <a href='/' class="btn btn--cta">Take This Course</a>
+    </div>
 </div>
 
 <div class="course__section">
-	<h3 class="section__title">Syllabus</h3>
-	<div class="section__subtitle">All the lessons in this course</div>
-	<div class="syllabus__container">
-		<ul class="syllabus">
-		<!-- Module #1 -->
-			<!-- Module title -->
-			<li class="syllabus__module">Module Name</li>
-			<li class="syllabus__module syllabus__module--description">A short module description</li>
-			<!-- End module title -->
-			<li class="syllabus__lesson syllabus__lesson--preview">
-				<div class="js-preview-lesson" data-lesson-id='0'>
-					<i class='fa fa-play'></i>
-					<span class="lesson__name">Learn about this one particular subject with a dedicated video</span>
-					<span class="lesson__info">6:21</span>
-				</div>
-			</li>
-			<li class="syllabus__lesson syllabus__lesson--preview">
-				<div class="js-preview-lesson" data-lesson-id='1'>
-					<i class='fa fa-play'></i>
-					<span class="lesson__name">A second video lesson with preview</span>
-					<span class="lesson__info">3:45</span>
-				</div>
-			</li>
-			<li class="syllabus__lesson">
-				<div class="js-preview-lesson" data-lesson-id='2'>
-					<i class='fa fa-headphones'></i>
-					<span class="lesson__name">Test your knowledge with this quiz!</span>
-					<span class="lesson__info">21 questions</span>
-				</div>
-			</li>
-			<li class="syllabus__lesson syllabus__lesson--document" data-lesson-id='3'>
-				<div class="js-preview-lesson" data-lesson-id='2'>
-					<i class='fa fa-file-text-o'></i>
-					<span class="lesson__name">Reading this article will really help you</span>
-					<span class="lesson__info">3 pages</span>
-				</div>
-			</li>
-		<!-- End module #1 -->
+    <h3 class="section__title">Syllabus</h3>
+    <div class="section__subtitle">All the lessons in this course</div>
+    <div class="syllabus__container">
+        <ul class="syllabus">
+        <!-- Module #1 -->
+            <!-- Module title -->
+            <li class="syllabus__module">Module Name</li>
+            <li class="syllabus__module syllabus__module--description">A short module description</li>
+            <!-- End module title -->
+            <li class="syllabus__lesson syllabus__lesson--preview">
+                <div class="js-preview-lesson" data-lesson-id='0'>
+                    <i class='fa fa-play'></i>
+                    <span class="lesson__name">Learn about this one particular subject with a dedicated video</span>
+                    <span class="lesson__info">6:21</span>
+                </div>
+            </li>
+            <li class="syllabus__lesson syllabus__lesson--preview">
+                <div class="js-preview-lesson" data-lesson-id='1'>
+                    <i class='fa fa-play'></i>
+                    <span class="lesson__name">A second video lesson with preview</span>
+                    <span class="lesson__info">3:45</span>
+                </div>
+            </li>
+            <li class="syllabus__lesson">
+                <div class="js-preview-lesson" data-lesson-id='2'>
+                    <i class='fa fa-headphones'></i>
+                    <span class="lesson__name">Test your knowledge with this quiz!</span>
+                    <span class="lesson__info">21 questions</span>
+                </div>
+            </li>
+            <li class="syllabus__lesson syllabus__lesson--document" data-lesson-id='3'>
+                <div class="js-preview-lesson" data-lesson-id='2'>
+                    <i class='fa fa-file-text-o'></i>
+                    <span class="lesson__name">Reading this article will really help you</span>
+                    <span class="lesson__info">3 pages</span>
+                </div>
+            </li>
+        <!-- End module #1 -->
 
-			<li class="syllabus__module">Module Name</li>
-			<li class="syllabus__module syllabus__module--description">A short module description</li>
-			<li class="syllabus__lesson syllabus__lesson--video" data-lesson-id='4'>
-				<span class="lesson__name">Lesson Name</span>
-				<span class="lesson__info">6:21</span>
-			</li>
-			<li class="syllabus__lesson syllabus__lesson--quiz" data-lesson-id='5'>
-				<span class="lesson__name">Lesson Name</span>
-				<span class="lesson__info">21 questions</span>
-			</li>
-			<li class="syllabus__lesson syllabus__lesson--document" data-lesson-id='6'>
-				<span class="lesson__name">Lesson Name</span>
-				<span class="lesson__info">3 pages</span>
-			</li>
-		</ul>
-	</div>
+            <li class="syllabus__module">Module Name</li>
+            <li class="syllabus__module syllabus__module--description">A short module description</li>
+            <li class="syllabus__lesson syllabus__lesson--video" data-lesson-id='4'>
+                <span class="lesson__name">Lesson Name</span>
+                <span class="lesson__info">6:21</span>
+            </li>
+            <li class="syllabus__lesson syllabus__lesson--quiz" data-lesson-id='5'>
+                <span class="lesson__name">Lesson Name</span>
+                <span class="lesson__info">21 questions</span>
+            </li>
+            <li class="syllabus__lesson syllabus__lesson--document" data-lesson-id='6'>
+                <span class="lesson__name">Lesson Name</span>
+                <span class="lesson__info">3 pages</span>
+            </li>
+        </ul>
+    </div>
 
-	<div class="course__cta">
-		<a href='/' class="btn btn--cta">Get Your Certificate <i class='fa fa-certificate'></i></a>
-	</div>
+    <div class="course__cta">
+        <a href='/' class="btn btn--cta">Get Your Certificate <i class='fa fa-certificate'></i></a>
+    </div>
 </div>
 
 
@@ -412,8 +412,8 @@
 <script src="https://vjs.zencdn.net/5.8/video.js"></script>
 <!-- If you'd like to support IE8 -->
 <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-<script src="js/video-js-plugins.js"></script>
-<script src="js/video-js-resolutions.js"></script>
+<script src="/js/video-js-plugins.js"></script>
+<script src="/js/video-js-resolutions.js"></script>
 <script>
 // Clone the interestbox several times.
 for (let i = 1; i <= 7; i++) {
@@ -423,12 +423,12 @@ for (let i = 1; i <= 7; i++) {
 
 // Make several copies of the sample review.
 for (let i = 1; i <= 10; i++) {
-	let clone = $('.review:first').clone();
-	$('.course__reviews').append(clone);
+    let clone = $('.review:first').clone();
+    $('.course__reviews').append(clone);
 }
 </script>
-<script src="js/main.js"></script>
-<script src="js/course-landing-page.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/course-landing-page.js"></script>
 
 </body>
 </html>

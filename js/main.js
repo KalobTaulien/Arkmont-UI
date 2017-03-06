@@ -1,3 +1,10 @@
+// Used for escaping html chars into plaintext.
+function escape (html) {
+  return html
+   .replace(/</g, '&lt;')
+   .replace(/>/g, '&gt;')
+   .replace(/&/g, '&amp;');
+}
 // Set a cookie
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
@@ -125,7 +132,7 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
 };
 
 // A jQuery button plugin.
-// Use: 
+// Use:
 //      const btn = $(selector).button();   // Starts the loading animation
 //            btn.button('reset');          // Gives the original button content back and re-enables the button
 //            btn.button('saved');          // Fades out animation, fades in saved text, then called .button('saved');
@@ -440,7 +447,7 @@ $.fn.button = function(action, saveWording) {
 
       // Click event: When an unactivated and unused tile is clicked, ajax the course information
       // By 'unused' we mean it's not being used as a next or prev tile
-      .on('click', '.tile:not(.tile--active):not(.tile--has-prev):not(.tile--has-next)', function acctivateTile(e) {
+      .on('click', '.tile:not(.tile--active):not(.tile--has-prev):not(.tile--has-next):not(.tile-open-course)', function acctivateTile(e) {
         carousel.log('Tile clicked');
 
         // Close any opened menus
@@ -480,11 +487,20 @@ $.fn.button = function(action, saveWording) {
           $row.addClass('row__inner--active');
 
           // Replace areas inside the $preview element.
-          $preview.find('.preview__title').text(dataObj.name).attr('href', dataObj.url);
-          $preview.find('.preview__rating').html(formStarsFromRating(dataObj.rating)).attr('data-rating', dataObj.rating);
+          $preview.find('.preview__title')
+            .text(dataObj.name)
+            .attr('href', dataObj.url);
+          $preview.find('.preview__rating')
+            .html(formStarsFromRating(dataObj.rating))
+            .attr('data-rating', dataObj.rating);
           $preview.find('.preview__description').html(dataObj.description);
           $preview.find('.course__img').attr('src', dataObj.image);
           $preview.find('.preview__take-course').attr('href', dataObj.url);
+          if ($t.attr('data-enrolled') === 'true') {
+            $preview.find('.preview__take-course').text('Open Course');
+          } else {
+            $preview.find('.preview__take-course').text('Take This Course');
+          }
 
           // Create new list HTML and overwrite the .preview__lists element
           let html = '';
@@ -632,7 +648,13 @@ $.fn.button = function(action, saveWording) {
         }
         return e.preventDefault();
       }) // End on click event
-
+      // Click event: When a tile is clicked but should immediately open a different page isntead of a preview section.
+      .on('click', '.tile-open-course[data-course-url]', function acctivateTile(e) {
+        e.stopImmediatePropagation();
+        const url = $(this).data('course-url');
+        window.location = url;
+        return e.prevent();
+      })
       // Click event: When an active tile is clicked, take this action.
       .on('click', '.tile--active', function deactivateTile(e) {
         carousel.log('Active tile clicked');

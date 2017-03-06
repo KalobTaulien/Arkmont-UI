@@ -6,14 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-    <!-- VideoJS -->
-    <link href="https://vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
-
     <link rel="stylesheet" type="text/css" href="/css/main.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/ie.css" />
 </head>
 
-<body>
+<body class="course-landing" data-course-id='sample-url-for-course-id'>
 
 <!-- If this is an IE11 browser, CSS will enable this. -->
 <div class="ie__warning">
@@ -243,186 +240,140 @@
 
 </nav>
 
-
-
-<div class="row__master">
-    <div class="row__container">
-        <h2 class="row__category">Category Name</h2>
-        <div class="row__inner row__inner--images-loading">
-            <div class="tile" data-id='1' data-enrolled='false'>
-                <div class="tile__media">
-                    <img alt="" class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-1.jpg">
-                </div>
-                <div class="tile__details">
-                    <div class="tile__content">
-                        <div class="tile__title">
-                            A longer course name can go here
-                        </div>
-                        <div class="tile__rating" data-rating="4.5">
-                            <i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half'></i>
-                        </div>
-                        <div class="tile__description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur, leo vel finibus luctus, urna diam condimentum velit, quis viverra enim tellus non lacus.
-                        </div>
-                        <div class="tile__chevron">
-                            <svg class="tile__chevron--down" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3,70.4545455 L7.68805325,75 L50,33.9750755 L92.3119468,75 L97,70.4545455 L50.1194675,25 L3,70.4545455 Z" transform="translate(50.000000, 50.000000) scale(-2, -1) translate(-50.000000, -50.000000)"></path></svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row__outer">
-            <div class="preview__container">
-                <div class="preview__section preview__section--left">
-                    <div class="course__preview">
-                        <a href="#" class="preview__title">
-                            <!-- The name of a really long course in here -->
+<div class="row__outer row__outer--visible">
+    <div class="header__bg--0" style="background-image: url('https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_lg.jpg');"></div>
+    <div class="header__bg--1"></div>
+    <div class="preview__container">
+        <div class="preview__section preview__section--left">
+            <div class="course__preview">
+                <a href="#" class="preview__title">
+                    <!-- The name of a really long course in here -->
+                    The name of a really long course in here
+                </a>
+                <div class="preview__content">
+                  <p>
+                    Published. Course length: 03:10:48. Total Lessons: 50. Total Quizes: 2.
+                  </p>
+                    <div class="preview__cta">
+                        <a href='/course-manager-listing.html' class="btn">
+                            Published &amp; Listed
                         </a>
-                        <div class="preview__content">
-                            <div class="preview__rating" data-rating="5">
-                                <!--
-                                    <i class='fa fa-star'></i>
-                                    <i class='fa fa-star'></i>
-                                    <i class='fa fa-star'></i>
-                                    <i class='fa fa-star'></i>
-                                    <i class='fa fa-star'></i>
-                                -->
-                            </div>
-                            <div class="preview__lists">
-                                <div class="preview__teachers">
-                                    <p class="inline"><!-- Teachers: --></p>
-                                    <ul class="preview__list">
-                                        <!-- preview__item's CANNOT have spaces, otherwise the styling won't add the comma's in the right places -->
-                                        <li class="preview__item"><!-- <a href='#' class="preview__url">Mr. Matt</a> --></li>
-                                        <li class="preview__item"><!-- <a href='#' class="preview__url">Mr. Smith</a> --></li>
-                                    </ul>
-                                </div>
-                                <div class="preview__about">
-                                    <p class="inline"><!-- About: --></p>
-                                    <ul class="preview__list">
-                                        <li class="preview__item"><!-- Less than an hour --></li>
-                                        <li class="preview__item"><!-- 22 lessons --></li>
-                                        <li class="preview__item"><!-- Certificate of Completion --></li>
-                                    </ul>
-                                </div>
-                                <div class="preview__certificate">
-                                    <p class="inline">Certificate</p>
-                                    <ul class="preview__list">
-                                        <li class="preview__item">
-                                            <i class='fa fa-certificate'></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="preview__description">
-                                <!-- Preview description in here -->
-                            </div>
-                            <div class="preview__cta">
-                                <a href='#' class="preview__take-course btn btn--lg">
-                                    Take this course
-                                </a>
-                            </div>
-                        </div>
+                        <a href='/course-landing.html' class="btn">
+                            View Front Page
+                        </a>
+                        <a href='/course-syllabus.html' class="btn">
+                            View Course as Student
+                        </a>
                     </div>
-                </div>
-                <div class="preview__section preview__image preview__section--right">
-                    <div class="preview__video"></div>
-                    <img src="" class="course__img preview__img" />
                 </div>
             </div>
         </div>
-    </div><!-- End .row__container -->
-</div><!-- End .row__master -->
+        <div class="preview__section preview__image preview__section--right"></div>
+    </div>
+    <ul class="course__otherpages">
+        <li>
+            <a href='/course-manager.html' class='other__details other__details--active'>
+                Course Manager
+            </a>
+        </li>
+        <li>
+            <a href='/course-manager-news.html' class='other__details'>
+                What's New
+            </a>
+        </li>
+        <li>
+            <a href='/course-manager-feedback.html' class='other__details'>
+                Feedback
+            </a>
+        </li>
+    </ul>
+</div>
 
-<footer class="footer">
-    <div class="footer__sm">
-        <a href="https://www.facebook.com/ArkmontSchool/">
-            <i class="fa fa-facebook"></i>
-        </a>
-        <a href="https://twitter.com/ArkmontSchool">
-            <i class="fa fa-twitter"></i>
-        </a>
+<div class="manager">
+  <div class="boxes">
+    <div class="box box--70 manager__sections">
+      <div class="p-20">
+        <h2>Course Manager</h2>
+        <div class="boxes">
+          <div class="box">
+            <h4 class="manager__category"><i class='fa fa-fw fa-circle-thin manager__icon'></i> General</h4>
+            <ul class="manager__list">
+              <li><a href='/couse-manager-details.html'>Detail Manager</a></li>
+              <li><a href='/couse-manager-syllabus.html'>Syllabus Manager</a></li>
+              <li><a href='/couse-manager-license.html'>License Manager</a></li>
+              <li><a href='/couse-manager-purchases.html'>Purchase Viewer</a></li>
+            </ul>
+
+            <h4 class="manager__category"><i class='fa fa-fw fa-columns'></i> Front Page</h4>
+            <ul class="manager__list">
+              <li><a href='/couse-manager-intro-video.html'>Introduction Video Manager</a></li>
+              <li><a href='/couse-manager-cover-image.html'>Cover Image Manager</a></li>
+              <li><a href='/couse-manager-description.html'>Course Description Manager</a></li>
+              <li><a href='/couse-manager-seo.html'>Course SEO Manager</a></li>
+            </ul>
+
+          </div>
+          <div class="box">
+            <h4 class="manager__category"><i class='fa fa-fw fa-usd manager__icon'></i> Pricing</h4>
+            <ul class="manager__list">
+              <li><a href='/couse-manager-price.html'>Price Manager</a></li>
+              <li><a href='/couse-manager-coupons.html'>Coupon Manager</a></li>
+            </ul>
+            <h4 class="manager__category"><i class='fa fa-fw fa-graduation-cap manager__icon'></i> Students</h4>
+            <ul class="manager__list">
+              <li><a href='/couse-manager-students.html'>Student Viewer</a></li>
+              <li><a href='/couse-manager-requirements.html'>Requirement Manager</a></li>
+              <li><a href='/couse-manager-skills.html'>Acquired Skills Manager</a></li>
+            </ul>
+            <h4 class="manager__category"><i class='fa fa-fw fa-bullhorn manager__icon'></i> Announcements</h4>
+            <ul class="manager__list">
+              <li><a href='/couse-manager-announcements.html'>Announcement Manager</a></li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4 class="manager__category"><i class='fa fa-fw fa-list-alt manager__icon'></i> Reviews</h4>
+            <ul class="manager__list">
+              <li><a href='/couse-manager-reviews.html'>Review Manager</a></li>
+              <li><a href='/couse-manager-lesson-reviews.html'>Lesson Review Viewer</a></li>
+            </ul>
+            <h4 class="manager__category"><i class='fa fa-fw fa-university manager__icon'></i> Teachers</h4>
+            <ul class="manager__list">
+              <li><a href='/couse-manager-teachers.html'>Teacher Manager</a></li>
+              <li><a href='/couse-manager-teacher-assistants.html'>Teacher Assistant Manager</a></li>
+            </ul>
+            <h4 class="manager__category"><i class='fa fa-fw fa-bar-chart manager__icon'></i> Analytics</h4>
+            <ul class="manager__list">
+              <li><a href='/couse-manager-google-analytics.html'>Google</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <a href='/' class="footer__logo">
-        Arkmont
-    </a>
-    <div class="footer__links">
-        <a href='/login' class="footer__url">
-            Sign In
-        </a>
-        <a href='/become-a-teacher' class="footer__url">
-            Become a Teacher
-        </a>
-        <a href='https://medium.com/arkmont-teachers-lounge' class="footer__url">
-            Blog
-        </a>
-        <a href='/terms' class="footer__url">
-            Terms of Service
-        </a>
-        <a href='/privacy' class="footer__url">
-            Privacy Policy
-        </a>
-        <a href='/contact' class="footer__url">
-            Contact Us
-        </a>
+    <div class="box box--30">
+      <div class="p-20">
+        <h2>Tips</h2>
+        <ul class="manager__list">
+          <li>
+            To help you make the best courses you can, we've compiled and condensed a list of tips.
+          </li>
+          <li>
+            <a href='/course-manager-tips.html' class="btn btn--sm">View Tips</a>
+          </li>
+        </ul>
+        <h2>Teacher Resources</h2>
+        <ul class="manager__list">
+          <li><a href='/PLACEHOLDER'>A resource item can go here</a></li>
+          <li><a href='/PLACEHOLDER'>A resource item can go here</a></li>
+          <li><a href='/PLACEHOLDER'>A resource item can go here</a></li>
+        </ul>
+      </div>
     </div>
-</footer>
+  </div>
+</div>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://vjs.zencdn.net/5.8/video.js"></script>
-<!-- If you'd like to support IE8 -->
-<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-<script src="/js/video-js-plugins.js"></script>
-<script src="/js/video-js-resolutions.js"></script>
-
-<!-- Temporary script to give us more tiles without making the html markup super long -->
-<script>
-
-// Number of rows you want to test
-const rows = 5;
-// Number of tiles per row.
-const tilesPerRow = 14;
-// Tile images.
-const tiles = [ "https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-3.jpg",
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-2.jpg',
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-4.jpg',
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-5.jpg',
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-7.jpg',
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-9.jpg',
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-11.jpg',
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-12.jpg',
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-13.jpg',
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-14.jpg',
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-15.jpg',
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-16.jpg',
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-17.jpg',
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-18.jpg',
-                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-19.jpg',
-            ];
-// When jQ is ready to rock, start cloning!
-$(document).ready(function() {
-    // Make all the tiles in the first row
-    for(var i = 1; i < tilesPerRow; i++) {
-        var tile = $(".tile:first").clone();
-        tile.find('.tile__img:not(.tile__img--background)').attr('src', tiles[i]);
-        $('.tile:last').after(tile);
-    }
-
-    // Clone the first row with all its tiles.
-    for(var i = 1; i <= rows; i++) {
-        var row = $(".row__container:first").clone();
-        $('.row__container:last').after(row);
-    }
-
-    // For each tile, replace the [data-id]
-    $(".tile").each(function(i, elem) {
-        $(this).attr('data-id', (i+1))
-    })
-})
-</script>
-
-
-
 <script src="/js/main.js"></script>
+<script src="/js/course-manager.js"></script>
 </body>
 </html>
