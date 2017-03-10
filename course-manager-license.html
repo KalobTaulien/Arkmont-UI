@@ -291,85 +291,37 @@
 
 <div class="manager">
   <div class="boxes">
-    <div class="box box--70 manager__sections">
+    <div class="box">
       <div class="p-20">
-        <h2 class="manager__headline">Course Manager</h2>
-        <div class="boxes">
-          <div class="box">
-            <h4 class="manager__category"><i class='fa fa-fw fa-circle-thin manager__icon'></i> General</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-details.html'>Detail Manager</a></li>
-              <li><a href='/course-manager-syllabus.html'>Syllabus Manager</a></li>
-              <li><a href='/course-manager-license.html'>License Manager</a></li>
-              <li><a href='/course-manager-purchases.html'>Purchase Viewer</a></li>
-            </ul>
+        <ul class="manager__breadcrumb">
+          <li><a href='/course-manager.html'>Course Manager</a></li>
+          <li class="separator"></li>
+          <li>General</li>
+          <li class="separator"></li>
+          <li><a href='/course-manager-license.html'>License Manager</a></li>
+        </ul>
+        <p class="account__helptext">You can add a Creative Commons course license to let people know how they can interact with your course content. By default, your course does not have a Creative Commons license associated with it. For more information on Creative Commons licenses, <a href='https://creativecommons.org/licenses/' target='_blank'>click here.</a></p>
 
-            <h4 class="manager__category"><i class='fa fa-fw fa-columns'></i> Front Page</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-intro-video.html'>Introduction Video Manager</a></li>
-              <li><a href='/course-manager-cover-image.html'>Cover Image Manager</a></li>
-              <li><a href='/course-manager-description.html'>Course Description Manager</a></li>
-              <li><a href='/course-manager-seo.html'>Course SEO Manager</a></li>
-              <li><a href='/course-manager-requirements.html'>Requirement Manager</a></li>
-              <li><a href='/course-manager-skills.html'>Acquired Skills Manager</a></li>
-            </ul>
+        <!-- Start course management container -->
+        <div class="manager__container">
+          <form class="account__form js-change-license">
+            <label class="account__label">License Type</label>
+            <select class='account__input' required='required' name='course_license'>
+              <option value="Arkmont" selected="selected">Arkmont Standard</option>
+              <option value="CC-BY">CC BY</option>
+              <option value="CC-BY-SA">CC BY-SA</option>
+              <option value="CC-BY-ND">CC BY-ND</option>
+              <option value="CC-BY-NC">CC BY-NC</option>
+              <option value="CC-BY-NC-SA">CC BY-NC-SA</option>
+              <option value="CC-BY-NC-ND">CC BY-NC-ND</option>
+            </select>
 
-          </div>
-          <div class="box">
-            <h4 class="manager__category"><i class='fa fa-fw fa-usd manager__icon'></i> Pricing</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-price.html'>Price Manager</a></li>
-              <li><a href='/course-manager-coupons.html'>Coupon Manager</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw fa-graduation-cap manager__icon'></i> Students</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-students.html'>Student Viewer</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw fa-bullhorn manager__icon'></i> Announcements</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-announcements.html'>Announcement Manager</a></li>
-            </ul>
-          </div>
-          <div class="box">
-            <h4 class="manager__category"><i class='fa fa-fw fa-list-alt manager__icon'></i> Reviews</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-reviews.html'>Review Manager</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw fa-university manager__icon'></i> Teachers</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-teachers.html'>Teacher Manager</a></li>
-              <li><a href='/course-manager-teacher-assistants.html'>Teacher Assistant Manager</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw fa-bar-chart manager__icon'></i> Analytics</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-analytics-lessons.html'>Lesson Review Viewer</a></li>
-              <li><a href='/course-manager-analytics-google.html'>Google Analytics Manager</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw manager__icon'></i> Danger Zone</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-google-danger-zone.html'>Remove Course</a></li>
-            </ul>
-          </div>
+            <div class='account__error js-error'></div>
+            <button type='submit' class='btn'>Save</button>
+          </form>
+
         </div>
-      </div>
-    </div>
-    <div class="box box--30">
-      <div class="p-20">
-        <h2 class="manager__headline">Tips</h2>
-        <ul class="manager__list">
-          <li>
-            To help you make the best courses you can, we've compiled and condensed a list of tips.
-          </li>
-          <li>
-            <a href='/course-manager-tips.html' class="btn btn--sm">View Tips</a>
-          </li>
-        </ul>
-        <h2 class="manager__headline">Teacher Resources</h2>
-        <ul class="manager__list">
-          <li><a href='/PLACEHOLDER'>A resource item can go here</a></li>
-          <li><a href='/PLACEHOLDER'>A resource item can go here</a></li>
-          <li><a href='/PLACEHOLDER'>A resource item can go here</a></li>
-        </ul>
+        <!-- End course management container -->
       </div>
     </div>
   </div>

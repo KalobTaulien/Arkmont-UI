@@ -218,8 +218,7 @@
   <h2 class="account__title">About</h2>
   <form class="account__form js-change-about">
     <label class="account__label">Tell everyone about yourself</label>
-    <textarea class="account__input" name='about' rows='6' placeholder="Tell everyone about yourself"></textarea>
-    <p class="account__helptext">Basic HTML enabled. <a href='#' class='account__modallink js-open-supported-html'>See which elements are supported.</a></p>
+    <textarea class="account__input about-editor" name='about' rows='2' placeholder="Tell everyone about yourself"></textarea>
     <div class='account__error js-error'></div>
     <button type='submit' class='btn'>Save</button>
   </form>
@@ -227,7 +226,27 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="/js/trumbowyg.min.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/account-controller.js"></script>
+<script>
+$('.about-editor').trumbowyg({
+   btns: [
+        // ['viewHTML'],
+        ['formatting'],
+        'btnGrp-semantic',
+        // ['superscript', 'subscript'],
+        ['link'],
+        // ['insertImage'],
+        // 'btnGrp-justify',
+        'btnGrp-lists',
+        // ['horizontalRule'],
+        ['removeformat'],
+        // ['fullscreen']
+    ],
+  removeformatPasted: true,
+  autogrow: true,
+});
+</script>
 </body>
 </html>

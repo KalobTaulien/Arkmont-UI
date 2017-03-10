@@ -291,85 +291,30 @@
 
 <div class="manager">
   <div class="boxes">
-    <div class="box box--70 manager__sections">
+    <div class="box">
       <div class="p-20">
-        <h2 class="manager__headline">Course Manager</h2>
-        <div class="boxes">
-          <div class="box">
-            <h4 class="manager__category"><i class='fa fa-fw fa-circle-thin manager__icon'></i> General</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-details.html'>Detail Manager</a></li>
-              <li><a href='/course-manager-syllabus.html'>Syllabus Manager</a></li>
-              <li><a href='/course-manager-license.html'>License Manager</a></li>
-              <li><a href='/course-manager-purchases.html'>Purchase Viewer</a></li>
-            </ul>
+        <ul class="manager__breadcrumb">
+          <li><a href='/course-manager.html'>Course Manager</a></li>
+          <li class="separator"></li>
+          <li>Analytics</li>
+          <li class="separator"></li>
+          <li><a href='/course-manager-analytics-google.html'>Google Analytics Manager</a></li>
+        </ul>
+        <p class="account__helptext">If you want to see more data on your students, you can add your own Google Analytics Tracking ID.</p>
 
-            <h4 class="manager__category"><i class='fa fa-fw fa-columns'></i> Front Page</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-intro-video.html'>Introduction Video Manager</a></li>
-              <li><a href='/course-manager-cover-image.html'>Cover Image Manager</a></li>
-              <li><a href='/course-manager-description.html'>Course Description Manager</a></li>
-              <li><a href='/course-manager-seo.html'>Course SEO Manager</a></li>
-              <li><a href='/course-manager-requirements.html'>Requirement Manager</a></li>
-              <li><a href='/course-manager-skills.html'>Acquired Skills Manager</a></li>
-            </ul>
+        <!-- Start course management container -->
+        <div class="manager__container">
+          <form class="account__form js-change-google-analytics">
+            <label class="account__label">Google Tracking ID</label>
+            <input type="text" max="20" class="account__input" placeholder="ie. UA-12345678-1" name='course_ga' />
+            <p class="account__helptext">Your Google Tracking ID will have a format similar to this: UA-12345678-1</p>
 
-          </div>
-          <div class="box">
-            <h4 class="manager__category"><i class='fa fa-fw fa-usd manager__icon'></i> Pricing</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-price.html'>Price Manager</a></li>
-              <li><a href='/course-manager-coupons.html'>Coupon Manager</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw fa-graduation-cap manager__icon'></i> Students</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-students.html'>Student Viewer</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw fa-bullhorn manager__icon'></i> Announcements</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-announcements.html'>Announcement Manager</a></li>
-            </ul>
-          </div>
-          <div class="box">
-            <h4 class="manager__category"><i class='fa fa-fw fa-list-alt manager__icon'></i> Reviews</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-reviews.html'>Review Manager</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw fa-university manager__icon'></i> Teachers</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-teachers.html'>Teacher Manager</a></li>
-              <li><a href='/course-manager-teacher-assistants.html'>Teacher Assistant Manager</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw fa-bar-chart manager__icon'></i> Analytics</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-analytics-lessons.html'>Lesson Review Viewer</a></li>
-              <li><a href='/course-manager-analytics-google.html'>Google Analytics Manager</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw manager__icon'></i> Danger Zone</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-google-danger-zone.html'>Remove Course</a></li>
-            </ul>
-          </div>
+            <div class='account__error js-error'></div>
+            <button type='submit' class='btn'>Save</button>
+          </form>
+
         </div>
-      </div>
-    </div>
-    <div class="box box--30">
-      <div class="p-20">
-        <h2 class="manager__headline">Tips</h2>
-        <ul class="manager__list">
-          <li>
-            To help you make the best courses you can, we've compiled and condensed a list of tips.
-          </li>
-          <li>
-            <a href='/course-manager-tips.html' class="btn btn--sm">View Tips</a>
-          </li>
-        </ul>
-        <h2 class="manager__headline">Teacher Resources</h2>
-        <ul class="manager__list">
-          <li><a href='/PLACEHOLDER'>A resource item can go here</a></li>
-          <li><a href='/PLACEHOLDER'>A resource item can go here</a></li>
-          <li><a href='/PLACEHOLDER'>A resource item can go here</a></li>
-        </ul>
+        <!-- End course management container -->
       </div>
     </div>
   </div>

@@ -36,12 +36,14 @@ a {
 // MODULES - Re-usable site elements.
 // ==========================================================================
 
+@import 'modules/table';
 @import 'modules/buttons';
 @import 'modules/modal';
 @import 'modules/notifications';
 @import 'modules/image_preloader';
 @import 'modules/flexboxes';
 @import 'modules/account';
+@import 'modules/progress';
 
 // PAGES - Full pages that need to be broken down later.
 // ==========================================================================
@@ -55,6 +57,7 @@ a {
 // ==========================================================================
 
 @import 'extras/helpers';
+@import 'vendor/trumbowyg';
 
 .rate__label {
 	display: inline-block;
@@ -62,6 +65,7 @@ a {
 	padding: 5px;
 	font-size: 16px;
 }
+
 
 
 

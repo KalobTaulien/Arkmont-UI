@@ -1,0 +1,38 @@
+// Example (pug)
+//  .progress
+//    .progress-wrapper
+//      .progress-bar
+// Then change the .progress-bar's width to animate the progress bars
+.progress {
+  position: relative;
+}
+
+.progress-wrapper {
+  display: block;
+  position: relative;
+  min-height: 15px;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  transition: width 1000ms ease-in-out;
+  color: #fff;
+  font-size: 12px;
+  line-height: 20px;
+  height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  // Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0e0f11+0,2b1012+35,2b1012+35,8c1515+100
+  background: -moz-linear-gradient(left, rgba(14, 15, 17, 1) 0%, rgba(43, 16, 18, 1) 35%, rgba(43, 16, 18, 1) 35%, rgba(140, 21, 21, 1) 100%); // FF3.6-15
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(14, 15, 17, 1)), color-stop(35%, rgba(43, 16, 18, 1)), color-stop(35%, rgba(43, 16, 18, 1)), color-stop(100%, rgba(140, 21, 21, 1))); // Chrome4-9,Safari4-5
+  background: -webkit-linear-gradient(left, rgba(14, 15, 17, 1) 0%, rgba(43, 16, 18, 1) 35%, rgba(43, 16, 18, 1) 35%, rgba(140, 21, 21, 1) 100%); // Chrome10-25,Safari5.1-6
+  background: -o-linear-gradient(left, rgba(14, 15, 17, 1) 0%, rgba(43, 16, 18, 1) 35%, rgba(43, 16, 18, 1) 35%, rgba(140, 21, 21, 1) 100%); // Opera 11.10-11.50
+  background: -ms-linear-gradient(left, rgba(14, 15, 17, 1) 0%, rgba(43, 16, 18, 1) 35%, rgba(43, 16, 18, 1) 35%, rgba(140, 21, 21, 1) 100%); // IE10 preview
+  background: linear-gradient(to right, rgba(14, 15, 17, 1) 0%, rgba(43, 16, 18, 1) 35%, rgba(43, 16, 18, 1) 35%, rgba(140, 21, 21, 1) 100%); // W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0f11', endColorstr='#8c1515',GradientType=1 ); // IE6-9
+
+}

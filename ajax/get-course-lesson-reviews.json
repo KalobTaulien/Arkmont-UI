@@ -1,0 +1,20 @@
+{
+  "id": "123456789",
+  "keywords": [{
+    "term": "Helpful",
+    "total": 5,
+    "percent": 50
+  }, {
+    "term": "Too Short",
+    "total": 2,
+    "percent": 20
+  }, {
+    "term": "Not Helpful",
+    "total": 3,
+    "percent": 30
+  }, {
+    "term": "Not Helpful",
+    "total": 3,
+    "percent": 100
+  }]
+}

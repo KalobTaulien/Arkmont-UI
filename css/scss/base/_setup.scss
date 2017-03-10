@@ -55,6 +55,12 @@ textarea {
   display: none;
 }
 
+hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 
 @media( max-width: $bp-md) {
   .hidden__md {

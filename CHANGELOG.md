@@ -1,6 +1,24 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits.
 
+### Mar. 9, 2017
+- Changed all ajax pages to .json. We were just putting this off, we all knew it was json from the start.
+- Added `course-manager-details.html` page, which is an overview of all the actions a teacher can take on a course.
+- Simple breadcrumb added for the course management pages.
+- Course details can be modified. The page is `course-manager-details.html`
+- Course license can be changed. The page is `course-manager-license.html`
+- Course purchase viewer page was added. The page is `course-manager-purchases.html` and comes with pagination.
+- Course price manager page was added as `course-manager-price.html`
+- Course coupon manager page was added as `course-manager-coupons.html`. Coupons can be created and deactivated.
+- Course review manager page was added as `course-manager-reviews.html`. Reviews can be reported as "unfair" or "inappropriate".
+- Lesson review manager page was added as `course-manager-analytics-lessons.html`. Click on an option and you'll see the keywords that students have selected to describe the selected lesson.
+- Google Analytics manager page was added as `course-manager-analytics-google.html`.
+- Teacher Manager added as `course-manager-teachers.html`. Teachers can be added or removed. There will be a considerable amount of server-side validation.
+- Teacher Assistant Manager was added as `course-manager-teacher-assistants.html`. TA's can be added or removed.
+- Student Manager added as `course-manager-students.html`. Click on a student to see their name, email, total questions asked and total comments added. Yes, we said that right, you can see their email address. :)
+- Announcement Manager added as `course-manager-announcements.html`. New announcements can be added. With this addition comes our first WYSIWYG editor; [https://github.com/Alex-D/Trumbowyg](https://github.com/Alex-D/Trumbowyg) <- Pretty darn amazing, and very compact!
+- Added the Trumbowyg editor to `profile-edit.html` with js support.
+
 ### Mar. 4, 2017
 - Added Profile, "Teachers Area", Sign Out, My Account, My Courses to all pages (in the navs)
 - Added account page where emails, paypal and passwords can be changed.

@@ -22,8 +22,20 @@
   color: $arkmont-gold;
 }
 
+.text--red {
+  color: $arkmont-red;
+}
+
+.text--right {
+  text-align: right;
+}
+
 .float--right {
   float: right;
+}
+
+.cursor--pointer {
+  cursor: pointer;
 }
 
 .img__responsive {

@@ -291,85 +291,99 @@
 
 <div class="manager">
   <div class="boxes">
-    <div class="box box--70 manager__sections">
+    <div class="box">
       <div class="p-20">
-        <h2 class="manager__headline">Course Manager</h2>
-        <div class="boxes">
-          <div class="box">
-            <h4 class="manager__category"><i class='fa fa-fw fa-circle-thin manager__icon'></i> General</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-details.html'>Detail Manager</a></li>
-              <li><a href='/course-manager-syllabus.html'>Syllabus Manager</a></li>
-              <li><a href='/course-manager-license.html'>License Manager</a></li>
-              <li><a href='/course-manager-purchases.html'>Purchase Viewer</a></li>
-            </ul>
+        <ul class="manager__breadcrumb">
+          <li><a href='/course-manager.html'>Course Manager</a></li>
+          <li class="separator"></li>
+          <li>Students</li>
+          <li class="separator"></li>
+          <li><a href='/course-manager-students.html'>Student Manager</a></li>
+        </ul>
+        <p class="account__helptext">Add and remove your assistants. A Teachers Assistant (TA) does not have control over your course material. Their discussion with other students will be more noticeable and their status as a TA for your course will appear in discussions they participate in.</p>
 
-            <h4 class="manager__category"><i class='fa fa-fw fa-columns'></i> Front Page</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-intro-video.html'>Introduction Video Manager</a></li>
-              <li><a href='/course-manager-cover-image.html'>Cover Image Manager</a></li>
-              <li><a href='/course-manager-description.html'>Course Description Manager</a></li>
-              <li><a href='/course-manager-seo.html'>Course SEO Manager</a></li>
-              <li><a href='/course-manager-requirements.html'>Requirement Manager</a></li>
-              <li><a href='/course-manager-skills.html'>Acquired Skills Manager</a></li>
-            </ul>
+        <!-- Start course management container -->
+        <div class="manager__container">
+          <div class="account__form">
+            <!-- If there are no rows, you can add `style='display: none;'` to the table and JS will automatically show it when a coupon is created -->
+            <table class="table--bordered">
+              <thead>
+                <tr>
+                  <th width='40%'>Student Name</th>
+                  <th width='20%'>Enrollment Date</th>
+                  <th width='40%'>Progress</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="cursor--pointer js-student-details" data-student-id="1" data-opened="false">
+                  <td>John Doe</td>
+                  <td>Mar. 3, 2017</td>
+                  <td>
+                    <div class="progress">
+                      <div class="progress-wrapper">
+                        <div class="progress-bar" data-percent="10">
+                          10%
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="cursor--pointer js-student-details" data-student-id="2" data-opened="false">
+                  <td>Jane Doe</td>
+                  <td>Mar. 1, 2017</td>
+                  <td>
+                    <div class="progress">
+                      <div class="progress-wrapper">
+                        <div class="progress-bar" data-percent="90">
+                          90%
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="cursor--pointer js-student-details" data-student-id="3" data-opened="false">
+                  <td>Mr. Know-it-all</td>
+                  <td>Mar. 1, 2017</td>
+                  <td>
+                    <div class="progress">
+                      <div class="progress-wrapper">
+                        <div class="progress-bar" data-percent="100">
+                          100%
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Enrollment Date</th>
+                  <th>Progress</th>
+                </tr>
+              </tfoot>
+            </table>
 
-          </div>
-          <div class="box">
-            <h4 class="manager__category"><i class='fa fa-fw fa-usd manager__icon'></i> Pricing</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-price.html'>Price Manager</a></li>
-              <li><a href='/course-manager-coupons.html'>Coupon Manager</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw fa-graduation-cap manager__icon'></i> Students</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-students.html'>Student Viewer</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw fa-bullhorn manager__icon'></i> Announcements</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-announcements.html'>Announcement Manager</a></li>
-            </ul>
-          </div>
-          <div class="box">
-            <h4 class="manager__category"><i class='fa fa-fw fa-list-alt manager__icon'></i> Reviews</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-reviews.html'>Review Manager</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw fa-university manager__icon'></i> Teachers</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-teachers.html'>Teacher Manager</a></li>
-              <li><a href='/course-manager-teacher-assistants.html'>Teacher Assistant Manager</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw fa-bar-chart manager__icon'></i> Analytics</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-analytics-lessons.html'>Lesson Review Viewer</a></li>
-              <li><a href='/course-manager-analytics-google.html'>Google Analytics Manager</a></li>
-            </ul>
-            <h4 class="manager__category"><i class='fa fa-fw manager__icon'></i> Danger Zone</h4>
-            <ul class="manager__list">
-              <li><a href='/course-manager-google-danger-zone.html'>Remove Course</a></li>
-            </ul>
+            <div class="discussion__pagination">
+              <a href='/PLACEHOLDER' class="discussion__page discussion__page--prev">
+                <i class='fa fa-chevron-left'></i>
+              </a>
+              <a href='/PLACEHOLDER' class="discussion__page">
+                10
+              </a>
+              <a href='/PLACEHOLDER' class="discussion__page discussion__page--active">
+                11
+              </a>
+              <a href='/PLACEHOLDER' class="discussion__page">
+                12
+              </a>
+              <a href='/PLACEHOLDER' class="discussion__page discussion__page--next">
+                <i class='fa fa-chevron-right'></i>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="box box--30">
-      <div class="p-20">
-        <h2 class="manager__headline">Tips</h2>
-        <ul class="manager__list">
-          <li>
-            To help you make the best courses you can, we've compiled and condensed a list of tips.
-          </li>
-          <li>
-            <a href='/course-manager-tips.html' class="btn btn--sm">View Tips</a>
-          </li>
-        </ul>
-        <h2 class="manager__headline">Teacher Resources</h2>
-        <ul class="manager__list">
-          <li><a href='/PLACEHOLDER'>A resource item can go here</a></li>
-          <li><a href='/PLACEHOLDER'>A resource item can go here</a></li>
-          <li><a href='/PLACEHOLDER'>A resource item can go here</a></li>
-        </ul>
+        <!-- End course management container -->
       </div>
     </div>
   </div>

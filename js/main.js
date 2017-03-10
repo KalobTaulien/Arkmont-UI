@@ -45,7 +45,7 @@ const ajax = function performAjax(
   alwaysCallback) {
   $.ajax({
     type: 'GET',
-    url: 'ajax/' + page + '.html',
+    url: 'ajax/' + page + '.json',
     data: object,
     dataType: 'json',
     async: true,

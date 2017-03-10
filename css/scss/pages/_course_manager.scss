@@ -3,8 +3,20 @@
   margin: 10px auto 50px;
 }
 
+.manager__container {}
+
+.manager__container--small {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .manager__sections {
-  border-right: 1px solid #24272D;
+  border-right: 1px solid $arkmont-red;
+}
+
+.manager__headline {
+  font-size: 24px;
+  margin-top: 5px;
 }
 
 .manager__category {
@@ -19,14 +31,12 @@
   font-size: 20px;
 }
 
-.manager__icon {
-}
-
+.manager__icon {}
 
 .manager__list {
   list-style: none;
   padding: 5px 5px 5px 20px;
-  margin: 5px 5px 28px 5px;
+  margin: 5px 5px 28px;
   font-size: 14px;
 
   li {
@@ -43,5 +53,110 @@
     &:hover {
       color: $arkmont-gold;
     }
+  }
+}
+
+.manager__breadcrumb {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #ecf0f1;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid $arkmont-red;
+
+  li {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    color: #ecf0f1;
+  }
+
+  li:first-child {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  a {
+    text-decoration: none;
+    color: #ecf0f1;
+    transition: color 250ms;
+
+    &:hover {
+      color: $arkmont-gold;
+    }
+  }
+
+  .separator::after {
+    content: ' // ';
+  }
+
+}
+
+
+// Extends some sections of the course-landing page.
+.lesson__published {
+  font-weight: light;
+  font-size: 12px;
+}
+
+.lesson__review {
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 2px;
+  text-decoration: none;
+  transition: color 250ms;
+
+  &:hover {
+    color: $arkmont-gold;
+  }
+}
+
+// .lr = Lesson Review
+.lr__responses {
+  float: right;
+  font-size: 14px;
+}
+.lr__item {
+  padding: 5px 0;
+}
+.lr__name {
+  display: inline-block;
+  width: 30%;
+  font-size: 14px;
+}
+
+.lr__bar {
+  display: inline-block;
+  width: 70%;
+}
+
+// Student Manager
+.student__details {
+  padding: 5px;
+  display: inline-block;
+  width: calc(49% - 10px);;
+
+  label {
+    font-weight: bold;
+  }
+}
+
+@media (max-width: $bp-ms) {
+  .lr__name,
+  .lr__bar {
+    display: block;
+    width: 100%;
+  }
+}
+@media (max-width: $bp-lg) {
+  .manager {
+    width: 100%;
+  }
+
+  .manager__headline {
+    margin-top: 0;
   }
 }

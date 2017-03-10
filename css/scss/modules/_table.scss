@@ -1,0 +1,37 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+  td, th {
+    margin: 0;
+    padding: 8px 5px;
+    text-align: left;
+    transition: height 250ms, max-height 250ms;
+  }
+
+  td {
+    font-size: 15px;
+  }
+
+  tbody tr:not(.no-hover):hover {
+    background-color: #1B1D21;
+  }
+
+}
+
+.table--bordered {
+  border:1px solid $arkmont-red;
+
+  th {
+    border-bottom: 1px solid $arkmont-red;
+    border-top: 1px solid $arkmont-red;
+  }
+}
+
+.table--striped {
+  tr:nth-child(even) {
+    background-color: #2b1012;
+  }
+}

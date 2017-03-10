@@ -1,0 +1,9 @@
+{
+  "studentId": "123456789",
+  "name": "John Doe",
+  "email": "john.doe@arkmont.com",
+  "enrollmentDate": "March 3, 2017",
+  "percentComplete": 30,
+  "totalQuestionsAsked": 3,
+  "totalCommentsProvided": 15
+}

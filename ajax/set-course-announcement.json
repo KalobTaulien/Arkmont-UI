@@ -1,0 +1,11 @@
+{
+  "id": "announcement-id-123",
+  "author": {
+    "name": "Kalob Taulien",
+    "username": "kalob.taulien"
+  },
+  "announcement": {
+    "id": "announcement-id-123",
+    "url": "/course-announcement.html"
+  }
+}

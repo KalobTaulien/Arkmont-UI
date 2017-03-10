@@ -1,35 +1,45 @@
 // Very generic flexbox setup.
 // We've written so many flex boxes we should have done this from the start.
 .boxes {
-	display: flex;
+  display: flex;
 }
 
 .boxes--padded {
-	.box {
-		padding: 10px;
-	}
+  .box {
+    padding: 10px;
+  }
 }
 
 .box {
-	flex: 1 1 50%;  // Can grow, can shrink, default 50%. Add modifiers later.
-	overflow: hidden;
+  flex: 1 1 auto;  // Can grow, can shrink;
+  overflow: hidden;
 }
 
 .box--10 {
-	flex: 0 0 10%;
+  flex: 0 0 10%;
 }
 
 .box--30 {
-	flex: 0 0 30%;
+  flex: 0 0 30%;
 }
 
 .box--70 {
-	flex: 0 0 70%;
+  flex: 0 0 70%;
 }
 
+@media (max-width: $bp-lg) {
+  .boxes {
+    flex-wrap: wrap;
+  }
+
+  .box--30,
+  .box--70 {
+    flex-basis: 100%;
+  }
+}
 
 @media (max-width: $bp-md) {
-	.boxes--md-reverse {
-		flex-direction: column-reverse;
-	}
+  .boxes--md-reverse {
+    flex-direction: column-reverse;
+  }
 }

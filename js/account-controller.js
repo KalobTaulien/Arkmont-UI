@@ -261,12 +261,10 @@
       e.preventDefault();
 
       const form = $(this);
-      const btn = $('button', form);
+      const btn = $('button[type="submit"]', form);
       const errorSelector = $('.js-error', form);
 
-      sender.about = $.trim($('[name="about"]', form).val());
-
-      console.log(sender);
+      sender.about = $.trim($('.about-editor', form).trumbowyg('html'));
 
       ajax('set-about', sender,
         function beforeAjaxRequest() {
@@ -288,31 +286,6 @@
 
         });
       return false;
-    })
-    // Click event: Open modal showing which html elements are enabled.
-    .on('click', '.js-open-supported-html', function (e) {
-      const modal = new Modal({
-        title: 'Supported HTML Elements',
-        message: 'HTML Elements you can use in the About section:' +
-                    '<ul>' +
-                      '<li>&lt;br /&gt;</li>' +
-                      '<li>&lt;p&gt;</li>' +
-                      '<li>&lt;ul&gt; and &lt;ol&gt;</li>' +
-                      '<li>&lt;li&gt;</li>' +
-                      '<li>&lt;b&gt; and &lt;strong&gt;</li>' +
-                      '<li>&lt;i&gt; and &lt;em&gt;</li>' +
-                      '<li>&lt;u&gt;</li>' +
-                      '<li>&lt;hr /&gt;</li>' +
-                      '<li>&lt;a&gt;</li>' +
-                    '</ul>',
-        buttons: {
-          close: {
-            label: 'Close',
-          },
-        },
-      });
-
-      return e.preventDefault();
     })
   });
 })();
