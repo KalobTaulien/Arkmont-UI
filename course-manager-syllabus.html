@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/css/ie.css" />
 </head>
 
-<body class="course-landing" data-course-id='sample-url-for-course-id'>
+<body class="course-landing" data-course-id='sample-url-for-course-id' data-course-id-rev="987654321">
 
 <!-- If this is an IE11 browser, CSS will enable this. -->
 <div class="ie__warning">
@@ -300,34 +300,310 @@
           <li class="separator"></li>
           <li><a href='/course-manager-syllabus.html'>Syllabus Manager</a></li>
         </ul>
-        <p class="account__helptext">Lessons and modules management for your course.</p>
+        <p class="account__helptext">Lesson and module management for your course.</p>
 
         <!-- Start course management container -->
         <div class="manager__container manager__container--small">
 
-<style>
-.lesson__item {
+          <div class="sman module--sortable">
+            <ul class="sman__module" data-module-id='1'>
+              <li class="sman__modulename">
+                <span class="sman__modulenumber">1</span>
+                Getting started
+              </li>
+              <li class="">
+                <ul class="lessons lesson--sortable">
+                  <li class="lesson draggable lesson--active lesson--unpublished" data-lesson-id='1' data-opened='true'>
+                    <span class="lesson__number">1</span>
+                    Video lesson example
+                    <span class="lesson__published">(Unpublished)</span>
+                    <i class="fa fa-arrows lesson__drag js-drag-lesson"></i>
 
-}
-.lesson__item:hover {
-  background-color: #151515;
-}
-</style>
-        <div class="" style='background-color: #8c1515; color: #fff; padding: 10px 15px;'>
-          <h3 style='font-size: 18px; font-weight: bold; margin: 0;'>Module Name</h3>
-          <p style='font-size: 15px; margin: 0;'>A short module description here</p>
-        </div>
-        <ul style='list-style: none; padding: 0; margin: 0;'>
-          <li style='padding: 10px 15px 12px; font-size: 15px;' class="lesson__item" data-lesson-id='1'>
-            <i class='fa fa-play-circle-o fa-fw'></i>
-            <span class="lesson__number">Lesson 1:</span>
-            <span class="lesson__name">The first lesson in this course</span>
-            <button class="btn btn--xs" style='float:right; margin: 0;'>
-              <i class="fa fa-caret-down"></i>
-            </button>
-          </li>
-        </ul>
+                    <div class="lesson__content">
+                      <div class="lesson__forms">
+                        <form class='lf__video js-upload-video-form'>
+                          <input type='file' class='js-video-selector' accept='.mp4' />
+                        </form>
+                        <form class='lf__video js-upload-extra-form'>
+                          <input type='file' class='js-file-selector' />
+                        </form>
+                      </div>
+                      <div class="lesson__box">
+                        <div class="boxes">
+                          <div class="box--70" style='padding-right: 10px;'>
+                            <h4 class="lesson__boxtitle">Video Details</h4>
+                            <div class="lesson__detail">Video name: <span class="js-video-file-name">00-introduction.mp4</span></div>
+                            <div class="lesson__detail">Video length: <span class="js-video-length">3:57</span></div>
+                            <div class="lesson__detail">
+                              <button class="btn js-upload-video">
+                                Upload New Video
+                              </button>
+                              <span class="js-video-upload-progress"></span>
+                              <span class="js-video-name"></span>
+                              <div class='account__error js-video-error'>test</div>
+                            </div>
+                          </div>
+                          <div class="box--30 hidden--lg">
+                            <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" style='width: 100%;' />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="boxes">
+                        <div class="box--70 lesson__box">
+                          <form class="js-save-lesson-text">
+                            <label class="label">Lesson Title</label>
+                            <input type="text" required="required" name="lesson_title" class="account__input" placeholder='Lesson Title' />
 
+                            <label class="label">Description</label>
+                            <textarea name="lesson_description" rows="2" class="account__input"></textarea>
+
+                            <div class='account__error js-error'></div>
+                            <button type="submit" class="btn btn--sm">Save</button>
+                          </form>
+                        </div>
+                        <div class="box--30 lesson__box">
+                          <label class="label label--full">Additional Files</label>
+                          <ul class="lessonfiles">
+                            <li>
+                              <a href='/' class="lessonfile" data-file-id='1'>
+                                <i class="fa fa-file-o"></i>
+                                Sample File Name.pdf
+                              </a>
+                            </li>
+                            <li>
+                              <a href='/' class="lessonfile" data-file-id='2'>
+                                <i class="fa fa-file-o"></i>
+                                Sample File Name 2.pdf
+                              </a>
+                            </li>
+                          </ul>
+                          <a href='/' class="btn btn--sm js-upload-file">
+                            Upload Supplemental File
+                          </a>
+                        </div>
+                      </div>
+                      <div class="boxes">
+                        <div class="box--70 lesson__box">
+                          <form >
+                            <label class="label">In-Video Questions</label>
+                            <ul class="lessonquestions">
+                              <li>
+                                <a href="#" class="lq__question js-edit-question" data-question-id='1'>A sample question about that thing?</a>
+                              </li>
+                              <li>
+                                <a href="#" class="btn btn--sm js-add-question"><i class="fa fa-plus"></i> Add new question</a>
+                              </li>
+                            </ul>
+                            <div class='account__error js-error'></div>
+                          </form>
+                        </div>
+                        <div class="box--30 lesson__box">
+                          <label class="label label--full">Lesson Settings</label>
+                          <ul class="lessonfiles">
+                            <li>
+                              <label>
+                                <input type='checkbox' class="js-publish-lesson" /> Lesson Published
+                              </label>
+                            </li>
+                            <li>
+                              <label>
+                                <input type='checkbox' class="js-free-preview" /> Free Preview
+                              </label>
+                            </li>
+                            <li>
+                              <label class="text--red">
+                                <a href="#" class="btn btn--text btn--danger js-delete-lesson" data-action='confirm'><i class="fa fa-times fa-fw"></i> Delete Lesson</a>
+                              </label>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="lesson draggable lesson--active" data-lesson-id='2' data-opened='true'>
+                    <span class="lesson__number">2</span>
+                    Document example lesson
+                    <span class="lesson__published">(Published)</span>
+                    <i class="fa fa-arrows lesson__drag js-drag-lesson"></i>
+
+                    <div class="lesson__content">
+                      <div class="lesson__forms">
+                        <form class='lf__video js-upload-extra-form'>
+                          <input type='file' class='js-file-selector' accept='.mp4' />
+                        </form>
+                      </div>
+                      <div class="boxes">
+                        <div class="box--70 lesson__box">
+                          <form class="js-save-lesson-text">
+                            <label class="label">Lesson Title</label>
+                            <input type="text" required="required" name="lesson_title" class="account__input" placeholder='Lesson Title' />
+
+                            <label class="label">Description</label>
+                            <textarea name="lesson_description" rows="2" class="account__input"></textarea>
+
+                            <div class='account__error js-error'></div>
+                            <button type="submit" class="btn btn--sm">Save</button>
+                          </form>
+                        </div>
+                        <div class="box--30 lesson__box">
+                          <label class="label label--full">Additional Files</label>
+                          <ul class="lessonfiles">
+                            <li>
+                              <a href='/' class="lessonfile" data-file-id='1'>
+                                <i class="fa fa-file-o"></i>
+                                Sample File Name.pdf
+                              </a>
+                            </li>
+                            <li>
+                              <a href='/' class="lessonfile" data-file-id='2'>
+                                <i class="fa fa-file-o"></i>
+                                Sample File Name 2.pdf
+                              </a>
+                            </li>
+                          </ul>
+                          <a href='/' class="btn btn--sm js-upload-file">
+                            Upload Supplemental File
+                          </a>
+                        </div>
+                      </div>
+                      <div class="boxes">
+                        <div class="box--70 lesson__box">
+                          <form class="js-save-lesson-body">
+                            <label class="label">Document Body</label>
+                            <textarea class="account__input js-wysiwyg" name='body' rows='2' placeholder="Add your document content"></textarea>
+
+                            <div class='account__error js-error'></div>
+                            <button type='submit' class='btn btn--sm'>Save Document</button>
+                          </form>
+                        </div>
+                        <div class="box--30 lesson__box">
+                          <label class="label label--full">Lesson Settings</label>
+                          <ul class="lessonfiles">
+                            <li>
+                              <label>
+                                <input type='checkbox' class="js-publish-lesson" /> Lesson Published
+                              </label>
+                            </li>
+                            <li>
+                              <label>
+                                <input type='checkbox' class="js-free-preview" /> Free Preview
+                              </label>
+                            </li>
+                            <li>
+                              <label class="text--red">
+                                <a href="#" class="btn btn--text btn--danger js-delete-lesson" data-action='confirm'><i class="fa fa-times fa-fw"></i> Delete Lesson</a>
+                              </label>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="lesson draggable lesson--active" data-lesson-id='3' data-opened='true'>
+                    <span class="lesson__number">3</span>
+                    Quiz example lesson
+                    <span class="lesson__published">(Published)</span>
+                    <i class="fa fa-arrows lesson__drag js-drag-lesson"></i>
+
+                    <div class="lesson__content">
+                      <div class="boxes">
+                        <div class="box--70 lesson__box">
+                          <form class="js-save-lesson-text">
+                            <label class="label">Quiz Title</label>
+                            <input type="text" required="required" name="lesson_title" class="account__input" placeholder='Lesson Title' />
+
+                            <label class="label">Description</label>
+                            <textarea name="lesson_description" rows="2" class="account__input"></textarea>
+
+                            <div class='account__error js-error'></div>
+                            <button type="submit" class="btn btn--sm">Save</button>
+                          </form>
+                        </div>
+                        <div class="box--30 lesson__box">
+                          <label class="label label--full">Lesson Settings</label>
+                          <ul class="lessonfiles">
+                            <li>
+                              <label>
+                                <input type='checkbox' class="js-publish-lesson" /> Lesson Published
+                              </label>
+                            </li>
+                            <li>
+                              <label class="text--red">
+                                <a href="#" class="btn btn--text btn--danger js-delete-lesson" data-action='confirm'><i class="fa fa-times fa-fw"></i> Delete Lesson</a>
+                              </label>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="boxes">
+                        <div class="box lesson__box">
+                          <form class="js-save-lesson-body">
+                            <label class="label">Questions <span class="js-total-quiz-questions"></span></label>
+                            <ul class="lessonquestions">
+                              <li>
+                                <a href="#" class="lq__question js-edit-quiz-question" data-quiz-question-id='1'>A sample question about that thing?</a>
+                              </li>
+                              <li>
+                                <a href="#" class="btn btn--sm js-add-quiz-question"><i class="fa fa-plus"></i> Add new question</a>
+                              </li>
+                            </ul>
+                            <div class='account__error js-error'></div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="lesson lesson--add">
+                    <a href="#new-lesson" class="js-add-lesson">
+                      <i class='fa fa-plus'></i> Add New Lesson
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="sman__module" data-module-id='2'>
+              <li class="sman__modulename">
+                <span class="sman__modulenumber">2</span>
+                Another module
+              </li>
+              <li class="">
+                <ul class="lessons lesson--sortable">
+                  <li class="lesson draggable" data-lesson-id='4' data-opened='false'>
+                    <span class="lesson__number">4</span>
+                    <a href="#open-lesson" class="js-open-lesson lesson__open">
+                      Click to load full video lesson.
+                    </a>
+                    <span class="lesson__published">(Unpublished)</span>
+                    <i class="fa fa-arrows lesson__drag js-drag-lesson"></i>
+                  </li>
+                  <li class="lesson draggable" data-lesson-id='5' data-opened='false'>
+                    <span class="lesson__number">5</span>
+                    Click to load full document lesson.
+                    <span class="lesson__published">(Unpublished)</span>
+                    <i class="fa fa-arrows lesson__drag js-drag-lesson"></i>
+                  </li>
+                  <li class="lesson draggable" data-lesson-id='6' data-opened='false'>
+                    <span class="lesson__number">6</span>
+                    Click to load full quiz lesson.
+                    <span class="lesson__published">(Unpublished)</span>
+                    <i class="fa fa-arrows lesson__drag js-drag-lesson"></i>
+                  </li>
+                  <li class="lesson lesson--add">
+                    <a href="#new-lesson" class="js-add-lesson">
+                      <i class='fa fa-plus'></i> Add New Lesson
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="sman__module">
+              <li class="lesson lesson--add">
+                <a href="#new-lesson" class="js-add-module">
+                  <i class='fa fa-plus'></i> Add New Module
+                </a>
+              </li>
+            </ul>
+          </div>
 
         </div>
         <!-- End course management container -->
@@ -338,8 +614,33 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="/js/trumbowyg.min.js"></script>
+<script src="/js/aws-sdk-2.3.5.min.js"></script>
+<script src="/js/jquery.form.min.js"></script>
 <script src="/js/main.js"></script>
-<script src="/js/course-manager.js"></script>
+<script src="/js/course-manager.min.js"></script>
 
+
+<script>
+$('.js-wysiwyg').trumbowyg({
+   btns: [
+        // ['viewHTML'],
+        // ['formatting'],
+        ['h3', 'h4'],
+        ['strong', 'em', 'underline'],
+        // ['superscript', 'subscript'],
+        ['link'],
+        // ['insertImage'],
+        // 'btnGrp-justify',
+        'btnGrp-lists',
+        // ['horizontalRule'],
+        ['removeformat'],
+        // ['fullscreen']
+    ],
+  removeformatPasted: true,
+  autogrow: true,
+});
+</script>
 </body>
 </html>

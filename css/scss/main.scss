@@ -14,6 +14,7 @@
 @import 'base/scrollbars';
 @import 'base/setup';
 
+// Why is this here?! Srsly..
 a {
   color: inherit;
 }
@@ -39,11 +40,13 @@ a {
 @import 'modules/table';
 @import 'modules/buttons';
 @import 'modules/modal';
+@import 'modules/label';
 @import 'modules/notifications';
 @import 'modules/image_preloader';
 @import 'modules/flexboxes';
 @import 'modules/account';
 @import 'modules/progress';
+@import 'modules/keywords';
 
 // PAGES - Full pages that need to be broken down later.
 // ==========================================================================
@@ -52,6 +55,7 @@ a {
 @import 'pages/course_quiz_page';
 @import 'pages/teachers_area';
 @import 'pages/course_manager';
+@import 'pages/syllabus-lesson';
 
 // EXTRAS - Helpful styles
 // ==========================================================================
@@ -59,13 +63,11 @@ a {
 @import 'extras/helpers';
 @import 'vendor/trumbowyg';
 
+// Put this away.. cmon!
 .rate__label {
 	display: inline-block;
 	width: 30%;
 	padding: 5px;
 	font-size: 16px;
 }
-
-
-
 

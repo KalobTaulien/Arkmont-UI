@@ -1,0 +1,19 @@
+{
+  "id": "4567",
+  "minutes": 1,
+  "seconds": 10,
+  "question": "What is a sample question called?",
+  "answers": [{
+    "id": 1,
+    "correct": true,
+    "answer": "Sample answer 1"
+  }, {
+    "id": 2,
+    "correct": false,
+    "answer": "Sample answer 2"
+  }, {
+    "id": 3,
+    "correct": true,
+    "answer": "Sample answer 3"
+  }]
+}

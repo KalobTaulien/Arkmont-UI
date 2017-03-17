@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/ie.css" />
+</head>
+
+<body class="course-landing" data-course-id='sample-url-for-course-id' data-require='s3-upload-keys,somethingelse'>
+
+<!-- If this is an IE11 browser, CSS will enable this. -->
+<div class="ie__warning">
+    Our school does not support Internet Explorer. For a much better experience, please download the latest version of
+    <a href='https://www.google.com/chrome/'>Google Chrome</a>, <a href='https://support.apple.com/downloads/safari'>Safari</a>,
+    <a href='http://www.opera.com/download'>Opera</a> or <a href='https://www.mozilla.org/en-US/firefox/new/'>Firefox</a>
+</div>
+
+<!-- Normal navigation bar below -->
+<nav class="nav">
+
+    <!-- Mobile nav -->
+    <div class="mobile__nav">
+        <ul class="mobile__menu">
+            <li class="mobile__item">
+                <a href="/profile-student.html">My Profile</a>
+            </li>
+            <li class="mobile__item">
+                <a href='/account.html'>My Account</a>
+            </li>
+            <li class="mobile__item">
+                <a href='/account-courses.html'>My Courses</a>
+            </li>
+            <li class="mobile__item">
+                <a href='/teachers-area.html'>Teachers Area</a>
+            </li>
+            <li class="mobile__separator"></li>
+            <li class="mobile__item mobile__item--active">
+                <a href='/'>Home</a>
+            </li>
+            <li class="mobile__item">
+                <a href='/'>Search</a>
+            </li>
+            <li class="mobile__item mobile__item--dropdown">
+                <a href='/' class="js-open-mobile-submenu">Categories</a>
+                <ul class="mobile__dropdown">
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>3D</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Apps</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Computer Science</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Design</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Development Tools</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Programming</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Science</a>
+                    </li>
+                    <li class="mobile__dropitem">
+                        <a href='/category-page.html'>Web Development</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="mobile__item">
+                <a href="/logout.html">Sign Out</a>
+            </li>
+        </ul>
+    </div>
+
+    <a href='/' class="mobile__trigger">
+        <i class='fa fa-bars'></i>
+    </a>
+
+    <a href="/" class="nav__logo">
+        Arkmont
+    </a>
+
+    <!-- Categories -->
+    <div class="nav__dropdown">
+        <a href='/' class="dropdown__trigger" data-menu-open='false'>
+            Categories
+        </a>
+        <ul class="dropdown__menu">
+            <li class="dropdown__item">
+                <a href='/category-page.html'>3D</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Apps</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Computer Science</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Design</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Development Tools</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Programming</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Science</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/category-page.html'>Web Development</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- Account settings menu -->
+    <div class="nav__dropdown nav__dropdown--right">
+        <a href='/' class="dropdown__trigger">
+            John Doe
+        </a>
+        <ul class="dropdown__menu">
+            <li class="dropdown__item">
+                <a href="/profile-student.html">My Profile</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/account.html'>My Account</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/account-courses.html'>My Courses</a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/teachers-area.html'>Teachers Area</a>
+            </li>
+            <li class="dropdown__separator"></li>
+            <li class="dropdown__item">
+                <a href="/logout.html">Sign Out</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Notification menu -->
+    <!-- Add .notification_dropdown-active to the .notification__dropdown element to make it "active" and stick out -->
+    <div class="nav__dropdown nav__dropdown--right notification__dropdown">
+        <a href='/' class="dropdown__trigger dropdown__trigger--no-caret">
+            <span class="notification__icon"></span>
+        </a>
+        <ul class="dropdown__menu">
+            <li class="dropdown__item">
+                <a href='/PLACEHOLDER' class="notification__url notification__url--unread">
+                    <div href='/PLACEHOLDER' class="notification">
+                        <div class="notification__img">
+                            <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
+                        </div>
+                        <div class="notification__content">
+                            <div class="notification__title">
+                                <b>Kalob Taulien</b> made an announcement:
+                            </div>
+                            This is an unread notification
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/PLACEHOLDER' class="notification__url">
+                    <div href='/PLACEHOLDER' class="notification">
+                        <div class="notification__img">
+                            <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
+                        </div>
+                        <div class="notification__content">
+                            <div class="notification__title">
+                                <b>Kalob Taulien</b> made an announcement:
+                            </div>
+                            Some stuff is happening and I'll letting students know how cool this "stuff" really is.
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/PLACEHOLDER' class="notification__url">
+                    <div href='/PLACEHOLDER' class="notification">
+                        <div class="notification__img">
+                            <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
+                        </div>
+                        <div class="notification__content">
+                            <div class="notification__title">
+                                <b>Kalob Taulien</b> made an announcement:
+                            </div>
+                            Some stuff is happening and I'll letting students know how cool this "stuff" really is.
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/PLACEHOLDER' class="notification__url">
+                    <div href='/PLACEHOLDER' class="notification">
+                        <div class="notification__img">
+                            <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
+                        </div>
+                        <div class="notification__content">
+                            <div class="notification__title">
+                                <b>Kalob Taulien</b> made an announcement:
+                            </div>
+                            Some stuff is happening and I'll letting students know how cool this "stuff" really is.
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="dropdown__item">
+                <a href='/PLACEHOLDER' class="notification__url">
+                    <div href='/PLACEHOLDER' class="notification">
+                        <div class="notification__img">
+                            <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
+                        </div>
+                        <div class="notification__content">
+                            <div class="notification__title">
+                                <b>Kalob Taulien</b> made an announcement:
+                            </div>
+                            Some stuff is happening and I'll letting students know how cool this "stuff" really is.
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- Search menu -->
+    <form action="/search" method="get" class="nav__form nav__form--right" role="search" id="search">
+        <input name="q" placeholder="Search" type="text" class="nav__input" value="" />
+        <button type='submit' class="nav__submit"></button>
+    </form>
+
+</nav>
+
+<div class="row__outer row__outer--visible">
+    <div class="header__bg--0" style="background-image: url('https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_lg.jpg');"></div>
+    <div class="header__bg--1"></div>
+    <div class="preview__container">
+        <div class="preview__section preview__section--left">
+            <div class="course__preview">
+                <a href="#" class="preview__title">
+                    <!-- The name of a really long course in here -->
+                    The name of a really long course in here
+                </a>
+                <div class="preview__content">
+                  <p>
+                    Published. Course length: 03:10:48. Total Lessons: 50. Total Quizes: 2.
+                  </p>
+                    <div class="preview__cta">
+                        <a href='/course-manager-listing.html' target='_blank' class="btn">
+                            Published &amp; Listed
+                        </a>
+                        <a href='/course-landing.html' target='_blank' class="btn">
+                            View Front Page
+                        </a>
+                        <a href='/course-syllabus.html' target='_blank' class="btn">
+                            View Course as Student
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="preview__section preview__image preview__section--right"></div>
+    </div>
+    <ul class="course__otherpages">
+        <li>
+            <a href='/course-manager.html' class='other__details other__details--active'>
+                Course Manager
+            </a>
+        </li>
+        <li>
+            <a href='/course-manager-news.html' class='other__details'>
+                What's New
+            </a>
+        </li>
+        <li>
+            <a href='/course-manager-feedback.html' class='other__details'>
+                Feedback
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="manager">
+  <div class="boxes">
+    <div class="box">
+      <div class="p-20">
+        <ul class="manager__breadcrumb">
+          <li><a href='/course-manager.html'>Course Manager</a></li>
+          <li class="separator"></li>
+          <li>Front Page</li>
+          <li class="separator"></li>
+          <li><a href='/course-manager-cover-image.html'>Cover Image Manager</a></li>
+        </ul>
+        <p class="account__helptext">This is the picture that will be displayed when potential students view your course.</p>
+        <p class="account__helptext">Your picture should be 16:9 ratio and no smaller than 470px * 264px. Images will automatically be resized.</p>
+
+        <!-- Start course management container -->
+        <div class="manager__container manager__container--small">
+
+          <div class="boxes">
+            <div class="box box--70 manager__sections">
+              <div class="p-20">
+                <div class="preview__video">
+                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-3.jpg" class="js-current-image course__img preview__img" />
+                </div>
+
+                <div class="progress">
+                  <div class="progress-wrapper">
+                    <div class="progress-bar">
+                      <span class="selected-file-name"></span>
+                      <span class="js-upload-percent"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <form class="js-image-upload-form" style='text-align: center;' method="post" enctype="multipart/form-data">
+                  <div class='account__error js-error'></div>
+                  <input type="file" class="js-select-cover-image hidden" accept="image/*">
+                  <button class="js-upload-button btn" onClick="javascript: $('.js-select-cover-image').trigger('click');" type="button">Upload New Image</button>
+                </form>
+              </div>
+            </div>
+            <div class="box box--30">
+              <div class="p-20">
+                <h2 class="manager__headline">Image Tips</h2>
+                <ul style='padding-left: 20px;'>
+                  <li>Simple text is acceptable, but must be legible at a smaller size;</li>
+                  <li>No discounts, promotions or inappropriate content;</li>
+                  <li>Your image should be crystal clear (no pixelation);</li>
+                  <li>Don't use images you don't own;</li>
+                  <li>Use color. Greyscale is not acceptable;</li>
+                  <li>Be original to separate yourself from courses in the same category;</li>
+                  <li>Contact us if you want us to make you a cover image;</li>
+                </ul>
+              </div>
+          </div>
+
+        </div>
+        <!-- End course management container -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="/js/jquery.form.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/course-manager.min.js"></script>
+</body>
+</html>

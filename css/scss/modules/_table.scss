@@ -21,6 +21,16 @@ table {
 
 }
 
+.table--nopadding {
+  padding: 0;
+  margin: 0;
+
+  td, th {
+    padding: 0;
+    margin: 0;
+  }
+}
+
 .table--bordered {
   border:1px solid $arkmont-red;
 

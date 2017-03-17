@@ -1,0 +1,60 @@
+.keyword {
+  display: inline-block;
+  font-size: 14px;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: $arkmont-red;
+  border: 1px solid $arkmont-red;
+  margin: 2px 1px;
+  text-decoration: none;
+}
+
+.keyword--removable {
+  cursor: pointer;
+
+  &::after {
+    content: '\f00d';
+    font-family: 'FontAwesome';
+    float: right;
+    margin-left: 10px;
+  }
+}
+
+.keyword--inverse {
+  color: #fff;
+  border:1px solid #fff;
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 250ms, background-color 250ms;
+
+  &::after {
+    content: '\f067';
+    font-family: 'FontAwesome';
+    float: right;
+    margin-left: 10px;
+  }
+  &:hover {
+    background-color: $arkmont-red;
+    border: 1px solid $arkmont-red;
+  }
+}
+
+.keyword--add {
+  background-color: transparent;
+  outline: 0;
+  padding: 10px 10px;
+}
+
+// If the .keyword--fullblock parent element exists, make all keywords "block" and 100% width
+.keyword--fullblock {
+  .keyword--removable {
+    display: block;
+    width: calc(100% - 43px);
+  }
+
+  .keyword--add {
+    width: calc(100% - 23px);
+    margin-bottom: 4px;
+  }
+
+}

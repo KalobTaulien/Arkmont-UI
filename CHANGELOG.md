@@ -1,6 +1,27 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits.
 
+### Mar. 16, 2017
+- Intro Video Manager added as `course-manger-intro-video.html`. Page comes with best practice tips. Video is automatically uploaded to Amazon S3. S3 credentials do not come with this template.
+- Cover Image Manager added as `course-manager-cover-image.html`. Page comes with best practice tips. Image is uploaded to our server for image resizing and compressing instead of going straight to S3. Requires [https://github.com/malsup/form](https://github.com/malsup/form)
+- Course Description Manager added as `course-manager-description.html`. Minimum 200 words in a course description. bold, italic, strike, h4, a, ol and ul tags are acceptable. Most attributes are stripped out before sending to the server.
+- SEO Manager added as `course-manager-seo.html`. Maximum 10 keywords. When a `,` or `enter` key is pressed, the keyword is added. The keywords in the ajax response will replace the keywords in the DOM.
+- Course Requirements Manager added as `course-manager-requirements.html`. _Very_ similar to the keywords page, but the styling allows for full-width bullet points.
+- Acquired Skills Manager added as `course-manager-skills.html`. Pretty much the exact same page as `course-manager-seo.html`.
+- Remove Course added as `course-manager-remove.html`. Courses cannot be deleted if there are students. Arkmont _always_ support the learning experience. If there are no students enrolled, the course is allowed to be removed.
+- Video lessons can be uploaded in the Syllabus Manager
+- Supplemental files can be uploaded in the Syllabus Manager. Files are sync. uploaded (in the browser, no refresh needed)
+- Lessons in the Course Syllabus Manager can be: published, unpublished, set as a free preview (video lessons only), can be deleted, in-video questions can be added, deleted and edited, and lessons can be reorganized via drag and drop.
+- Quiz lessons can be managed in the Syllabus Manager. Questions can be added, modified and deleted.
+- Lessons are dynamically loaded (via Ajax) when the lesson name is clicked.
+- New lessons can be created.
+- New modules can be created.
+- Lessons are sortable; modules are not. That's on our to-do list, but realistically modules aren't re-ordered very often. Contact us if your a teacher and need modules re-ordered.
+- Minified `course-manager.js` since it was over 100kb. If you run into problems with the JavaScript, you can use `course-manager.js` instead of `course-manager.min.js` and everything should be fine. Remember: we don't support old browsers.
+- Although we're using jQuery we're operating as if this is entire application is a single page application. jQuery was obviously not built for that, but for what we need it's a well suited tool: simple and easy to maintain. At this stage in Arkmont's life, that's what we're looking for.
+- Added new styles (.scss).
+- Added JSON example files for every Ajax request. Those won't necessarily be what the Arkmont servers return, but it _is_ the bare minimum our servers will return so you can rely on the data in those objects.
+
 ### Mar. 9, 2017
 - Changed all ajax pages to .json. We were just putting this off, we all knew it was json from the start.
 - Added `course-manager-details.html` page, which is an overview of all the actions a teacher can take on a course.

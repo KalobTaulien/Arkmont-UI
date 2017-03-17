@@ -1,0 +1,188 @@
+
+
+// Syllabus manager
+.sman {
+
+}
+
+.sman__module,
+.lessons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sman__module {
+  border: 1px solid lighten($primary-background-color, 5%);
+  margin-bottom: 20px;
+}
+
+.sman__modulename {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: darken($arkmont-red, 15%);
+}
+
+
+.lesson__number,
+.sman__modulenumber {
+
+  &::before {
+    content: 'Module ';
+  }
+
+  &::after {
+    content: ':';
+  }
+}
+
+.lesson__number {
+  &::before {
+    content: 'Lesson ';
+  }
+  &::after {
+    margin-right: 5px;
+  }
+}
+
+
+.lessons {
+
+}
+
+.lesson__drag {
+  opacity: 0;
+  cursor: move;
+  float: right;
+  transition: opacity 150ms;
+}
+
+.lesson {
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    .lesson__drag {
+      opacity: 1;
+    }
+  }
+}
+
+.lesson:hover,
+.lesson--active {
+  background-color: lighten($primary-background-color, 4%);
+  cursor: initial;
+}
+
+.lesson--add {
+  background-color: darken($arkmont-red, 15%);
+  color: #fff;
+  transition: background-color 250ms, color 250ms;
+
+  &:hover {
+    background-color: darken($arkmont-red, 10%);
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      color: $arkmont-gold;
+    }
+  }
+}
+
+.lesson--unpublished,
+.lesson--unpublished:hover {
+  background-color: darken($arkmont-red, 22%);
+}
+
+
+.lesson__content {
+  padding: 0;
+}
+
+.lesson__open {
+  color: #fff;
+  text-decoration: none;
+  transition: color 250ms;
+
+  &:hover {
+    color: $arkmont-gold;
+  }
+}
+
+.lesson__box {
+  box-sizing: border-box;
+  background-color: $primary-background-color;
+  padding: 10px;
+  width: calc(inherit - 2%);
+  flex-shrink: 1;
+  margin: 1%;
+  border:1px solid $arkmont-red;
+  font-size: 14px;
+}
+
+.lesson__boxtitle {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  margin: 5px 0 10px;
+}
+
+.lessonquestions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    padding: 5px 5px 5px 0;
+  }
+}
+
+// .lq = .lessonquestion
+.lq__question {
+  text-decoration: none;
+  display: block;
+  padding: 5px 5px 5px 0;
+  color: #fff;
+  transition: color 250ms;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &:hover {
+    color: $arkmont-gold;
+  }
+}
+
+.draggable--placeholder {
+  border: 10px solid $arkmont-red;
+}
+
+
+.lessonfiles {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    padding: 5px;
+    margin-top: 5px;
+  }
+}
+
+.lessonfile {
+  text-decoration: none;
+  color: #fff;
+  transition: color 250ms;
+
+  &:hover {
+    color: $arkmont-gold;
+  }
+}
+
+.lesson__forms {
+  display: none;
+}

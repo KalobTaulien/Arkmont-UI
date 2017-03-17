@@ -2,6 +2,10 @@
 // We've written so many flex boxes we should have done this from the start.
 .boxes {
   display: flex;
+
+  > * {
+    box-sizing: border-box;
+  }
 }
 
 .boxes--padded {
@@ -19,6 +23,10 @@
   flex: 0 0 10%;
 }
 
+.box--20 {
+  flex: 0 0 20%;
+}
+
 .box--30 {
   flex: 0 0 30%;
 }
@@ -27,13 +35,19 @@
   flex: 0 0 70%;
 }
 
+.box--80 {
+  flex: 0 0 80%;
+}
+
 @media (max-width: $bp-lg) {
   .boxes {
     flex-wrap: wrap;
   }
 
+  .box--20,
   .box--30,
-  .box--70 {
+  .box--70,
+  .box--80 {
     flex-basis: 100%;
   }
 }

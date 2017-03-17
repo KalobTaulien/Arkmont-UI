@@ -1,0 +1,8 @@
+{
+  "courseId": "1",
+  "module": {
+    "id": "3",
+    "name": "New module",
+    "description": "A sample module description"
+  }
+}

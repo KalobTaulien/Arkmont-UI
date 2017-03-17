@@ -138,9 +138,9 @@ const formStarsFromRating = function fontAwesomeStarsFromNumber(ratingArg) {
 //            btn.button('saved');          // Fades out animation, fades in saved text, then called .button('saved');
 //            btn.button('saved', 'Custom Wording');  // Same as btn.button('saved') but returns text you defined as the
 //                                                    // "saved" display ttext.
-$.fn.button = function(action, saveWording) {
+$.fn.button = function (action, saveWording) {
   const t = this;
-  if( action === undefined ) {
+  if (action === undefined) {
     // Make this button disabled with a loading animation.
     // Set the default html before we changed it.
     t.defaultHtml = $(t).html();
@@ -152,7 +152,7 @@ $.fn.button = function(action, saveWording) {
               '</div>');
   } else if (action === 'reset') {
     // Reset the buttong
-    t.html( t.defaultHtml );
+    t.html(t.defaultHtml);
     t.attr('disabled', false);
   } else if (action === 'saved') {
     const keyword = saveWording !== undefined ? saveWording : 'Saved <i class="fa fa-check"></i>';
@@ -161,13 +161,11 @@ $.fn.button = function(action, saveWording) {
 
     // 250ms timeout to match the CSS oapcity fade time.
     setTimeout(function () {
-
-      t.html( '<span class="fadeIn">' + keyword + '</span>' );
+      t.html('<span class="fadeIn">' + keyword + '</span>');
       // Set a 2s timeout to revert the original button html/text
       setTimeout(function () {
         t.button('reset');
       }, 2000);
-
     }, 250);
   }
 
@@ -910,7 +908,9 @@ function Modal(settings) {
 
       // The button className
       let className = settings.buttons[i].className !== undefined ? settings.buttons[i].className : '';
-      buttons += '<button class="btn ' + className + '" id="' + id + '">' + settings.buttons[i].label + '</button>';
+      buttons += '<button class="btn ' + className + '" id="' + id + '" data-model-label="' + i + '">' +
+                    settings.buttons[i].label +
+                  '</button>';
     }
   }
 

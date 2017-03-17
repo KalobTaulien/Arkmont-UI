@@ -1,0 +1,46 @@
+{
+  "_comment": "All 3 lesson types are returned here, but in reality only the relevant data will be returned.",
+  "courseId": "123456789",
+  "cover": "https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg",
+  "lesson": {
+    "type": "video",
+    "title": "A sample lesson ttile",
+    "description": "A sample lesson description\ngoes in here",
+    "published": false,
+    "freePreview": true,
+    "id": "4",
+    "video": {
+      "time": "3:57",
+      "filename": "04-sample-video-name.mp4",
+      "questions": [{
+        "_comment": "These are in-video questions",
+        "id": 1,
+        "question": "Why'd the cow jump over the moon?"
+      }, {
+        "_comment": "These are in-video questions",
+        "id": 2,
+        "question": "Why'd the moon jump over the cow?"
+      }]
+    },
+    "document": {
+      "body": "<p>Sample body message</p><h3>Sample header</h3><p><strong>bold baby!</strong>"
+    },
+    "quiz": {
+      "questions": [{
+        "_comment": "This is a real quiz question",
+        "id": 1,
+        "question": "Did you know this is a quiz question?"
+      }, {
+        "id": 2,
+        "question": "Did you know more than one question can be passed through json? :O"
+      }]
+    }
+  },
+  "files": [{
+    "id": "1",
+    "name": "Sample file id"
+  }, {
+    "id": "2",
+    "name": "Sample file 2.pdf"
+  }]
+}

@@ -94,6 +94,13 @@
 
 }
 
+.manager__breadcrumb--danger {
+  a,
+  li {
+    color: $arkmont-red;
+  }
+}
+
 
 // Extends some sections of the course-landing page.
 .lesson__published {
@@ -143,6 +150,7 @@
     font-weight: bold;
   }
 }
+
 
 @media (max-width: $bp-ms) {
   .lr__name,

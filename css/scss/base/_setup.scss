@@ -61,6 +61,15 @@ hr {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+code,
+kbd {
+  border: 1px solid $arkmont-red;
+  border-radius: 1px;
+  padding: 2px 5px;
+  font-size: 90%;
+  display: inline-block;
+}
+
 
 @media( max-width: $bp-md) {
   .hidden__md {

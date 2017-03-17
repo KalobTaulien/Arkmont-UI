@@ -35,6 +35,19 @@
   }
 }
 
+// Any button with [data-model-label="cancel"] should be styled just a tad differently.
+.modal .btn-cancel,
+.modal [data-model-label="cancel"] {
+  float: right;
+  border: 0;
+  opacity: 0.7;
+
+  &:hover {
+    background-color: transparent;
+    opacity: 1;
+  }
+}
+
 // If the browser isn't very tall, don't move the modal up a smidge.
 @media (max-height:400px) {
   .modal__container {

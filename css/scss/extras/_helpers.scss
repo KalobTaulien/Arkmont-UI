@@ -3,6 +3,11 @@
   display: inline;
 }
 
+.hidden, .display--none {
+  display: none;
+}
+
+
 // Red border. Was initially used, probably best to go with a white border at this point.
 .bred,
 [bred] {
@@ -12,6 +17,11 @@
 
 .p-20 {
   padding: 20px;
+}
+
+.p-t-b-10 {
+  padding-top: 10px;
+  pdding-bottom: 10px;
 }
 
 .text--small {
@@ -24,6 +34,10 @@
 
 .text--red {
   color: $arkmont-red;
+}
+
+.text--center {
+  text-align: center;
 }
 
 .text--right {
@@ -43,8 +57,26 @@
   height: auto;
 }
 
+.center {
+  display: block;
+  margin: 0 auto;
+}
+
 @media (max-width: $bp-sm) {
   .hidden--sm {
     display: none;
+  }
+}
+
+@media (max-width: $bp-md) {
+  .hidden--md {
+    display: none;
+  }
+}
+
+@media (max-width: $bp-lg) {
+  .hidden--lg {
+    display: none;
+    border:2px solid red;
   }
 }

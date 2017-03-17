@@ -17,6 +17,8 @@ $modal-reset-color: #fff !default;
 
 $transition-duration: 250ms !default;
 
+$min-height: 100px;
+
 #trumbowyg-icons {
   overflow: hidden;
   visibility: hidden;
@@ -49,7 +51,7 @@ $transition-duration: 250ms !default;
   position: relative;
   border: 1px solid $arkmont-red;
   width: 100%;
-  min-height: 300px;
+  min-height: $min-height;
   margin: 17px auto;
 }
 
@@ -67,7 +69,7 @@ $transition-duration: 250ms !default;
   position: relative;
   box-sizing: border-box;
   padding: 20px;
-  min-height: 300px;
+  min-height: $min-height;
   width: 100%;
   border-style: none;
   resize: none;

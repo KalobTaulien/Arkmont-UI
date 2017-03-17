@@ -1,0 +1,9 @@
+{
+  "courseId": "1",
+  "lesson": {
+    "id": "8",
+    "name": "A sample lesson name",
+    "published": false,
+    "type": "video"
+  }
+}
