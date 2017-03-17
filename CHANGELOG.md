@@ -1,6 +1,9 @@
 # Changelog
 This is to keep track of changes in a way that lets contributors *read* about what's going on, instead of looking through commits.
 
+### Mar. 17, 2017
+- Course Manager Feedback and News pages were added. These are just placeholder pages for now.
+
 ### Mar. 16, 2017
 - Intro Video Manager added as `course-manger-intro-video.html`. Page comes with best practice tips. Video is automatically uploaded to Amazon S3. S3 credentials do not come with this template.
 - Cover Image Manager added as `course-manager-cover-image.html`. Page comes with best practice tips. Image is uploaded to our server for image resizing and compressing instead of going straight to S3. Requires [https://github.com/malsup/form](https://github.com/malsup/form)
