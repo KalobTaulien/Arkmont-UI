@@ -6,7 +6,7 @@
 
 .login__container {
   padding: 40px;
-  height: calc(60vh);
+  min-height: calc(60vh);
   vertical-align: middle;
 }
 
@@ -22,6 +22,16 @@
     margin-top: 10px;
     margin-right: 10px;
     display: inline-block;
+  }
+}
+
+.form__legalese {
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+  a {
+    margin: 0;
   }
 }
 

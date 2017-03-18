@@ -1,0 +1,6 @@
+{
+  "_comment": "Returns created: true|false with a possible error message. Returns userId when user was created and signed in",
+  "created": false,
+  "userId": 1,
+  "error": "Invalid email or password"
+}

@@ -141,11 +141,11 @@
       <!-- Start inside area -->
 
       <div class="login__container">
-        <form class="login__form js-reset">
+        <form method="POST" action="/forgot" class="login__form js-reset">
           <h1 class="no--bold">Forgot Password</h1>
 
           <label for="email" class="label label--full">Email</label>
-          <input type="email" class="account__input account__input--lg" name="email" />
+          <input type="email" class="account__input account__input--lg" required="required" name="email" />
 
           <div class="account__error js-error"></div>
 

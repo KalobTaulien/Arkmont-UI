@@ -936,6 +936,59 @@ $.fn.button = function (action, saveWording) {
 
         return false;
       })
+      // Submit event: New user, yay!
+      .on('submit', '.js-signup', function (e) {
+        e.preventDefault();
+        const form = $(this);
+        const btn = $('button[type="submit"]', form);
+        const errorSelector = $('.js-error', form);
+        const error = function (errSelector, message) {
+          if (message !== undefined && message !== 'reset') {
+            errSelector.html(message).addClass('account__error--visible');
+          } else {
+            errSelector.removeClass('account__error--visible');
+          }
+
+          return false;
+        };
+        const sender = {
+          email: $.trim( form.find(':input[name="email"]').val().toLowerCase() ),
+          fullName: $.trim( form.find(':input[name="fullname"]').val() ),
+          password: $.trim( form.find(':input[name="password"]').val() ),
+        };
+
+        if(sender.email.length < 6) {
+          return error(errorSelector, 'Please enter a valid email address');
+        } else if(sender.fullName.length < 3 || sender.fullName.split(" ").length <= 1) {
+          return error(errorSelector, 'Please enter your full name');
+        } else if(sender.password.length < 8) {
+          return error(errorSelector, 'For your security, your password must be 8 characters or more. The longer your password is the safer it will be.');
+        }
+
+        ajax('set-user', sender,
+          function beforeAjaxRequest() {
+            // Change button to "loading" state
+            btn.button();
+            error(errorSelector, 'reset');
+          },
+          function ajaxRequestComplete(data) {
+            if(data.created) {
+              alert('created');
+              window.location = '/';
+            } else {
+              btn.button('reset');
+              return error(errorSelector, data.error);
+            }
+          },
+          function ajaxRequestFailed() {
+            alert('failed');
+            btn.button('reset');
+          },
+          function ajaxRequestAlways() {
+          });
+
+        return false;
+      })
       // End jQ event listeners
 
     // Start the carousel before the images are done loading.

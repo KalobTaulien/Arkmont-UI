@@ -141,21 +141,28 @@
       <!-- Start inside area -->
 
       <div class="login__container">
-        <form method="POST" action="/login" class="login__form js-login">
-          <h1 class="no--bold">Sign In</h1>
+        <form method="POST" action="/signup" class="login__form js-signup">
+          <h1 class="no--bold">Sign Up</h1>
+
+          <label for="name" class="label label--full">Full Name</label>
+          <input type="text" required="required" class="account__input account__input--lg" name="fullname" />
+          <p class="account__helptext">Your first and last name</p>
 
           <label for="email" class="label label--full">Email</label>
-          <input type="email" class="account__input account__input--lg" required="required" name="email" />
+          <input type="email" required="required" class="account__input account__input--lg" name="email" />
 
           <label for="password" class="label label--full">Password</label>
-          <input type="password" class="account__input account__input--lg" required="required" name="password" />
+          <input type="password" required="required" class="account__input account__input--lg" name="password" />
 
           <div class="account__error js-error"></div>
 
-          <button type="submit" class="btn btn--inverse btn--lg btn--full">Sign In</button>
-          <a href="/forgot.html">Forgot your password?</a>
+          <button type="submit" class="btn btn--inverse btn--lg btn--full">Sign Up</button>
+          <a href="/login.html">Sign In</a>
           <span style='margin-right: 10px;' class="or">or</span>
-          <a href="/signup.html">Sign up for free</a>
+          <a href="/forgot.html">Forgot your password?</a>
+
+          <hr />
+          <p class="form__legalese">By signing up you are agreeing to accept Arkmont's <a href="/terms.html">Terms of Use</a> and <a href="/privacy.html">Privacy Policy</a></p>
         </div>
       </form>
 
