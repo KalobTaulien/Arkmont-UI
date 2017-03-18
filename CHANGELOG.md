@@ -7,6 +7,7 @@ This is to keep track of changes in a way that lets contributors *read* about wh
 - Added Password Reset page (forgot.html)
 - Added Registration page (signup.html)
 - Added terms.html and privacy.html. Both pages are instances of basic.html (the most basic page).
+- Modal opens more like an app (vertically folds open)
 
 ### Mar. 17, 2017
 - Course Manager Feedback and News pages were added. These are just placeholder pages for now.

@@ -1014,7 +1014,6 @@ $.fn.button = function (action, saveWording) {
 function Modal(settings) {
   // So we can use this inside functions that overwrite `this`
   const modal = this;
-  const modal2 = this;
 
   // Set the modal id.
   this.id = $.now();
@@ -1031,18 +1030,17 @@ function Modal(settings) {
     // This modal. `modal` is already used.
     const thisModal = $('#modal--' + id);
 
-    // Remove toggle animation classes.
-    thisModal.removeClass('fadeIn').addClass('fadeOut');
-
     // Remove the fadein and fadeout animation classes.
-    thisModal.find('.modal__container').removeClass('fadeInUpBig').addClass('fadeOutDownBig');
-
-    // Let the page scroll again.
-    $('body').removeClass('no-scroll');
+    thisModal.find('.modal__container').removeClass('fadeInDown modal__container--normal').addClass('modal__container--closing');
 
     // Remove the modal after the animation is complete.
     setTimeout(function () {
-      thisModal.remove();
+      // thisModal.remove();
+      thisModal.addClass('fadeOut').fadeOut(function() {
+        $(this).remove();
+        // Let the page scroll again.
+        $('body').removeClass('no-scroll');
+      });
     }, 650);
 
     return false;
@@ -1068,7 +1066,7 @@ function Modal(settings) {
 
   // HTML string.
   const html = '<div class="modal fadeIn" id="modal--' + this.id + '">' +
-                '<div class="modal__container modal__container--' + size + ' fadeInUpBig" data-show-times="' + showClose + '">' +
+                '<div class="modal__container modal__container--' + size + ' fadeInDown" data-show-times="' + showClose + '">' +
                   '<span class="modal__close" id="modal__' + this.id + '--closeModal"><i class="fa fa-times"></i></span>' +
                   '<div class="modal__head">' +
                     settings.title +
@@ -1112,7 +1110,7 @@ function Modal(settings) {
     $(document).keyup(function (e) {
       // If escape is pressed, close the modal.
       if (e.keyCode === 27) {
-        modal2.closeModal();
+        modal.closeModal();
       }
 
       e.preventDefault();
@@ -1121,34 +1119,35 @@ function Modal(settings) {
   }
 }
 
-/**
- * An example of how a Modal can be invoked
- */
-/*
-const modal = new Modal({
-  title: 'Sample Modal Tital',
-  message: 'Your message can be HTML',
-  showClose: true,
-  buttons: {
-    // Closes the modal by default
-    cancel: {
-      // Add an extra class.
-      className: '',
-      // Give the button a label
-      label: 'Cancel',
-    },
-    // A second button
-    somethingElse: {
-      // Has no extra class name
-      className: '',
-      // A sampel label
-      label: 'Sample Label',
-      //  An optional callback method.
-      callback: function () {
-        // Code to execute in the callback.
-        alert('something else');
-      },
-    },
-  },
-});
-*/
+
+//
+// An example of how a Modal can be invoked
+//
+// const modal = new Modal({
+//   title: 'Sample Modal Title',
+//   message: '<p>Your message can be HTML</p>',
+//   showClose: true,
+//   size: 'small',
+//   buttons: {
+//     // Closes the modal by default
+//     cancel: {
+//       // Add an extra class.
+//       className: '',
+//       // Give the button a label
+//       label: 'Cancel',
+//     },
+//     // A second button
+//     somethingElse: {
+//       // Has no extra class name
+//       className: '',
+//       // A sampel label
+//       label: 'Sample Label',
+//       //  An optional callback method.
+//       callback: function () {
+//         // Code to execute in the callback.
+//         alert('something else');
+//       },
+//     },
+//   },
+// });
+

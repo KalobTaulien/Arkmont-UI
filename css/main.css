@@ -380,8 +380,8 @@ template {
 }
 
 .fadeInDown {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   -webkit-animation-name: fadeInDown;
@@ -3740,6 +3740,27 @@ table tbody tr:not(.no-hover):hover {
   }
 }
 
+@keyframes grow {
+  from {
+    max-height: 10px;
+    overflow: hidden;
+  }
+  to {
+    max-height: 2000px;
+  }
+}
+
+@keyframes shrink {
+  from {
+    max-height: 2000px;
+    overflow: hidden;
+  }
+  to {
+    max-height: 10px;
+    overflow: hidden;
+  }
+}
+
 .modal {
   background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
@@ -3759,6 +3780,16 @@ table tbody tr:not(.no-hover):hover {
   background-color: #8c1515;
   border: 1px solid #111;
   position: relative;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  animation-delay: .5s;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: grow;
+  animation-name: grow;
+  animation-timing-function: cubic-bezier(0.515, 0.61, 0.355, 1);
 }
 
 .modal__container[data-show-times='false'] .modal__close {
@@ -3772,6 +3803,17 @@ table tbody tr:not(.no-hover):hover {
 .modal__container--large {
   margin-top: 0%;
   flex: 0 0 70%;
+}
+
+.modal__container--closing {
+  animation-delay: 0s !important;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: shrink;
+  animation-name: shrink;
+  animation-timing-function: cubic-bezier(0.515, 0.61, 0.355, 1);
 }
 
 .modal .btn-cancel,
@@ -3788,8 +3830,8 @@ table tbody tr:not(.no-hover):hover {
 }
 
 @media (max-height: 400px) {
-  .modal__container {
-    margin-top: 0;
+  .modal {
+    align-items: flex-start;
   }
 }
 
