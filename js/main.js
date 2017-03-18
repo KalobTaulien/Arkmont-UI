@@ -839,7 +839,7 @@ $.fn.button = function (action, saveWording) {
       })
 
       // Submit event: User is signing in.
-      .on('submit', '.login__form', function (e) {
+      .on('submit', '.js-login', function (e) {
         e.preventDefault();
         const form = $(this);
         const btn = $('button[type="submit"]', form);
@@ -884,6 +884,56 @@ $.fn.button = function (action, saveWording) {
           },
           function ajaxRequestAlways() {
           });
+        return false;
+      })
+      // Submit event: user wants to reset their password.
+      .on('submit', '.js-reset', function (e) {
+        e.preventDefault();
+        const form = $(this);
+        const btn = $('button[type="submit"]', form);
+        const errorSelector = $('.js-error', form);
+        const error = function (errSelector, message) {
+          if (message !== undefined && message !== 'reset') {
+            errSelector.html(message).addClass('account__error--visible');
+          } else {
+            errSelector.removeClass('account__error--visible');
+          }
+
+          return false;
+        };
+        const sender = {
+          email: $.trim( form.find(':input[name="email"]').val().toLowerCase() ),
+        };
+
+        if(sender.email.length < 6) {
+          return error(errorSelector, 'Please enter a valid email address');
+        }
+
+        ajax('set-reset-password', sender,
+          function beforeAjaxRequest() {
+            // Change button to "loading" state
+            btn.button();
+            error(errorSelector, 'reset');
+          },
+          function ajaxRequestComplete(data) {
+            if(data.reset) {
+              btn.html("Check your inbox <i class='fa fa-envelope'></i>");
+
+              setTimeout(function() {
+                // Redirect the user to the signin page.
+                window.location = '/login?email='+sender.email;
+              }, 7000);
+            } else {
+              btn.button('reset');
+              return error(errorSelector, data.error);
+            }
+          },
+          function ajaxRequestFailed() {
+            btn.button('reset');
+          },
+          function ajaxRequestAlways() {
+          });
+
         return false;
       })
       // End jQ event listeners

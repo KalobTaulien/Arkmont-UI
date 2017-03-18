@@ -3,7 +3,8 @@ This is to keep track of changes in a way that lets contributors *read* about wh
 
 ### Mar. 18, 2017
 - Minified course-manager.js to course-manager.min.js. Didn't catch that last in the last major commit.
-- Added login page.
+- Added login page (login.html)
+- Added Password Reset page (forgot.html)
 
 ### Mar. 17, 2017
 - Course Manager Feedback and News pages were added. These are just placeholder pages for now.

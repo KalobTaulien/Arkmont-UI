@@ -5152,6 +5152,17 @@ table tbody tr:not(.no-hover):hover {
   font-weight: normal;
 }
 
+.or {
+  display: inline-block;
+  background-color: #0e0f11;
+  position: relative;
+  z-index: 2;
+}
+
+.or::after, .or::before {
+  content: '\2014';
+}
+
 @media (max-width: 425px) {
   .hidden--sm {
     display: none;

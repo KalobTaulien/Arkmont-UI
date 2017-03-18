@@ -66,6 +66,18 @@
   font-weight: normal;
 }
 
+.or {
+  display: inline-block;
+  background-color: $primary-background-color;
+  position: relative;
+  z-index: 2;
+
+  &::after,
+  &::before {
+    content: '\2014';
+  }
+}
+
 @media (max-width: $bp-sm) {
   .hidden--sm {
     display: none;
