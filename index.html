@@ -1,373 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-    <!-- VideoJS -->
-    <link href="https://vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
+  <!-- VideoJS -->
+  <link href="https://vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="/css/main.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/ie.css" />
+  <link rel="stylesheet" type="text/css" href="/css/main.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/ie.css" />
 </head>
 
 <body>
 
 <!-- If this is an IE11 browser, CSS will enable this. -->
 <div class="ie__warning">
-    Our school does not support Internet Explorer. For a much better experience, please download the latest version of
-    <a href='https://www.google.com/chrome/'>Google Chrome</a>, <a href='https://support.apple.com/downloads/safari'>Safari</a>,
-    <a href='http://www.opera.com/download'>Opera</a> or <a href='https://www.mozilla.org/en-US/firefox/new/'>Firefox</a>
+  Our school does not support Internet Explorer. For a much better experience, please download the latest version of
+  <a href='https://www.google.com/chrome/'>Google Chrome</a>, <a href='https://support.apple.com/downloads/safari'>Safari</a>,
+  <a href='http://www.opera.com/download'>Opera</a> or <a href='https://www.mozilla.org/en-US/firefox/new/'>Firefox</a>
 </div>
 
 <!-- Normal navigation bar below -->
 <nav class="nav">
 
-    <!-- Mobile nav -->
-    <div class="mobile__nav">
-        <ul class="mobile__menu">
-            <li class="mobile__item">
-                <a href="/profile-student.html">My Profile</a>
-            </li>
-            <li class="mobile__item">
-                <a href='/account.html'>My Account</a>
-            </li>
-            <li class="mobile__item">
-                <a href='/account-courses.html'>My Courses</a>
-            </li>
-            <li class="mobile__item">
-                <a href='/teachers-area.html'>Teachers Area</a>
-            </li>
-            <li class="mobile__separator"></li>
-            <li class="mobile__item mobile__item--active">
-                <a href='/'>Home</a>
-            </li>
-            <li class="mobile__item">
-                <a href='/'>Search</a>
-            </li>
-            <li class="mobile__item mobile__item--dropdown">
-                <a href='/' class="js-open-mobile-submenu">Categories</a>
-                <ul class="mobile__dropdown">
-                    <li class="mobile__dropitem">
-                        <a href='/category-page.html'>3D</a>
-                    </li>
-                    <li class="mobile__dropitem">
-                        <a href='/category-page.html'>Apps</a>
-                    </li>
-                    <li class="mobile__dropitem">
-                        <a href='/category-page.html'>Computer Science</a>
-                    </li>
-                    <li class="mobile__dropitem">
-                        <a href='/category-page.html'>Design</a>
-                    </li>
-                    <li class="mobile__dropitem">
-                        <a href='/category-page.html'>Development Tools</a>
-                    </li>
-                    <li class="mobile__dropitem">
-                        <a href='/category-page.html'>Programming</a>
-                    </li>
-                    <li class="mobile__dropitem">
-                        <a href='/category-page.html'>Science</a>
-                    </li>
-                    <li class="mobile__dropitem">
-                        <a href='/category-page.html'>Web Development</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="mobile__item">
-                <a href="/logout.html">Sign Out</a>
-            </li>
+  <!-- Mobile nav -->
+  <div class="mobile__nav">
+    <ul class="mobile__menu">
+      <li class="mobile__item">
+        <a href="/profile-student.html">My Profile</a>
+      </li>
+      <li class="mobile__item">
+        <a href='/account.html'>My Account</a>
+      </li>
+      <li class="mobile__item">
+        <a href='/account-courses.html'>My Courses</a>
+      </li>
+      <li class="mobile__item">
+        <a href='/teachers-area.html'>Teachers Area</a>
+      </li>
+      <li class="mobile__separator"></li>
+      <li class="mobile__item mobile__item--active">
+        <a href='/'>Home</a>
+      </li>
+      <li class="mobile__item">
+        <a href='/'>Search</a>
+      </li>
+      <li class="mobile__item mobile__item--dropdown">
+        <a href='/' class="js-open-mobile-submenu">Categories</a>
+        <ul class="mobile__dropdown">
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>3D</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Apps</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Computer Science</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Design</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Development Tools</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Programming</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Science</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Web Development</a>
+          </li>
         </ul>
-    </div>
+      </li>
+      <li class="mobile__item">
+        <a href="/logout.html">Sign Out</a>
+      </li>
+    </ul>
+  </div>
 
-    <a href='/' class="mobile__trigger">
-        <i class='fa fa-bars'></i>
+  <a href='/' class="mobile__trigger">
+    <i class='fa fa-bars'></i>
+  </a>
+
+  <a href="/" class="nav__logo">
+    Arkmont
+  </a>
+
+  <!-- Categories -->
+  <div class="nav__dropdown">
+    <a href='/' class="dropdown__trigger" data-menu-open='false'>
+      Categories
     </a>
+    <ul class="dropdown__menu">
+      <li class="dropdown__item">
+        <a href='/category-page.html'>3D</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Apps</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Computer Science</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Design</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Development Tools</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Programming</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Science</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Web Development</a>
+      </li>
+    </ul>
+  </div>
 
-    <a href="/" class="nav__logo">
-        Arkmont
+
+  <!-- Account settings menu -->
+  <div class="nav__dropdown nav__dropdown--right">
+    <a href='/' class="dropdown__trigger">
+      John Doe
     </a>
+    <ul class="dropdown__menu">
+      <li class="dropdown__item">
+        <a href="/profile-student.html">My Profile</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/account.html'>My Account</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/account-courses.html'>My Courses</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/teachers-area.html'>Teachers Area</a>
+      </li>
+      <li class="dropdown__separator"></li>
+      <li class="dropdown__item">
+        <a href="/logout.html">Sign Out</a>
+      </li>
+    </ul>
+  </div>
 
-    <!-- Categories -->
-    <div class="nav__dropdown">
-        <a href='/' class="dropdown__trigger" data-menu-open='false'>
-            Categories
+  <!-- Notification menu -->
+  <!-- Add .notification_dropdown-active to the .notification__dropdown element to make it "active" and stick out -->
+  <div class="nav__dropdown nav__dropdown--right notification__dropdown">
+    <a href='/' class="dropdown__trigger dropdown__trigger--no-caret">
+      <span class="notification__icon"></span>
+    </a>
+    <ul class="dropdown__menu">
+      <li class="dropdown__item">
+        <a href='/PLACEHOLDER' class="notification__url notification__url--unread">
+          <div href='/PLACEHOLDER' class="notification">
+            <div class="notification__img">
+              <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
+            </div>
+            <div class="notification__content">
+              <div class="notification__title">
+                <b>Kalob Taulien</b> made an announcement:
+              </div>
+              This is an unread notification
+            </div>
+          </div>
         </a>
-        <ul class="dropdown__menu">
-            <li class="dropdown__item">
-                <a href='/category-page.html'>3D</a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/category-page.html'>Apps</a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/category-page.html'>Computer Science</a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/category-page.html'>Design</a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/category-page.html'>Development Tools</a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/category-page.html'>Programming</a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/category-page.html'>Science</a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/category-page.html'>Web Development</a>
-            </li>
-        </ul>
-    </div>
-
-
-    <!-- Account settings menu -->
-    <div class="nav__dropdown nav__dropdown--right">
-        <a href='/' class="dropdown__trigger">
-            John Doe
+      </li>
+      <li class="dropdown__item">
+        <a href='/PLACEHOLDER' class="notification__url">
+          <div href='/PLACEHOLDER' class="notification">
+            <div class="notification__img">
+              <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
+            </div>
+            <div class="notification__content">
+              <div class="notification__title">
+                <b>Kalob Taulien</b> made an announcement:
+              </div>
+              Some stuff is happening and I'll letting students know how cool this "stuff" really is.
+            </div>
+          </div>
         </a>
-        <ul class="dropdown__menu">
-            <li class="dropdown__item">
-                <a href="/profile-student.html">My Profile</a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/account.html'>My Account</a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/account-courses.html'>My Courses</a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/teachers-area.html'>Teachers Area</a>
-            </li>
-            <li class="dropdown__separator"></li>
-            <li class="dropdown__item">
-                <a href="/logout.html">Sign Out</a>
-            </li>
-        </ul>
-    </div>
-
-    <!-- Notification menu -->
-    <!-- Add .notification_dropdown-active to the .notification__dropdown element to make it "active" and stick out -->
-    <div class="nav__dropdown nav__dropdown--right notification__dropdown">
-        <a href='/' class="dropdown__trigger dropdown__trigger--no-caret">
-            <span class="notification__icon"></span>
+      </li>
+      <li class="dropdown__item">
+        <a href='/PLACEHOLDER' class="notification__url">
+          <div href='/PLACEHOLDER' class="notification">
+            <div class="notification__img">
+              <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
+            </div>
+            <div class="notification__content">
+              <div class="notification__title">
+                <b>Kalob Taulien</b> made an announcement:
+              </div>
+              Some stuff is happening and I'll letting students know how cool this "stuff" really is.
+            </div>
+          </div>
         </a>
-        <ul class="dropdown__menu">
-            <li class="dropdown__item">
-                <a href='/PLACEHOLDER' class="notification__url notification__url--unread">
-                    <div href='/PLACEHOLDER' class="notification">
-                        <div class="notification__img">
-                            <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
-                        </div>
-                        <div class="notification__content">
-                            <div class="notification__title">
-                                <b>Kalob Taulien</b> made an announcement:
-                            </div>
-                            This is an unread notification
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/PLACEHOLDER' class="notification__url">
-                    <div href='/PLACEHOLDER' class="notification">
-                        <div class="notification__img">
-                            <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
-                        </div>
-                        <div class="notification__content">
-                            <div class="notification__title">
-                                <b>Kalob Taulien</b> made an announcement:
-                            </div>
-                            Some stuff is happening and I'll letting students know how cool this "stuff" really is.
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/PLACEHOLDER' class="notification__url">
-                    <div href='/PLACEHOLDER' class="notification">
-                        <div class="notification__img">
-                            <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
-                        </div>
-                        <div class="notification__content">
-                            <div class="notification__title">
-                                <b>Kalob Taulien</b> made an announcement:
-                            </div>
-                            Some stuff is happening and I'll letting students know how cool this "stuff" really is.
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/PLACEHOLDER' class="notification__url">
-                    <div href='/PLACEHOLDER' class="notification">
-                        <div class="notification__img">
-                            <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
-                        </div>
-                        <div class="notification__content">
-                            <div class="notification__title">
-                                <b>Kalob Taulien</b> made an announcement:
-                            </div>
-                            Some stuff is happening and I'll letting students know how cool this "stuff" really is.
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="dropdown__item">
-                <a href='/PLACEHOLDER' class="notification__url">
-                    <div href='/PLACEHOLDER' class="notification">
-                        <div class="notification__img">
-                            <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
-                        </div>
-                        <div class="notification__content">
-                            <div class="notification__title">
-                                <b>Kalob Taulien</b> made an announcement:
-                            </div>
-                            Some stuff is happening and I'll letting students know how cool this "stuff" really is.
-                        </div>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </div>
+      </li>
+      <li class="dropdown__item">
+        <a href='/PLACEHOLDER' class="notification__url">
+          <div href='/PLACEHOLDER' class="notification">
+            <div class="notification__img">
+              <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
+            </div>
+            <div class="notification__content">
+              <div class="notification__title">
+                <b>Kalob Taulien</b> made an announcement:
+              </div>
+              Some stuff is happening and I'll letting students know how cool this "stuff" really is.
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/PLACEHOLDER' class="notification__url">
+          <div href='/PLACEHOLDER' class="notification">
+            <div class="notification__img">
+              <img src="https://s3.amazonaws.com/arkmont/courses/3/covers/the-ultimate-html-developer-course_sm.jpg" />
+            </div>
+            <div class="notification__content">
+              <div class="notification__title">
+                <b>Kalob Taulien</b> made an announcement:
+              </div>
+              Some stuff is happening and I'll letting students know how cool this "stuff" really is.
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
 
 
-    <!-- Search menu -->
-    <form action="/search" method="get" class="nav__form nav__form--right" role="search" id="search">
-        <input name="q" placeholder="Search" type="text" class="nav__input" value="" />
-        <button type='submit' class="nav__submit"></button>
-    </form>
+  <!-- Search menu -->
+  <form action="/search" method="get" class="nav__form nav__form--right" role="search" id="search">
+    <input name="q" placeholder="Search" type="text" class="nav__input" value="" />
+    <button type='submit' class="nav__submit"></button>
+  </form>
 
 </nav>
 
 
 
 <div class="row__master">
-    <div class="row__container">
-        <h2 class="row__category">Category Name</h2>
-        <div class="row__inner row__inner--images-loading">
-            <div class="tile" data-id='1' data-enrolled='false'>
-                <div class="tile__media">
-                    <img alt="" class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-1.jpg">
-                </div>
-                <div class="tile__details">
-                    <div class="tile__content">
-                        <div class="tile__title">
-                            A longer course name can go here
-                        </div>
-                        <div class="tile__rating" data-rating="4.5">
-                            <i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half'></i>
-                        </div>
-                        <div class="tile__description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur, leo vel finibus luctus, urna diam condimentum velit, quis viverra enim tellus non lacus.
-                        </div>
-                        <div class="tile__chevron">
-                            <svg class="tile__chevron--down" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3,70.4545455 L7.68805325,75 L50,33.9750755 L92.3119468,75 L97,70.4545455 L50.1194675,25 L3,70.4545455 Z" transform="translate(50.000000, 50.000000) scale(-2, -1) translate(-50.000000, -50.000000)"></path></svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="row__container">
+    <h2 class="row__category">Category Name</h2>
+    <div class="row__inner row__inner--images-loading">
+      <div class="tile" data-id='1' data-enrolled='false'>
+        <div class="tile__media">
+          <img alt="" class="tile__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-1.jpg">
         </div>
-        <div class="row__outer">
-            <div class="preview__container">
-                <div class="preview__section preview__section--left">
-                    <div class="course__preview">
-                        <a href="#" class="preview__title">
-                            <!-- The name of a really long course in here -->
-                        </a>
-                        <div class="preview__content">
-                            <div class="preview__rating" data-rating="5">
-                                <!--
-                                    <i class='fa fa-star'></i>
-                                    <i class='fa fa-star'></i>
-                                    <i class='fa fa-star'></i>
-                                    <i class='fa fa-star'></i>
-                                    <i class='fa fa-star'></i>
-                                -->
-                            </div>
-                            <div class="preview__lists">
-                                <div class="preview__teachers">
-                                    <p class="inline"><!-- Teachers: --></p>
-                                    <ul class="preview__list">
-                                        <!-- preview__item's CANNOT have spaces, otherwise the styling won't add the comma's in the right places -->
-                                        <li class="preview__item"><!-- <a href='#' class="preview__url">Mr. Matt</a> --></li>
-                                        <li class="preview__item"><!-- <a href='#' class="preview__url">Mr. Smith</a> --></li>
-                                    </ul>
-                                </div>
-                                <div class="preview__about">
-                                    <p class="inline"><!-- About: --></p>
-                                    <ul class="preview__list">
-                                        <li class="preview__item"><!-- Less than an hour --></li>
-                                        <li class="preview__item"><!-- 22 lessons --></li>
-                                        <li class="preview__item"><!-- Certificate of Completion --></li>
-                                    </ul>
-                                </div>
-                                <div class="preview__certificate">
-                                    <p class="inline">Certificate</p>
-                                    <ul class="preview__list">
-                                        <li class="preview__item">
-                                            <i class='fa fa-certificate'></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="preview__description">
-                                <!-- Preview description in here -->
-                            </div>
-                            <div class="preview__cta">
-                                <a href='#' class="preview__take-course btn btn--lg">
-                                    Take this course
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="preview__section preview__image preview__section--right">
-                    <div class="preview__video"></div>
-                    <img src="" class="course__img preview__img" />
-                </div>
+        <div class="tile__details">
+          <div class="tile__content">
+            <div class="tile__title">
+              A longer course name can go here
             </div>
+            <div class="tile__rating" data-rating="4.5">
+              <i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star'></i><i class='fa fa-star-half'></i>
+            </div>
+            <div class="tile__description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur, leo vel finibus luctus, urna diam condimentum velit, quis viverra enim tellus non lacus.
+            </div>
+            <div class="tile__chevron">
+              <svg class="tile__chevron--down" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3,70.4545455 L7.68805325,75 L50,33.9750755 L92.3119468,75 L97,70.4545455 L50.1194675,25 L3,70.4545455 Z" transform="translate(50.000000, 50.000000) scale(-2, -1) translate(-50.000000, -50.000000)"></path></svg>
+            </div>
+          </div>
         </div>
-    </div><!-- End .row__container -->
+      </div>
+    </div>
+    <div class="row__outer">
+      <div class="preview__container">
+        <div class="preview__section preview__section--left">
+          <div class="course__preview">
+            <a href="#" class="preview__title">
+              <!-- The name of a really long course in here -->
+            </a>
+            <div class="preview__content">
+              <div class="preview__rating" data-rating="5">
+                <!--
+                  <i class='fa fa-star'></i>
+                  <i class='fa fa-star'></i>
+                  <i class='fa fa-star'></i>
+                  <i class='fa fa-star'></i>
+                  <i class='fa fa-star'></i>
+                -->
+              </div>
+              <div class="preview__lists">
+                <div class="preview__teachers">
+                  <p class="inline"><!-- Teachers: --></p>
+                  <ul class="preview__list">
+                    <!-- preview__item's CANNOT have spaces, otherwise the styling won't add the comma's in the right places -->
+                    <li class="preview__item"><!-- <a href='#' class="preview__url">Mr. Matt</a> --></li>
+                    <li class="preview__item"><!-- <a href='#' class="preview__url">Mr. Smith</a> --></li>
+                  </ul>
+                </div>
+                <div class="preview__about">
+                  <p class="inline"><!-- About: --></p>
+                  <ul class="preview__list">
+                    <li class="preview__item"><!-- Less than an hour --></li>
+                    <li class="preview__item"><!-- 22 lessons --></li>
+                    <li class="preview__item"><!-- Certificate of Completion --></li>
+                  </ul>
+                </div>
+                <div class="preview__certificate">
+                  <p class="inline">Certificate</p>
+                  <ul class="preview__list">
+                    <li class="preview__item">
+                      <i class='fa fa-certificate'></i>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="preview__description">
+                <!-- Preview description in here -->
+              </div>
+              <div class="preview__cta">
+                <a href='#' class="preview__take-course btn btn--lg">
+                  Take this course
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="preview__section preview__image preview__section--right">
+          <div class="preview__video"></div>
+          <img src="" class="course__img preview__img" />
+        </div>
+      </div>
+    </div>
+  </div><!-- End .row__container -->
 </div><!-- End .row__master -->
 
 <footer class="footer">
-    <div class="footer__sm">
-        <a href="https://www.facebook.com/ArkmontSchool/">
-            <i class="fa fa-facebook"></i>
-        </a>
-        <a href="https://twitter.com/ArkmontSchool">
-            <i class="fa fa-twitter"></i>
-        </a>
-    </div>
-    <a href='/' class="footer__logo">
-        Arkmont
+  <div class="footer__sm">
+    <a href="https://www.facebook.com/ArkmontSchool/">
+      <i class="fa fa-facebook"></i>
     </a>
-    <div class="footer__links">
-        <a href='/login' class="footer__url">
-            Sign In
-        </a>
-        <a href='/become-a-teacher' class="footer__url">
-            Become a Teacher
-        </a>
-        <a href='https://medium.com/arkmont-teachers-lounge' class="footer__url">
-            Blog
-        </a>
-        <a href='/terms' class="footer__url">
-            Terms of Service
-        </a>
-        <a href='/privacy' class="footer__url">
-            Privacy Policy
-        </a>
-        <a href='/contact' class="footer__url">
-            Contact Us
-        </a>
-    </div>
+    <a href="https://twitter.com/ArkmontSchool">
+      <i class="fa fa-twitter"></i>
+    </a>
+  </div>
+  <a href='/' class="footer__logo">
+    Arkmont
+  </a>
+  <div class="footer__links">
+    <a href='/login' class="footer__url">
+      Sign In
+    </a>
+    <a href='/become-a-teacher' class="footer__url">
+      Become a Teacher
+    </a>
+    <a href='https://medium.com/arkmont-teachers-lounge' class="footer__url">
+      Blog
+    </a>
+    <a href='/terms' class="footer__url">
+      Terms of Service
+    </a>
+    <a href='/privacy' class="footer__url">
+      Privacy Policy
+    </a>
+    <a href='/contact' class="footer__url">
+      Contact Us
+    </a>
+  </div>
 </footer>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://vjs.zencdn.net/5.8/video.js"></script>
 <!-- If you'd like to support IE8 -->

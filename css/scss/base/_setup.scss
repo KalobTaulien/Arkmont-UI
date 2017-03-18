@@ -24,6 +24,12 @@ body {
 
 a {
   cursor: pointer;
+  text-decoration: none;
+  transition: color 250ms;
+
+  &:hover {
+    color: $arkmont-gold;
+  }
 }
 
 a.disabled,

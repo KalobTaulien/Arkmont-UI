@@ -50,6 +50,7 @@
 
   }
 
+
   &[disabled] {
     color: rgba(255, 255, 255, 0.6);
     cursor: not-allowed;
@@ -67,6 +68,11 @@
       background-color: $arkmont-red;
       border: 2px solid $arkmont-red;
     }
+  }
+
+  &--full {
+    display: block;
+    width: 100%;
   }
 
   &--danger {
@@ -125,6 +131,20 @@
     transition: all 400ms;
   }
 }
+
+.btn--inverse {
+  background-color: lighten($arkmont-red, 5%);
+  color: #fff;
+  text-decoration: none;
+  border-color: $arkmont-red;
+  font-weight: normal;
+  line-height: initial;
+
+  &:hover:not(:disabled) {
+    background-color: lighten($arkmont-red, 10%);
+  }
+}
+
 
 @media (max-width: $bp-md) {
   .btn--play {

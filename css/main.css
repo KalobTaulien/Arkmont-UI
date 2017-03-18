@@ -582,6 +582,12 @@ body {
 
 a {
   cursor: pointer;
+  text-decoration: none;
+  transition: color 250ms;
+}
+
+a:hover {
+  color: #8c8c15;
 }
 
 a.disabled,
@@ -3482,6 +3488,36 @@ table tbody tr:not(.no-hover):hover {
   background-color: #2b1012;
 }
 
+.cover {
+  display: table;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  background-color: #0e0f11;
+  margin: 0;
+}
+
+.cover--login {
+  background: -moz-linear-gradient(45deg, #0e0f11 0%, #8c1515 100%);
+  background: -webkit-linear-gradient(45deg, #0e0f11 0%, #8c1515 100%);
+  background: linear-gradient(45deg, #0e0f11 0%, #8c1515 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0f11', endColorstr='#8c1515', GradientType=1);
+  height: calc(100% - 75px);
+}
+
+.cover__inner {
+  display: table-cell;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.cover__container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .btn {
   display: inline-block;
   color: #fff;
@@ -3552,6 +3588,11 @@ table tbody tr:not(.no-hover):hover {
   border: 2px solid #8c1515;
 }
 
+.btn--full {
+  display: block;
+  width: 100%;
+}
+
 .btn--danger {
   color: #8c1515;
   border-color: #8c1515;
@@ -3603,6 +3644,19 @@ table tbody tr:not(.no-hover):hover {
   font-size: 25px;
   line-height: 25px;
   transition: all 400ms;
+}
+
+.btn--inverse {
+  background-color: #a21818;
+  color: #fff;
+  text-decoration: none;
+  border-color: #8c1515;
+  font-weight: normal;
+  line-height: initial;
+}
+
+.btn--inverse:hover:not(:disabled) {
+  background-color: #b81c1c;
 }
 
 @media (max-width: 810px) {
@@ -3987,6 +4041,11 @@ table tbody tr:not(.no-hover):hover {
   background-color: #0e0f11;
   outline: 0;
   color: #fff;
+}
+
+.account__input--lg {
+  padding: 10px;
+  font-size: 16px;
 }
 
 .account__helptext {
@@ -4974,6 +5033,61 @@ table tbody tr:not(.no-hover):hover {
   display: none;
 }
 
+.login {
+  margin-top: 50px;
+  background: #0e0f11;
+  color: #fff;
+}
+
+.login__container {
+  padding: 40px;
+  height: calc(60vh);
+  vertical-align: middle;
+}
+
+.login__form {
+  width: 40%;
+  background-color: #0e0f11;
+  border: 1px solid #3c4049;
+  margin: 0 auto;
+  padding: 20px 20px 40px;
+  box-sizing: border-box;
+}
+
+.login__form a {
+  margin-top: 10px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+@media (max-width: 1024px) {
+  .login__container {
+    height: auto;
+  }
+  .login__form {
+    width: 70%;
+  }
+}
+
+@media (max-width: 810px) {
+  .login {
+    margin-top: 35px;
+  }
+}
+
+@media (max-width: 617px) {
+  .login__form {
+    width: 90%;
+  }
+}
+
+@media (max-width: 425px) {
+  .login__form {
+    width: 100%;
+    padding: 10px 20px 30px;
+  }
+}
+
 .inline {
   display: inline;
 }
@@ -5032,6 +5146,10 @@ table tbody tr:not(.no-hover):hover {
 .center {
   display: block;
   margin: 0 auto;
+}
+
+.no--bold {
+  font-weight: normal;
 }
 
 @media (max-width: 425px) {
@@ -5124,7 +5242,7 @@ table tbody tr:not(.no-hover):hover {
   text-shadow: 0 0 7px #333;
 }
 
-@media screen and (min-width: 0 \0 ) {
+@media screen and (min-width: 0 \0 ) {
   .trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-box-blur .trumbowyg-editor::before {
     color: rgba(200, 200, 200, 0.6) !important;
   }
@@ -5675,7 +5793,7 @@ body.trumbowyg-body-fullscreen {
   text-shadow: 0 0 7px #ccc;
 }
 
-@media screen and (min-width: 0 \0 ) {
+@media screen and (min-width: 0 \0 ) {
   .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor::before {
     color: rgba(20, 20, 20, 0.6) !important;
   }

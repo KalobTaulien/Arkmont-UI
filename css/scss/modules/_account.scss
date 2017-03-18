@@ -33,6 +33,11 @@
   background-color: $primary-background-color;
   outline: 0;
   color: #fff;
+
+  &--lg {
+    padding: 10px;
+    font-size: 16px;
+  }
 }
 
 .account__helptext {

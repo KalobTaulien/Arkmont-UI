@@ -62,6 +62,10 @@
   margin: 0 auto;
 }
 
+.no--bold {
+  font-weight: normal;
+}
+
 @media (max-width: $bp-sm) {
   .hidden--sm {
     display: none;

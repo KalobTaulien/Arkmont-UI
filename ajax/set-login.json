@@ -1,0 +1,6 @@
+{
+  "_comment": "userId is given when the login is successful; error is given when login fails",
+  "userId": 1,
+  "loggedIn": true,
+  "error": "Invalid email or password"
+}

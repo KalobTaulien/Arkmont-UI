@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <!-- VideoJS -->
+  <link href="https://vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="/css/main.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/ie.css" />
+</head>
+
+<body class="login">
+
+<!-- If this is an IE11 browser, CSS will enable this. -->
+<div class="ie__warning">
+  Our school does not support Internet Explorer. For a much better experience, please download the latest version of
+  <a href='https://www.google.com/chrome/'>Google Chrome</a>, <a href='https://support.apple.com/downloads/safari'>Safari</a>,
+  <a href='http://www.opera.com/download'>Opera</a> or <a href='https://www.mozilla.org/en-US/firefox/new/'>Firefox</a>
+</div>
+
+<!-- Normal navigation bar below -->
+<nav class="nav">
+
+  <!-- Mobile nav -->
+  <div class="mobile__nav">
+    <ul class="mobile__menu">
+      <li class="mobile__item">
+        <a href="/profile-student.html">My Profile</a>
+      </li>
+      <li class="mobile__item">
+        <a href='/account.html'>My Account</a>
+      </li>
+      <li class="mobile__item">
+        <a href='/account-courses.html'>My Courses</a>
+      </li>
+      <li class="mobile__item">
+        <a href='/teachers-area.html'>Teachers Area</a>
+      </li>
+      <li class="mobile__separator"></li>
+      <li class="mobile__item mobile__item--active">
+        <a href='/'>Home</a>
+      </li>
+      <li class="mobile__item">
+        <a href='/'>Search</a>
+      </li>
+      <li class="mobile__item mobile__item--dropdown">
+        <a href='/' class="js-open-mobile-submenu">Categories</a>
+        <ul class="mobile__dropdown">
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>3D</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Apps</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Computer Science</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Design</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Development Tools</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Programming</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Science</a>
+          </li>
+          <li class="mobile__dropitem">
+            <a href='/category-page.html'>Web Development</a>
+          </li>
+        </ul>
+      </li>
+      <li class="mobile__item">
+        <a href="/logout.html">Sign Out</a>
+      </li>
+    </ul>
+  </div>
+
+  <a href='/' class="mobile__trigger">
+    <i class='fa fa-bars'></i>
+  </a>
+
+  <a href="/" class="nav__logo">
+    Arkmont
+  </a>
+
+  <!-- Categories -->
+  <div class="nav__dropdown">
+    <a href='/' class="dropdown__trigger" data-menu-open='false'>
+      Categories
+    </a>
+    <ul class="dropdown__menu">
+      <li class="dropdown__item">
+        <a href='/category-page.html'>3D</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Apps</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Computer Science</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Design</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Development Tools</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Programming</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Science</a>
+      </li>
+      <li class="dropdown__item">
+        <a href='/category-page.html'>Web Development</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Account settings menu -->
+  <div class="nav__form nav__form--right">
+    <a href='/login.html' class="btn btn--inverse">
+      Sign In
+    </a>
+  </div>
+
+  <!-- Search menu -->
+  <form action="/search" method="get" class="nav__form nav__form--right" role="search" id="search">
+    <input name="q" placeholder="Search" type="text" class="nav__input" value="" />
+    <button type='submit' class="nav__submit"></button>
+  </form>
+
+</nav>
+
+<div class="cover cover--login">
+  <div class="cover__inner">
+    <div class="cover__container">
+      <!-- Start inside area -->
+
+      <div class="login__container">
+        <form class="login__form">
+          <h1 class="no--bold">Sign In</h1>
+
+          <label for="email" class="label label--full">Email</label>
+          <input type="email" class="account__input account__input--lg" name="email" />
+
+          <label for="password" class="label label--full">Password</label>
+          <input type="password" class="account__input account__input--lg" name="password" />
+
+          <div class="account__error js-error"></div>
+
+          <button type="submit" class="btn btn--inverse btn--lg btn--full">Sign In</button>
+          <a href="/forgot.html">Forgot your password?</a>
+          <a href="/signup.html">Sign up for free</a>
+        </div>
+      </form>
+
+      <!-- End inside area -->
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer__sm">
+    <a href="https://www.facebook.com/ArkmontSchool/">
+      <i class="fa fa-facebook"></i>
+    </a>
+    <a href="https://twitter.com/ArkmontSchool">
+      <i class="fa fa-twitter"></i>
+    </a>
+  </div>
+  <a href='/' class="footer__logo">
+    Arkmont
+  </a>
+  <div class="footer__links">
+    <a href='/login' class="footer__url">
+      Sign In
+    </a>
+    <a href='/become-a-teacher' class="footer__url">
+      Become a Teacher
+    </a>
+    <a href='https://medium.com/arkmont-teachers-lounge' class="footer__url">
+      Blog
+    </a>
+    <a href='/terms' class="footer__url">
+      Terms of Service
+    </a>
+    <a href='/privacy' class="footer__url">
+      Privacy Policy
+    </a>
+    <a href='/contact' class="footer__url">
+      Contact Us
+    </a>
+  </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://vjs.zencdn.net/5.8/video.js"></script>
+<!-- If you'd like to support IE8 -->
+<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<script src="/js/video-js-plugins.js"></script>
+<script src="/js/video-js-resolutions.js"></script>
+
+<!-- Temporary script to give us more tiles without making the html markup super long -->
+<script>
+
+// Number of rows you want to test
+const rows = 5;
+// Number of tiles per row.
+const tilesPerRow = 14;
+// Tile images.
+const tiles = [ "https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-3.jpg",
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-2.jpg',
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-4.jpg',
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-5.jpg',
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-7.jpg',
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-9.jpg',
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-11.jpg',
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-12.jpg',
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-13.jpg',
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-14.jpg',
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-15.jpg',
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-16.jpg',
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-17.jpg',
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-18.jpg',
+                'https://s3-us-west-2.amazonaws.com/s.cdpn.io/70390/show-19.jpg',
+            ];
+// When jQ is ready to rock, start cloning!
+$(document).ready(function() {
+    // Make all the tiles in the first row
+    for(var i = 1; i < tilesPerRow; i++) {
+        var tile = $(".tile:first").clone();
+        tile.find('.tile__img:not(.tile__img--background)').attr('src', tiles[i]);
+        $('.tile:last').after(tile);
+    }
+
+    // Clone the first row with all its tiles.
+    for(var i = 1; i <= rows; i++) {
+        var row = $(".row__container:first").clone();
+        $('.row__container:last').after(row);
+    }
+
+    // For each tile, replace the [data-id]
+    $(".tile").each(function(i, elem) {
+        $(this).attr('data-id', (i+1))
+    })
+})
+</script>
+
+
+
+<script src="/js/main.js"></script>
+</body>
+</html>

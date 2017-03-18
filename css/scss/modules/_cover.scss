@@ -1,0 +1,35 @@
+.cover {
+  display: table;
+  width: 100%;
+  // cover height
+  height: 100%;
+  // cover min-height
+  min-height: 300px;
+  background-color: $primary-background-color;
+  margin: 0;
+}
+
+.cover--login {
+  // Old browsers
+  background: -moz-linear-gradient(45deg, rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
+  // FF3.6-15
+  background: -webkit-linear-gradient(45deg, rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
+  // Chrome10-25,Safari5.1-6
+  background: linear-gradient(45deg, rgba(14, 15, 17, 1) 0%, rgba(140, 21, 21, 1) 100%);
+  // W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0f11', endColorstr='#8c1515', GradientType=1);
+  height: calc(100% - 75px);
+}
+
+.cover__inner {
+  display: table-cell;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.cover__container {
+  margin-right: auto;
+  margin-left: auto;
+}
