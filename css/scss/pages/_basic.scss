@@ -1,0 +1,23 @@
+.basic {
+  margin-top: 50px;
+  background: rgb(14, 15, 17);
+  width: 60%;
+  margin: 0 auto;
+  color: #fff;
+}
+
+@media (max-width: $bp-lg) {
+  .basic {
+    width: 70%;
+  }
+
+}
+
+@media (max-width:$bp-md) {
+  .basic {
+    width: auto;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+

@@ -22,6 +22,10 @@
     margin-top: 10px;
     margin-right: 10px;
     display: inline-block;
+
+    &:hover {
+      color: $arkmont-gold;
+    }
   }
 }
 
@@ -30,8 +34,13 @@
   line-height: 18px;
   text-align: center;
   color: rgba(255, 255, 255, 0.75);
+
   a {
     margin: 0;
+
+    &:hover {
+      color: $arkmont-gold;
+    }
   }
 }
 

@@ -586,10 +586,6 @@ a {
   transition: color 250ms;
 }
 
-a:hover {
-  color: #8c8c15;
-}
-
 a.disabled,
 a[disabled] {
   opacity: 0.5;
@@ -5060,6 +5056,10 @@ table tbody tr:not(.no-hover):hover {
   display: inline-block;
 }
 
+.login__form a:hover {
+  color: #8c8c15;
+}
+
 .form__legalese {
   font-size: 13px;
   line-height: 18px;
@@ -5069,6 +5069,10 @@ table tbody tr:not(.no-hover):hover {
 
 .form__legalese a {
   margin: 0;
+}
+
+.form__legalese a:hover {
+  color: #8c8c15;
 }
 
 @media (max-width: 1024px) {
@@ -5096,6 +5100,28 @@ table tbody tr:not(.no-hover):hover {
   .login__form {
     width: 100%;
     padding: 10px 20px 30px;
+  }
+}
+
+.basic {
+  margin-top: 50px;
+  background: #0e0f11;
+  width: 60%;
+  margin: 0 auto;
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .basic {
+    width: 70%;
+  }
+}
+
+@media (max-width: 810px) {
+  .basic {
+    width: auto;
+    margin-left: 40px;
+    margin-right: 40px;
   }
 }
 
